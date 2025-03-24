@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料 - 语音房App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .profile-header {
+            background: linear-gradient(to right, #5e72e4, #825ee4);
+            height: 160px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            position: relative;
+        }
+        
+        .profile-avatar-container {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+        
+        .profile-stats {
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-around;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stat-value {
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--text-color);
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--dark-gray);
+            margin-top: 4px;
+        }
+        
+        .profile-section {
+            padding: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .profile-section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: var(--light-gray);
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            color: var(--dark-gray);
+        }
+        
+        .badge.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .room-history-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .room-history-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            margin-right: 12px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-left">
+            <span class="status-bar-time">10:30</span>
+        </div>
+        <div class="status-bar-right">
+            <i class="fas fa-signal status-bar-icon"></i>
+            <i class="fas fa-wifi status-bar-icon"></i>
+            <i class="fas fa-battery-full status-bar-icon"></i>
+        </div>
+    </div>
+
+    <!-- 个人资料头部 -->
+    <div class="profile-header">
+        <div class="flex justify-between items-center px-4 py-3">
+            <h1 class="text-lg font-bold text-white">个人资料</h1>
+            <button class="text-white">
+                <i class="fas fa-cog text-xl"></i>
+            </button>
+        </div>
+        
+        <div class="profile-avatar-container">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="个人头像" class="profile-avatar">
+        </div>
+    </div>
+
+    <!-- 用户名和编辑按钮 -->
+    <div class="text-center mt-16 mb-2">
+        <h2 class="text-xl font-bold">小美</h2>
+        <p class="text-sm text-gray-500">ID: 10086789</p>
+        <button class="mt-2 px-4 py-1 border border-gray-300 rounded-full text-sm text-gray-600">
+            编辑资料
+        </button>
+    </div>
+
+    <!-- 个人数据统计 -->
+    <div class="profile-stats">
+        <div class="stat-item">
+            <div class="stat-value">128</div>
+            <div class="stat-label">关注</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">3.2k</div>
+            <div class="stat-label">粉丝</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">512</div>
+            <div class="stat-label">获赞</div>
+        </div>
+    </div>
+
+    <!-- 个人介绍 -->
+    <div class="profile-section">
+        <h3 class="profile-section-title">个人简介</h3>
+        <p class="text-sm text-gray-600">
+            嗨，我是小美，喜欢分享音乐和生活日常。深夜电台主持人，欢迎来我的房间聊天~
+        </p>
+    </div>
+
+    <!-- 兴趣标签 -->
+    <div class="profile-section">
+        <h3 class="profile-section-title">兴趣标签</h3>
+        <div>
+            <span class="badge active">音乐</span>
+            <span class="badge active">电影</span>
+            <span class="badge">旅行</span>
+            <span class="badge">摄影</span>
+            <span class="badge">美食</span>
+            <span class="badge active">阅读</span>
+            <span class="badge">游戏</span>
+        </div>
+    </div>
+
+    <!-- 最近活动 -->
+    <div class="profile-section">
+        <h3 class="profile-section-title">最近活动</h3>
+        
+        <div class="room-history-item">
+            <div class="room-history-icon">
+                <i class="fas fa-microphone"></i>
+            </div>
+            <div>
+                <div class="font-medium">深夜电台 | 来聊聊今天的心情</div>
+                <div class="text-xs text-gray-500">今天 08:30 - 主持了2小时</div>
+            </div>
+        </div>
+        
+        <div class="room-history-item">
+            <div class="room-history-icon">
+                <i class="fas fa-headphones"></i>
+            </div>
+            <div>
+                <div class="font-medium">音乐分享 | 周杰伦新歌讨论</div>
+                <div class="text-xs text-gray-500">昨天 20:15 - 参与了1.5小时</div>
+            </div>
+        </div>
+        
+        <div class="room-history-item">
+            <div class="room-history-icon">
+                <i class="fas fa-microphone"></i>
+            </div>
+            <div>
+                <div class="font-medium">深夜电台 | 职场那些事</div>
+                <div class="text-xs text-gray-500">3天前 - 主持了3小时</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 荣誉徽章 -->
+    <div class="profile-section mb-20">
+        <h3 class="profile-section-title">荣誉徽章</h3>
+        <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 mb-1">
+                    <i class="fas fa-crown text-xl"></i>
+                </div>
+                <span class="text-xs">人气之星</span>
+            </div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-1">
+                    <i class="fas fa-microphone-alt text-xl"></i>
+                </div>
+                <span class="text-xs">金牌主播</span>
+            </div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 mb-1">
+                    <i class="fas fa-gem text-xl"></i>
+                </div>
+                <span class="text-xs">贵宾用户</span>
+            </div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 mb-1">
+                    <i class="fas fa-plus text-xl"></i>
+                </div>
+                <span class="text-xs">更多</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-tab-bar">
+        <a href="home.html" class="tab-item">
+            <i class="fas fa-home tab-icon"></i>
+            <span>首页</span>
+        </a>
+        <a href="#" class="tab-item">
+            <i class="fas fa-compass tab-icon"></i>
+            <span>发现</span>
+        </a>
+        <a href="#" class="tab-item">
+            <i class="fas fa-users tab-icon"></i>
+            <span>好友</span>
+        </a>
+        <a href="profile.html" class="tab-item active">
+            <i class="fas fa-user tab-icon"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

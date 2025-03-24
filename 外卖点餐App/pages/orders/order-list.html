@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的订单 - 外卖点餐App</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="iphone-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="status-bar-time">9:41</div>
+            <div class="status-bar-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- 页面内容 -->
+        <div class="page-container">
+            <!-- 顶部导航栏 -->
+            <div class="bg-white sticky top-0 z-10 shadow-sm">
+                <div class="flex items-center justify-center p-4">
+                    <h1 class="text-lg font-bold">我的订单</h1>
+                </div>
+                
+                <!-- 分类标签 -->
+                <div class="flex border-b border-gray-100">
+                    <a href="#" class="flex-1 py-3 text-center font-medium text-red-500 border-b-2 border-red-500">
+                        全部
+                    </a>
+                    <a href="#" class="flex-1 py-3 text-center text-gray-500">
+                        待支付
+                    </a>
+                    <a href="#" class="flex-1 py-3 text-center text-gray-500">
+                        待送达
+                    </a>
+                    <a href="#" class="flex-1 py-3 text-center text-gray-500">
+                        已完成
+                    </a>
+                </div>
+            </div>
+
+            <!-- 订单列表 -->
+            <div class="p-4">
+                <!-- 订单项 -->
+                <a href="order-detail.html" class="block bg-white rounded-lg shadow-sm mb-4 overflow-hidden">
+                    <div class="p-4 border-b border-gray-100">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="餐厅logo" class="w-10 h-10 rounded-lg object-cover mr-3">
+                                <div>
+                                    <h2 class="font-semibold text-base">老北京炸酱面</h2>
+                                </div>
+                            </div>
+                            <div class="text-red-500">配送中</div>
+                        </div>
+                        <div class="text-gray-500 text-sm">
+                            2025-03-18 21:15:23
+                        </div>
+                    </div>
+                    <div class="p-4 flex justify-between items-center">
+                        <div class="text-sm text-gray-500">
+                            <span>经典炸酱面</span> 等2件商品
+                        </div>
+                        <div class="text-base">
+                            ¥41
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0 flex justify-end border-t border-gray-100">
+                        <button class="border border-gray-300 rounded-full px-4 py-1 text-sm mr-2">
+                            再来一单
+                        </button>
+                        <button class="border border-red-500 text-red-500 rounded-full px-4 py-1 text-sm">
+                            联系配送员
+                        </button>
+                    </div>
+                </a>
+
+                <a href="order-detail.html" class="block bg-white rounded-lg shadow-sm mb-4 overflow-hidden">
+                    <div class="p-4 border-b border-gray-100">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="餐厅logo" class="w-10 h-10 rounded-lg object-cover mr-3">
+                                <div>
+                                    <h2 class="font-semibold text-base">西北拉面馆</h2>
+                                </div>
+                            </div>
+                            <div class="text-gray-500">已完成</div>
+                        </div>
+                        <div class="text-gray-500 text-sm">
+                            2025-03-17 18:30:15
+                        </div>
+                    </div>
+                    <div class="p-4 flex justify-between items-center">
+                        <div class="text-sm text-gray-500">
+                            <span>牛肉拉面</span> 等1件商品
+                        </div>
+                        <div class="text-base">
+                            ¥25
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0 flex justify-end border-t border-gray-100">
+                        <button class="border border-gray-300 rounded-full px-4 py-1 text-sm mr-2">
+                            再来一单
+                        </button>
+                        <button class="border border-red-500 text-red-500 rounded-full px-4 py-1 text-sm">
+                            评价
+                        </button>
+                    </div>
+                </a>
+
+                <a href="order-detail.html" class="block bg-white rounded-lg shadow-sm mb-20 overflow-hidden">
+                    <div class="p-4 border-b border-gray-100">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1617196034284-6e53664074a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="餐厅logo" class="w-10 h-10 rounded-lg object-cover mr-3">
+                                <div>
+                                    <h2 class="font-semibold text-base">韩式炸鸡</h2>
+                                </div>
+                            </div>
+                            <div class="text-gray-500">已完成</div>
+                        </div>
+                        <div class="text-gray-500 text-sm">
+                            2025-03-16 19:05:42
+                        </div>
+                    </div>
+                    <div class="p-4 flex justify-between items-center">
+                        <div class="text-sm text-gray-500">
+                            <span>原味炸鸡</span> 等3件商品
+                        </div>
+                        <div class="text-base">
+                            ¥88
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0 flex justify-end border-t border-gray-100">
+                        <button class="border border-gray-300 rounded-full px-4 py-1 text-sm mr-2">
+                            再来一单
+                        </button>
+                        <button class="border border-gray-300 text-gray-500 rounded-full px-4 py-1 text-sm">
+                            已评价
+                        </button>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="bottom-nav">
+            <a href="../home/home.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>首页</span>
+            </a>
+            <a href="../home/search.html" class="nav-item">
+                <i class="fas fa-search"></i>
+                <span>搜索</span>
+            </a>
+            <a href="order-list.html" class="nav-item active">
+                <i class="fas fa-list-alt"></i>
+                <span>订单</span>
+            </a>
+            <a href="../user/profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>我的</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邻里团购 - 我的订单</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="phone-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="time">14:25</div>
+            <div class="right">
+                <div class="signal"><i class="fas fa-signal"></i></div>
+                <div class="wifi"><i class="fas fa-wifi"></i></div>
+                <div class="battery"><i class="fas fa-battery-full"></i> 100%</div>
+            </div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="content">
+            <!-- 返回导航 -->
+            <div class="navbar">
+                <div class="navbar-left">
+                    <i class="fas fa-chevron-left text-gray-600"></i>
+                </div>
+                <div class="navbar-title">我的订单</div>
+            </div>
+            
+            <!-- 标签页切换 -->
+            <div class="segmented-control">
+                <div class="segment active">全部</div>
+                <div class="segment">待付款</div>
+                <div class="segment">待发货</div>
+                <div class="segment">待收货</div>
+                <div class="segment">待评价</div>
+            </div>
+            
+            <!-- 订单列表 -->
+            <div class="p-2">
+                <!-- 订单1 -->
+                <div class="order-item">
+                    <div class="order-header">
+                        <div class="order-number">订单号：T12345678901234</div>
+                        <div class="order-status">待付款</div>
+                    </div>
+                    
+                    <div class="order-products">
+                        <div class="order-product">
+                            <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="order-product-img">
+                            <div class="order-product-info">
+                                <div class="order-product-title">新鲜草莓 500g装 甜香多汁</div>
+                                <div class="order-product-price">¥29.9 x 1</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-footer">
+                        <div class="order-total">
+                            共1件商品 合计：<span class="order-total-price">¥24.9</span>（含运费¥5.0）
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn">去付款</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 订单2 -->
+                <div class="order-item">
+                    <div class="order-header">
+                        <div class="order-number">订单号：T12345678901235</div>
+                        <div class="order-status">待发货</div>
+                    </div>
+                    
+                    <div class="order-products">
+                        <div class="order-product">
+                            <img src="https://images.pexels.com/photos/4109996/pexels-photo-4109996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="order-product-img">
+                            <div class="order-product-info">
+                                <div class="order-product-title">有机蔬菜礼盒 8种装</div>
+                                <div class="order-product-price">¥79.9 x 1</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-footer">
+                        <div class="order-total">
+                            共1件商品 合计：<span class="order-total-price">¥84.9</span>（含运费¥5.0）
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn">催发货</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 订单3 -->
+                <div class="order-item">
+                    <div class="order-header">
+                        <div class="order-number">订单号：T12345678901236</div>
+                        <div class="order-status">待收货</div>
+                    </div>
+                    
+                    <div class="order-products">
+                        <div class="order-product">
+                            <img src="https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="order-product-img">
+                            <div class="order-product-info">
+                                <div class="order-product-title">新鲜红富士苹果 5kg装</div>
+                                <div class="order-product-price">¥49.9 x 1</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-footer">
+                        <div class="order-total">
+                            共1件商品 合计：<span class="order-total-price">¥54.9</span>（含运费¥5.0）
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn mr-2">查看物流</button>
+                            <button class="btn">确认收货</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 订单4 -->
+                <div class="order-item">
+                    <div class="order-header">
+                        <div class="order-number">订单号：T12345678901237</div>
+                        <div class="order-status">待评价</div>
+                    </div>
+                    
+                    <div class="order-products">
+                        <div class="order-product">
+                            <img src="https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="order-product-img">
+                            <div class="order-product-info">
+                                <div class="order-product-title">有机纯牛奶 250ml*12盒</div>
+                                <div class="order-product-price">¥59.9 x 1</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-footer">
+                        <div class="order-total">
+                            共1件商品 合计：<span class="order-total-price">¥64.9</span>（含运费¥5.0）
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn">去评价</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 订单5 -->
+                <div class="order-item">
+                    <div class="order-header">
+                        <div class="order-number">订单号：T12345678901238</div>
+                        <div class="order-status">已完成</div>
+                    </div>
+                    
+                    <div class="order-products">
+                        <div class="order-product">
+                            <img src="https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="order-product-img">
+                            <div class="order-product-info">
+                                <div class="order-product-title">曲奇饼干礼盒 500g</div>
+                                <div class="order-product-price">¥45.9 x 1</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-footer">
+                        <div class="order-total">
+                            共1件商品 合计：<span class="order-total-price">¥50.9</span>（含运费¥5.0）
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn mr-2">再次购买</button>
+                            <button class="btn">删除订单</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

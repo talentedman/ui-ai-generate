@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语音房间 - 语音房App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            background-image: linear-gradient(to bottom, rgba(94, 114, 228, 0.1), rgba(130, 94, 228, 0.05));
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .room-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 126px;
+            background: linear-gradient(135deg, #5e72e4, #825ee4);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            z-index: -1;
+        }
+        
+        .chat-input-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 16px;
+            background-color: white;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 20px;
+            border: none;
+            background-color: #f5f5f5;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .chat-input:focus {
+            outline: none;
+        }
+        
+        .send-button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .message-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .message-item {
+            padding: 6px 12px;
+            margin-bottom: 4px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            font-size: 13px;
+            display: inline-block;
+        }
+        
+        .message-user {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .control-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        
+        .control-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px;
+        }
+        
+        .control-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f7f9fc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--dark-gray);
+            margin-bottom: 4px;
+        }
+        
+        .control-text {
+            font-size: 12px;
+            color: var(--dark-gray);
+        }
+        
+        .control-icon.primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .control-icon.danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .wave-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            animation: wave 1.5s infinite ease-out;
+        }
+        
+        @keyframes wave {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+        
+        .mic-grid-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        
+        .mic-row {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 8px;
+        }
+        
+        .mic-position-compact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mic-avatar-compact {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+            position: relative;
+        }
+        
+        .mic-avatar-compact img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .host-mic-compact .mic-avatar-compact {
+            width: 70px;
+            height: 70px;
+        }
+        
+        .mic-name-compact {
+            font-size: 11px;
+            color: var(--dark-gray);
+            text-align: center;
+            max-width: 50px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* 活动挂件 */
+        .activity-widget {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 6px 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .widget-top-left {
+            top: 60px;
+            left: 10px;
+        }
+        
+        .widget-top-right {
+            top: 60px;
+            right: 10px;
+        }
+        
+        .widget-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            margin-right: 8px;
+        }
+        
+        .hot-icon {
+            background-color: #fff4e5;
+            color: #ff9500;
+        }
+        
+        .gift-icon {
+            background-color: #ffe5f1;
+            color: #ff2d55;
+        }
+        
+        .widget-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .event-banner {
+            position: absolute;
+            bottom: 160px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-banner-icon {
+            color: #ff3b30;
+            margin-right: 6px;
+        }
+        
+        .event-banner-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-left">
+            <span class="status-bar-time">10:30</span>
+        </div>
+        <div class="status-bar-right">
+            <i class="fas fa-signal status-bar-icon"></i>
+            <i class="fas fa-wifi status-bar-icon"></i>
+            <i class="fas fa-battery-full status-bar-icon"></i>
+        </div>
+    </div>
+
+    <div class="room-background"></div>
+
+    <!-- 房间标题 -->
+    <div class="flex justify-between items-center px-4 py-2">
+        <button class="text-white">
+            <i class="fas fa-chevron-left mr-2"></i>
+            返回
+        </button>
+        <h1 class="text-base font-bold text-white">深夜电台 | 来聊聊今天的心情</h1>
+        <button class="text-white">
+            <i class="fas fa-ellipsis-h"></i>
+        </button>
+    </div>
+
+    <!-- 房间信息 -->
+    <div class="flex justify-between items-center px-4 py-1 text-white">
+        <div class="flex items-center">
+            <i class="fas fa-headphones mr-2"></i>
+            <span>234人在线</span>
+        </div>
+        <div class="flex gap-2">
+            <button class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-xs">
+                <i class="fas fa-share-alt mr-1"></i>
+                分享
+            </button>
+            <button class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-xs">
+                <i class="fas fa-bell mr-1"></i>
+                关注
+            </button>
+        </div>
+    </div>
+
+    <!-- 活动挂件 - 热门话题 -->
+    <!-- <div class="activity-widget widget-top-left">
+        <div class="widget-icon hot-icon">
+            <i class="fas fa-fire"></i>
+        </div>
+        <div class="widget-text">热门讨论中</div>
+    </div> -->
+
+    <!-- 活动挂件 - 礼物排行 -->
+    <!-- <div class="activity-widget widget-top-right">
+        <div class="widget-icon gift-icon">
+            <i class="fas fa-gift"></i>
+        </div>
+        <div class="widget-text">礼物排行榜</div>
+    </div> -->
+
+    <!-- 麦位区域 - 重新设计为大头麦+两排麦位 -->
+    <div class="px-4 pt-3 pb-2">
+        <div class="mic-grid-compact">
+            <!-- 大头麦（主持人） -->
+            <div class="flex justify-center mb-3">
+                <div class="mic-position-compact host-mic-compact">
+                    <div class="mic-avatar-compact">
+                        <div class="wave-animation"></div>
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="主持人">
+                        <div class="host-badge">主持</div>
+                        <div class="mic-status"></div>
+                    </div>
+                    <div class="mic-name-compact">小美</div>
+                </div>
+            </div>
+            
+            <!-- 第一排麦位 -->
+            <div class="mic-row">
+                <div class="mic-position-compact">
+                    <div class="mic-avatar-compact">
+                        <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="嘉宾1">
+                        <div class="mic-status"></div>
+                    </div>
+                    <div class="mic-name-compact">阳光男孩</div>
+                </div>
+                
+                <div class="mic-position-compact">
+                    <div class="mic-avatar-compact">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="嘉宾2">
+                        <div class="mic-status"></div>
+                    </div>
+                    <div class="mic-name-compact">文艺青年</div>
+                </div>
+                
+                <div class="mic-position-compact">
+                    <div class="mic-avatar-compact">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="嘉宾3">
+                        <div class="wave-animation"></div>
+                        <div class="mic-status"></div>
+                    </div>
+                    <div class="mic-name-compact">快乐精灵</div>
+                </div>
+                
+                <div class="mic-position-compact">
+                    <div class="mic-avatar-compact">
+                        <i class="fas fa-microphone-slash text-gray-400 text-xl"></i>
+                    </div>
+                    <div class="mic-name-compact">麦位4</div>
+                </div>
+            </div>
+            
+            <!-- 第二排麦位 -->
+            <div class="mic-row">
+                <div class="mic-position-compact">
+                    <div class="mic-avatar-compact">
+                        <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="嘉宾5">
+                        <div class="mic-status"></div>
+                    </div>
+                    <div class="mic-name-compact">文学少女</div>
+                </div>
+                
+                <div class="mic-position-compact">
+                    <div class="mic-avatar-compact">
+                        <i class="fas fa-microphone-slash text-gray-400 text-xl"></i>
+                    </div>
+                    <div class="mic-name-compact">麦位6</div>
+                </div>
+                
+                <div class="mic-position-compact">
+                    <div class="mic-avatar-compact">
+                        <i class="fas fa-microphone-slash text-gray-400 text-xl"></i>
+                    </div>
+                    <div class="mic-name-compact">麦位7</div>
+                </div>
+                
+                <div class="mic-position-compact">
+                    <div class="mic-avatar-compact">
+                        <i class="fas fa-microphone-slash text-gray-400 text-xl"></i>
+                    </div>
+                    <div class="mic-name-compact">麦位8</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 活动横幅 -->
+    <!-- <div class="event-banner">
+        <i class="fas fa-calendar-alt event-banner-icon"></i>
+        <span class="event-banner-text">周末音乐挑战赛进行中！点击参与</span>
+    </div> -->
+
+    <!-- 控制按钮区 -->
+    <div class="px-4 py-2">
+        <div class="control-row">
+            <div class="control-button">
+                <div class="control-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <span class="control-text">礼物</span>
+            </div>
+            
+            <div class="control-button">
+                <div class="control-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <span class="control-text">点赞</span>
+            </div>
+            
+            <div class="control-button">
+                <div class="control-icon primary">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <span class="control-text">上麦</span>
+            </div>
+            
+            <div class="control-button">
+                <div class="control-icon danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                </div>
+                <span class="control-text">离开</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 消息区域 -->
+    <div class="px-4 py-2 pb-16">
+        <h3 class="text-xs font-bold mb-1">房间消息</h3>
+        <div class="message-list">
+            <div class="message-item">
+                <span class="message-user">系统消息：</span>
+                <span>欢迎光临深夜电台，请文明发言</span>
+            </div>
+            <div class="message-item">
+                <span class="message-user">阳光男孩：</span>
+                <span>大家好，今天过得怎么样？</span>
+            </div>
+            <div class="message-item">
+                <span class="message-user">快乐精灵：</span>
+                <span>今天天气超好的，心情也很赞~</span>
+            </div>
+            <div class="message-item">
+                <span class="message-user">文艺青年：</span>
+                <span>刚刚看完一部电影，超感人的</span>
+            </div>
+            <div class="message-item">
+                <span class="message-user">小美：</span>
+                <span>欢迎新朋友加入我们的电台</span>
+            </div>
+            <div class="message-item">
+                <span class="message-user">小美：</span>
+                <span>欢迎新朋友加入我们的电台</span>
+            </div>
+            <div class="message-item">
+                <span class="message-user">小美：</span>
+                <span>欢迎新朋友加入我们的电台</span>
+            </div>
+            <div class="message-item">
+                <span class="message-user">小美：</span>
+                <span>欢迎新朋友加入我们的电台</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 聊天输入框 -->
+    <div class="chat-input-container">
+        <input type="text" class="chat-input" placeholder="说点什么...">
+        <button class="send-button">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页 - 银行App</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .quick-action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 25%;
+      margin-bottom: 16px;
+    }
+    
+    .quick-action-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      background-color: rgba(0, 82, 204, 0.1);
+      color: var(--primary-color);
+    }
+    
+    .balance-card {
+      background: linear-gradient(135deg, #0052CC 0%, #4C9AFF 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .transaction-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .transaction-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <!-- 状态栏 -->
+    <div id="status-bar-container"></div>
+    
+    <!-- 页面内容 -->
+    <div class="scroll-container">
+      <!-- 头部欢迎区 -->
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h1 class="text-2xl font-bold">你好，李明</h1>
+          <p class="text-sm text-gray-600">欢迎回来</p>
+        </div>
+        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+          <i class="fas fa-bell text-gray-600"></i>
+        </div>
+      </div>
+      
+      <!-- 余额卡片 -->
+      <div class="balance-card">
+        <p class="text-sm text-white opacity-80 mb-1">总资产（元）</p>
+        <h2 class="text-3xl font-bold mb-4">128,567.89</h2>
+        
+        <div class="flex justify-between">
+          <div>
+            <p class="text-xs text-white opacity-80 mb-1">储蓄账户</p>
+            <p class="text-lg font-semibold">32,456.78</p>
+          </div>
+          <div>
+            <p class="text-xs text-white opacity-80 mb-1">投资账户</p>
+            <p class="text-lg font-semibold">96,111.11</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 快捷功能区 -->
+      <div class="card">
+        <h3 class="heading-md mb-4">快捷功能</h3>
+        <div class="flex flex-wrap">
+          <div class="quick-action">
+            <div class="quick-action-icon">
+              <i class="fas fa-exchange-alt text-xl"></i>
+            </div>
+            <span class="text-sm">转账</span>
+          </div>
+          <div class="quick-action">
+            <div class="quick-action-icon">
+              <i class="fas fa-qrcode text-xl"></i>
+            </div>
+            <span class="text-sm">扫一扫</span>
+          </div>
+          <div class="quick-action">
+            <div class="quick-action-icon">
+              <i class="fas fa-credit-card text-xl"></i>
+            </div>
+            <span class="text-sm">信用卡</span>
+          </div>
+          <div class="quick-action">
+            <div class="quick-action-icon">
+              <i class="fas fa-money-bill-wave text-xl"></i>
+            </div>
+            <span class="text-sm">理财</span>
+          </div>
+          <div class="quick-action">
+            <div class="quick-action-icon">
+              <i class="fas fa-file-invoice text-xl"></i>
+            </div>
+            <span class="text-sm">账单</span>
+          </div>
+          <div class="quick-action">
+            <div class="quick-action-icon">
+              <i class="fas fa-hand-holding-usd text-xl"></i>
+            </div>
+            <span class="text-sm">贷款</span>
+          </div>
+          <div class="quick-action">
+            <div class="quick-action-icon">
+              <i class="fas fa-donate text-xl"></i>
+            </div>
+            <span class="text-sm">缴费</span>
+          </div>
+          <div class="quick-action">
+            <div class="quick-action-icon">
+              <i class="fas fa-ellipsis-h text-xl"></i>
+            </div>
+            <span class="text-sm">更多</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 交易记录 -->
+      <div class="card">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="heading-md">近期交易</h3>
+          <a href="#" class="text-primary-color text-sm">查看全部</a>
+        </div>
+        
+        <div class="transaction-item">
+          <div class="transaction-icon bg-blue-100">
+            <i class="fas fa-shopping-bag text-blue-600"></i>
+          </div>
+          <div class="flex-grow">
+            <p class="font-medium">购物消费</p>
+            <p class="text-sm text-gray-500">今天 14:30</p>
+          </div>
+          <div class="text-right">
+            <p class="font-medium text-red-500">-￥328.00</p>
+            <p class="text-xs text-gray-500">信用卡</p>
+          </div>
+        </div>
+        
+        <div class="transaction-item">
+          <div class="transaction-icon bg-green-100">
+            <i class="fas fa-arrow-down text-green-600"></i>
+          </div>
+          <div class="flex-grow">
+            <p class="font-medium">工资收入</p>
+            <p class="text-sm text-gray-500">昨天 09:15</p>
+          </div>
+          <div class="text-right">
+            <p class="font-medium text-green-500">+￥12,500.00</p>
+            <p class="text-xs text-gray-500">储蓄卡</p>
+          </div>
+        </div>
+        
+        <div class="transaction-item">
+          <div class="transaction-icon bg-purple-100">
+            <i class="fas fa-utensils text-purple-600"></i>
+          </div>
+          <div class="flex-grow">
+            <p class="font-medium">餐饮消费</p>
+            <p class="text-sm text-gray-500">昨天 20:05</p>
+          </div>
+          <div class="text-right">
+            <p class="font-medium text-red-500">-￥156.50</p>
+            <p class="text-xs text-gray-500">信用卡</p>
+          </div>
+        </div>
+        
+        <div class="transaction-item">
+          <div class="transaction-icon bg-orange-100">
+            <i class="fas fa-taxi text-orange-600"></i>
+          </div>
+          <div class="flex-grow">
+            <p class="font-medium">交通出行</p>
+            <p class="text-sm text-gray-500">2023-10-25</p>
+          </div>
+          <div class="text-right">
+            <p class="font-medium text-red-500">-￥45.50</p>
+            <p class="text-xs text-gray-500">储蓄卡</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 理财推荐 -->
+      <div class="card">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="heading-md">理财推荐</h3>
+          <a href="#" class="text-primary-color text-sm">更多产品</a>
+        </div>
+        
+        <div class="bg-yellow-50 p-4 rounded-lg mb-3 border border-yellow-100">
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="font-semibold text-lg">稳健理财产品</h4>
+              <p class="text-yellow-700 text-xl font-bold mt-1">4.25%</p>
+              <p class="text-xs text-gray-500 mt-1">预期年化收益率</p>
+            </div>
+            <button class="btn-primary text-sm py-2 px-4">立即购买</button>
+          </div>
+        </div>
+        
+        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="font-semibold text-lg">定期存款</h4>
+              <p class="text-blue-700 text-xl font-bold mt-1">2.75%</p>
+              <p class="text-xs text-gray-500 mt-1">三年期年利率</p>
+            </div>
+            <button class="btn-primary text-sm py-2 px-4">立即购买</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div id="tab-bar-container"></div>
+  </div>
+
+  <script>
+    // 加载公共组件
+    document.addEventListener('DOMContentLoaded', function() {
+      // 直接内联状态栏组件
+      document.getElementById('status-bar-container').innerHTML = `
+        <div class="status-bar">
+          <div class="status-left flex items-center">
+            <span class="text-sm font-semibold">9:41</span>
+          </div>
+          <div class="status-center flex items-center">
+            <!-- 网络信号图标 -->
+            <svg width="16" height="16" fill="none" class="mr-1">
+              <path d="M8 3v10M4 6v7M12 6v7M2 8v5M14 8v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="status-right flex items-center">
+            <!-- 电池图标 -->
+            <svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1">
+              <rect x="0.5" y="0.5" width="17" height="9" rx="1.5" stroke="currentColor"/>
+              <rect x="18" y="3" width="2" height="4" rx="1" fill="currentColor"/>
+              <rect x="2" y="2" width="14" height="6" rx="1" fill="currentColor"/>
+            </svg>
+            <span class="text-sm ml-1">89%</span>
+          </div>
+        </div>
+      `;
+      
+      // 直接内联底部导航栏组件
+      document.getElementById('tab-bar-container').innerHTML = `
+        <div class="tab-bar">
+          <a href="home.html" class="tab-item active" target="app-frame">
+            <i class="fas fa-home text-xl mb-1"></i>
+            <span class="text-xs">首页</span>
+          </a>
+          <a href="account.html" class="tab-item" target="app-frame">
+            <i class="fas fa-credit-card text-xl mb-1"></i>
+            <span class="text-xs">账户</span>
+          </a>
+          <a href="transfer.html" class="tab-item" target="app-frame">
+            <i class="fas fa-exchange-alt text-xl mb-1"></i>
+            <span class="text-xs">转账</span>
+          </a>
+          <a href="wealth.html" class="tab-item" target="app-frame">
+            <i class="fas fa-chart-line text-xl mb-1"></i>
+            <span class="text-xs">理财</span>
+          </a>
+          <a href="profile.html" class="tab-item" target="app-frame">
+            <i class="fas fa-user text-xl mb-1"></i>
+            <span class="text-xs">我的</span>
+          </a>
+        </div>
+      `;
+      
+      // 设置当前活动标签
+      const tabItems = document.querySelectorAll('.tab-item');
+      tabItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          // 移除所有活动状态
+          tabItems.forEach(tab => tab.classList.remove('active'));
+          // 添加当前活动状态
+          this.classList.add('active');
+        });
+      });
+      
+      // 设置当前页面的活动标签
+      setTimeout(() => {
+        tabItems.forEach(item => item.classList.remove('active'));
+        document.querySelector('a[href="home.html"]').classList.add('active');
+      }, 100);
+    });
+  </script>
+</body>
+</html> 

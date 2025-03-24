@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市场 - 元宇宙</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">12:30</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="app-content">
+        <!-- 头部 -->
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-2xl font-bold gradient-text">市场</h1>
+            <div class="flex space-x-3">
+                <div class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow">
+                    <i class="fas fa-search text-gray-600"></i>
+                </div>
+                <div class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow">
+                    <i class="fas fa-shopping-cart text-gray-600"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 余额卡片 -->
+        <div class="mb-6">
+            <div class="card glassmorphism">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">我的余额</p>
+                        <div class="flex items-center">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1257px-Ethereum_logo_2014.svg.png" alt="ETH" class="w-5 h-5 mr-1">
+                            <h2 class="text-xl font-bold">4.28 ETH</h2>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="btn btn-primary py-2 px-3 text-sm">
+                            <i class="fas fa-arrow-up mr-1"></i> 充值
+                        </button>
+                        <button class="btn btn-secondary py-2 px-3 text-sm">
+                            <i class="fas fa-arrow-down mr-1"></i> 提现
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分类标签 -->
+        <div class="mb-6">
+            <div class="flex space-x-3 overflow-x-auto pb-2">
+                <button class="flex-shrink-0 bg-indigo-500 text-white px-4 py-2 rounded-full text-xs font-medium">全部</button>
+                <button class="flex-shrink-0 bg-gray-200 px-4 py-2 rounded-full text-xs font-medium">艺术品</button>
+                <button class="flex-shrink-0 bg-gray-200 px-4 py-2 rounded-full text-xs font-medium">装备</button>
+                <button class="flex-shrink-0 bg-gray-200 px-4 py-2 rounded-full text-xs font-medium">虚拟地产</button>
+                <button class="flex-shrink-0 bg-gray-200 px-4 py-2 rounded-full text-xs font-medium">时尚</button>
+                <button class="flex-shrink-0 bg-gray-200 px-4 py-2 rounded-full text-xs font-medium">收藏品</button>
+            </div>
+        </div>
+
+        <!-- 热门拍卖 -->
+        <div class="mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-semibold">热门拍卖</h2>
+                <span class="text-sm text-indigo-500">查看全部</span>
+            </div>
+            <div class="card p-0 overflow-hidden">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e" class="w-full h-48 object-cover" alt="热门NFT">
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">热门</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="font-bold">星际梦境 #042</h3>
+                            <p class="text-xs text-gray-600">由 @星际艺术家 创作</p>
+                        </div>
+                        <div class="bg-indigo-100 rounded-md p-1 text-indigo-600 text-xs font-medium">
+                            1天12小时后结束
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-3">
+                        <div>
+                            <p class="text-xs text-gray-500">当前出价</p>
+                            <div class="flex items-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1257px-Ethereum_logo_2014.svg.png" alt="ETH" class="w-4 h-4 mr-1">
+                                <span class="font-bold">2.45 ETH</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary py-2 px-4 text-sm">出价</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最新上架 -->
+        <div class="mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-semibold">最新上架</h2>
+                <span class="text-sm text-indigo-500">查看全部</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="virtual-item">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d" class="virtual-item-image" alt="数字艺术品">
+                        <div class="absolute top-2 right-2">
+                            <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full">新品</span>
+                        </div>
+                    </div>
+                    <div class="virtual-item-info">
+                        <h3 class="font-bold text-sm">未来之门</h3>
+                        <div class="flex justify-between items-center mt-1">
+                            <div class="flex items-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1257px-Ethereum_logo_2014.svg.png" alt="ETH" class="w-3 h-3 mr-1">
+                                <span class="text-xs font-medium">1.2 ETH</span>
+                            </div>
+                            <button class="text-xs text-indigo-500">购买</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="virtual-item">
+                    <img src="https://images.unsplash.com/photo-1618172193763-c511deb635ca" class="virtual-item-image" alt="数字艺术品">
+                    <div class="virtual-item-info">
+                        <h3 class="font-bold text-sm">数字翅膀</h3>
+                        <div class="flex justify-between items-center mt-1">
+                            <div class="flex items-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1257px-Ethereum_logo_2014.svg.png" alt="ETH" class="w-3 h-3 mr-1">
+                                <span class="text-xs font-medium">0.85 ETH</span>
+                            </div>
+                            <button class="text-xs text-indigo-500">购买</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="virtual-item">
+                    <img src="https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0" class="virtual-item-image" alt="数字艺术品">
+                    <div class="virtual-item-info">
+                        <h3 class="font-bold text-sm">虚拟房产 #A128</h3>
+                        <div class="flex justify-between items-center mt-1">
+                            <div class="flex items-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1257px-Ethereum_logo_2014.svg.png" alt="ETH" class="w-3 h-3 mr-1">
+                                <span class="text-xs font-medium">4.5 ETH</span>
+                            </div>
+                            <button class="text-xs text-indigo-500">购买</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="virtual-item">
+                    <img src="https://images.unsplash.com/photo-1629976002373-8b8b0e23b079" class="virtual-item-image" alt="数字艺术品">
+                    <div class="virtual-item-info">
+                        <h3 class="font-bold text-sm">星际头盔</h3>
+                        <div class="flex justify-between items-center mt-1">
+                            <div class="flex items-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1257px-Ethereum_logo_2014.svg.png" alt="ETH" class="w-3 h-3 mr-1">
+                                <span class="text-xs font-medium">0.75 ETH</span>
+                            </div>
+                            <button class="text-xs text-indigo-500">购买</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 虚拟土地 -->
+        <div class="mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-semibold">热门虚拟土地</h2>
+            </div>
+            <div class="card p-0 overflow-hidden">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1614332287897-cdc485fa562d" class="w-full h-40 object-cover" alt="虚拟土地">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold">极光区域 - 黄金地段</h3>
+                    <p class="text-xs text-gray-600 mb-3">位于元宇宙中心商业区，邻近主要活动场所</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1257px-Ethereum_logo_2014.svg.png" alt="ETH" class="w-4 h-4 mr-1">
+                            <span class="font-bold">12.8 ETH</span>
+                        </div>
+                        <button class="btn btn-primary py-2 px-4 text-sm">查看详情</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="ios-tab-bar">
+        <a class="tab-item" data-page="home">
+            <i class="tab-icon fas fa-globe"></i>
+            <span>探索</span>
+        </a>
+        <a class="tab-item" data-page="community">
+            <i class="tab-icon fas fa-users"></i>
+            <span>社区</span>
+        </a>
+        <a class="tab-item active" data-page="marketplace">
+            <i class="tab-icon fas fa-store"></i>
+            <span>市场</span>
+        </a>
+        <a class="tab-item" data-page="studio">
+            <i class="tab-icon fas fa-magic"></i>
+            <span>创作</span>
+        </a>
+        <a class="tab-item" data-page="profile">
+            <i class="tab-icon fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <script src="assets/js/common.js"></script>
+</body>
+</html> 

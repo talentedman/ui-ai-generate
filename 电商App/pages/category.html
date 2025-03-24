@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分类 - 电商App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #F5F5F5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 80px;
+        }
+        
+        .search-bar {
+            border-radius: 20px;
+            background-color: #F0F0F0;
+        }
+        
+        .nav-header {
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .category-sidebar {
+            width: 90px;
+            background-color: #F8F8F8;
+            overflow-y: auto;
+            position: fixed;
+            top: 60px;
+            bottom: 80px;
+            left: 0;
+        }
+        
+        .category-content {
+            margin-left: 90px;
+            padding: 15px;
+            min-height: calc(100vh - 140px);
+        }
+        
+        .category-item {
+            text-align: center;
+            padding: 15px 0;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .category-item.active {
+            background-color: white;
+            color: #FF6B6B;
+            position: relative;
+        }
+        
+        .category-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 16px;
+            background-color: #FF6B6B;
+        }
+        
+        .sub-category {
+            background-color: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .product-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .product-image {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部搜索栏 -->
+    <div class="nav-header p-4 shadow-sm">
+        <div class="search-bar flex items-center p-2 px-4">
+            <i class="fas fa-search text-gray-400 mr-2"></i>
+            <input type="text" placeholder="搜索商品" class="bg-transparent w-full outline-none text-sm">
+        </div>
+    </div>
+    
+    <!-- 分类侧边栏 -->
+    <div class="category-sidebar">
+        <div class="category-item active">手机数码</div>
+        <div class="category-item">电脑办公</div>
+        <div class="category-item">家用电器</div>
+        <div class="category-item">服装鞋包</div>
+        <div class="category-item">美妆个护</div>
+        <div class="category-item">食品生鲜</div>
+        <div class="category-item">母婴玩具</div>
+        <div class="category-item">家居家装</div>
+        <div class="category-item">运动户外</div>
+        <div class="category-item">图书音像</div>
+        <div class="category-item">汽车用品</div>
+        <div class="category-item">医药保健</div>
+    </div>
+    
+    <!-- 分类内容 -->
+    <div class="category-content">
+        <div class="sub-category">
+            <h3 class="text-lg font-medium mb-3">手机通讯</h3>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="智能手机" class="product-image">
+                    <span class="text-xs">智能手机</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1551355738-1875b6664915?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="老人手机" class="product-image">
+                    <span class="text-xs">老人手机</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="手机配件" class="product-image">
+                    <span class="text-xs">手机配件</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sub-category">
+            <h3 class="text-lg font-medium mb-3">电脑办公</h3>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="笔记本" class="product-image">
+                    <span class="text-xs">笔记本</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1593642634443-44adaa06623a?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="平板电脑" class="product-image">
+                    <span class="text-xs">平板电脑</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1544652478-6653e09f18a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="台式电脑" class="product-image">
+                    <span class="text-xs">台式电脑</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sub-category">
+            <h3 class="text-lg font-medium mb-3">智能设备</h3>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1574755393849-623942496936?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="智能手表" class="product-image">
+                    <span class="text-xs">智能手表</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1575718120842-54e388fc4a08?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="智能音箱" class="product-image">
+                    <span class="text-xs">智能音箱</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1629429407673-a5b7e71fc1e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="智能家居" class="product-image">
+                    <span class="text-xs">智能家居</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1631263369487-074c8719c22d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="VR设备" class="product-image">
+                    <span class="text-xs">VR设备</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1600003263720-95b45a4035d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="车载设备" class="product-image">
+                    <span class="text-xs">车载设备</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="健康监测" class="product-image">
+                    <span class="text-xs">健康监测</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sub-category">
+            <h3 class="text-lg font-medium mb-3">数码配件</h3>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="耳机/耳麦" class="product-image">
+                    <span class="text-xs">耳机/耳麦</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1547658718-f4311ad64d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="音箱" class="product-image">
+                    <span class="text-xs">音箱</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1617775047746-5b89869c3591?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="存储卡" class="product-image">
+                    <span class="text-xs">存储卡</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1608655478966-635015a88226?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="充电宝" class="product-image">
+                    <span class="text-xs">充电宝</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1617775047746-5b89869c3591?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="手机壳" class="product-image">
+                    <span class="text-xs">手机壳</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://images.unsplash.com/photo-1622444803509-9792c1119595?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="贴膜" class="product-image">
+                    <span class="text-xs">贴膜</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <i class="fas fa-home tab-icon"></i>
+            <span>首页</span>
+        </a>
+        <a href="category.html" class="tab-item active">
+            <i class="fas fa-th-large tab-icon"></i>
+            <span>分类</span>
+        </a>
+        <a href="cart.html" class="tab-item">
+            <i class="fas fa-shopping-cart tab-icon"></i>
+            <span>购物车</span>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <i class="fas fa-user tab-icon"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <style>
+        .tab-bar {
+            display: flex;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background-color: white;
+            border-top: 1px solid #e0e0e0;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 25px; /* 适配 iPhone 底部边距 */
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            font-size: 10px;
+            text-decoration: none;
+        }
+        .tab-item.active {
+            color: #FF6B6B;
+        }
+        .tab-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+    </style>
+</body>
+</html> 

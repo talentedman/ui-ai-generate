@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>银行App界面</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    /* 页面特定样式可以在这里添加 */
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <!-- 状态栏 -->
+    <div id="status-bar-container"></div>
+    
+    <!-- 页面内容 -->
+    <div class="scroll-container" id="content">
+      <!-- 各页面内容在这里 -->
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div id="tab-bar-container"></div>
+  </div>
+
+  <script>
+    // 加载公共组件
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('../components/status-bar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('status-bar-container').innerHTML = data;
+        });
+      
+      fetch('../components/tab-bar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('tab-bar-container').innerHTML = data;
+        });
+    });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菜品详情 - 外卖点餐App</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="iphone-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="status-bar-time">9:41</div>
+            <div class="status-bar-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- 页面内容 -->
+        <div class="page-container">
+            <!-- 菜品图片 -->
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="菜品图片" class="w-full h-64 object-cover">
+                
+                <!-- 返回按钮 -->
+                <div class="absolute top-0 left-0 w-full p-4 flex justify-between items-center">
+                    <a href="restaurant-detail.html" class="w-8 h-8 bg-black/30 rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <div class="flex space-x-2">
+                        <button class="w-8 h-8 bg-black/30 rounded-full flex items-center justify-center text-white">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 菜品信息 -->
+            <div class="p-4 bg-white">
+                <h1 class="text-xl font-bold">经典炸酱面</h1>
+                <div class="flex items-center text-sm mt-2">
+                    <span class="flex items-center text-yellow-400">
+                        <i class="fas fa-star text-xs mr-1"></i>4.9
+                    </span>
+                    <span class="text-gray-400 ml-2">月售99+</span>
+                </div>
+                <div class="flex justify-between items-center mt-2">
+                    <span class="text-red-500 text-xl font-bold">¥18</span>
+                </div>
+                <div class="mt-3 text-gray-500 text-sm">
+                    <p>传统工艺制作，甜面酱搭配肉末，口感醇厚。正宗老北京风味，手工制作的面条，筋道爽滑，搭配特制的炸酱，味道浓郁。</p>
+                </div>
+            </div>
+
+            <!-- 规格选择 -->
+            <div class="mt-2 p-4 bg-white">
+                <h2 class="font-bold mb-3">规格</h2>
+                <div class="flex flex-wrap gap-3">
+                    <div class="border border-red-500 px-4 py-2 rounded-lg text-sm text-red-500 font-medium relative">
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white text-xs"></i>
+                        </div>
+                        小份
+                    </div>
+                    <div class="border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-500 font-medium">
+                        中份 +¥4
+                    </div>
+                    <div class="border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-500 font-medium">
+                        大份 +¥8
+                    </div>
+                </div>
+            </div>
+
+            <!-- 加料选择 -->
+            <div class="mt-2 p-4 bg-white">
+                <h2 class="font-bold mb-3">加料</h2>
+                <div class="flex flex-wrap gap-3">
+                    <div class="border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-500 font-medium">
+                        卤蛋 +¥3
+                    </div>
+                    <div class="border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-500 font-medium">
+                        五花肉 +¥5
+                    </div>
+                    <div class="border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-500 font-medium">
+                        豆皮 +¥2
+                    </div>
+                    <div class="border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-500 font-medium">
+                        青菜 +¥2
+                    </div>
+                </div>
+            </div>
+
+            <!-- 口味选择 -->
+            <div class="mt-2 p-4 bg-white">
+                <h2 class="font-bold mb-3">口味选择</h2>
+                <div class="flex flex-wrap gap-3">
+                    <div class="border border-red-500 px-4 py-2 rounded-lg text-sm text-red-500 font-medium relative">
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white text-xs"></i>
+                        </div>
+                        不辣
+                    </div>
+                    <div class="border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-500 font-medium">
+                        微辣
+                    </div>
+                    <div class="border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-500 font-medium">
+                        中辣
+                    </div>
+                    <div class="border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-500 font-medium">
+                        特辣
+                    </div>
+                </div>
+            </div>
+
+            <!-- 备注 -->
+            <div class="mt-2 p-4 bg-white mb-20">
+                <h2 class="font-bold mb-3">备注</h2>
+                <textarea placeholder="口味偏好、餐具数量等要求" class="w-full p-3 bg-gray-100 rounded-lg outline-none text-sm" rows="3"></textarea>
+            </div>
+
+            <!-- 底部加入购物车 -->
+            <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-500">
+                        <i class="fas fa-minus text-xs"></i>
+                    </div>
+                    <span class="mx-3 font-medium">1</span>
+                    <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-plus text-xs"></i>
+                    </div>
+                </div>
+                <button class="bg-red-500 text-white px-8 py-3 rounded-full font-medium text-base">
+                    加入购物车
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

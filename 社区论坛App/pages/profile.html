@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人资料 - 社区论坛App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <div class="phone-frame">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="status-bar-left">
+        <span>9:41</span>
+      </div>
+      <div class="status-bar-center">
+        个人资料
+      </div>
+      <div class="status-bar-right">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+    
+    <!-- 主要内容区 -->
+    <div class="app-content">
+      <!-- 个人信息卡片 -->
+      <div class="bg-white p-4">
+        <div class="flex items-center">
+          <img src="../images/avatar1.jpg" alt="用户头像" class="avatar large">
+          <div class="ml-4 flex-1">
+            <h2 class="text-xl font-bold">科技达人</h2>
+            <p class="text-gray-500">科技爱好者 | 加入于2023年</p>
+          </div>
+          <button class="px-4 py-1 border border-blue-500 text-blue-500 rounded-full text-sm">
+            编辑资料
+          </button>
+        </div>
+        
+        <div class="flex justify-around mt-6">
+          <div class="text-center">
+            <div class="text-xl font-bold">128</div>
+            <div class="text-sm text-gray-500">关注</div>
+          </div>
+          <div class="text-center">
+            <div class="text-xl font-bold">256</div>
+            <div class="text-sm text-gray-500">粉丝</div>
+          </div>
+          <div class="text-center">
+            <div class="text-xl font-bold">1.2k</div>
+            <div class="text-sm text-gray-500">获赞</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 内容分类 -->
+      <div class="flex bg-white border-b border-gray-200">
+        <button class="flex-1 py-3 text-center text-blue-500 border-b-2 border-blue-500">
+          帖子
+        </button>
+        <button class="flex-1 py-3 text-center text-gray-500">
+          收藏
+        </button>
+        <button class="flex-1 py-3 text-center text-gray-500">
+          点赞
+        </button>
+      </div>
+
+      <!-- 帖子列表 -->
+      <div class="space-y-4 p-4">
+        <!-- 帖子卡片 1 -->
+        <div class="card">
+          <div class="flex items-start mb-3">
+            <img src="../images/avatar1.jpg" alt="用户头像" class="avatar mr-3">
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-medium">科技达人</h3>
+                <span class="text-sm text-gray-500">2小时前</span>
+              </div>
+              <p class="text-sm text-gray-500">科技爱好者</p>
+            </div>
+          </div>
+          <h2 class="text-lg font-medium mb-2">2024年最值得期待的科技产品</h2>
+          <p class="text-gray-600 mb-3">随着2024年的到来，科技界又将迎来一波新的产品浪潮。从AI到元宇宙，从折叠屏到可穿戴设备，让我们一起看看今年最值得期待的科技产品...</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <span class="text-sm text-gray-500">
+                <i class="far fa-eye mr-1"></i> 1.2k
+              </span>
+              <span class="text-sm text-gray-500">
+                <i class="far fa-comment mr-1"></i> 36
+              </span>
+              <span class="text-sm text-gray-500">
+                <i class="far fa-heart mr-1"></i> 128
+              </span>
+            </div>
+            <button class="text-gray-500">
+              <i class="fas fa-ellipsis-h"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 帖子卡片 2 -->
+        <div class="card">
+          <div class="flex items-start mb-3">
+            <img src="../images/avatar1.jpg" alt="用户头像" class="avatar mr-3">
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-medium">科技达人</h3>
+                <span class="text-sm text-gray-500">1天前</span>
+              </div>
+              <p class="text-sm text-gray-500">科技爱好者</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-2 mb-3">
+            <img src="../images/tech1.jpg" alt="科技图片" class="w-full h-32 object-cover rounded-lg">
+            <img src="../images/tech2.jpg" alt="科技图片" class="w-full h-32 object-cover rounded-lg">
+            <img src="../images/tech3.jpg" alt="科技图片" class="w-full h-32 object-cover rounded-lg">
+          </div>
+          <h2 class="text-lg font-medium mb-2">AI技术的最新进展与应用</h2>
+          <p class="text-gray-600 mb-3">人工智能技术正在快速发展，从自然语言处理到计算机视觉，从机器学习到深度学习，AI的应用无处不在...</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <span class="text-sm text-gray-500">
+                <i class="far fa-eye mr-1"></i> 856
+              </span>
+              <span class="text-sm text-gray-500">
+                <i class="far fa-comment mr-1"></i> 42
+              </span>
+              <span class="text-sm text-gray-500">
+                <i class="far fa-heart mr-1"></i> 96
+              </span>
+            </div>
+            <button class="text-gray-500">
+              <i class="fas fa-ellipsis-h"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部选项卡 -->
+    <div class="tab-bar">
+      <a href="home.html" class="tab-item">
+        <i class="fas fa-home"></i>
+        <span>首页</span>
+      </a>
+      <a href="discover.html" class="tab-item">
+        <i class="fas fa-compass"></i>
+        <span>发现</span>
+      </a>
+      <a href="post.html" class="tab-item">
+        <i class="fas fa-plus-circle"></i>
+        <span>发布</span>
+      </a>
+      <a href="message.html" class="tab-item">
+        <i class="fas fa-comment"></i>
+        <span>消息</span>
+      </a>
+      <a href="profile.html" class="tab-item active">
+        <i class="fas fa-user"></i>
+        <span>我的</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html> 

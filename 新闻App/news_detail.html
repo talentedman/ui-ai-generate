@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻详情 - 新闻 App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .status-bar {
+            height: 44px;
+            background: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .nav-bar {
+            height: 44px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .action-bar {
+            height: 50px;
+            background: #fff;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .comment-item {
+            border-bottom: 1px solid #eee;
+            padding: 16px;
+        }
+        .news-content p {
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        .news-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 pb-16">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div class="flex gap-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <i class="fas fa-arrow-left"></i>
+        <h1 class="text-lg font-medium ml-4">新闻详情</h1>
+        <div class="ml-auto flex gap-4">
+            <i class="fas fa-share-alt"></i>
+            <i class="fas fa-ellipsis-h"></i>
+        </div>
+    </div>
+
+    <!-- 新闻内容 -->
+    <div class="p-4">
+        <h1 class="text-2xl font-bold mb-2">全球科技巨头发布最新财报，AI 业务增长超预期</h1>
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center">
+                <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5" alt="作者头像" class="w-6 h-6 rounded-full mr-2">
+                <span class="text-sm text-gray-600">科技日报</span>
+            </div>
+            <span class="text-sm text-gray-500">2024-02-25 09:30</span>
+        </div>
+
+        <div class="news-content text-gray-800">
+            <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e" alt="新闻配图" class="news-image">
+            
+            <p>近日，多家全球科技巨头相继发布2024年第一季度财报，AI相关业务表现亮眼，普遍超出市场预期。</p>
+            
+            <p>根据最新财报数据，谷歌母公司Alphabet的AI业务收入同比增长37%，达到85亿美元；微软的Azure AI服务营收增长42%，成为公司新的增长引擎；亚马逊AWS的AI解决方案收入首次突破50亿美元大关，同比增长46%。</p>
+            
+            <p>分析师指出，企业级AI应用正在从实验阶段迈向规模化部署，这一趋势推动了相关云服务和AI解决方案需求的快速增长。与此同时，消费级AI应用也开始显示出商业化潜力，多家公司已在测试针对个人用户的AI订阅服务。</p>
+            
+            <p>"我们正处于AI商业化的早期阶段，"某知名投资银行的分析师表示，"未来5年内，AI将重塑几乎所有的软件类别和企业流程，这将为科技公司创造巨大的增长空间。"</p>
+            
+            <img src="https://images.unsplash.com/photo-1488229297570-58520851e868" alt="新闻配图" class="news-image">
+            
+            <p>然而，巨额投资也带来了成本压力。财报显示，几家科技巨头的资本支出普遍上升，主要用于构建AI基础设施和扩大算力储备。有分析师担忧，如果AI收入增长无法跟上投资节奏，可能会对公司利润率造成压力。</p>
+            
+            <p>投资者对AI业务的强劲表现反应积极，多家公司股价在财报发布后出现上涨。市场普遍认为，AI将成为未来几年科技行业最重要的增长引擎之一。</p>
+            
+            <p>（科技日报 记者 李明）</p>
+        </div>
+
+        <!-- 标签 -->
+        <div class="mt-6 flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">人工智能</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">科技公司</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">财报</span>
+        </div>
+
+        <!-- 推荐阅读 -->
+        <div class="mt-8">
+            <h2 class="text-lg font-bold mb-4">推荐阅读</h2>
+            <div class="bg-white rounded-lg p-3 mb-3">
+                <div class="flex gap-3">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-sm">AI驱动的智能家居市场将在2025年突破2000亿美元</h3>
+                        <div class="text-xs text-gray-500 mt-1">科技周刊 · 3天前</div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1558002038-1055907df827" alt="推荐新闻" class="w-16 h-16 object-cover rounded">
+                </div>
+            </div>
+            <div class="bg-white rounded-lg p-3">
+                <div class="flex gap-3">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-sm">芯片巨头发布新一代AI专用处理器，性能提升近3倍</h3>
+                        <div class="text-xs text-gray-500 mt-1">硬件信息 · 昨天</div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1591405351990-4726e331f141" alt="推荐新闻" class="w-16 h-16 object-cover rounded">
+                </div>
+            </div>
+        </div>
+
+        <!-- 评论区 -->
+        <div class="mt-8">
+            <h2 class="text-lg font-bold mb-4">热门评论 (128)</h2>
+            
+            <div class="comment-item">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="用户头像" class="w-8 h-8 rounded-full mr-2">
+                        <span class="font-medium">用户12345</span>
+                    </div>
+                    <span class="text-xs text-gray-500">1小时前</span>
+                </div>
+                <p class="text-gray-800">AI技术的进步确实令人惊叹，但我更关心它对就业市场的影响，希望能看到更多这方面的分析。</p>
+                <div class="flex items-center mt-2 text-gray-500 text-sm">
+                    <div class="flex items-center mr-4">
+                        <i class="far fa-thumbs-up mr-1"></i>
+                        <span>45</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="far fa-comment mr-1"></i>
+                        <span>回复</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comment-item">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="用户头像" class="w-8 h-8 rounded-full mr-2">
+                        <span class="font-medium">科技爱好者</span>
+                    </div>
+                    <span class="text-xs text-gray-500">2小时前</span>
+                </div>
+                <p class="text-gray-800">投资AI的公司现在都在烧钱，什么时候才能看到真正的回报呢？希望不是又一个泡沫。</p>
+                <div class="flex items-center mt-2 text-gray-500 text-sm">
+                    <div class="flex items-center mr-4">
+                        <i class="far fa-thumbs-up mr-1"></i>
+                        <span>32</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="far fa-comment mr-1"></i>
+                        <span>回复</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="w-full py-2 text-center text-blue-500 mt-4">查看更多评论</button>
+        </div>
+    </div>
+
+    <!-- 底部操作栏 -->
+    <div class="action-bar">
+        <div class="flex-1 flex items-center border border-gray-300 rounded-full px-4 py-2 mr-3">
+            <i class="far fa-comment text-gray-400 mr-2"></i>
+            <input type="text" placeholder="写评论..." class="w-full outline-none bg-transparent">
+        </div>
+        <div class="flex gap-4 text-gray-500">
+            <i class="far fa-heart text-xl"></i>
+            <i class="far fa-bookmark text-xl"></i>
+            <i class="fas fa-share-alt text-xl"></i>
+        </div>
+    </div>
+</body>
+</html> 

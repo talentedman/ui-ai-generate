@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>账户 - 银行App</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .account-card {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+    }
+    
+    .account-card.active {
+      border: 2px solid var(--primary-color);
+    }
+    
+    .bank-card {
+      height: 180px;
+      border-radius: 16px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+      color: white;
+    }
+    
+    .debit-card {
+      background: linear-gradient(135deg, #0052CC 0%, #4C9AFF 100%);
+    }
+    
+    .credit-card {
+      background: linear-gradient(135deg, #6554C0 0%, #8777D9 100%);
+    }
+    
+    .card-chip {
+      width: 40px;
+      height: 30px;
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    
+    .card-number {
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    
+    .card-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 20px;
+    }
+    
+    .action-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 33.33%;
+    }
+    
+    .action-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      background-color: var(--primary-light);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <!-- 状态栏 -->
+    <div id="status-bar-container"></div>
+    
+    <!-- 页面内容 -->
+    <div class="scroll-container">
+      <!-- 页面标题 -->
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">我的账户</h1>
+        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+          <i class="fas fa-plus text-gray-600"></i>
+        </div>
+      </div>
+      
+      <!-- 银行卡展示 -->
+      <div class="bank-card debit-card">
+        <div class="absolute top-4 right-4">
+          <i class="fab fa-cc-visa text-2xl"></i>
+        </div>
+        <div class="card-chip"></div>
+        <div class="card-number">**** **** **** 5678</div>
+        <div class="card-details">
+          <div>
+            <p class="text-xs opacity-80">持卡人</p>
+            <p class="font-semibold">李明</p>
+          </div>
+          <div>
+            <p class="text-xs opacity-80">有效期</p>
+            <p class="font-semibold">09/26</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mb-6 flex justify-between">
+        <div class="action-button">
+          <div class="action-icon">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+          <span class="text-xs">转账</span>
+        </div>
+        <div class="action-button">
+          <div class="action-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <span class="text-xs">交易明细</span>
+        </div>
+        <div class="action-button">
+          <div class="action-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <span class="text-xs">安全设置</span>
+        </div>
+      </div>
+      
+      <!-- 账户列表 -->
+      <h2 class="heading-md mb-4">全部账户</h2>
+      
+      <div class="account-card active">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+              <i class="fas fa-credit-card text-blue-600"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold">储蓄账户</h3>
+              <p class="text-sm text-gray-500">**** 5678</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="font-bold text-lg">￥32,456.78</p>
+            <p class="text-xs text-gray-500">活期 0.3%</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="account-card">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+              <i class="fas fa-credit-card text-purple-600"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold">信用卡</h3>
+              <p class="text-sm text-gray-500">**** 3456</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="font-bold text-lg">￥5,783.25</p>
+            <p class="text-xs text-gray-500">已用额度</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="account-card">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+              <i class="fas fa-chart-pie text-green-600"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold">投资账户</h3>
+              <p class="text-sm text-gray-500">**** 7890</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="font-bold text-lg">￥96,111.11</p>
+            <p class="text-xs text-green-500">+1.2% 今日</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="account-card">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+              <i class="fas fa-piggy-bank text-yellow-600"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold">定期存款</h3>
+              <p class="text-sm text-gray-500">**** 2345</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="font-bold text-lg">￥50,000.00</p>
+            <p class="text-xs text-gray-500">3年期 2.75%</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 账户总览 -->
+      <div class="card mt-6">
+        <h3 class="heading-md mb-4">账户总览</h3>
+        <div class="flex justify-between mb-3">
+          <span class="text-gray-600">总资产</span>
+          <span class="font-semibold">￥128,567.89</span>
+        </div>
+        <div class="flex justify-between mb-3">
+          <span class="text-gray-600">总负债</span>
+          <span class="font-semibold">￥5,783.25</span>
+        </div>
+        <div class="flex justify-between mb-3">
+          <span class="text-gray-600">净资产</span>
+          <span class="font-semibold">￥122,784.64</span>
+        </div>
+        <div class="h-1 bg-gray-200 rounded-full my-4">
+          <div class="h-1 bg-green-500 rounded-full" style="width: 85%;"></div>
+        </div>
+        <p class="text-xs text-gray-500 text-center">资产健康度: 优秀</p>
+      </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div id="tab-bar-container"></div>
+  </div>
+
+  <script>
+    // 加载公共组件
+    document.addEventListener('DOMContentLoaded', function() {
+      // 直接内联状态栏组件
+      document.getElementById('status-bar-container').innerHTML = `
+        <div class="status-bar">
+          <div class="status-left flex items-center">
+            <span class="text-sm font-semibold">9:41</span>
+          </div>
+          <div class="status-center flex items-center">
+            <!-- 网络信号图标 -->
+            <svg width="16" height="16" fill="none" class="mr-1">
+              <path d="M8 3v10M4 6v7M12 6v7M2 8v5M14 8v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="status-right flex items-center">
+            <!-- 电池图标 -->
+            <svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1">
+              <rect x="0.5" y="0.5" width="17" height="9" rx="1.5" stroke="currentColor"/>
+              <rect x="18" y="3" width="2" height="4" rx="1" fill="currentColor"/>
+              <rect x="2" y="2" width="14" height="6" rx="1" fill="currentColor"/>
+            </svg>
+            <span class="text-sm ml-1">89%</span>
+          </div>
+        </div>
+      `;
+      
+      // 直接内联底部导航栏组件
+      document.getElementById('tab-bar-container').innerHTML = `
+        <div class="tab-bar">
+          <a href="home.html" class="tab-item" target="app-frame">
+            <i class="fas fa-home text-xl mb-1"></i>
+            <span class="text-xs">首页</span>
+          </a>
+          <a href="account.html" class="tab-item active" target="app-frame">
+            <i class="fas fa-credit-card text-xl mb-1"></i>
+            <span class="text-xs">账户</span>
+          </a>
+          <a href="transfer.html" class="tab-item" target="app-frame">
+            <i class="fas fa-exchange-alt text-xl mb-1"></i>
+            <span class="text-xs">转账</span>
+          </a>
+          <a href="wealth.html" class="tab-item" target="app-frame">
+            <i class="fas fa-chart-line text-xl mb-1"></i>
+            <span class="text-xs">理财</span>
+          </a>
+          <a href="profile.html" class="tab-item" target="app-frame">
+            <i class="fas fa-user text-xl mb-1"></i>
+            <span class="text-xs">我的</span>
+          </a>
+        </div>
+      `;
+      
+      // 设置当前活动标签
+      const tabItems = document.querySelectorAll('.tab-item');
+      tabItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          // 移除所有活动状态
+          tabItems.forEach(tab => tab.classList.remove('active'));
+          // 添加当前活动状态
+          this.classList.add('active');
+        });
+      });
+      
+      // 设置当前页面的活动标签
+      setTimeout(() => {
+        tabItems.forEach(item => item.classList.remove('active'));
+        document.querySelector('a[href="account.html"]').classList.add('active');
+      }, 100);
+    });
+  </script>
+</body>
+</html> 

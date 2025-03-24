@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邻里团购 - 订单确认</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="phone-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="time">14:25</div>
+            <div class="right">
+                <div class="signal"><i class="fas fa-signal"></i></div>
+                <div class="wifi"><i class="fas fa-wifi"></i></div>
+                <div class="battery"><i class="fas fa-battery-full"></i> 100%</div>
+            </div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="content">
+            <!-- 返回导航 -->
+            <div class="navbar">
+                <div class="navbar-left">
+                    <i class="fas fa-chevron-left text-gray-600"></i>
+                </div>
+                <div class="navbar-title">订单确认</div>
+            </div>
+            
+            <!-- 收货地址 -->
+            <div class="bg-white p-3 mb-3">
+                <div class="flex items-center">
+                    <div class="flex-1">
+                        <div class="flex items-center mb-1">
+                            <div class="font-medium mr-3">李小花</div>
+                            <div class="text-gray-600">13812345678</div>
+                        </div>
+                        <div class="text-gray-700 text-sm">
+                            广东省广州市天河区兴华街道1号101室
+                        </div>
+                    </div>
+                    <div class="text-gray-400">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 团购信息 -->
+            <div class="bg-white p-3 mb-3">
+                <div class="flex items-center pb-2 border-b border-gray-100">
+                    <i class="fas fa-store text-gray-600 mr-2"></i>
+                    <span class="text-sm font-medium">天河生鲜超市</span>
+                </div>
+                
+                <!-- 商品项 -->
+                <div class="flex py-3">
+                    <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-20 h-20 object-cover rounded-md mr-3">
+                    <div class="flex-1">
+                        <div class="text-sm font-medium">新鲜草莓 500g装 甜香多汁</div>
+                        <div class="text-xs text-gray-500 mt-1">特级果 | 包甜</div>
+                        
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center">
+                                <span class="text-red-500 font-bold">¥29.9</span>
+                                <span class="group-buy-tag ml-2">3人团</span>
+                            </div>
+                            <div class="text-gray-500 text-sm">x1</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 配送方式 -->
+                <div class="flex items-center justify-between py-3 border-t border-gray-100">
+                    <div class="text-sm">配送方式</div>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <span>快递配送</span>
+                        <i class="fas fa-chevron-right text-xs ml-2"></i>
+                    </div>
+                </div>
+                
+                <!-- 备注信息 -->
+                <div class="flex items-center justify-between py-3 border-t border-gray-100">
+                    <div class="text-sm">备注信息</div>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <span>无</span>
+                        <i class="fas fa-chevron-right text-xs ml-2"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 优惠与支付 -->
+            <div class="bg-white mb-3">
+                <!-- 优惠券 -->
+                <div class="flex items-center justify-between p-3 border-b border-gray-100">
+                    <div class="text-sm">优惠券</div>
+                    <div class="flex items-center text-sm">
+                        <span class="text-red-500">1张可用</span>
+                        <i class="fas fa-chevron-right text-xs text-gray-400 ml-2"></i>
+                    </div>
+                </div>
+                
+                <!-- 团购优惠 -->
+                <div class="flex items-center justify-between p-3 border-b border-gray-100">
+                    <div class="text-sm">团购优惠</div>
+                    <div class="text-sm text-red-500">-¥10.0</div>
+                </div>
+                
+                <!-- 配送费 -->
+                <div class="flex items-center justify-between p-3 border-b border-gray-100">
+                    <div class="text-sm">配送费</div>
+                    <div class="text-sm">¥5.0</div>
+                </div>
+                
+                <!-- 合计 -->
+                <div class="flex items-center justify-between p-3">
+                    <div class="text-sm">合计</div>
+                    <div class="text-base font-bold text-red-500">¥24.9</div>
+                </div>
+            </div>
+            
+            <!-- 支付方式 -->
+            <div class="bg-white mb-3">
+                <div class="p-3 border-b border-gray-100">
+                    <div class="text-base font-medium">支付方式</div>
+                </div>
+                
+                <div class="p-3 flex items-center justify-between border-b border-gray-100">
+                    <div class="flex items-center">
+                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                            <i class="fab fa-weixin text-white text-sm"></i>
+                        </div>
+                        <span class="text-sm">微信支付</span>
+                    </div>
+                    <div>
+                        <input type="radio" name="payment" checked>
+                    </div>
+                </div>
+                
+                <div class="p-3 flex items-center justify-between border-b border-gray-100">
+                    <div class="flex items-center">
+                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                            <i class="fab fa-alipay text-white text-sm"></i>
+                        </div>
+                        <span class="text-sm">支付宝</span>
+                    </div>
+                    <div>
+                        <input type="radio" name="payment">
+                    </div>
+                </div>
+                
+                <div class="p-3 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-credit-card text-white text-sm"></i>
+                        </div>
+                        <span class="text-sm">银行卡支付</span>
+                    </div>
+                    <div>
+                        <input type="radio" name="payment">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 订单信息 -->
+            <div class="bg-white mb-10">
+                <div class="p-3 border-b border-gray-100">
+                    <div class="text-base font-medium">订单信息</div>
+                </div>
+                
+                <div class="p-3">
+                    <div class="flex justify-between text-sm mb-2">
+                        <div class="text-gray-500">订单编号：</div>
+                        <div>T12345678901234</div>
+                    </div>
+                    <div class="flex justify-between text-sm mb-2">
+                        <div class="text-gray-500">创建时间：</div>
+                        <div>2023-06-15 14:25:30</div>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <div class="text-gray-500">团购人数：</div>
+                        <div>3人团（已有2人）</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部支付栏 -->
+            <div class="cart-footer">
+                <div class="flex items-center">
+                    <div class="mr-3">
+                        <div class="text-sm">实付款: <span class="cart-total-price">¥24.9</span></div>
+                    </div>
+                    <button class="btn">立即支付</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

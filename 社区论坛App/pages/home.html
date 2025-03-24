@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页 - 社区论坛App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <div class="phone-frame">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="status-bar-left">
+        <span>9:41</span>
+      </div>
+      <div class="status-bar-center">
+        首页
+      </div>
+      <div class="status-bar-right">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+    
+    <!-- 主要内容区 -->
+    <div class="app-content">
+      <!-- 搜索栏 -->
+      <div class="sticky top-0 z-40 bg-white px-4 py-3 border-b border-gray-200">
+        <div class="relative">
+          <input type="text" placeholder="搜索帖子、用户、话题" class="w-full pl-10 pr-4 py-2 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+      </div>
+
+      <!-- 分类标签 -->
+      <div class="flex overflow-x-auto px-4 py-3 bg-white border-b border-gray-200">
+        <button class="px-4 py-1 rounded-full bg-blue-500 text-white text-sm mr-2 whitespace-nowrap">推荐</button>
+        <button class="px-4 py-1 rounded-full bg-gray-100 text-gray-700 text-sm mr-2 whitespace-nowrap">热门</button>
+        <button class="px-4 py-1 rounded-full bg-gray-100 text-gray-700 text-sm mr-2 whitespace-nowrap">最新</button>
+        <button class="px-4 py-1 rounded-full bg-gray-100 text-gray-700 text-sm mr-2 whitespace-nowrap">关注</button>
+        <button class="px-4 py-1 rounded-full bg-gray-100 text-gray-700 text-sm mr-2 whitespace-nowrap">精华</button>
+      </div>
+
+      <!-- 帖子列表 -->
+      <div class="space-y-4 p-4">
+        <!-- 帖子卡片 1 -->
+        <div class="card">
+          <div class="flex items-start mb-3">
+            <img src="../images/avatar1.jpg" alt="用户头像" class="avatar mr-3">
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-medium">科技达人</h3>
+                <span class="text-sm text-gray-500">2小时前</span>
+              </div>
+              <p class="text-sm text-gray-500">科技爱好者</p>
+            </div>
+          </div>
+          <h2 class="text-lg font-medium mb-2">2024年最值得期待的科技产品</h2>
+          <p class="text-gray-600 mb-3">随着2024年的到来，科技界又将迎来一波新的产品浪潮。从AI到元宇宙，从折叠屏到可穿戴设备，让我们一起看看今年最值得期待的科技产品...</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <span class="text-sm text-gray-500">
+                <i class="far fa-eye mr-1"></i> 1.2k
+              </span>
+              <span class="text-sm text-gray-500">
+                <i class="far fa-comment mr-1"></i> 36
+              </span>
+              <span class="text-sm text-gray-500">
+                <i class="far fa-heart mr-1"></i> 128
+              </span>
+            </div>
+            <button class="text-gray-500">
+              <i class="fas fa-ellipsis-h"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 帖子卡片 2 -->
+        <div class="card">
+          <div class="flex items-start mb-3">
+            <img src="../images/avatar2.jpg" alt="用户头像" class="avatar mr-3">
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-medium">美食家</h3>
+                <span class="text-sm text-gray-500">4小时前</span>
+              </div>
+              <p class="text-sm text-gray-500">美食探店</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-2 mb-3">
+            <img src="../images/food1.jpg" alt="美食图片" class="w-full h-32 object-cover rounded-lg">
+            <img src="../images/food2.jpg" alt="美食图片" class="w-full h-32 object-cover rounded-lg">
+            <img src="../images/food3.jpg" alt="美食图片" class="w-full h-32 object-cover rounded-lg">
+          </div>
+          <h2 class="text-lg font-medium mb-2">周末探店：这家新开的日料店太惊艳了！</h2>
+          <p class="text-gray-600 mb-3">今天给大家推荐一家新开的日料店，环境优雅，食材新鲜，服务态度也很好...</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <span class="text-sm text-gray-500">
+                <i class="far fa-eye mr-1"></i> 856
+              </span>
+              <span class="text-sm text-gray-500">
+                <i class="far fa-comment mr-1"></i> 42
+              </span>
+              <span class="text-sm text-gray-500">
+                <i class="far fa-heart mr-1"></i> 96
+              </span>
+            </div>
+            <button class="text-gray-500">
+              <i class="fas fa-ellipsis-h"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 加载更多 -->
+        <div class="text-center py-4">
+          <button class="text-blue-500 text-sm">
+            加载更多
+            <i class="fas fa-chevron-down ml-1"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部选项卡 -->
+    <div class="tab-bar">
+      <a href="home.html" class="tab-item active">
+        <i class="fas fa-home"></i>
+        <span>首页</span>
+      </a>
+      <a href="discover.html" class="tab-item">
+        <i class="fas fa-compass"></i>
+        <span>发现</span>
+      </a>
+      <a href="post.html" class="tab-item">
+        <i class="fas fa-plus-circle"></i>
+        <span>发布</span>
+      </a>
+      <a href="message.html" class="tab-item">
+        <i class="fas fa-comment"></i>
+        <span>消息</span>
+      </a>
+      <a href="profile.html" class="tab-item">
+        <i class="fas fa-user"></i>
+        <span>我的</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html> 

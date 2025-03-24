@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息中心</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .messages-container {
+            padding-bottom: 83px;
+        }
+        
+        .messages-tabs {
+            display: flex;
+            background-color: white;
+            padding: 5px;
+            border-radius: 8px;
+            margin: 10px 15px;
+        }
+        
+        .messages-tab {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            border-radius: 6px;
+            color: #8E8E93;
+        }
+        
+        .messages-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .message-item {
+            display: flex;
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .message-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+            position: relative;
+        }
+        
+        .message-avatar .status-dot {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #4CD964;
+            border: 2px solid white;
+        }
+        
+        .message-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-width: 0;
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .message-name {
+            font-weight: 500;
+        }
+        
+        .message-time {
+            font-size: 12px;
+            color: #8E8E93;
+        }
+        
+        .message-preview {
+            color: #8E8E93;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .message-badge {
+            min-width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 6px;
+            margin-left: 8px;
+        }
+        
+        .system-message {
+            background-color: #F9F9F9;
+            position: relative;
+        }
+        
+        .system-message .message-avatar {
+            background-color: #E5E5EA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8E8E93;
+            font-size: 20px;
+        }
+        
+        .notification-category {
+            font-size: 13px;
+            padding: 12px 15px 8px;
+            color: #8E8E93;
+            font-weight: 500;
+            background-color: #F2F2F7;
+        }
+    </style>
+</head>
+<body>
+    <div class="iphone-frame">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="time">14:47</div>
+            <div class="icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+        
+        <!-- 内容区域 -->
+        <div class="app-content">
+            <!-- 顶部导航栏 -->
+            <div class="navbar">
+                <div class="navbar-title">消息</div>
+                <button class="navbar-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            
+            <!-- 消息类型选项卡 -->
+            <div class="messages-tabs">
+                <div class="messages-tab active">消息</div>
+                <div class="messages-tab">通知</div>
+            </div>
+            
+            <!-- 消息列表 -->
+            <div class="messages-container">
+                <!-- 系统消息 -->
+                <div class="notification-category">系统消息</div>
+                
+                <div class="message-item system-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-name">系统通知</div>
+                            <div class="message-time">昨天</div>
+                        </div>
+                        <div class="message-preview">恭喜您成功完成实名认证，现在可以开启直播了！</div>
+                    </div>
+                    <div class="message-badge">1</div>
+                </div>
+                
+                <div class="message-item system-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-name">礼物通知</div>
+                            <div class="message-time">3天前</div>
+                        </div>
+                        <div class="message-preview">您收到了来自"土豪king"的超级火箭 x3</div>
+                    </div>
+                </div>
+                
+                <!-- 私信消息 -->
+                <div class="notification-category">私信</div>
+                
+                <div class="message-item">
+                    <div class="message-avatar">
+                        <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg" alt="用户头像">
+                        <div class="status-dot"></div>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-name">阳光</div>
+                            <div class="message-time">14:20</div>
+                        </div>
+                        <div class="message-preview">主播，你什么时候开始今天的直播呀？</div>
+                    </div>
+                    <div class="message-badge">2</div>
+                </div>
+                
+                <div class="message-item">
+                    <div class="message-avatar">
+                        <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg" alt="用户头像">
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-name">大胖</div>
+                            <div class="message-time">昨天</div>
+                        </div>
+                        <div class="message-preview">下次直播什么时候？我还想听你唱歌</div>
+                    </div>
+                </div>
+                
+                <div class="message-item">
+                    <div class="message-avatar">
+                        <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg" alt="用户头像">
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-name">静静</div>
+                            <div class="message-time">昨天</div>
+                        </div>
+                        <div class="message-preview">谢谢你昨天帮我解答问题，我现在好多了 😊</div>
+                    </div>
+                </div>
+                
+                <div class="message-item">
+                    <div class="message-avatar">
+                        <img src="https://images.pexels.com/photos/1674752/pexels-photo-1674752.jpeg" alt="用户头像">
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-name">小鱼儿</div>
+                            <div class="message-time">3天前</div>
+                        </div>
+                        <div class="message-preview">你的歌声真好听，我特别喜欢你的直播</div>
+                    </div>
+                </div>
+                
+                <!-- 官方账号 -->
+                <div class="notification-category">官方账号</div>
+                
+                <div class="message-item">
+                    <div class="message-avatar">
+                        <img src="https://images.pexels.com/photos/5424970/pexels-photo-5424970.jpeg" alt="客服头像">
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-name">官方客服</div>
+                            <div class="message-time">5天前</div>
+                        </div>
+                        <div class="message-preview">欢迎使用声动App，如有任何问题可以随时联系我们</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部导航栏 -->
+            <div class="tab-bar">
+                <div class="tab-item">
+                    <i class="fas fa-home"></i>
+                    <span>首页</span>
+                </div>
+                <div class="tab-item">
+                    <i class="fas fa-compass"></i>
+                    <span>发现</span>
+                </div>
+                <div class="tab-item active">
+                    <i class="fas fa-comment"></i>
+                    <span>消息</span>
+                </div>
+                <div class="tab-item">
+                    <i class="fas fa-user"></i>
+                    <span>我的</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

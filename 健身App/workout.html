@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>锻炼 - 健身应用</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 顶部状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content bg-gray-50">
+        <!-- 顶部导航 -->
+        <div class="bg-white px-4 py-4 shadow-sm">
+            <h1 class="text-xl font-bold">锻炼计划</h1>
+            
+            <!-- 搜索栏 -->
+            <div class="relative mt-3">
+                <input type="text" placeholder="搜索锻炼计划" 
+                       class="w-full bg-gray-100 rounded-full py-2 pl-10 pr-4 focus:outline-none">
+                <i class="fas fa-search absolute left-4 top-3 text-gray-400"></i>
+            </div>
+            
+            <!-- 分类标签 -->
+            <div class="flex space-x-2 overflow-x-auto py-3 -mx-4 px-4">
+                <button class="whitespace-nowrap px-4 py-1.5 bg-primary text-white rounded-full text-sm font-medium">
+                    所有
+                </button>
+                <button class="whitespace-nowrap px-4 py-1.5 bg-gray-200 rounded-full text-sm font-medium">
+                    力量训练
+                </button>
+                <button class="whitespace-nowrap px-4 py-1.5 bg-gray-200 rounded-full text-sm font-medium">
+                    有氧运动
+                </button>
+                <button class="whitespace-nowrap px-4 py-1.5 bg-gray-200 rounded-full text-sm font-medium">
+                    灵活性
+                </button>
+                <button class="whitespace-nowrap px-4 py-1.5 bg-gray-200 rounded-full text-sm font-medium">
+                    瑜伽
+                </button>
+            </div>
+        </div>
+        
+        <!-- 推荐训练 -->
+        <div class="section">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold">精选训练</h2>
+                <span class="text-primary text-sm font-medium">查看全部</span>
+            </div>
+            
+            <div class="workout-card">
+                <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" 
+                     alt="HIIT训练">
+                <div class="workout-overlay">
+                    <div class="workout-title">HIIT全身训练</div>
+                    <div class="workout-meta">
+                        <i class="fas fa-clock"></i>
+                        <span>25分钟</span>
+                        <i class="fas fa-bolt"></i>
+                        <span>高强度</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 按目标分类 -->
+        <div class="section">
+            <h2 class="text-lg font-bold mb-4">按目标训练</h2>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div class="card p-0 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                         alt="增肌训练" class="h-24 w-full object-cover">
+                    <div class="p-3">
+                        <h3 class="font-semibold">增肌训练</h3>
+                        <p class="text-xs text-gray-500">12个锻炼计划</p>
+                    </div>
+                </div>
+                
+                <div class="card p-0 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                         alt="减脂训练" class="h-24 w-full object-cover">
+                    <div class="p-3">
+                        <h3 class="font-semibold">减脂训练</h3>
+                        <p class="text-xs text-gray-500">15个锻炼计划</p>
+                    </div>
+                </div>
+                
+                <div class="card p-0 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                         alt="耐力训练" class="h-24 w-full object-cover">
+                    <div class="p-3">
+                        <h3 class="font-semibold">耐力训练</h3>
+                        <p class="text-xs text-gray-500">8个锻炼计划</p>
+                    </div>
+                </div>
+                
+                <div class="card p-0 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                         alt="力量训练" class="h-24 w-full object-cover">
+                    <div class="p-3">
+                        <h3 class="font-semibold">力量训练</h3>
+                        <p class="text-xs text-gray-500">10个锻炼计划</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 训练项目列表 -->
+        <div class="section">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold">所有锻炼</h2>
+                <div class="flex items-center text-sm text-gray-500">
+                    <span>排序</span>
+                    <i class="fas fa-chevron-down ml-1"></i>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="flex">
+                    <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                         alt="上肢训练" class="w-24 h-24 rounded-lg object-cover mr-4">
+                    <div class="flex-1">
+                        <h3 class="font-semibold">上肢力量训练</h3>
+                        <p class="text-sm text-gray-500 mb-2">增强手臂和肩部肌肉</p>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <i class="fas fa-clock mr-1"></i>
+                            <span class="mr-3">45分钟</span>
+                            <i class="fas fa-bolt mr-1"></i>
+                            <span>中等强度</span>
+                        </div>
+                    </div>
+                    <button class="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-play text-primary"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="flex">
+                    <img src="https://images.unsplash.com/photo-1434608519344-49d77a699e1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                         alt="腹部训练" class="w-24 h-24 rounded-lg object-cover mr-4">
+                    <div class="flex-1">
+                        <h3 class="font-semibold">核心腹部训练</h3>
+                        <p class="text-sm text-gray-500 mb-2">强化腹肌和核心稳定性</p>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <i class="fas fa-clock mr-1"></i>
+                            <span class="mr-3">30分钟</span>
+                            <i class="fas fa-bolt mr-1"></i>
+                            <span>高强度</span>
+                        </div>
+                    </div>
+                    <button class="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-play text-primary"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="flex">
+                    <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                         alt="腿部训练" class="w-24 h-24 rounded-lg object-cover mr-4">
+                    <div class="flex-1">
+                        <h3 class="font-semibold">下肢力量训练</h3>
+                        <p class="text-sm text-gray-500 mb-2">增强腿部和臀部肌肉</p>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <i class="fas fa-clock mr-1"></i>
+                            <span class="mr-3">50分钟</span>
+                            <i class="fas fa-bolt mr-1"></i>
+                            <span>中等强度</span>
+                        </div>
+                    </div>
+                    <button class="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-play text-primary"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="flex">
+                    <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                         alt="背部训练" class="w-24 h-24 rounded-lg object-cover mr-4">
+                    <div class="flex-1">
+                        <h3 class="font-semibold">背部塑形训练</h3>
+                        <p class="text-sm text-gray-500 mb-2">增强背部肌肉与姿态</p>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <i class="fas fa-clock mr-1"></i>
+                            <span class="mr-3">40分钟</span>
+                            <i class="fas fa-bolt mr-1"></i>
+                            <span>中等强度</span>
+                        </div>
+                    </div>
+                    <button class="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <i class="fas fa-play text-primary"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="workout.html" class="tab-item active">
+            <i class="fas fa-dumbbell"></i>
+            <span>锻炼</span>
+        </a>
+        <a href="progress.html" class="tab-item">
+            <i class="fas fa-chart-line"></i>
+            <span>进度</span>
+        </a>
+        <a href="community.html" class="tab-item">
+            <i class="fas fa-users"></i>
+            <span>社区</span>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

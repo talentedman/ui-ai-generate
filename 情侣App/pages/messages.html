@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息 - 情侣空间</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部搜索栏 -->
+    <div class="bg-white shadow-sm">
+        <div class="px-4 py-3">
+            <div class="relative">
+                <input type="text" placeholder="搜索消息" class="w-full pl-10 pr-4 py-2 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 消息列表 -->
+    <div class="p-4 space-y-4">
+        <!-- 置顶消息 -->
+        <div class="bg-white rounded-xl p-4 shadow-sm">
+            <div class="flex items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=faces" class="w-12 h-12 rounded-full">
+                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+                </div>
+                <div class="ml-4 flex-1">
+                    <div class="flex justify-between items-center">
+                        <div class="font-medium">小明</div>
+                        <div class="text-xs text-gray-500">刚刚</div>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-1">今天天气真好，我们一起去公园散步吧！</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 系统消息 -->
+        <div class="bg-white rounded-xl p-4 shadow-sm">
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-bell text-pink-500 text-xl"></i>
+                </div>
+                <div class="ml-4 flex-1">
+                    <div class="flex justify-between items-center">
+                        <div class="font-medium">系统通知</div>
+                        <div class="text-xs text-gray-500">2小时前</div>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-1">你们的恋爱纪念日还有30天就到了</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 其他消息 -->
+        <div class="bg-white rounded-xl p-4 shadow-sm">
+            <div class="flex items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=50&h=50&fit=crop&crop=faces" class="w-12 h-12 rounded-full">
+                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-gray-300 rounded-full border-2 border-white"></div>
+                </div>
+                <div class="ml-4 flex-1">
+                    <div class="flex justify-between items-center">
+                        <div class="font-medium">小美</div>
+                        <div class="text-xs text-gray-500">昨天</div>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-1">我更新了我们的相册，快来看看吧！</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 更多消息 -->
+        <div class="bg-white rounded-xl p-4 shadow-sm">
+            <div class="flex items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=faces" class="w-12 h-12 rounded-full">
+                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-gray-300 rounded-full border-2 border-white"></div>
+                </div>
+                <div class="ml-4 flex-1">
+                    <div class="flex justify-between items-center">
+                        <div class="font-medium">小明</div>
+                        <div class="text-xs text-gray-500">前天</div>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-1">周末我们去看电影吧！</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新建消息按钮 -->
+    <div class="fixed bottom-20 right-4">
+        <button class="w-14 h-14 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-lg">
+            <i class="fas fa-plus text-xl"></i>
+        </button>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通知消息 - 新闻 App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .status-bar {
+            height: 44px;
+            background: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .nav-bar {
+            height: 44px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .notification-tabs {
+            display: flex;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+        .notification-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            color: #666;
+        }
+        .notification-tab.active {
+            color: #007AFF;
+            border-bottom: 2px solid #007AFF;
+        }
+        .notification-item {
+            display: flex;
+            padding: 16px;
+            border-bottom: 1px solid #eee;
+            background: white;
+        }
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .notification-unread {
+            position: relative;
+        }
+        .notification-unread:after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #FF3B30;
+            border-radius: 50%;
+            position: absolute;
+            top: 16px;
+            right: 16px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div class="flex gap-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <i class="fas fa-arrow-left"></i>
+        <h1 class="text-lg font-medium ml-4">我的消息</h1>
+        <div class="ml-auto">
+            <i class="fas fa-check-double"></i>
+        </div>
+    </div>
+
+    <!-- 通知分类标签 -->
+    <div class="notification-tabs">
+        <div class="notification-tab active">全部</div>
+        <div class="notification-tab">互动</div>
+        <div class="notification-tab">系统</div>
+    </div>
+
+    <!-- 通知内容 -->
+    <div class="pb-4">
+        <!-- 今天 -->
+        <div class="text-sm text-gray-500 p-3">今天</div>
+        
+        <!-- 互动通知 -->
+        <div class="notification-item notification-unread">
+            <div class="notification-icon bg-blue-100">
+                <i class="fas fa-comment text-blue-500"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex items-center mb-1">
+                    <span class="font-medium">用户12345</span>
+                    <span class="text-gray-500 text-xs ml-2">回复了你的评论</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-1">AI技术确实在进步，但我认为还有很长的路要走，特别是在理解人类情感方面...</p>
+                <div class="p-2 bg-gray-100 rounded text-sm text-gray-600">
+                    <span class="text-gray-500">你的评论：</span>AI技术的进步确实令人惊叹，但我更关心它对就业市场的影响...
+                </div>
+                <div class="text-xs text-gray-500 mt-2">1小时前</div>
+            </div>
+        </div>
+
+        <div class="notification-item">
+            <div class="notification-icon bg-red-100">
+                <i class="fas fa-heart text-red-500"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex items-center mb-1">
+                    <span class="font-medium">科技爱好者</span>
+                    <span class="text-gray-500 text-xs ml-2">赞了你的评论</span>
+                </div>
+                <p class="p-2 bg-gray-100 rounded text-sm text-gray-600">
+                    <span class="text-gray-500">你的评论：</span>AI技术的进步确实令人惊叹，但我更关心它对就业市场的影响...
+                </p>
+                <div class="text-xs text-gray-500 mt-2">2小时前</div>
+            </div>
+        </div>
+
+        <!-- 系统通知 -->
+        <div class="notification-item notification-unread">
+            <div class="notification-icon bg-green-100">
+                <i class="fas fa-bullhorn text-green-500"></i>
+            </div>
+            <div class="flex-1">
+                <div class="font-medium mb-1">热点：2024全球科技创新峰会下周召开</div>
+                <p class="text-gray-600 text-sm">2024全球科技创新峰会即将在下周召开，多位科技行业领袖将发表主题演讲...</p>
+                <div class="text-xs text-gray-500 mt-2">3小时前</div>
+            </div>
+        </div>
+
+        <!-- 昨天 -->
+        <div class="text-sm text-gray-500 p-3">昨天</div>
+        
+        <div class="notification-item">
+            <div class="notification-icon bg-purple-100">
+                <i class="fas fa-star text-purple-500"></i>
+            </div>
+            <div class="flex-1">
+                <div class="font-medium mb-1">您收藏的新闻有更新</div>
+                <p class="text-gray-600 text-sm">您收藏的"AI医疗技术发展"话题有3篇新文章发布，点击查看最新进展。</p>
+                <div class="text-xs text-gray-500 mt-2">昨天 18:30</div>
+            </div>
+        </div>
+
+        <div class="notification-item">
+            <div class="notification-icon bg-blue-100">
+                <i class="fas fa-comment text-blue-500"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex items-center mb-1">
+                    <span class="font-medium">数据科学家</span>
+                    <span class="text-gray-500 text-xs ml-2">回复了你的评论</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-1">不同意您的观点，数据显示AI已经创造了比替代的工作更多的新工作岗位...</p>
+                <div class="p-2 bg-gray-100 rounded text-sm text-gray-600">
+                    <span class="text-gray-500">你的评论：</span>AI技术的进步确实令人惊叹，但我更关心它对就业市场的影响...
+                </div>
+                <div class="text-xs text-gray-500 mt-2">昨天 15:45</div>
+            </div>
+        </div>
+
+        <!-- 更早 -->
+        <div class="text-sm text-gray-500 p-3">更早</div>
+        
+        <div class="notification-item">
+            <div class="notification-icon bg-orange-100">
+                <i class="fas fa-bell text-orange-500"></i>
+            </div>
+            <div class="flex-1">
+                <div class="font-medium mb-1">系统：您的账号已完成验证</div>
+                <p class="text-gray-600 text-sm">感谢您完成账号验证，现在您可以使用评论、收藏等更多功能了。</p>
+                <div class="text-xs text-gray-500 mt-2">3天前</div>
+            </div>
+        </div>
+
+        <div class="notification-item">
+            <div class="notification-icon bg-yellow-100">
+                <i class="fas fa-gift text-yellow-500"></i>
+            </div>
+            <div class="flex-1">
+                <div class="font-medium mb-1">欢迎礼包已发放</div>
+                <p class="text-gray-600 text-sm">欢迎加入我们的新闻App！您的7天VIP体验资格已发放到账户，立即体验全部功能。</p>
+                <div class="text-xs text-gray-500 mt-2">7天前</div>
+            </div>
+        </div>
+
+        <!-- 加载更多 -->
+        <div class="text-center py-4 text-gray-500">
+            <i class="fas fa-spinner fa-spin mr-2"></i>
+            <span>加载更多消息</span>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邻里团购 - 购物车</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="phone-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="time">14:25</div>
+            <div class="right">
+                <div class="signal"><i class="fas fa-signal"></i></div>
+                <div class="wifi"><i class="fas fa-wifi"></i></div>
+                <div class="battery"><i class="fas fa-battery-full"></i> 100%</div>
+            </div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="content">
+            <!-- 顶部导航 -->
+            <div class="navbar">
+                <div class="navbar-title">购物车</div>
+                <div class="navbar-right">
+                    <span class="text-sm text-gray-500">管理</span>
+                </div>
+            </div>
+            
+            <!-- 购物车为空状态 -->
+            <div class="hidden flex flex-col items-center justify-center pt-10">
+                <i class="fas fa-shopping-cart text-gray-300 text-5xl mb-4"></i>
+                <p class="text-gray-500">购物车还是空的</p>
+                <button class="mt-4 bg-primary-500 text-white rounded-full px-6 py-2 text-sm">去购物</button>
+            </div>
+            
+            <!-- 购物车商品列表 -->
+            <div class="pb-24">
+                <!-- 商家分组 -->
+                <div class="bg-white mb-3">
+                    <div class="p-3 border-b border-gray-100 flex items-center">
+                        <input type="checkbox" class="w-4 h-4 mr-2">
+                        <i class="fas fa-store text-gray-600 mr-2"></i>
+                        <span class="text-sm font-medium">天河生鲜超市</span>
+                    </div>
+                    
+                    <!-- 商品项 -->
+                    <div class="cart-item">
+                        <div class="flex items-center mr-3">
+                            <input type="checkbox" class="w-4 h-4" checked>
+                        </div>
+                        <img src="https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">新鲜红富士苹果 5kg装</div>
+                            <div class="text-xs text-gray-500 mb-2">特级果 | 产地直发</div>
+                            <div class="cart-item-price">¥49.9</div>
+                            <div class="cart-item-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn">-</button>
+                                    <input type="text" class="quantity-input" value="1">
+                                    <button class="quantity-btn">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cart-item">
+                        <div class="flex items-center mr-3">
+                            <input type="checkbox" class="w-4 h-4" checked>
+                        </div>
+                        <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">新鲜草莓 500g</div>
+                            <div class="text-xs text-gray-500 mb-2">特级果 | 包甜</div>
+                            <div class="flex items-center">
+                                <div class="cart-item-price">¥29.9</div>
+                                <div class="group-buy-tag ml-2">3人团</div>
+                            </div>
+                            <div class="cart-item-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn">-</button>
+                                    <input type="text" class="quantity-input" value="1">
+                                    <button class="quantity-btn">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 商家分组2 -->
+                <div class="bg-white mb-3">
+                    <div class="p-3 border-b border-gray-100 flex items-center">
+                        <input type="checkbox" class="w-4 h-4 mr-2">
+                        <i class="fas fa-store text-gray-600 mr-2"></i>
+                        <span class="text-sm font-medium">有机农场</span>
+                    </div>
+                    
+                    <!-- 商品项 -->
+                    <div class="cart-item">
+                        <div class="flex items-center mr-3">
+                            <input type="checkbox" class="w-4 h-4" checked>
+                        </div>
+                        <img src="https://images.pexels.com/photos/4109996/pexels-photo-4109996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">有机蔬菜礼盒 8种装</div>
+                            <div class="text-xs text-gray-500 mb-2">有机认证 | 新鲜采摘</div>
+                            <div class="flex items-center">
+                                <div class="cart-item-price">¥79.9</div>
+                                <div class="group-buy-tag ml-2">5人团</div>
+                            </div>
+                            <div class="cart-item-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn">-</button>
+                                    <input type="text" class="quantity-input" value="1">
+                                    <button class="quantity-btn">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 猜你喜欢 -->
+                <div class="mt-4">
+                    <div class="mx-3 mb-2 font-semibold">猜你喜欢</div>
+                    <div class="product-grid">
+                        <div class="product-card">
+                            <img src="https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="product-img" alt="牛奶">
+                            <div class="product-info">
+                                <div class="product-title">有机纯牛奶 250ml*12盒</div>
+                                <div class="flex items-center">
+                                    <span class="product-price">¥59.9</span>
+                                    <span class="product-original-price">¥69.9</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="product-img" alt="饼干">
+                            <div class="product-info">
+                                <div class="product-title">曲奇饼干礼盒 500g</div>
+                                <div class="flex items-center">
+                                    <span class="product-price">¥45.9</span>
+                                    <span class="product-original-price">¥55.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部结算栏 -->
+            <div class="cart-footer">
+                <div class="flex items-center">
+                    <input type="checkbox" class="w-4 h-4 mr-2" checked>
+                    <span class="text-sm mr-3">全选</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="mr-3">
+                        <div class="text-sm">合计: <span class="cart-total-price">¥159.7</span></div>
+                        <div class="text-xs text-gray-500">已优惠: ¥25.8</div>
+                    </div>
+                    <button class="btn">去结算(3)</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部标签栏 -->
+        <div class="tab-bar">
+            <div class="tab-item">
+                <i class="fas fa-home"></i>
+                <div class="label">首页</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-th-large"></i>
+                <div class="label">分类</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-users"></i>
+                <div class="label">社区</div>
+            </div>
+            <div class="tab-item active">
+                <i class="fas fa-shopping-cart"></i>
+                <div class="label">购物车</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-user"></i>
+                <div class="label">我的</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

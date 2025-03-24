@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邻里团购 - 个人中心</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="phone-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="time">14:25</div>
+            <div class="right">
+                <div class="signal"><i class="fas fa-signal"></i></div>
+                <div class="wifi"><i class="fas fa-wifi"></i></div>
+                <div class="battery"><i class="fas fa-battery-full"></i> 100%</div>
+            </div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="content">
+            <!-- 用户信息 -->
+            <div class="user-header">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar">
+                <div class="user-info">
+                    <div class="username">李小花</div>
+                    <div class="user-level">社区团长 · 贡献值 345</div>
+                </div>
+                <div class="ml-3">
+                    <i class="fas fa-qrcode text-white text-lg"></i>
+                </div>
+            </div>
+            
+            <!-- 用户数据 -->
+            <div class="bg-white flex py-4">
+                <div class="flex-1 flex flex-col items-center justify-center border-r border-gray-100">
+                    <div class="text-lg font-semibold">¥126</div>
+                    <div class="text-xs text-gray-500 mt-1">钱包余额</div>
+                </div>
+                <div class="flex-1 flex flex-col items-center justify-center border-r border-gray-100">
+                    <div class="text-lg font-semibold">329</div>
+                    <div class="text-xs text-gray-500 mt-1">我的积分</div>
+                </div>
+                <div class="flex-1 flex flex-col items-center justify-center">
+                    <div class="text-lg font-semibold">12</div>
+                    <div class="text-xs text-gray-500 mt-1">优惠券</div>
+                </div>
+            </div>
+            
+            <!-- 我的订单 -->
+            <div class="menu-list mt-3">
+                <div class="p-3 border-b border-gray-100">
+                    <div class="flex justify-between items-center">
+                        <div class="text-base font-medium">我的订单</div>
+                        <div class="text-sm text-gray-500">查看全部 <i class="fas fa-chevron-right text-xs"></i></div>
+                    </div>
+                </div>
+                
+                <div class="flex px-2 py-3">
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-red-50 rounded-full flex items-center justify-center mb-1">
+                            <i class="fas fa-credit-card text-red-500"></i>
+                        </div>
+                        <div class="text-xs">待付款</div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center mb-1">
+                            <i class="fas fa-box text-blue-500"></i>
+                        </div>
+                        <div class="text-xs">待发货</div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center mb-1">
+                            <i class="fas fa-truck text-green-500"></i>
+                        </div>
+                        <div class="text-xs">待收货</div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-yellow-50 rounded-full flex items-center justify-center mb-1">
+                            <i class="fas fa-comment-alt text-yellow-500"></i>
+                        </div>
+                        <div class="text-xs">待评价</div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-purple-50 rounded-full flex items-center justify-center mb-1">
+                            <i class="fas fa-undo text-purple-500"></i>
+                        </div>
+                        <div class="text-xs">退款/售后</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 团购管理 -->
+            <div class="menu-list mt-3">
+                <div class="p-3 border-b border-gray-100">
+                    <div class="flex justify-between items-center">
+                        <div class="text-base font-medium">团购管理</div>
+                        <div class="text-sm text-gray-500">查看全部 <i class="fas fa-chevron-right text-xs"></i></div>
+                    </div>
+                </div>
+                
+                <div class="flex px-2 py-3">
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-red-50 rounded-full flex items-center justify-center mb-1">
+                            <i class="fas fa-users text-red-500"></i>
+                        </div>
+                        <div class="text-xs">我的团购</div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center mb-1">
+                            <i class="fas fa-bullhorn text-blue-500"></i>
+                        </div>
+                        <div class="text-xs">邀请好友</div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center mb-1">
+                            <i class="fas fa-crown text-green-500"></i>
+                        </div>
+                        <div class="text-xs">成为团长</div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="w-10 h-10 bg-yellow-50 rounded-full flex items-center justify-center mb-1">
+                            <i class="fas fa-chart-line text-yellow-500"></i>
+                        </div>
+                        <div class="text-xs">收益明细</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 常用功能 -->
+            <div class="menu-list mt-3">
+                <div class="menu-item">
+                    <div class="flex items-center">
+                        <div class="menu-icon">
+                            <i class="fas fa-map-marker-alt text-red-500"></i>
+                        </div>
+                        <div class="menu-label">收货地址</div>
+                    </div>
+                    <div class="menu-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="flex items-center">
+                        <div class="menu-icon">
+                            <i class="far fa-heart text-pink-500"></i>
+                        </div>
+                        <div class="menu-label">我的收藏</div>
+                    </div>
+                    <div class="menu-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="flex items-center">
+                        <div class="menu-icon">
+                            <i class="fas fa-history text-blue-500"></i>
+                        </div>
+                        <div class="menu-label">浏览历史</div>
+                    </div>
+                    <div class="menu-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 更多功能 -->
+            <div class="menu-list mt-3">
+                <div class="menu-item">
+                    <div class="flex items-center">
+                        <div class="menu-icon">
+                            <i class="far fa-bell text-orange-500"></i>
+                        </div>
+                        <div class="menu-label">消息通知</div>
+                    </div>
+                    <div class="menu-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="flex items-center">
+                        <div class="menu-icon">
+                            <i class="fas fa-headset text-green-500"></i>
+                        </div>
+                        <div class="menu-label">客服中心</div>
+                    </div>
+                    <div class="menu-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="flex items-center">
+                        <div class="menu-icon">
+                            <i class="fas fa-cog text-gray-500"></i>
+                        </div>
+                        <div class="menu-label">设置</div>
+                    </div>
+                    <div class="menu-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部标签栏 -->
+        <div class="tab-bar">
+            <div class="tab-item">
+                <i class="fas fa-home"></i>
+                <div class="label">首页</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-th-large"></i>
+                <div class="label">分类</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-users"></i>
+                <div class="label">社区</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-shopping-cart"></i>
+                <div class="label">购物车</div>
+            </div>
+            <div class="tab-item active">
+                <i class="fas fa-user"></i>
+                <div class="label">我的</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

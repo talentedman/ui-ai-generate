@@ -1,0 +1,37 @@
+<div class="tab-bar">
+  <a href="home.html" class="tab-item active" target="app-frame">
+    <i class="fas fa-home text-xl mb-1"></i>
+    <span class="text-xs">首页</span>
+  </a>
+  <a href="account.html" class="tab-item" target="app-frame">
+    <i class="fas fa-credit-card text-xl mb-1"></i>
+    <span class="text-xs">账户</span>
+  </a>
+  <a href="transfer.html" class="tab-item" target="app-frame">
+    <i class="fas fa-exchange-alt text-xl mb-1"></i>
+    <span class="text-xs">转账</span>
+  </a>
+  <a href="wealth.html" class="tab-item" target="app-frame">
+    <i class="fas fa-chart-line text-xl mb-1"></i>
+    <span class="text-xs">理财</span>
+  </a>
+  <a href="profile.html" class="tab-item" target="app-frame">
+    <i class="fas fa-user text-xl mb-1"></i>
+    <span class="text-xs">我的</span>
+  </a>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabItems = document.querySelectorAll('.tab-item');
+    
+    tabItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        // 移除所有活动状态
+        tabItems.forEach(tab => tab.classList.remove('active'));
+        // 添加当前活动状态
+        this.classList.add('active');
+      });
+    });
+  });
+</script> 

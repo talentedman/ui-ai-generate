@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>底部导航组件</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tab-bar {
+            display: flex;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background-color: white;
+            border-top: 1px solid #e0e0e0;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 25px; /* 适配 iPhone 底部边距 */
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            font-size: 10px;
+        }
+        .tab-item.active {
+            color: #FF6B6B;
+        }
+        .tab-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 底部导航栏模板 -->
+    <template id="tab-bar-template">
+        <div class="tab-bar">
+            <a href="home.html" class="tab-item home-tab">
+                <i class="fas fa-home tab-icon"></i>
+                <span>首页</span>
+            </a>
+            <a href="category.html" class="tab-item category-tab">
+                <i class="fas fa-th-large tab-icon"></i>
+                <span>分类</span>
+            </a>
+            <a href="cart.html" class="tab-item cart-tab">
+                <i class="fas fa-shopping-cart tab-icon"></i>
+                <span>购物车</span>
+            </a>
+            <a href="profile.html" class="tab-item profile-tab">
+                <i class="fas fa-user tab-icon"></i>
+                <span>我的</span>
+            </a>
+        </div>
+    </template>
+
+    <script>
+        // 这个脚本用于在其他页面中引入底部导航栏
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取当前页面路径
+            const currentPath = window.location.pathname;
+            const pageName = currentPath.split('/').pop();
+            
+            // 根据当前页面激活对应的标签
+            if (pageName === 'home.html') {
+                document.querySelector('.home-tab')?.classList.add('active');
+            } else if (pageName === 'category.html') {
+                document.querySelector('.category-tab')?.classList.add('active');
+            } else if (pageName === 'cart.html') {
+                document.querySelector('.cart-tab')?.classList.add('active');
+            } else if (pageName === 'profile.html') {
+                document.querySelector('.profile-tab')?.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html> 

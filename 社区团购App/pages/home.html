@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邻里团购 - 首页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="phone-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="time">14:25</div>
+            <div class="right">
+                <div class="signal"><i class="fas fa-signal"></i></div>
+                <div class="wifi"><i class="fas fa-wifi"></i></div>
+                <div class="battery"><i class="fas fa-battery-full"></i> 100%</div>
+            </div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="content">
+            <!-- 顶部导航 -->
+            <div class="navbar">
+                <div class="navbar-left">
+                    <i class="fas fa-map-marker-alt text-primary-500 mr-1"></i>
+                    <span>天河区兴华街1号</span>
+                    <i class="fas fa-chevron-down text-xs ml-1"></i>
+                </div>
+                <div class="navbar-right">
+                    <i class="far fa-bell text-gray-600 text-xl"></i>
+                </div>
+            </div>
+            
+            <!-- 搜索框 -->
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="搜索商品">
+            </div>
+            
+            <!-- 轮播图 -->
+            <div class="px-3 mt-2">
+                <div class="banner">
+                    <img src="https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="促销活动">
+                </div>
+            </div>
+            
+            <!-- 分类菜单 -->
+            <div class="category-menu">
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <div class="category-name">生鲜水果</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <div class="category-name">肉禽蛋品</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <div class="category-name">海鲜水产</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-carrot"></i>
+                    </div>
+                    <div class="category-name">新鲜蔬菜</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-bread-slice"></i>
+                    </div>
+                    <div class="category-name">休闲零食</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-cookie"></i>
+                    </div>
+                    <div class="category-name">烘焙糕点</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <div class="category-name">酒水饮料</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="category-name">粮油调味</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="category-name">日用百货</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                    <div class="category-name">更多分类</div>
+                </div>
+            </div>
+            
+            <!-- 分割线 -->
+            <div class="divider"></div>
+            
+            <!-- 团购活动 -->
+            <div class="card">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="text-lg font-semibold">今日团购</div>
+                    <div class="text-sm text-gray-500">更多 <i class="fas fa-chevron-right text-xs"></i></div>
+                </div>
+                <div class="flex overflow-x-auto pb-2">
+                    <div class="flex-shrink-0 w-40 mr-3">
+                        <div class="bg-white rounded-lg overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-full h-32 object-cover">
+                                <span class="absolute top-2 left-2 group-buy-tag">3人团</span>
+                            </div>
+                            <div class="p-2">
+                                <div class="text-sm font-medium">新鲜草莓 500g</div>
+                                <div class="flex items-center mt-1">
+                                    <div class="text-red-500 font-bold">¥29.9</div>
+                                    <div class="text-xs text-gray-400 line-through ml-1">¥39.9</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 w-40 mr-3">
+                        <div class="bg-white rounded-lg overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.pexels.com/photos/2294477/pexels-photo-2294477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-full h-32 object-cover">
+                                <span class="absolute top-2 left-2 group-buy-tag">5人团</span>
+                            </div>
+                            <div class="p-2">
+                                <div class="text-sm font-medium">有机鸡蛋 10枚</div>
+                                <div class="flex items-center mt-1">
+                                    <div class="text-red-500 font-bold">¥19.9</div>
+                                    <div class="text-xs text-gray-400 line-through ml-1">¥24.9</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 w-40 mr-3">
+                        <div class="bg-white rounded-lg overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.pexels.com/photos/700046/pexels-photo-700046.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-full h-32 object-cover">
+                                <span class="absolute top-2 left-2 group-buy-tag">2人团</span>
+                            </div>
+                            <div class="p-2">
+                                <div class="text-sm font-medium">新鲜西兰花 500g</div>
+                                <div class="flex items-center mt-1">
+                                    <div class="text-red-500 font-bold">¥9.9</div>
+                                    <div class="text-xs text-gray-400 line-through ml-1">¥15.9</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 热门商品 -->
+            <div class="mt-3">
+                <div class="mx-3 mb-2 font-semibold">热门商品</div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="product-img" alt="苹果">
+                        <div class="product-info">
+                            <div class="product-title">新鲜红富士苹果 5kg装</div>
+                            <div class="flex items-center">
+                                <span class="product-price">¥49.9</span>
+                                <span class="product-original-price">¥59.9</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="product-img" alt="牛奶">
+                        <div class="product-info">
+                            <div class="product-title">有机纯牛奶 250ml*12盒</div>
+                            <div class="flex items-center">
+                                <span class="product-price">¥59.9</span>
+                                <span class="product-original-price">¥69.9</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.pexels.com/photos/128402/pexels-photo-128402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="product-img" alt="米饭">
+                        <div class="product-info">
+                            <div class="product-title">东北珍珠米 5kg袋装</div>
+                            <div class="flex items-center">
+                                <span class="product-price">¥39.9</span>
+                                <span class="product-original-price">¥45.9</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.pexels.com/photos/4109996/pexels-photo-4109996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="product-img" alt="蔬菜">
+                        <div class="product-info">
+                            <div class="product-title">有机蔬菜礼盒 8种装</div>
+                            <div class="flex items-center">
+                                <span class="product-price">¥79.9</span>
+                                <span class="product-original-price">¥99.9</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="product-img" alt="饼干">
+                        <div class="product-info">
+                            <div class="product-title">曲奇饼干礼盒 500g</div>
+                            <div class="flex items-center">
+                                <span class="product-price">¥45.9</span>
+                                <span class="product-original-price">¥55.9</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.pexels.com/photos/2899682/pexels-photo-2899682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="product-img" alt="香蕉">
+                        <div class="product-info">
+                            <div class="product-title">进口香蕉 2kg装</div>
+                            <div class="flex items-center">
+                                <span class="product-price">¥29.9</span>
+                                <span class="product-original-price">¥35.9</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部标签栏 -->
+        <div class="tab-bar">
+            <div class="tab-item active">
+                <i class="fas fa-home"></i>
+                <div class="label">首页</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-th-large"></i>
+                <div class="label">分类</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-users"></i>
+                <div class="label">社区</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-shopping-cart"></i>
+                <div class="label">购物车</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-user"></i>
+                <div class="label">我的</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

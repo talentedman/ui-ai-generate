@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语音房App原型</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+        .prototype-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
+            gap: 30px;
+            margin: 0 auto;
+            max-width: 1600px;
+        }
+        .screen {
+            width: 375px;
+            height: 812px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .screen-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 18px;
+            color: #333;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-3xl font-bold text-center my-8">语音房App原型设计</h1>
+    <div class="prototype-container">
+        <!-- 登录界面 -->
+        <div>
+            <p class="screen-title">登录/注册</p>
+            <div class="screen">
+                <iframe src="login.html" title="登录/注册界面"></iframe>
+            </div>
+        </div>
+        
+        <!-- 房间列表(首页) -->
+        <div>
+            <p class="screen-title">房间列表(首页)</p>
+            <div class="screen">
+                <iframe src="home.html" title="房间列表界面"></iframe>
+            </div>
+        </div>
+        
+        <!-- 语音房间界面 -->
+        <div>
+            <p class="screen-title">语音房间</p>
+            <div class="screen">
+                <iframe src="room.html" title="语音房间界面"></iframe>
+            </div>
+        </div>
+        
+        <!-- 个人资料界面 -->
+        <div>
+            <p class="screen-title">个人资料</p>
+            <div class="screen">
+                <iframe src="profile.html" title="个人资料界面"></iframe>
+            </div>
+        </div>
+        
+        <!-- 创建房间界面 -->
+        <div>
+            <p class="screen-title">创建房间</p>
+            <div class="screen">
+                <iframe src="create-room.html" title="创建房间界面"></iframe>
+            </div>
+        </div>
+        
+        <!-- 设置界面 -->
+        <div>
+            <p class="screen-title">设置</p>
+            <div class="screen">
+                <iframe src="settings.html" title="设置界面"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

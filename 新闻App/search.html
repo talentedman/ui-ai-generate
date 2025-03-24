@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索 - 新闻 App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .status-bar {
+            height: 44px;
+            background: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .nav-bar {
+            height: 44px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .tab-bar {
+            height: 83px;
+            background: #fff;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+        }
+        .tab-item.active {
+            color: #007AFF;
+        }
+        .search-box {
+            background: #f5f5f5;
+            border-radius: 20px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            margin: 16px;
+        }
+        .hot-search-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+        }
+        .rank-number {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+        .rank-1 { background: #ff4d4f; color: white; }
+        .rank-2 { background: #ffa940; color: white; }
+        .rank-3 { background: #ffd591; color: white; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div class="flex gap-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="flex-1">
+            <div class="search-box">
+                <i class="fas fa-search text-gray-400 mr-2"></i>
+                <input type="text" placeholder="搜索新闻、话题、作者" class="bg-transparent w-full outline-none">
+            </div>
+        </div>
+        <button class="text-blue-500 font-medium">取消</button>
+    </div>
+
+    <!-- 搜索内容 -->
+    <div class="pb-20">
+        <!-- 热门搜索 -->
+        <div class="bg-white">
+            <h2 class="text-lg font-bold px-4 py-3">热门搜索</h2>
+            <div class="hot-search-item">
+                <div class="rank-number rank-1">1</div>
+                <div>
+                    <div class="font-medium">全球气候变化</div>
+                    <div class="text-sm text-gray-500">1.2万搜索</div>
+                </div>
+            </div>
+            <div class="hot-search-item">
+                <div class="rank-number rank-2">2</div>
+                <div>
+                    <div class="font-medium">AI 技术革新</div>
+                    <div class="text-sm text-gray-500">8.5千搜索</div>
+                </div>
+            </div>
+            <div class="hot-search-item">
+                <div class="rank-number rank-3">3</div>
+                <div>
+                    <div class="font-medium">新能源汽车</div>
+                    <div class="text-sm text-gray-500">6.8千搜索</div>
+                </div>
+            </div>
+            <div class="hot-search-item">
+                <div class="rank-number">4</div>
+                <div>
+                    <div class="font-medium">世界杯预选赛</div>
+                    <div class="text-sm text-gray-500">5.2千搜索</div>
+                </div>
+            </div>
+            <div class="hot-search-item">
+                <div class="rank-number">5</div>
+                <div>
+                    <div class="font-medium">楼市新政</div>
+                    <div class="text-sm text-gray-500">4.9千搜索</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 搜索历史 -->
+        <div class="bg-white mt-4">
+            <div class="flex justify-between items-center px-4 py-3">
+                <h2 class="text-lg font-bold">搜索历史</h2>
+                <i class="fas fa-trash text-gray-400"></i>
+            </div>
+            <div class="flex flex-wrap gap-2 px-4 pb-4">
+                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">科技新闻</span>
+                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">财经资讯</span>
+                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">体育赛事</span>
+                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">国际新闻</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <i class="fas fa-home text-xl mb-1"></i>
+            <span class="text-xs">首页</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-th-large text-xl mb-1"></i>
+            <span class="text-xs">分类</span>
+        </div>
+        <div class="tab-item active">
+            <i class="fas fa-search text-xl mb-1"></i>
+            <span class="text-xs">搜索</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-bookmark text-xl mb-1"></i>
+            <span class="text-xs">收藏</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-user text-xl mb-1"></i>
+            <span class="text-xs">我的</span>
+        </div>
+    </div>
+</body>
+</html>

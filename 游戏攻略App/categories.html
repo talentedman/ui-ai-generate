@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏攻略 - 分类</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="app-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="status-bar-left">
+                <span>9:41</span>
+            </div>
+            <div class="status-bar-right">
+                <i class="fas fa-signal mr-2"></i>
+                <i class="fas fa-wifi mr-2"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- 主要内容区 -->
+        <div class="main-content p-4">
+            <!-- 搜索栏 -->
+            <div class="search-bar mb-4">
+                <div class="relative">
+                    <input type="text" placeholder="搜索游戏或攻略" class="w-full pl-10 pr-4 py-2 rounded-full bg-white border border-gray-200 focus:outline-none focus:border-primary">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+            </div>
+
+            <!-- 游戏分类 -->
+            <div class="section">
+                <h2 class="section-title">游戏分类</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="category-card bg-white rounded-xl p-4 shadow-sm">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-gamepad text-purple-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">角色扮演</h3>
+                                <p class="text-sm text-gray-500">RPG游戏攻略</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-card bg-white rounded-xl p-4 shadow-sm">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-fist-raised text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">动作游戏</h3>
+                                <p class="text-sm text-gray-500">ACT游戏攻略</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-card bg-white rounded-xl p-4 shadow-sm">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-chess text-green-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">策略游戏</h3>
+                                <p class="text-sm text-gray-500">SLG游戏攻略</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-card bg-white rounded-xl p-4 shadow-sm">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-running text-red-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">体育竞技</h3>
+                                <p class="text-sm text-gray-500">SPG游戏攻略</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 热门标签 -->
+            <div class="section mt-6">
+                <h2 class="section-title">热门标签</h2>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm">开放世界</span>
+                    <span class="tag bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm">多人联机</span>
+                    <span class="tag bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm">卡牌</span>
+                    <span class="tag bg-red-100 text-red-600 px-4 py-2 rounded-full text-sm">射击</span>
+                    <span class="tag bg-yellow-100 text-yellow-600 px-4 py-2 rounded-full text-sm">冒险</span>
+                    <span class="tag bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm">解谜</span>
+                    <span class="tag bg-pink-100 text-pink-600 px-4 py-2 rounded-full text-sm">养成</span>
+                    <span class="tag bg-teal-100 text-teal-600 px-4 py-2 rounded-full text-sm">模拟</span>
+                </div>
+            </div>
+
+            <!-- 热门游戏 -->
+            <div class="section mt-6">
+                <div class="section-header">
+                    <h2 class="section-title">热门游戏</h2>
+                    <a href="#" class="section-link">查看更多</a>
+                </div>
+                <div class="space-y-4">
+                    <div class="game-card">
+                        <div class="game-card-body">
+                            <div class="flex items-start">
+                                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                                     alt="游戏封面" 
+                                     class="w-24 h-24 object-cover rounded-lg mr-4">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold mb-2">原神</h3>
+                                    <p class="text-sm text-gray-500 mb-2">开放世界冒险RPG</p>
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <span class="badge">RPG</span>
+                                        <span class="mr-4">4.9分</span>
+                                        <span>攻略数 128</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-card-body">
+                            <div class="flex items-start">
+                                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                                     alt="游戏封面" 
+                                     class="w-24 h-24 object-cover rounded-lg mr-4">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold mb-2">王者荣耀</h3>
+                                    <p class="text-sm text-gray-500 mb-2">5v5对战MOBA</p>
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <span class="badge">MOBA</span>
+                                        <span class="mr-4">4.8分</span>
+                                        <span>攻略数 256</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="tab-bar">
+            <div class="tab">
+                <i class="fas fa-home"></i>
+                <span class="tab-text">首页</span>
+            </div>
+            <div class="tab active">
+                <i class="fas fa-th-large"></i>
+                <span class="tab-text">分类</span>
+            </div>
+            <div class="tab">
+                <i class="fas fa-comments"></i>
+                <span class="tab-text">社区</span>
+            </div>
+            <div class="tab">
+                <i class="fas fa-user"></i>
+                <span class="tab-text">我的</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

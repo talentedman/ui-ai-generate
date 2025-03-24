@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录/注册 - 语音房App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-b from-blue-500 to-indigo-700 h-screen">
+    <!-- iOS状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-left">
+            <span class="status-bar-time">10:30</span>
+        </div>
+        <div class="status-bar-right">
+            <i class="fas fa-signal status-bar-icon"></i>
+            <i class="fas fa-wifi status-bar-icon"></i>
+            <i class="fas fa-battery-full status-bar-icon"></i>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-6 h-full flex flex-col justify-center">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-white mb-2">语音屋</h1>
+            <p class="text-white text-opacity-80">连接声音，分享快乐</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-lg">
+            <!-- 登录/注册切换标签 -->
+            <div class="flex border-b border-gray-200 mb-6">
+                <button class="py-2 px-4 text-sm font-medium text-primary-color border-b-2 border-primary-color flex-1">登录</button>
+                <button class="py-2 px-4 text-sm font-medium text-gray-500 flex-1">注册</button>
+            </div>
+
+            <!-- 登录表单 -->
+            <form>
+                <div class="input-group">
+                    <label class="input-label" for="phone">手机号码</label>
+                    <input type="tel" id="phone" class="input" placeholder="请输入手机号码">
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label" for="password">密码</label>
+                    <div class="relative">
+                        <input type="password" id="password" class="input pr-10" placeholder="请输入密码">
+                        <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center mb-6">
+                    <label class="flex items-center text-sm text-gray-600">
+                        <input type="checkbox" class="mr-2">
+                        记住我
+                    </label>
+                    <a href="#" class="text-sm text-primary-color">忘记密码？</a>
+                </div>
+
+                <button class="btn btn-primary w-full mb-4">
+                    登录
+                </button>
+
+                <div class="text-center text-sm text-gray-500">
+                    <p>或使用以下方式登录</p>
+                </div>
+
+                <div class="flex justify-center mt-4 gap-6">
+                    <button class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white">
+                        <i class="fab fa-weixin text-xl"></i>
+                    </button>
+                    <button class="w-12 h-12 rounded-full bg-blue-400 flex items-center justify-center text-white">
+                        <i class="fab fa-qq text-xl"></i>
+                    </button>
+                    <button class="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center text-white">
+                        <i class="fab fa-weibo text-xl"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="text-center mt-6">
+            <p class="text-white text-sm">首次登录即表示您同意我们的<a href="#" class="underline">服务条款</a>和<a href="#" class="underline">隐私政策</a></p>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置 - 声动</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .settings-section {
+            margin-bottom: 24px;
+        }
+        .settings-header {
+            font-weight: 600;
+            color: #666;
+            font-size: 14px;
+            padding: 8px 16px;
+            background-color: #f9f9f9;
+        }
+        .settings-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+        .settings-icon {
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: #7045FF;
+        }
+        .settings-arrow {
+            color: #ccc;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 46px;
+            height: 24px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .toggle-slider {
+            background-color: #7045FF;
+        }
+        input:checked + .toggle-slider:before {
+            transform: translateX(22px);
+        }
+    </style>
+</head>
+<body class="app-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">21:42</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="nav-bar">
+        <a href="javascript:history.back()" class="nav-back">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <div class="nav-title">设置</div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="app-content pb-16">
+        <!-- 账号安全 -->
+        <div class="settings-section">
+            <div class="settings-header">账号安全</div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div class="flex-1">
+                    <div>账号与安全</div>
+                    <div class="text-xs text-gray-500">手机号、密码、实名认证</div>
+                </div>
+                <div class="settings-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="flex-1">
+                    <div>隐私设置</div>
+                    <div class="text-xs text-gray-500">权限管理、内容可见性</div>
+                </div>
+                <div class="settings-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 通知设置 -->
+        <div class="settings-section">
+            <div class="settings-header">通知设置</div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="flex-1">新消息通知</div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="flex-1">关注主播开播提醒</div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="flex-1">礼物提醒</div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <div class="flex-1">评论与回复</div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- 通用设置 -->
+        <div class="settings-section">
+            <div class="settings-header">通用设置</div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="flex-1">黑暗模式</div>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <div class="flex-1">
+                    <div>主题颜色</div>
+                    <div class="text-xs text-gray-500">紫色主题</div>
+                </div>
+                <div class="settings-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-font"></i>
+                </div>
+                <div class="flex-1">
+                    <div>字体大小</div>
+                    <div class="text-xs text-gray-500">默认</div>
+                </div>
+                <div class="settings-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <div class="flex-1">
+                    <div>语言</div>
+                    <div class="text-xs text-gray-500">简体中文</div>
+                </div>
+                <div class="settings-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 缓存与存储 -->
+        <div class="settings-section">
+            <div class="settings-header">缓存与存储</div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <div class="flex-1">
+                    <div>清除缓存</div>
+                    <div class="text-xs text-gray-500">128MB</div>
+                </div>
+                <div class="settings-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <div class="flex-1">
+                    <div>下载设置</div>
+                    <div class="text-xs text-gray-500">仅在WIFI下下载</div>
+                </div>
+                <div class="settings-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 关于与帮助 -->
+        <div class="settings-section">
+            <div class="settings-header">关于与帮助</div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="flex-1">
+                    <div>关于声动</div>
+                    <div class="text-xs text-gray-500">版本 1.0.0</div>
+                </div>
+                <div class="settings-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="flex-1">帮助中心</div>
+                <div class="settings-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <div class="flex-1">意见反馈</div>
+                <div class="settings-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <div class="flex-1">服务条款与隐私政策</div>
+                <div class="settings-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 退出登录 -->
+        <div class="px-4 mt-4 mb-8">
+            <button class="w-full py-3 bg-gray-100 text-gray-600 rounded-lg font-medium">
+                退出登录
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 切换开关功能
+        document.querySelectorAll('.toggle-switch input').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                console.log(this.checked ? '开启' : '关闭');
+                // 这里可以添加实际的开关功能
+            });
+        });
+    </script>
+</body>
+</html> 

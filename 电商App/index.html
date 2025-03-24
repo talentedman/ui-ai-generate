@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电商App原型</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f5f5f7;
+            padding: 20px;
+        }
+        .phone-container {
+            width: 390px; /* iPhone 15 Pro 宽度 */
+            height: 844px; /* iPhone 15 Pro 高度 */
+            background-color: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin: 20px;
+            display: inline-flex;
+            flex-direction: column;
+        }
+        .status-bar {
+            height: 44px;
+            background-color: #000;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .phone-iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+        }
+        .prototype-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .screen-label {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-3xl font-bold text-center my-8">电商App高保真原型</h1>
+    
+    <div class="prototype-container">
+        <!-- 首页 -->
+        <div>
+            <div class="phone-container">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <div>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi ml-1"></i>
+                        <i class="fas fa-battery-full ml-1"></i>
+                    </div>
+                </div>
+                <iframe src="pages/home.html" class="phone-iframe"></iframe>
+            </div>
+            <div class="screen-label">首页</div>
+        </div>
+        
+        <!-- 分类页 -->
+        <div>
+            <div class="phone-container">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <div>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi ml-1"></i>
+                        <i class="fas fa-battery-full ml-1"></i>
+                    </div>
+                </div>
+                <iframe src="pages/category.html" class="phone-iframe"></iframe>
+            </div>
+            <div class="screen-label">分类</div>
+        </div>
+        
+        <!-- 购物车 -->
+        <div>
+            <div class="phone-container">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <div>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi ml-1"></i>
+                        <i class="fas fa-battery-full ml-1"></i>
+                    </div>
+                </div>
+                <iframe src="pages/cart.html" class="phone-iframe"></iframe>
+            </div>
+            <div class="screen-label">购物车</div>
+        </div>
+        
+        <!-- 商品详情页 -->
+        <div>
+            <div class="phone-container">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <div>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi ml-1"></i>
+                        <i class="fas fa-battery-full ml-1"></i>
+                    </div>
+                </div>
+                <iframe src="pages/product.html" class="phone-iframe"></iframe>
+            </div>
+            <div class="screen-label">商品详情</div>
+        </div>
+        
+        <!-- 个人中心 -->
+        <div>
+            <div class="phone-container">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <div>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi ml-1"></i>
+                        <i class="fas fa-battery-full ml-1"></i>
+                    </div>
+                </div>
+                <iframe src="pages/profile.html" class="phone-iframe"></iframe>
+            </div>
+            <div class="screen-label">个人中心</div>
+        </div>
+        
+        <!-- 订单列表 -->
+        <div>
+            <div class="phone-container">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <div>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi ml-1"></i>
+                        <i class="fas fa-battery-full ml-1"></i>
+                    </div>
+                </div>
+                <iframe src="pages/orders.html" class="phone-iframe"></iframe>
+            </div>
+            <div class="screen-label">我的订单</div>
+        </div>
+        
+        <!-- 结算页面 -->
+        <div>
+            <div class="phone-container">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <div>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi ml-1"></i>
+                        <i class="fas fa-battery-full ml-1"></i>
+                    </div>
+                </div>
+                <iframe src="pages/checkout.html" class="phone-iframe"></iframe>
+            </div>
+            <div class="screen-label">结算页面</div>
+        </div>
+        
+        <!-- 搜索结果页 -->
+        <div>
+            <div class="phone-container">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <div>
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi ml-1"></i>
+                        <i class="fas fa-battery-full ml-1"></i>
+                    </div>
+                </div>
+                <iframe src="pages/search.html" class="phone-iframe"></iframe>
+            </div>
+            <div class="screen-label">搜索结果</div>
+        </div>
+    </div>
+</body>
+</html> 

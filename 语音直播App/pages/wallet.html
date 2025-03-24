@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的钱包 - 声动</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .balance-card {
+            background: linear-gradient(135deg, #7045FF, #5E72E4);
+            border-radius: 16px;
+            color: white;
+            padding: 16px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .recharge-option {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .recharge-option:hover, .recharge-option.active {
+            border-color: #7045FF;
+            background-color: rgba(112, 69, 255, 0.05);
+        }
+        .recharge-option.active {
+            border-width: 2px;
+        }
+        .transaction-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button {
+            padding: 10px 16px;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+        .tab-button.active {
+            color: #7045FF;
+            border-bottom-color: #7045FF;
+        }
+    </style>
+</head>
+<body class="app-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">21:37</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="nav-bar">
+        <a href="javascript:history.back()" class="nav-back">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <div class="nav-title">我的钱包</div>
+        <div class="nav-actions">
+            <a href="#" class="nav-icon">
+                <i class="fas fa-ellipsis-v"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="app-content pb-16">
+        <!-- 余额卡片 -->
+        <div class="balance-card mx-4 mb-6">
+            <div class="text-sm opacity-80 mb-2">账户余额（元）</div>
+            <div class="text-3xl font-bold mb-4">¥ 253.50</div>
+            <div class="flex justify-between">
+                <button class="bg-white bg-opacity-20 rounded-full px-4 py-2 text-sm">
+                    <i class="fas fa-wallet mr-1"></i>提现
+                </button>
+                <button class="bg-white text-purple-700 rounded-full px-4 py-2 text-sm font-medium">
+                    <i class="fas fa-plus-circle mr-1"></i>充值
+                </button>
+            </div>
+        </div>
+
+        <!-- 标签切换 -->
+        <div class="flex border-b mb-4">
+            <button class="tab-button active flex-1" data-tab="recharge">充值</button>
+            <button class="tab-button flex-1" data-tab="transactions">交易记录</button>
+            <button class="tab-button flex-1" data-tab="gifts">我的礼物</button>
+        </div>
+
+        <!-- 充值选项内容区 -->
+        <div id="recharge-tab" class="tab-content active px-4">
+            <div class="text-lg font-medium mb-4">选择充值金额</div>
+            
+            <div class="grid grid-cols-3 gap-3 mb-6">
+                <div class="recharge-amount bg-gray-50 rounded-lg p-3 text-center cursor-pointer hover:bg-purple-50 hover:text-purple-600 transition-all">
+                    <div class="font-medium">¥6</div>
+                    <div class="text-xs text-gray-500">60金币</div>
+                </div>
+                <div class="recharge-amount bg-gray-50 rounded-lg p-3 text-center cursor-pointer hover:bg-purple-50 hover:text-purple-600 transition-all active">
+                    <div class="font-medium">¥30</div>
+                    <div class="text-xs text-gray-500">300金币</div>
+                </div>
+                <div class="recharge-amount bg-gray-50 rounded-lg p-3 text-center cursor-pointer hover:bg-purple-50 hover:text-purple-600 transition-all">
+                    <div class="font-medium">¥68</div>
+                    <div class="text-xs text-gray-500">680金币</div>
+                </div>
+                <div class="recharge-amount bg-gray-50 rounded-lg p-3 text-center cursor-pointer hover:bg-purple-50 hover:text-purple-600 transition-all">
+                    <div class="font-medium">¥98</div>
+                    <div class="text-xs text-gray-500">980金币</div>
+                </div>
+                <div class="recharge-amount bg-gray-50 rounded-lg p-3 text-center cursor-pointer hover:bg-purple-50 hover:text-purple-600 transition-all">
+                    <div class="font-medium">¥198</div>
+                    <div class="text-xs text-gray-500">1980金币</div>
+                </div>
+                <div class="recharge-amount bg-gray-50 rounded-lg p-3 text-center cursor-pointer hover:bg-purple-50 hover:text-purple-600 transition-all">
+                    <div class="font-medium">¥298</div>
+                    <div class="text-xs text-gray-500">2980金币</div>
+                </div>
+            </div>
+
+            <div class="text-lg font-medium mb-4">支付方式</div>
+            
+            <div class="recharge-option active">
+                <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white mr-3">
+                    <i class="fab fa-weixin text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium">微信支付</div>
+                    <div class="text-xs text-gray-500">使用微信安全支付</div>
+                </div>
+                <div class="w-6 h-6 rounded-full border-2 border-purple-600 flex items-center justify-center">
+                    <div class="w-3 h-3 bg-purple-600 rounded-full"></div>
+                </div>
+            </div>
+            
+            <div class="recharge-option">
+                <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white mr-3">
+                    <i class="fab fa-alipay text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium">支付宝</div>
+                    <div class="text-xs text-gray-500">使用支付宝安全支付</div>
+                </div>
+                <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center">
+                </div>
+            </div>
+
+            <button class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 rounded-lg mt-6 font-medium">
+                确认支付 ¥30
+            </button>
+        </div>
+
+        <!-- 交易记录内容区 -->
+        <div id="transactions-tab" class="tab-content px-4">
+            <div class="flex justify-between items-center mb-4">
+                <div class="text-lg font-medium">最近30天</div>
+                <button class="text-sm text-gray-500 flex items-center">
+                    筛选 <i class="fas fa-filter ml-1"></i>
+                </button>
+            </div>
+
+            <div class="transaction-item flex items-center">
+                <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-3">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium">充值</div>
+                    <div class="text-xs text-gray-500">2023-06-15 14:30</div>
+                </div>
+                <div class="text-green-500 font-medium">+¥98.00</div>
+            </div>
+
+            <div class="transaction-item flex items-center">
+                <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 mr-3">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium">送出礼物「豪华跑车」</div>
+                    <div class="text-xs text-gray-500">2023-06-14 20:15</div>
+                </div>
+                <div class="text-gray-600 font-medium">-¥66.00</div>
+            </div>
+
+            <div class="transaction-item flex items-center">
+                <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 mr-3">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium">送出礼物「爱心」</div>
+                    <div class="text-xs text-gray-500">2023-06-14 19:45</div>
+                </div>
+                <div class="text-gray-600 font-medium">-¥10.00</div>
+            </div>
+
+            <div class="transaction-item flex items-center">
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium">购买会员VIP</div>
+                    <div class="text-xs text-gray-500">2023-06-10 09:20</div>
+                </div>
+                <div class="text-gray-600 font-medium">-¥30.00</div>
+            </div>
+
+            <div class="transaction-item flex items-center">
+                <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-3">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium">充值</div>
+                    <div class="text-xs text-gray-500">2023-06-08 16:05</div>
+                </div>
+                <div class="text-green-500 font-medium">+¥198.00</div>
+            </div>
+        </div>
+
+        <!-- 我的礼物内容区 -->
+        <div id="gifts-tab" class="tab-content px-4">
+            <div class="text-lg font-medium mb-4">已收到的礼物</div>
+            
+            <div class="grid grid-cols-4 gap-3 mb-6">
+                <div class="gift-item text-center">
+                    <div class="w-full aspect-square bg-pink-50 rounded-lg flex items-center justify-center mb-1">
+                        <img src="../img/gift-heart.png" alt="爱心" class="w-12 h-12 object-contain">
+                    </div>
+                    <div class="text-xs">爱心x65</div>
+                </div>
+                <div class="gift-item text-center">
+                    <div class="w-full aspect-square bg-yellow-50 rounded-lg flex items-center justify-center mb-1">
+                        <img src="../img/gift-flower.png" alt="鲜花" class="w-12 h-12 object-contain">
+                    </div>
+                    <div class="text-xs">鲜花x28</div>
+                </div>
+                <div class="gift-item text-center">
+                    <div class="w-full aspect-square bg-blue-50 rounded-lg flex items-center justify-center mb-1">
+                        <img src="../img/gift-rocket.png" alt="火箭" class="w-12 h-12 object-contain">
+                    </div>
+                    <div class="text-xs">火箭x3</div>
+                </div>
+                <div class="gift-item text-center">
+                    <div class="w-full aspect-square bg-purple-50 rounded-lg flex items-center justify-center mb-1">
+                        <img src="../img/gift-crown.png" alt="皇冠" class="w-12 h-12 object-contain">
+                    </div>
+                    <div class="text-xs">皇冠x1</div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-lg p-4 flex items-center">
+                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 mr-3">
+                    <i class="fas fa-coins text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium">礼物收益</div>
+                    <div class="text-xs text-gray-500">收到的礼物可以提现为现金</div>
+                </div>
+                <button class="px-4 py-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-lg text-sm">
+                    立即提现
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 标签切换功能
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // 移除所有标签和内容的激活状态
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // 激活当前标签和内容
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId + '-tab').classList.add('active');
+            });
+        });
+
+        // 充值金额选择
+        document.querySelectorAll('.recharge-amount').forEach(amount => {
+            amount.addEventListener('click', () => {
+                document.querySelectorAll('.recharge-amount').forEach(item => {
+                    item.classList.remove('active');
+                    item.classList.remove('bg-purple-50');
+                    item.classList.remove('text-purple-600');
+                    item.classList.add('bg-gray-50');
+                });
+                amount.classList.add('active');
+                amount.classList.add('bg-purple-50');
+                amount.classList.add('text-purple-600');
+                amount.classList.remove('bg-gray-50');
+            });
+        });
+
+        // 支付方式选择
+        document.querySelectorAll('.recharge-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.recharge-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                option.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html> 

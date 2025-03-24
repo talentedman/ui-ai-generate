@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置 - 语音房App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .settings-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .settings-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            margin-right: 12px;
+        }
+        
+        .settings-content {
+            flex: 1;
+        }
+        
+        .settings-title {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .settings-description {
+            font-size: 12px;
+            color: var(--dark-gray);
+            margin-top: 2px;
+        }
+        
+        .settings-group {
+            margin-bottom: 24px;
+        }
+        
+        .settings-group-title {
+            font-size: 14px;
+            color: var(--dark-gray);
+            padding: 12px 0;
+        }
+        
+        .version-info {
+            text-align: center;
+            font-size: 12px;
+            color: var(--dark-gray);
+            margin-top: 32px;
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-left">
+            <span class="status-bar-time">10:30</span>
+        </div>
+        <div class="status-bar-right">
+            <i class="fas fa-signal status-bar-icon"></i>
+            <i class="fas fa-wifi status-bar-icon"></i>
+            <i class="fas fa-battery-full status-bar-icon"></i>
+        </div>
+    </div>
+
+    <!-- 页面标题 -->
+    <div class="flex justify-between items-center px-4 py-3 border-b">
+        <button class="text-gray-600">
+            <i class="fas fa-chevron-left mr-2"></i>
+            返回
+        </button>
+        <h1 class="text-lg font-bold">设置</h1>
+        <div class="w-8"></div> <!-- 占位，保持标题居中 -->
+    </div>
+
+    <div class="container">
+        <!-- 账号设置 -->
+        <div class="settings-group">
+            <div class="settings-group-title">账号设置</div>
+            
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">个人资料</div>
+                    <div class="settings-description">修改头像、昵称等个人信息</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">账号安全</div>
+                    <div class="settings-description">修改密码、绑定手机号</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">通知设置</div>
+                    <div class="settings-description">管理推送通知和提醒</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+        </div>
+        
+        <!-- 语音设置 -->
+        <div class="settings-group">
+            <div class="settings-group-title">语音设置</div>
+            
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">麦克风设置</div>
+                    <div class="settings-description">调整麦克风音量和灵敏度</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-headphones"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">音频设置</div>
+                    <div class="settings-description">调整扬声器音量和音效</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">音质选择</div>
+                    <div class="settings-description">选择语音清晰度和流量使用</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+        </div>
+        
+        <!-- 通用设置 -->
+        <div class="settings-group">
+            <div class="settings-group-title">通用设置</div>
+            
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">语言选择</div>
+                    <div class="settings-description">设置App显示语言</div>
+                </div>
+                <div class="text-sm text-gray-500">简体中文</div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">深色模式</div>
+                    <div class="settings-description">调整App显示主题</div>
+                </div>
+                <label class="switch-toggle">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">清除缓存</div>
+                    <div class="settings-description">释放手机存储空间</div>
+                </div>
+                <div class="text-sm text-gray-500">23.5MB</div>
+            </div>
+        </div>
+        
+        <!-- 其他设置 -->
+        <div class="settings-group">
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">帮助与反馈</div>
+                    <div class="settings-description">常见问题解答和意见反馈</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">隐私政策</div>
+                    <div class="settings-description">了解我们如何保护您的隐私</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-title">关于我们</div>
+                    <div class="settings-description">了解App开发团队</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+        </div>
+        
+        <!-- 退出登录 -->
+        <button class="btn btn-secondary w-full mt-6">
+            退出登录
+        </button>
+        
+        <!-- 版本信息 -->
+        <div class="version-info">
+            语音屋 v1.0.0
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-tab-bar">
+        <a href="home.html" class="tab-item">
+            <i class="fas fa-home tab-icon"></i>
+            <span>首页</span>
+        </a>
+        <a href="#" class="tab-item">
+            <i class="fas fa-compass tab-icon"></i>
+            <span>发现</span>
+        </a>
+        <a href="#" class="tab-item">
+            <i class="fas fa-users tab-icon"></i>
+            <span>好友</span>
+        </a>
+        <a href="profile.html" class="tab-item active">
+            <i class="fas fa-user tab-icon"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

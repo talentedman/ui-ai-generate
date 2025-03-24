@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索结果 - 电商App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #F5F5F5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 80px;
+        }
+        
+        .nav-header {
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .back-button {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .search-bar {
+            border-radius: 20px;
+            background-color: #F0F0F0;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            background-color: white;
+            position: sticky;
+            top: 60px;
+            z-index: 5;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .filter-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 14px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .filter-tab.active {
+            color: #FF6B6B;
+            font-weight: 500;
+        }
+        
+        .filter-icon {
+            margin-left: 3px;
+            font-size: 12px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        
+        .price {
+            color: #FF6B6B;
+            font-weight: bold;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-right: 5px;
+        }
+        
+        .tag-promo {
+            background-color: #FFF0F0;
+            color: #FF6B6B;
+        }
+        
+        .tag-express {
+            background-color: #E6F7FF;
+            color: #1890FF;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部搜索栏 -->
+    <div class="nav-header p-3 shadow-sm">
+        <div class="flex items-center">
+            <a href="javascript:history.back()" class="back-button mr-3">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <div class="search-bar flex-1 flex items-center p-2 px-4">
+                <i class="fas fa-search text-gray-400 mr-2"></i>
+                <input type="text" value="iPhone" placeholder="搜索商品" class="bg-transparent w-full outline-none text-sm">
+            </div>
+        </div>
+    </div>
+    
+    <!-- 筛选选项卡 -->
+    <div class="filter-tabs shadow-sm">
+        <div class="filter-tab active">
+            <span>综合</span>
+        </div>
+        <div class="filter-tab">
+            <span>销量</span>
+        </div>
+        <div class="filter-tab">
+            <span>价格</span>
+            <i class="fas fa-sort filter-icon"></i>
+        </div>
+        <div class="filter-tab">
+            <span>筛选</span>
+            <i class="fas fa-filter filter-icon"></i>
+        </div>
+    </div>
+    
+    <!-- 搜索结果 -->
+    <div class="p-3">
+        <div class="text-sm text-gray-500 mb-3">共找到 87 件商品</div>
+        
+        <div class="grid grid-cols-2 gap-3">
+            <!-- 商品1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="iPhone 13 Pro" class="product-image">
+                <div class="p-2 flex-1 flex flex-col">
+                    <div class="text-sm font-medium mb-1 line-clamp-2">Apple iPhone 13 Pro 256GB 远峰蓝色 5G手机</div>
+                    <div class="mt-1 mb-2">
+                        <span class="tag tag-promo">满减</span>
+                        <span class="tag tag-express">快递</span>
+                    </div>
+                    <div class="price text-base mt-auto">¥8,999</div>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="text-xs text-gray-500">5823人付款</div>
+                        <div class="text-xs text-gray-500">98%好评</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商品2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="iPhone 12" class="product-image">
+                <div class="p-2 flex-1 flex flex-col">
+                    <div class="text-sm font-medium mb-1 line-clamp-2">Apple iPhone 12 128GB 蓝色 5G手机</div>
+                    <div class="mt-1 mb-2">
+                        <span class="tag tag-promo">限时</span>
+                        <span class="tag tag-express">闪送</span>
+                    </div>
+                    <div class="price text-base mt-auto">¥5,999</div>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="text-xs text-gray-500">8521人付款</div>
+                        <div class="text-xs text-gray-500">95%好评</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商品3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1519923834699-ef0b7cde4712?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="iPhone 11" class="product-image">
+                <div class="p-2 flex-1 flex flex-col">
+                    <div class="text-sm font-medium mb-1 line-clamp-2">Apple iPhone 11 64GB 黑色 移动联通电信4G手机</div>
+                    <div class="mt-1 mb-2">
+                        <span class="tag tag-promo">特价</span>
+                    </div>
+                    <div class="price text-base mt-auto">¥4,599</div>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="text-xs text-gray-500">12563人付款</div>
+                        <div class="text-xs text-gray-500">97%好评</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商品4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="iPhone SE" class="product-image">
+                <div class="p-2 flex-1 flex flex-col">
+                    <div class="text-sm font-medium mb-1 line-clamp-2">Apple iPhone SE (第二代) 64GB 红色 移动联通电信4G手机</div>
+                    <div class="mt-1 mb-2">
+                        <span class="tag tag-promo">低至7折</span>
+                    </div>
+                    <div class="price text-base mt-auto">¥3,099</div>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="text-xs text-gray-500">9845人付款</div>
+                        <div class="text-xs text-gray-500">94%好评</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商品5 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="AirPods Pro" class="product-image">
+                <div class="p-2 flex-1 flex flex-col">
+                    <div class="text-sm font-medium mb-1 line-clamp-2">Apple AirPods Pro 主动降噪无线蓝牙耳机</div>
+                    <div class="mt-1 mb-2">
+                        <span class="tag tag-promo">券后减100</span>
+                    </div>
+                    <div class="price text-base mt-auto">¥1,999</div>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="text-xs text-gray-500">15243人付款</div>
+                        <div class="text-xs text-gray-500">98%好评</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商品6 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Apple Watch" class="product-image">
+                <div class="p-2 flex-1 flex flex-col">
+                    <div class="text-sm font-medium mb-1 line-clamp-2">Apple Watch Series 7 GPS 深空灰色铝金属表壳</div>
+                    <div class="mt-1 mb-2">
+                        <span class="tag tag-promo">新品</span>
+                        <span class="tag tag-express">次日达</span>
+                    </div>
+                    <div class="price text-base mt-auto">¥3,199</div>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="text-xs text-gray-500">3421人付款</div>
+                        <div class="text-xs text-gray-500">96%好评</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商品7 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1537589376225-5405c60a5bd8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="iPhone充电线" class="product-image">
+                <div class="p-2 flex-1 flex flex-col">
+                    <div class="text-sm font-medium mb-1 line-clamp-2">Apple 原装 iPhone 快充线 USB-C to Lightning 1米</div>
+                    <div class="mt-1 mb-2">
+                        <span class="tag tag-promo">满2件8折</span>
+                    </div>
+                    <div class="price text-base mt-auto">¥149</div>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="text-xs text-gray-500">32145人付款</div>
+                        <div class="text-xs text-gray-500">95%好评</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商品8 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="iPhone充电头" class="product-image">
+                <div class="p-2 flex-1 flex flex-col">
+                    <div class="text-sm font-medium mb-1 line-clamp-2">Apple 20W USB-C 电源适配器 充电头</div>
+                    <div class="mt-1 mb-2">
+                        <span class="tag tag-promo">赠品</span>
+                    </div>
+                    <div class="price text-base mt-auto">¥149</div>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="text-xs text-gray-500">24786人付款</div>
+                        <div class="text-xs text-gray-500">93%好评</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 语音房App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-left">
+            <span class="status-bar-time">10:30</span>
+        </div>
+        <div class="status-bar-right">
+            <i class="fas fa-signal status-bar-icon"></i>
+            <i class="fas fa-wifi status-bar-icon"></i>
+            <i class="fas fa-battery-full status-bar-icon"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <div class="flex justify-between items-center px-4 py-3 border-b">
+        <div class="text-xl font-bold">语音屋</div>
+        <div class="flex gap-4">
+            <button class="text-gray-600">
+                <i class="fas fa-search text-xl"></i>
+            </button>
+            <button class="text-gray-600">
+                <i class="fas fa-bell text-xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 类别标签 -->
+    <div class="px-4 py-3 overflow-x-auto whitespace-nowrap">
+        <div class="inline-flex gap-2">
+            <button class="px-4 py-2 bg-primary-color text-white rounded-full text-sm font-medium">推荐</button>
+            <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium">音乐</button>
+            <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium">聊天</button>
+            <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium">情感电台</button>
+            <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium">游戏</button>
+            <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium">相声</button>
+        </div>
+    </div>
+
+    <!-- 创建房间按钮 -->
+    <div class="px-4 py-3">
+        <a href="create-room.html" class="btn btn-primary w-full">
+            <i class="fas fa-plus mr-2"></i> 创建语音房间
+        </a>
+    </div>
+
+    <!-- 热门房间列表 -->
+    <div class="room-list px-4 py-3">
+        <h2 class="text-lg font-bold mb-4">热门房间</h2>
+        
+        <!-- 第一个房间卡片 -->
+        <div class="room-card mb-4">
+            <div class="room-header">
+                <h3 class="room-title">深夜电台 | 来聊聊今天的心情</h3>
+                <span class="room-tag">热门</span>
+            </div>
+            <div class="room-info">
+                <i class="fas fa-headphones mr-2"></i> 
+                <span>234人在线</span>
+                <i class="fas fa-comment ml-4 mr-2"></i>
+                <span>活跃讨论中</span>
+            </div>
+            <div class="room-users">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <div class="room-user-count">+231</div>
+            </div>
+        </div>
+        
+        <!-- 第二个房间卡片 -->
+        <div class="room-card mb-4">
+            <div class="room-header">
+                <h3 class="room-title">音乐分享 | 周杰伦新歌讨论</h3>
+                <span class="room-tag">音乐</span>
+            </div>
+            <div class="room-info">
+                <i class="fas fa-headphones mr-2"></i> 
+                <span>178人在线</span>
+                <i class="fas fa-music ml-4 mr-2"></i>
+                <span>音乐播放中</span>
+            </div>
+            <div class="room-users">
+                <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <div class="room-user-count">+175</div>
+            </div>
+        </div>
+        
+        <!-- 第三个房间卡片 -->
+        <div class="room-card mb-4">
+            <div class="room-header">
+                <h3 class="room-title">游戏开黑 | 英雄联盟组队</h3>
+                <span class="room-tag">游戏</span>
+            </div>
+            <div class="room-info">
+                <i class="fas fa-headphones mr-2"></i> 
+                <span>156人在线</span>
+                <i class="fas fa-gamepad ml-4 mr-2"></i>
+                <span>开黑中</span>
+            </div>
+            <div class="room-users">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <div class="room-user-count">+153</div>
+            </div>
+        </div>
+        
+        <!-- 第四个房间卡片 -->
+        <div class="room-card">
+            <div class="room-header">
+                <h3 class="room-title">情感话题 | 如何走出失恋阴影</h3>
+                <span class="room-tag">情感</span>
+            </div>
+            <div class="room-info">
+                <i class="fas fa-headphones mr-2"></i> 
+                <span>98人在线</span>
+                <i class="fas fa-heart ml-4 mr-2"></i>
+                <span>真诚交流</span>
+            </div>
+            <div class="room-users">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <img src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="User" class="room-user-avatar" />
+                <div class="room-user-count">+95</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-tab-bar">
+        <a href="home.html" class="tab-item active">
+            <i class="fas fa-home tab-icon"></i>
+            <span>首页</span>
+        </a>
+        <a href="#" class="tab-item">
+            <i class="fas fa-compass tab-icon"></i>
+            <span>发现</span>
+        </a>
+        <a href="#" class="tab-item">
+            <i class="fas fa-users tab-icon"></i>
+            <span>好友</span>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <i class="fas fa-user tab-icon"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

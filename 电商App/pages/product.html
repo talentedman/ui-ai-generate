@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情 - 电商App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #F5F5F5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 80px;
+        }
+        
+        .product-slider {
+            position: relative;
+            height: 350px;
+            background-color: white;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 10;
+            width: 36px;
+            height: 36px;
+            border-radius: 18px;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .action-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+            width: 36px;
+            height: 36px;
+            border-radius: 18px;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .slider-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .indicator.active {
+            width: 18px;
+            background-color: white;
+        }
+        
+        .price {
+            color: #FF6B6B;
+            font-weight: bold;
+        }
+        
+        .section {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .spec-item {
+            background-color: #F8F8F8;
+            border-radius: 15px;
+            padding: 8px 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+            font-size: 12px;
+        }
+        
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background-color: white;
+            display: flex;
+            padding: 0 15px;
+            padding-bottom: 25px; /* 适配 iPhone 底部边距 */
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .action-icons {
+            display: flex;
+            width: 120px;
+        }
+        
+        .action-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            font-size: 10px;
+            flex: 1;
+            text-decoration: none;
+        }
+        
+        .buy-buttons {
+            display: flex;
+            flex: 1;
+            gap: 10px;
+        }
+        
+        .add-cart-btn {
+            flex: 1;
+            background-color: #FFF0F0;
+            color: #FF6B6B;
+            border-radius: 25px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .buy-now-btn {
+            flex: 1;
+            background-color: #FF6B6B;
+            color: white;
+            border-radius: 25px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+        
+        .star {
+            color: #FFCE00;
+        }
+    </style>
+</head>
+<body>
+    <!-- 商品图片轮播 -->
+    <div class="product-slider">
+        <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="iPhone 13 Pro" class="product-image">
+        <a href="javascript:history.back()" class="back-button">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <div class="action-button">
+            <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <div class="slider-indicators">
+            <div class="indicator active"></div>
+            <div class="indicator"></div>
+            <div class="indicator"></div>
+            <div class="indicator"></div>
+        </div>
+    </div>
+    
+    <!-- 价格信息 -->
+    <div class="section">
+        <div class="price text-2xl mb-2">¥8,999</div>
+        <div class="text-sm line-through text-gray-400">原价: ¥9,599</div>
+        <h1 class="text-lg font-medium mt-2">Apple iPhone 13 Pro 256GB 远峰蓝色 5G手机</h1>
+        <div class="flex items-center justify-between mt-3">
+            <div class="text-sm text-gray-500">销量 5823</div>
+            <div class="text-sm text-gray-500">好评率 98%</div>
+        </div>
+    </div>
+    
+    <!-- 商品优惠 -->
+    <div class="section">
+        <h3 class="text-sm font-medium mb-3">商品优惠</h3>
+        <div class="flex items-center mb-2">
+            <span class="bg-red-100 text-red-500 text-xs px-2 py-1 rounded mr-2">限时优惠</span>
+            <span class="text-sm">新品上市，限时优惠600元</span>
+        </div>
+        <div class="flex items-center">
+            <span class="bg-orange-100 text-orange-500 text-xs px-2 py-1 rounded mr-2">满减</span>
+            <span class="text-sm">满10000减500，满5000减200</span>
+        </div>
+    </div>
+    
+    <!-- 规格选择 -->
+    <div class="section">
+        <div class="flex justify-between mb-3">
+            <h3 class="text-sm font-medium">规格选择</h3>
+            <a href="#" class="text-sm text-gray-500">查看全部 <i class="fas fa-chevron-right text-xs"></i></a>
+        </div>
+        <div class="flex flex-wrap">
+            <div class="spec-item">256GB</div>
+            <div class="spec-item">远峰蓝色</div>
+            <div class="spec-item">5G全网通</div>
+            <div class="spec-item">官方标配</div>
+        </div>
+    </div>
+    
+    <!-- 商品评价 -->
+    <div class="section">
+        <div class="flex justify-between mb-3">
+            <h3 class="text-sm font-medium">商品评价 (2341)</h3>
+            <a href="#" class="text-sm text-gray-500">查看全部 <i class="fas fa-chevron-right text-xs"></i></a>
+        </div>
+        
+        <!-- 评价1 -->
+        <div class="mb-4">
+            <div class="flex items-center mb-2">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="用户头像" class="review-avatar mr-3">
+                <div>
+                    <div class="flex items-center">
+                        <div class="text-sm font-medium mr-2">王先生</div>
+                        <div class="flex">
+                            <i class="fas fa-star star text-xs"></i>
+                            <i class="fas fa-star star text-xs"></i>
+                            <i class="fas fa-star star text-xs"></i>
+                            <i class="fas fa-star star text-xs"></i>
+                            <i class="fas fa-star star text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="text-xs text-gray-500">2023-07-15</div>
+                </div>
+            </div>
+            <div class="text-sm">
+                手机收到了，外观很漂亮，远峰蓝色非常好看，系统流畅，拍照效果很好，电池续航也不错，总体来说非常满意！
+            </div>
+            <div class="flex mt-2 overflow-x-auto">
+                <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="评价图片" class="w-20 h-20 object-cover rounded mr-2">
+                <img src="https://images.unsplash.com/photo-1611740677496-3e0ef378e189?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="评价图片" class="w-20 h-20 object-cover rounded mr-2">
+            </div>
+        </div>
+        
+        <!-- 评价2 -->
+        <div>
+            <div class="flex items-center mb-2">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="用户头像" class="review-avatar mr-3">
+                <div>
+                    <div class="flex items-center">
+                        <div class="text-sm font-medium mr-2">李女士</div>
+                        <div class="flex">
+                            <i class="fas fa-star star text-xs"></i>
+                            <i class="fas fa-star star text-xs"></i>
+                            <i class="fas fa-star star text-xs"></i>
+                            <i class="fas fa-star star text-xs"></i>
+                            <i class="fas fa-star-half-alt star text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="text-xs text-gray-500">2023-07-12</div>
+                </div>
+            </div>
+            <div class="text-sm">
+                升级换代，从iPhone 11换到13 Pro，体验提升很大。Pro Motion高刷很流畅，摄像头也有很大提升，就是价格有点小贵。
+            </div>
+        </div>
+    </div>
+    
+    <!-- 商品详情 -->
+    <div class="section">
+        <h3 class="text-sm font-medium mb-3">商品详情</h3>
+        <div class="text-sm leading-relaxed">
+            <p class="mb-2"><strong>品牌型号：</strong>Apple iPhone 13 Pro</p>
+            <p class="mb-2"><strong>颜色：</strong>远峰蓝色</p>
+            <p class="mb-2"><strong>存储：</strong>256GB</p>
+            <p class="mb-2"><strong>处理器：</strong>A15 仿生芯片</p>
+            <p class="mb-2"><strong>屏幕：</strong>6.1英寸 Super Retina XDR 显示屏，支持 ProMotion 自适应刷新率技术</p>
+            <p class="mb-2"><strong>摄像头：</strong>1200万像素广角、超广角和长焦三摄系统</p>
+            <p class="mb-2"><strong>电池续航：</strong>最长可达22小时视频播放</p>
+            <p class="mb-2"><strong>网络：</strong>5G全网通</p>
+            <p class="mb-2"><strong>防水等级：</strong>IP68</p>
+        </div>
+    </div>
+    
+    <!-- 底部操作栏 -->
+    <div class="bottom-bar">
+        <div class="action-icons">
+            <a href="#" class="action-icon">
+                <i class="fas fa-shop mb-1"></i>
+                <span>店铺</span>
+            </a>
+            <a href="#" class="action-icon">
+                <i class="far fa-heart mb-1"></i>
+                <span>收藏</span>
+            </a>
+            <a href="cart.html" class="action-icon">
+                <i class="fas fa-shopping-cart mb-1"></i>
+                <span>购物车</span>
+            </a>
+        </div>
+        
+        <div class="buy-buttons">
+            <div class="add-cart-btn">加入购物车</div>
+            <div class="buy-now-btn">立即购买</div>
+        </div>
+    </div>
+</body>
+</html> 

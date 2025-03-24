@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社区 - 健身应用</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 顶部状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content bg-gray-50">
+        <!-- 顶部导航 -->
+        <div class="bg-white px-4 py-4 flex justify-between items-center shadow-sm">
+            <h1 class="text-xl font-bold">健身社区</h1>
+            <div class="flex items-center">
+                <button class="w-10 h-10 flex items-center justify-center text-gray-600">
+                    <i class="fas fa-search text-lg"></i>
+                </button>
+                <button class="w-10 h-10 flex items-center justify-center text-gray-600">
+                    <i class="fas fa-bell text-lg"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 创建帖子 -->
+        <div class="px-4 py-3 bg-white border-b border-gray-200">
+            <div class="flex items-center">
+                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                     alt="用户头像" class="w-10 h-10 rounded-full mr-3">
+                <div class="flex-1 bg-gray-100 rounded-full py-2 px-4 text-gray-500">
+                    分享你的健身心得...
+                </div>
+                <button class="ml-3 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100">
+                    <i class="fas fa-camera text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 类别选择 -->
+        <div class="flex space-x-2 overflow-x-auto py-3 px-4 bg-white border-b border-gray-200">
+            <button class="whitespace-nowrap px-4 py-1.5 bg-primary text-white rounded-full text-sm font-medium">
+                热门
+            </button>
+            <button class="whitespace-nowrap px-4 py-1.5 bg-gray-200 rounded-full text-sm font-medium">
+                关注
+            </button>
+            <button class="whitespace-nowrap px-4 py-1.5 bg-gray-200 rounded-full text-sm font-medium">
+                教程
+            </button>
+            <button class="whitespace-nowrap px-4 py-1.5 bg-gray-200 rounded-full text-sm font-medium">
+                饮食
+            </button>
+            <button class="whitespace-nowrap px-4 py-1.5 bg-gray-200 rounded-full text-sm font-medium">
+                减脂
+            </button>
+            <button class="whitespace-nowrap px-4 py-1.5 bg-gray-200 rounded-full text-sm font-medium">
+                增肌
+            </button>
+        </div>
+        
+        <!-- 帖子列表 -->
+        <div class="py-3">
+            <!-- 帖子1 -->
+            <div class="post-card mx-4">
+                <div class="post-header">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                         alt="用户头像" class="avatar">
+                    <div class="post-user-info">
+                        <div class="post-username">李健康</div>
+                        <div class="post-time">2小时前</div>
+                    </div>
+                    <button class="ml-auto text-gray-400">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+                
+                <div class="post-content">
+                    <p class="mb-3">今天完成了30天挑战的最后一天！感觉棒极了，分享一下我的变化对比图 💪 #30天挑战 #健身成果</p>
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" 
+                         alt="健身照片" class="post-image">
+                </div>
+                
+                <div class="post-actions">
+                    <button class="post-action">
+                        <i class="far fa-heart"></i>
+                        <span>128</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-comment"></i>
+                        <span>32</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-share-square"></i>
+                        <span>分享</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 帖子2 -->
+            <div class="post-card mx-4">
+                <div class="post-header">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                         alt="用户头像" class="avatar">
+                    <div class="post-user-info">
+                        <div class="post-username">王教练 <i class="fas fa-check-circle text-blue-500 text-xs"></i></div>
+                        <div class="post-time">昨天</div>
+                    </div>
+                    <button class="ml-auto text-gray-400">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+                
+                <div class="post-content">
+                    <p class="mb-3">很多人问我如何正确做深蹲，这里分享一下正确的姿势要点：</p>
+                    <ol class="list-decimal pl-5 mb-3">
+                        <li>脚与肩同宽</li>
+                        <li>保持背部挺直</li>
+                        <li>膝盖不要超过脚尖</li>
+                        <li>下蹲时臀部要低于膝盖</li>
+                        <li>上升时通过臀部发力</li>
+                    </ol>
+                    <img src="https://images.unsplash.com/photo-1566241142559-40e1dab266c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" 
+                         alt="深蹲示范" class="post-image">
+                </div>
+                
+                <div class="post-actions">
+                    <button class="post-action">
+                        <i class="far fa-heart"></i>
+                        <span>256</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-comment"></i>
+                        <span>78</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-share-square"></i>
+                        <span>分享</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 帖子3 -->
+            <div class="post-card mx-4">
+                <div class="post-header">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                         alt="用户头像" class="avatar">
+                    <div class="post-user-info">
+                        <div class="post-username">张营养师 <i class="fas fa-check-circle text-blue-500 text-xs"></i></div>
+                        <div class="post-time">3天前</div>
+                    </div>
+                    <button class="ml-auto text-gray-400">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+                
+                <div class="post-content">
+                    <p class="mb-3">健身后的蛋白质补充非常重要，分享一个我最爱的高蛋白低脂smoothie配方：</p>
+                    <ul class="list-disc pl-5 mb-3">
+                        <li>香蕉 1根</li>
+                        <li>冷冻蓝莓 1/2杯</li>
+                        <li>希腊酸奶 100g</li>
+                        <li>乳清蛋白粉 1勺</li>
+                        <li>亚麻籽 1勺</li>
+                        <li>杏仁奶 200ml</li>
+                    </ul>
+                    <p>混合均匀即可，清爽美味又营养！</p>
+                    <img src="https://images.unsplash.com/photo-1553530979-7ee52a2670c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" 
+                         alt="蛋白质奶昔" class="post-image">
+                </div>
+                
+                <div class="post-actions">
+                    <button class="post-action">
+                        <i class="far fa-heart"></i>
+                        <span>186</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-comment"></i>
+                        <span>42</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-share-square"></i>
+                        <span>分享</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 热门话题 -->
+            <div class="bg-white mx-4 rounded-lg shadow-sm p-4 mb-4">
+                <h3 class="font-semibold mb-3">热门话题</h3>
+                <div class="flex flex-wrap gap-2">
+                    <a href="#" class="px-3 py-1.5 bg-gray-100 rounded-full text-xs font-medium">#30天挑战</a>
+                    <a href="#" class="px-3 py-1.5 bg-gray-100 rounded-full text-xs font-medium">#健身打卡</a>
+                    <a href="#" class="px-3 py-1.5 bg-gray-100 rounded-full text-xs font-medium">#减脂食谱</a>
+                    <a href="#" class="px-3 py-1.5 bg-gray-100 rounded-full text-xs font-medium">#初学者指南</a>
+                    <a href="#" class="px-3 py-1.5 bg-gray-100 rounded-full text-xs font-medium">#居家健身</a>
+                </div>
+            </div>
+            
+            <!-- 帖子4 -->
+            <div class="post-card mx-4">
+                <div class="post-header">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                         alt="用户头像" class="avatar">
+                    <div class="post-user-info">
+                        <div class="post-username">刘跑步</div>
+                        <div class="post-time">4天前</div>
+                    </div>
+                    <button class="ml-auto text-gray-400">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+                
+                <div class="post-content">
+                    <p class="mb-3">今天跑了10公里个人最佳！坚持就是胜利 🏃‍♂️ #跑步打卡</p>
+                    <div class="bg-blue-50 rounded-lg p-3 mb-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="font-semibold">今日跑步</div>
+                            <div class="text-xs text-gray-500">05-17</div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="text-center">
+                                <div class="text-lg font-bold text-blue-500">10.2</div>
+                                <div class="text-xs text-gray-500">公里</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg font-bold text-blue-500">58:32</div>
+                                <div class="text-xs text-gray-500">时间</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg font-bold text-blue-500">5'44"</div>
+                                <div class="text-xs text-gray-500">配速</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="post-actions">
+                    <button class="post-action">
+                        <i class="far fa-heart"></i>
+                        <span>92</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-comment"></i>
+                        <span>15</span>
+                    </button>
+                    <button class="post-action">
+                        <i class="far fa-share-square"></i>
+                        <span>分享</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="workout.html" class="tab-item">
+            <i class="fas fa-dumbbell"></i>
+            <span>锻炼</span>
+        </a>
+        <a href="progress.html" class="tab-item">
+            <i class="fas fa-chart-line"></i>
+            <span>进度</span>
+        </a>
+        <a href="community.html" class="tab-item active">
+            <i class="fas fa-users"></i>
+            <span>社区</span>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览历史 - 新闻 App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .status-bar {
+            height: 44px;
+            background: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .nav-bar {
+            height: 44px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .history-date {
+            padding: 8px 16px;
+            background: #f5f5f5;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            position: sticky;
+            top: 44px;
+            z-index: 10;
+        }
+        .history-item {
+            padding: 16px;
+            border-bottom: 1px solid #eee;
+            background: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div class="flex gap-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <i class="fas fa-arrow-left"></i>
+        <h1 class="text-lg font-medium ml-4">浏览历史</h1>
+        <div class="ml-auto flex gap-4">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-trash"></i>
+        </div>
+    </div>
+
+    <!-- 历史记录内容 -->
+    <div>
+        <!-- 今天 -->
+        <div class="history-date">今天</div>
+        
+        <div class="history-item">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2">全球科技巨头发布最新财报，AI 业务增长超预期</h3>
+                    <p class="text-gray-600 text-sm mb-2">多家科技公司公布最新季度财报，AI 相关业务表现亮眼，带动整体营收增长...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>科技日报</span>
+                        <span>12:30</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <div class="history-item">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2">AI领域迎来新突破，多模态模型能力跃升</h3>
+                    <p class="text-gray-600 text-sm mb-2">最新研究表明，大型多模态AI模型在理解和生成内容方面取得重大进展...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>科技前沿</span>
+                        <span>09:45</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <!-- 昨天 -->
+        <div class="history-date">昨天</div>
+        
+        <div class="history-item">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2">新能源汽车市场持续升温，多家车企加码布局</h3>
+                    <p class="text-gray-600 text-sm mb-2">随着政策支持力度加大，新能源汽车市场迎来新一轮发展机遇...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>财经周刊</span>
+                        <span>22:15</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <div class="history-item">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2">2024年全球气候变化报告：极端天气事件频发</h3>
+                    <p class="text-gray-600 text-sm mb-2">最新研究显示，全球气温持续上升，极端天气事件发生频率显著增加...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>环球时报</span>
+                        <span>16:40</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <div class="history-item">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2">全球科技巨头争相投入人工智能研发，竞争日益激烈</h3>
+                    <p class="text-gray-600 text-sm mb-2">多家科技公司公布最新人工智能战略，研发投入创历史新高...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>商业观察</span>
+                        <span>10:20</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <!-- 更早 -->
+        <div class="history-date">更早</div>
+        
+        <div class="history-item">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2">元宇宙热度不减，科技巨头持续加码投资</h3>
+                    <p class="text-gray-600 text-sm mb-2">多家科技公司陆续公布元宇宙战略规划，VR/AR硬件销量同比增长超50%...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>科技商业</span>
+                        <span>3天前</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1617802690992-15d93263d3a9" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <div class="history-item">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2">量子计算领域现突破，初创公司宣布实现量子霸权</h3>
+                    <p class="text-gray-600 text-sm mb-2">一家量子计算初创公司宣布成功构建128量子比特处理器，并实现量子优势...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>前沿科技</span>
+                        <span>5天前</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <!-- 加载更多 -->
+        <div class="text-center py-4 text-gray-500">
+            <i class="fas fa-spinner fa-spin mr-2"></i>
+            <span>加载更多历史记录</span>
+        </div>
+    </div>
+</body>
+</html> 

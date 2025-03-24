@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邻里团购 - 分类</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        .categories-sidebar {
+            width: 80px;
+            height: 100%;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+        
+        .category-sidebar-item {
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .category-sidebar-item.active {
+            color: var(--primary-color);
+            background-color: white;
+            font-weight: 500;
+        }
+        
+        .subcategory-container {
+            flex: 1;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        
+        .subcategory-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        
+        .subcategory-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .subcategory-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        
+        .subcategory-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+        
+        .subcategory-name {
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="time">14:25</div>
+            <div class="right">
+                <div class="signal"><i class="fas fa-signal"></i></div>
+                <div class="wifi"><i class="fas fa-wifi"></i></div>
+                <div class="battery"><i class="fas fa-battery-full"></i> 100%</div>
+            </div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="content">
+            <!-- 顶部导航 -->
+            <div class="navbar">
+                <div class="navbar-title">商品分类</div>
+                <div class="navbar-right">
+                    <i class="fas fa-search text-gray-600 text-lg"></i>
+                </div>
+            </div>
+            
+            <!-- 分类内容 -->
+            <div class="flex h-full">
+                <!-- 左侧分类导航 -->
+                <div class="categories-sidebar">
+                    <div class="category-sidebar-item active">
+                        <i class="fas fa-apple-alt mb-1"></i>
+                        生鲜水果
+                    </div>
+                    <div class="category-sidebar-item">
+                        <i class="fas fa-drumstick-bite mb-1"></i>
+                        肉禽蛋品
+                    </div>
+                    <div class="category-sidebar-item">
+                        <i class="fas fa-fish mb-1"></i>
+                        海鲜水产
+                    </div>
+                    <div class="category-sidebar-item">
+                        <i class="fas fa-carrot mb-1"></i>
+                        新鲜蔬菜
+                    </div>
+                    <div class="category-sidebar-item">
+                        <i class="fas fa-bread-slice mb-1"></i>
+                        休闲零食
+                    </div>
+                    <div class="category-sidebar-item">
+                        <i class="fas fa-cookie mb-1"></i>
+                        烘焙糕点
+                    </div>
+                    <div class="category-sidebar-item">
+                        <i class="fas fa-wine-bottle mb-1"></i>
+                        酒水饮料
+                    </div>
+                    <div class="category-sidebar-item">
+                        <i class="fas fa-seedling mb-1"></i>
+                        粮油调味
+                    </div>
+                    <div class="category-sidebar-item">
+                        <i class="fas fa-box mb-1"></i>
+                        日用百货
+                    </div>
+                </div>
+                
+                <!-- 右侧子分类 -->
+                <div class="subcategory-container">
+                    <!-- 水果分类 -->
+                    <div class="banner mb-2">
+                        <img src="https://images.pexels.com/photos/8679470/pexels-photo-8679470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="水果专区">
+                    </div>
+                    
+                    <div class="subcategory-title">当季水果</div>
+                    <div class="subcategory-grid">
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="苹果" class="subcategory-img">
+                            <div class="subcategory-name">苹果</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/2899682/pexels-photo-2899682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="香蕉" class="subcategory-img">
+                            <div class="subcategory-name">香蕉</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/892808/pexels-photo-892808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="橙子" class="subcategory-img">
+                            <div class="subcategory-name">橙子</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/175773/pexels-photo-175773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="葡萄" class="subcategory-img">
+                            <div class="subcategory-name">葡萄</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="草莓" class="subcategory-img">
+                            <div class="subcategory-name">草莓</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/70862/pexels-photo-70862.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="西瓜" class="subcategory-img">
+                            <div class="subcategory-name">西瓜</div>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-title mt-4">进口水果</div>
+                    <div class="subcategory-grid">
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/61127/pexels-photo-61127.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="猕猴桃" class="subcategory-img">
+                            <div class="subcategory-name">猕猴桃</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/162806/mango-tropical-fruit-juicy-sweet-162806.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="芒果" class="subcategory-img">
+                            <div class="subcategory-name">芒果</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/209549/pexels-photo-209549.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="牛油果" class="subcategory-img">
+                            <div class="subcategory-name">牛油果</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/672101/pexels-photo-672101.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="樱桃" class="subcategory-img">
+                            <div class="subcategory-name">樱桃</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/1510392/pexels-photo-1510392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="蓝莓" class="subcategory-img">
+                            <div class="subcategory-name">蓝莓</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/139259/pexels-photo-139259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="柠檬" class="subcategory-img">
+                            <div class="subcategory-name">柠檬</div>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-title mt-4">热带水果</div>
+                    <div class="subcategory-grid">
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/5946081/pexels-photo-5946081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="榴莲" class="subcategory-img">
+                            <div class="subcategory-name">榴莲</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/39303/pexels-photo-39303.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="菠萝" class="subcategory-img">
+                            <div class="subcategory-name">菠萝</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <img src="https://images.pexels.com/photos/5945755/pexels-photo-5945755.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="椰子" class="subcategory-img">
+                            <div class="subcategory-name">椰子</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部标签栏 -->
+        <div class="tab-bar">
+            <div class="tab-item">
+                <i class="fas fa-home"></i>
+                <div class="label">首页</div>
+            </div>
+            <div class="tab-item active">
+                <i class="fas fa-th-large"></i>
+                <div class="label">分类</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-users"></i>
+                <div class="label">社区</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-shopping-cart"></i>
+                <div class="label">购物车</div>
+            </div>
+            <div class="tab-item">
+                <i class="fas fa-user"></i>
+                <div class="label">我的</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索结果 - 新闻 App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .status-bar {
+            height: 44px;
+            background: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .nav-bar {
+            height: 44px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .search-box {
+            background: #f5f5f5;
+            border-radius: 20px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+        }
+        .news-card {
+            border-bottom: 1px solid #eee;
+            padding: 16px;
+            background: white;
+        }
+        .result-tabs {
+            display: flex;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+        .result-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            color: #666;
+        }
+        .result-tab.active {
+            color: #007AFF;
+            border-bottom: 2px solid #007AFF;
+        }
+        .highlight {
+            color: #007AFF;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div class="flex gap-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="flex-1 mr-3">
+            <div class="search-box">
+                <i class="fas fa-search text-gray-400 mr-2"></i>
+                <input type="text" value="人工智能" class="bg-transparent w-full outline-none">
+                <i class="fas fa-times-circle text-gray-400"></i>
+            </div>
+        </div>
+        <button class="text-blue-500 font-medium">取消</button>
+    </div>
+
+    <!-- 结果分类标签 -->
+    <div class="result-tabs">
+        <div class="result-tab active">新闻</div>
+        <div class="result-tab">话题</div>
+        <div class="result-tab">作者</div>
+    </div>
+
+    <!-- 搜索结果 -->
+    <div class="pb-4">
+        <!-- 搜索统计 -->
+        <div class="px-4 py-2 text-sm text-gray-500">
+            找到 <span class="font-medium">438</span> 条关于 "<span class="font-medium text-blue-500">人工智能</span>" 的结果
+        </div>
+        
+        <!-- 搜索结果列表 -->
+        <div class="news-card">
+            <h2 class="text-lg font-bold mb-2"><span class="highlight">人工智能</span>领域迎来新突破，多模态模型能力跃升</h2>
+            <p class="text-gray-600 mb-2">最新研究表明，大型多模态<span class="highlight">人工智能</span>模型在理解和生成内容方面取得重大进展，跨模态能力接近人类水平...</p>
+            <div class="flex justify-between text-sm text-gray-500">
+                <span>科技前沿</span>
+                <span>5小时前</span>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2">全球科技巨头争相投入<span class="highlight">人工智能</span>研发，竞争日益激烈</h3>
+                    <p class="text-gray-600 text-sm mb-2">多家科技公司公布最新<span class="highlight">人工智能</span>战略，研发投入创历史新高...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>商业观察</span>
+                        <span>昨天</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2"><span class="highlight">人工智能</span>监管框架逐步建立，多国推出AI立法</h3>
+                    <p class="text-gray-600 text-sm mb-2">欧盟AI法案正式生效，多国相继推出<span class="highlight">人工智能</span>监管政策，平衡创新与安全...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>政策法规</span>
+                        <span>2天前</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1589254065878-42c9da997008" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2"><span class="highlight">人工智能</span>教育应用方兴未艾，个性化学习成焦点</h3>
+                    <p class="text-gray-600 text-sm mb-2">基于<span class="highlight">人工智能</span>的教育平台在全球迅速普及，自适应学习系统助力个性化教育...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>教育科技</span>
+                        <span>3天前</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2"><span class="highlight">人工智能</span>生成内容引发版权争议，多起诉讼案件受关注</h3>
+                    <p class="text-gray-600 text-sm mb-2">生成式<span class="highlight">人工智能</span>作品的版权归属问题成焦点，多国法院审理相关案件...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>法律科技</span>
+                        <span>4天前</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1589578527966-fdac0f44566c" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <!-- 加载更多 -->
+        <div class="text-center py-4 text-gray-500">
+            <i class="fas fa-spinner fa-spin mr-2"></i>
+            <span>加载更多结果</span>
+        </div>
+    </div>
+</body>
+</html> 

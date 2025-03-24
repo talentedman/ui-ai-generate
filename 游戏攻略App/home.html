@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏攻略 - 首页</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="app-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="status-bar-left">
+                <span>9:41</span>
+            </div>
+            <div class="status-bar-right">
+                <i class="fas fa-signal mr-2"></i>
+                <i class="fas fa-wifi mr-2"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- 主要内容区 -->
+        <div class="main-content p-4">
+            <!-- 搜索栏 -->
+            <div class="search-bar mb-4">
+                <div class="relative">
+                    <input type="text" placeholder="搜索游戏或攻略" class="w-full pl-10 pr-4 py-2 rounded-full bg-white border border-gray-200 focus:outline-none focus:border-primary">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+            </div>
+
+            <!-- 轮播图 -->
+            <div class="banner mb-6">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="游戏banner" 
+                     class="w-full h-48 object-cover rounded-xl">
+            </div>
+
+            <!-- 热门游戏 -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">热门游戏</h2>
+                    <a href="#" class="section-link">查看更多</a>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="game-card">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="游戏封面" 
+                             class="game-card-img">
+                        <div class="game-card-body">
+                            <h3 class="font-semibold mb-2">原神</h3>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <span class="badge">RPG</span>
+                                <span>4.9分</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="游戏封面" 
+                             class="game-card-img">
+                        <div class="game-card-body">
+                            <h3 class="font-semibold mb-2">王者荣耀</h3>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <span class="badge">MOBA</span>
+                                <span>4.8分</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 最新攻略 -->
+            <div class="section mt-6">
+                <div class="section-header">
+                    <h2 class="section-title">最新攻略</h2>
+                    <a href="#" class="section-link">查看更多</a>
+                </div>
+                <div class="space-y-4">
+                    <div class="game-card">
+                        <div class="game-card-body">
+                            <div class="flex items-start">
+                                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                                     alt="攻略封面" 
+                                     class="w-24 h-24 object-cover rounded-lg mr-4">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold mb-2">原神3.0版本全角色培养攻略</h3>
+                                    <p class="text-sm text-gray-500 mb-2">详细解析每个角色的定位、装备搭配和培养路线</p>
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <span class="badge">原神</span>
+                                        <span class="mr-4">阅读量 2.3w</span>
+                                        <span>作者：游戏达人</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-card-body">
+                            <div class="flex items-start">
+                                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                                     alt="攻略封面" 
+                                     class="w-24 h-24 object-cover rounded-lg mr-4">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold mb-2">王者荣耀S30赛季上分攻略</h3>
+                                    <p class="text-sm text-gray-500 mb-2">最新版本强势英雄推荐及打法技巧</p>
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <span class="badge">王者荣耀</span>
+                                        <span class="mr-4">阅读量 1.8w</span>
+                                        <span>作者：电竞教练</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="tab-bar">
+            <div class="tab active">
+                <i class="fas fa-home"></i>
+                <span class="tab-text">首页</span>
+            </div>
+            <div class="tab">
+                <i class="fas fa-th-large"></i>
+                <span class="tab-text">分类</span>
+            </div>
+            <div class="tab">
+                <i class="fas fa-comments"></i>
+                <span class="tab-text">社区</span>
+            </div>
+            <div class="tab">
+                <i class="fas fa-user"></i>
+                <span class="tab-text">我的</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

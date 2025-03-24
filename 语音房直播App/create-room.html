@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建房间 - 语音房App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .cover-preview {
+            width: 100%;
+            height: 180px;
+            border-radius: var(--border-radius);
+            background-color: var(--light-gray);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .cover-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cover-upload {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-item {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background-color: var(--light-gray);
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .category-item.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .switch-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .switch-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-left">
+            <span class="status-bar-time">10:30</span>
+        </div>
+        <div class="status-bar-right">
+            <i class="fas fa-signal status-bar-icon"></i>
+            <i class="fas fa-wifi status-bar-icon"></i>
+            <i class="fas fa-battery-full status-bar-icon"></i>
+        </div>
+    </div>
+
+    <!-- 页面标题 -->
+    <div class="flex justify-between items-center px-4 py-3 border-b">
+        <button class="text-gray-600">
+            <i class="fas fa-chevron-left mr-2"></i>
+            返回
+        </button>
+        <h1 class="text-lg font-bold">创建语音房间</h1>
+        <div class="w-8"></div> <!-- 占位，保持标题居中 -->
+    </div>
+
+    <div class="container pb-20">
+        <!-- 封面上传 -->
+        <div class="mt-6">
+            <label class="input-label">房间封面</label>
+            <div class="cover-preview mt-2">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="房间封面">
+                <button class="cover-upload">
+                    <i class="fas fa-camera"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 房间名称 -->
+        <div class="input-group mt-6">
+            <label class="input-label" for="room-name">房间名称</label>
+            <input type="text" id="room-name" class="input" placeholder="给你的房间起个名字吧" value="深夜电台 | 来聊聊今天的心情">
+        </div>
+
+        <!-- 房间类别 -->
+        <div class="mt-6">
+            <label class="input-label">房间类别</label>
+            <div class="mt-2">
+                <button class="category-item active">
+                    <i class="fas fa-microphone-alt mr-2"></i>
+                    闲聊
+                </button>
+                <button class="category-item">
+                    <i class="fas fa-music mr-2"></i>
+                    音乐
+                </button>
+                <button class="category-item">
+                    <i class="fas fa-gamepad mr-2"></i>
+                    游戏
+                </button>
+                <button class="category-item">
+                    <i class="fas fa-book mr-2"></i>
+                    知识
+                </button>
+                <button class="category-item">
+                    <i class="fas fa-heart mr-2"></i>
+                    情感
+                </button>
+                <button class="category-item">
+                    <i class="fas fa-theater-masks mr-2"></i>
+                    相声
+                </button>
+            </div>
+        </div>
+
+        <!-- 房间设置 -->
+        <div class="mt-6">
+            <label class="input-label">房间设置</label>
+            
+            <div class="flex justify-between items-center py-3 border-b">
+                <div>
+                    <div class="font-medium">公开房间</div>
+                    <div class="text-xs text-gray-500">所有人可见并可自由进入</div>
+                </div>
+                <label class="switch-toggle">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="flex justify-between items-center py-3 border-b">
+                <div>
+                    <div class="font-medium">自由上麦</div>
+                    <div class="text-xs text-gray-500">允许听众自由上麦发言</div>
+                </div>
+                <label class="switch-toggle">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="flex justify-between items-center py-3 border-b">
+                <div>
+                    <div class="font-medium">禁言用户</div>
+                    <div class="text-xs text-gray-500">管理不良用户</div>
+                </div>
+                <button class="text-primary-color text-sm">
+                    管理 <i class="fas fa-chevron-right ml-1"></i>
+                </button>
+            </div>
+            
+            <div class="flex justify-between items-center py-3">
+                <div>
+                    <div class="font-medium">房间公告</div>
+                    <div class="text-xs text-gray-500">设置房间公告与规则</div>
+                </div>
+                <button class="text-primary-color text-sm">
+                    编辑 <i class="fas fa-chevron-right ml-1"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 创建按钮 -->
+        <div class="mt-8">
+            <a href="room.html" class="btn btn-primary w-full">
+                立即创建
+            </a>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-tab-bar">
+        <a href="home.html" class="tab-item">
+            <i class="fas fa-home tab-icon"></i>
+            <span>首页</span>
+        </a>
+        <a href="#" class="tab-item">
+            <i class="fas fa-compass tab-icon"></i>
+            <span>发现</span>
+        </a>
+        <a href="#" class="tab-item">
+            <i class="fas fa-users tab-icon"></i>
+            <span>好友</span>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <i class="fas fa-user tab-icon"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

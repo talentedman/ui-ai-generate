@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社区 - 元宇宙</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">12:30</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="app-content">
+        <!-- 头部 -->
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-2xl font-bold gradient-text">社区</h1>
+            <div class="flex space-x-3">
+                <div class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow">
+                    <i class="fas fa-comment-dots text-gray-600"></i>
+                </div>
+                <div class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow">
+                    <i class="fas fa-bell text-gray-600"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 故事/状态 -->
+        <div class="mb-6">
+            <div class="flex space-x-3 overflow-x-auto pb-3">
+                <div class="flex-shrink-0 flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full border-2 border-dashed border-indigo-500 flex items-center justify-center bg-indigo-50">
+                        <i class="fas fa-plus text-indigo-500"></i>
+                    </div>
+                    <span class="text-xs mt-1">发布</span>
+                </div>
+                <div class="flex-shrink-0 flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full border-2 border-indigo-500 p-0.5">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" class="rounded-full w-full h-full object-cover" alt="用户头像">
+                    </div>
+                    <span class="text-xs mt-1">艺术家</span>
+                </div>
+                <div class="flex-shrink-0 flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full border-2 border-indigo-500 p-0.5">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956" class="rounded-full w-full h-full object-cover" alt="用户头像">
+                    </div>
+                    <span class="text-xs mt-1">建筑师</span>
+                </div>
+                <div class="flex-shrink-0 flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full border-2 border-indigo-500 p-0.5">
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36" class="rounded-full w-full h-full object-cover" alt="用户头像">
+                    </div>
+                    <span class="text-xs mt-1">探索者</span>
+                </div>
+                <div class="flex-shrink-0 flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full border-2 border-indigo-500 p-0.5">
+                        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" class="rounded-full w-full h-full object-cover" alt="用户头像">
+                    </div>
+                    <span class="text-xs mt-1">设计师</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 内容筛选栏 -->
+        <div class="mb-6">
+            <div class="flex space-x-3 overflow-x-auto pb-2">
+                <button class="flex-shrink-0 bg-indigo-500 text-white px-4 py-2 rounded-full text-xs font-medium">推荐</button>
+                <button class="flex-shrink-0 bg-gray-200 px-4 py-2 rounded-full text-xs font-medium">关注</button>
+                <button class="flex-shrink-0 bg-gray-200 px-4 py-2 rounded-full text-xs font-medium">活动</button>
+                <button class="flex-shrink-0 bg-gray-200 px-4 py-2 rounded-full text-xs font-medium">艺术</button>
+                <button class="flex-shrink-0 bg-gray-200 px-4 py-2 rounded-full text-xs font-medium">建筑</button>
+                <button class="flex-shrink-0 bg-gray-200 px-4 py-2 rounded-full text-xs font-medium">时尚</button>
+            </div>
+        </div>
+
+        <!-- 社区动态 -->
+        <div class="space-y-6">
+            <!-- 动态1 -->
+            <div class="card">
+                <div class="flex items-center mb-3">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956" class="avatar-sm mr-3" alt="用户头像">
+                    <div>
+                        <h3 class="font-semibold text-sm">数字艺术家</h3>
+                        <p class="text-xs text-gray-500">2小时前</p>
+                    </div>
+                    <button class="ml-auto text-gray-400">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+                <p class="text-sm mb-3">刚完成了我的最新数字艺术作品，这是我对未来城市的想象 #数字艺术 #未来主义</p>
+                <div class="rounded-xl overflow-hidden mb-3">
+                    <img src="https://images.unsplash.com/photo-1563207153-f403bf289096" class="w-full" alt="数字艺术作品">
+                </div>
+                <div class="flex justify-between text-gray-500 text-sm">
+                    <button class="flex items-center">
+                        <i class="far fa-heart mr-1"></i>
+                        <span>256</span>
+                    </button>
+                    <button class="flex items-center">
+                        <i class="far fa-comment mr-1"></i>
+                        <span>48</span>
+                    </button>
+                    <button class="flex items-center">
+                        <i class="far fa-paper-plane mr-1"></i>
+                        <span>分享</span>
+                    </button>
+                    <button class="flex items-center">
+                        <i class="far fa-bookmark mr-1"></i>
+                        <span>收藏</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 动态2 -->
+            <div class="card">
+                <div class="flex items-center mb-3">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36" class="avatar-sm mr-3" alt="用户头像">
+                    <div>
+                        <h3 class="font-semibold text-sm">星际建筑师</h3>
+                        <p class="text-xs text-gray-500">5小时前</p>
+                    </div>
+                    <button class="ml-auto text-gray-400">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+                <p class="text-sm mb-3">在极光之城开设了一个新的展示空间，欢迎大家来参观我的虚拟建筑作品集！ #虚拟建筑 #展览</p>
+                <div class="rounded-xl overflow-hidden mb-3">
+                    <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4" class="w-full" alt="虚拟建筑">
+                </div>
+                <div class="flex justify-between text-gray-500 text-sm">
+                    <button class="flex items-center">
+                        <i class="far fa-heart mr-1"></i>
+                        <span>184</span>
+                    </button>
+                    <button class="flex items-center">
+                        <i class="far fa-comment mr-1"></i>
+                        <span>32</span>
+                    </button>
+                    <button class="flex items-center">
+                        <i class="far fa-paper-plane mr-1"></i>
+                        <span>分享</span>
+                    </button>
+                    <button class="flex items-center">
+                        <i class="far fa-bookmark mr-1"></i>
+                        <span>收藏</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 动态3 - 活动宣传 -->
+            <div class="card glassmorphism">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-calendar-alt text-purple-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-sm">官方活动</h3>
+                        <p class="text-xs text-gray-500">1天前</p>
+                    </div>
+                    <button class="ml-auto text-gray-400">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+                <div class="rounded-xl overflow-hidden mb-3 relative">
+                    <img src="https://images.unsplash.com/photo-1616161560629-7a11579cd2c5" class="w-full" alt="元宇宙活动">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4">
+                        <h3 class="text-white font-bold">元宇宙数字艺术节</h3>
+                        <p class="text-white text-sm opacity-80">4月15日-18日 · 虚拟艺术中心</p>
+                    </div>
+                </div>
+                <div class="mt-3 flex">
+                    <button class="btn btn-primary py-2 flex-1 text-sm">参与活动</button>
+                    <button class="btn btn-secondary py-2 ml-3 px-3">
+                        <i class="far fa-bookmark"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 创建新帖子的浮动按钮 -->
+        <div class="fixed right-6 bottom-24">
+            <button class="w-14 h-14 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+                <i class="fas fa-pen text-white text-xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="ios-tab-bar">
+        <a class="tab-item" data-page="home">
+            <i class="tab-icon fas fa-globe"></i>
+            <span>探索</span>
+        </a>
+        <a class="tab-item active" data-page="community">
+            <i class="tab-icon fas fa-users"></i>
+            <span>社区</span>
+        </a>
+        <a class="tab-item" data-page="marketplace">
+            <i class="tab-icon fas fa-store"></i>
+            <span>市场</span>
+        </a>
+        <a class="tab-item" data-page="studio">
+            <i class="tab-icon fas fa-magic"></i>
+            <span>创作</span>
+        </a>
+        <a class="tab-item" data-page="profile">
+            <i class="tab-icon fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <script src="assets/js/common.js"></script>
+</body>
+</html> 

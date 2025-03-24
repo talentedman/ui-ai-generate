@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>进度 - 健身应用</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 顶部状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content bg-gray-50">
+        <!-- 顶部导航 -->
+        <div class="bg-white px-4 py-4 shadow-sm">
+            <h1 class="text-xl font-bold">进度追踪</h1>
+            
+            <!-- 时间选择器 -->
+            <div class="flex justify-between items-center mt-3">
+                <button class="px-3 py-1 text-sm rounded-lg bg-gray-100">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>本周</span>
+                    <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                </button>
+                
+                <div class="flex space-x-2">
+                    <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100">
+                        <i class="fas fa-chevron-left text-gray-600"></i>
+                    </button>
+                    <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100">
+                        <i class="fas fa-chevron-right text-gray-600"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 周进度 -->
+        <div class="section bg-white shadow-sm">
+            <div class="flex justify-between mb-3">
+                <span class="text-sm text-gray-500">5月15日 - 5月21日</span>
+                <span class="text-sm font-medium text-primary">3/7天已完成</span>
+            </div>
+            
+            <div class="flex justify-between">
+                <div class="day-progress text-center">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center mx-auto mb-1">
+                        <i class="fas fa-check text-white text-sm"></i>
+                    </div>
+                    <span class="text-xs">一</span>
+                </div>
+                <div class="day-progress text-center">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center mx-auto mb-1">
+                        <i class="fas fa-check text-white text-sm"></i>
+                    </div>
+                    <span class="text-xs">二</span>
+                </div>
+                <div class="day-progress text-center">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center mx-auto mb-1">
+                        <i class="fas fa-check text-white text-sm"></i>
+                    </div>
+                    <span class="text-xs">三</span>
+                </div>
+                <div class="day-progress text-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mx-auto mb-1">
+                        <span class="text-xs font-medium">今</span>
+                    </div>
+                    <span class="text-xs font-medium">四</span>
+                </div>
+                <div class="day-progress text-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mx-auto mb-1">
+                        <span class="text-xs text-gray-400">五</span>
+                    </div>
+                    <span class="text-xs text-gray-400">五</span>
+                </div>
+                <div class="day-progress text-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mx-auto mb-1">
+                        <span class="text-xs text-gray-400">六</span>
+                    </div>
+                    <span class="text-xs text-gray-400">六</span>
+                </div>
+                <div class="day-progress text-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mx-auto mb-1">
+                        <span class="text-xs text-gray-400">日</span>
+                    </div>
+                    <span class="text-xs text-gray-400">日</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 汇总数据 -->
+        <div class="section">
+            <div class="card">
+                <h3 class="font-semibold mb-3">本周汇总</h3>
+                
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-dumbbell text-blue-500"></i>
+                        </div>
+                        <div>
+                            <div class="text-lg font-bold">5.3小时</div>
+                            <div class="text-xs text-gray-500">总锻炼时间</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-fire text-orange-500"></i>
+                        </div>
+                        <div>
+                            <div class="text-lg font-bold">2,450</div>
+                            <div class="text-xs text-gray-500">消耗卡路里</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-bolt text-purple-500"></i>
+                        </div>
+                        <div>
+                            <div class="text-lg font-bold">12</div>
+                            <div class="text-xs text-gray-500">锻炼次数</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-trophy text-green-500"></i>
+                        </div>
+                        <div>
+                            <div class="text-lg font-bold">3</div>
+                            <div class="text-xs text-gray-500">达成目标</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 折线图 -->
+        <div class="section">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold">卡路里消耗</h2>
+                <div class="flex space-x-2">
+                    <button class="px-3 py-1 text-xs rounded-full bg-primary text-white">周</button>
+                    <button class="px-3 py-1 text-xs rounded-full bg-gray-200">月</button>
+                    <button class="px-3 py-1 text-xs rounded-full bg-gray-200">年</button>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+                <!-- 这里是图表，实际开发时可以使用Chart.js等库 -->
+                <div class="chart-placeholder h-40 bg-gradient-to-r from-blue-50 to-indigo-50 rounded relative">
+                    <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-blue-100 to-transparent rounded">
+                        <!-- 模拟图表线条 -->
+                        <div class="absolute bottom-0 left-0 right-0 h-16 flex items-end px-4">
+                            <div class="bg-primary w-1/7 h-6 rounded-t-sm mx-0.5 flex-1"></div>
+                            <div class="bg-primary w-1/7 h-14 rounded-t-sm mx-0.5 flex-1"></div>
+                            <div class="bg-primary w-1/7 h-10 rounded-t-sm mx-0.5 flex-1"></div>
+                            <div class="bg-primary w-1/7 h-8 rounded-t-sm mx-0.5 flex-1"></div>
+                            <div class="bg-primary w-1/7 h-12 rounded-t-sm mx-0.5 flex-1"></div>
+                            <div class="bg-primary w-1/7 h-9 rounded-t-sm mx-0.5 flex-1"></div>
+                            <div class="bg-primary w-1/7 h-7 rounded-t-sm mx-0.5 flex-1"></div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-4 left-0 right-0 flex justify-between px-4 text-xs text-gray-500">
+                        <span>一</span>
+                        <span>二</span>
+                        <span>三</span>
+                        <span>四</span>
+                        <span>五</span>
+                        <span>六</span>
+                        <span>日</span>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between text-xs text-gray-500 mt-2">
+                    <div>
+                        <div class="font-medium">平均值</div>
+                        <div>350 卡路里</div>
+                    </div>
+                    <div>
+                        <div class="font-medium">最高值</div>
+                        <div>564 卡路里</div>
+                    </div>
+                    <div>
+                        <div class="font-medium">总计</div>
+                        <div>2,450 卡路里</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 成就记录 -->
+        <div class="section">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold">成就记录</h2>
+                <span class="text-primary text-sm font-medium">查看全部</span>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-3">
+                <div class="bg-white rounded-lg p-3 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-medal text-white"></i>
+                    </div>
+                    <div class="text-xs font-medium">连续7天</div>
+                </div>
+                
+                <div class="bg-white rounded-lg p-3 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-fire text-white"></i>
+                    </div>
+                    <div class="text-xs font-medium">燃脂专家</div>
+                </div>
+                
+                <div class="bg-white rounded-lg p-3 text-center shadow-sm">
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-400 to-purple-300 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-dumbbell text-white"></i>
+                    </div>
+                    <div class="text-xs font-medium">力量达人</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 最近活动 -->
+        <div class="section">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold">最近活动</h2>
+                <span class="text-primary text-sm font-medium">历史记录</span>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-sm divide-y divide-gray-100">
+                <div class="p-4 flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-dumbbell text-blue-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold">上肢力量训练</h3>
+                        <p class="text-xs text-gray-500">今天 09:30 · 45分钟</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="font-semibold text-primary">320</div>
+                        <div class="text-xs text-gray-500">卡路里</div>
+                    </div>
+                </div>
+                
+                <div class="p-4 flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-running text-green-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold">有氧跑步训练</h3>
+                        <p class="text-xs text-gray-500">昨天 18:15 · 30分钟</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="font-semibold text-primary">265</div>
+                        <div class="text-xs text-gray-500">卡路里</div>
+                    </div>
+                </div>
+                
+                <div class="p-4 flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-yoga text-purple-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold">晨间瑜伽</h3>
+                        <p class="text-xs text-gray-500">昨天 07:20 · 15分钟</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="font-semibold text-primary">120</div>
+                        <div class="text-xs text-gray-500">卡路里</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="workout.html" class="tab-item">
+            <i class="fas fa-dumbbell"></i>
+            <span>锻炼</span>
+        </a>
+        <a href="progress.html" class="tab-item active">
+            <i class="fas fa-chart-line"></i>
+            <span>进度</span>
+        </a>
+        <a href="community.html" class="tab-item">
+            <i class="fas fa-users"></i>
+            <span>社区</span>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

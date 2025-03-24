@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI UI 收集展示平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .app-card {
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .app-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+        }
+    </style>
+</head>
+<body>
+    <header class="header-bg text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">AI UI 收集展示平台</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+                多种类型应用界面设计展示，为UI/UX设计师和前端开发者提供参考
+            </p>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">应用原型展示</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                浏览以下各种类型的高保真应用原型，探索不同应用场景下的UI设计解决方案
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
+            <!-- 电商App -->
+            <div class="app-card bg-white">
+                <a href="电商App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="电商App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">电商App</h3>
+                        <p class="text-gray-600 text-sm">现代电子商务应用设计，包含商品浏览、购物车、支付等流程</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 外卖点餐App -->
+            <div class="app-card bg-white">
+                <a href="外卖点餐App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="外卖点餐App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">外卖点餐App</h3>
+                        <p class="text-gray-600 text-sm">餐厅浏览、菜品选择、下单支付一体化的外卖应用原型</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 音乐App -->
+            <div class="app-card bg-white">
+                <a href="音乐App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="音乐App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">音乐App</h3>
+                        <p class="text-gray-600 text-sm">音乐播放、歌单管理、歌手浏览等功能的音乐应用设计</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 社区论坛App -->
+            <div class="app-card bg-white">
+                <a href="社区论坛App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="社区论坛App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">社区论坛App</h3>
+                        <p class="text-gray-600 text-sm">内容分享、社区互动、用户讨论的论坛应用原型</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 健身App -->
+            <div class="app-card bg-white">
+                <a href="健身App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="健身App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">健身App</h3>
+                        <p class="text-gray-600 text-sm">运动跟踪、健身计划、数据统计分析的健身应用设计</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 新闻App -->
+            <div class="app-card bg-white">
+                <a href="新闻App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="新闻App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">新闻App</h3>
+                        <p class="text-gray-600 text-sm">新闻资讯浏览、频道管理、个性化推荐的新闻应用原型</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 银行App -->
+            <div class="app-card bg-white">
+                <a href="银行App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="银行App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">银行App</h3>
+                        <p class="text-gray-600 text-sm">账户管理、转账支付、理财产品等金融服务应用设计</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 语音房直播App -->
+            <div class="app-card bg-white">
+                <a href="语音房直播App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1603688905522-bd241199a742?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="语音房直播App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">语音房直播App</h3>
+                        <p class="text-gray-600 text-sm">语音直播、互动交流、虚拟礼物等社交直播应用原型</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 语音直播App -->
+            <div class="app-card bg-white">
+                <a href="语音直播App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1563699182-58befde099e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="语音直播App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">语音直播App</h3>
+                        <p class="text-gray-600 text-sm">主播互动、用户评论、礼物打赏等语音直播应用设计</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 社区团购App -->
+            <div class="app-card bg-white">
+                <a href="社区团购App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1506617420156-8e4536971650?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="社区团购App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">社区团购App</h3>
+                        <p class="text-gray-600 text-sm">社区拼团、优惠活动、自提配送等团购应用原型</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 元宇宙App -->
+            <div class="app-card bg-white">
+                <a href="元宇宙App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1635830625698-3b9bd74671ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="元宇宙App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">元宇宙App</h3>
+                        <p class="text-gray-600 text-sm">虚拟空间、数字资产、社交互动的元宇宙应用设计</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 游戏攻略App -->
+            <div class="app-card bg-white">
+                <a href="游戏攻略App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="游戏攻略App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">游戏攻略App</h3>
+                        <p class="text-gray-600 text-sm">游戏资讯、攻略分享、玩家社区的游戏辅助应用原型</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 情侣App -->
+            <div class="app-card bg-white">
+                <a href="情侣App/index.html" class="block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="情侣App界面">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">情侣App</h3>
+                        <p class="text-gray-600 text-sm">情侣互动、纪念日提醒、共同相册等情侣专属应用设计</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">AI UI 收集展示平台</h3>
+                    <p class="text-gray-400">为设计师和开发者提供UI/UX设计参考</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/talentedman/ui-ai-generate" class="text-white hover:text-gray-300" target="_blank">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                &copy; 2025 AI UI 收集展示平台 | MIT许可证
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

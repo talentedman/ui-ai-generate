@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邻里团购 - 商品详情</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        .product-detail-slider {
+            height: 250px;
+            position: relative;
+        }
+        
+        .indicator {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 0 3px;
+        }
+        
+        .dot.active {
+            width: 15px;
+            background-color: white;
+        }
+        
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        
+        .specs-table tr td {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light-gray);
+            font-size: 14px;
+        }
+        
+        .specs-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .specs-table tr td:first-child {
+            color: #666;
+            width: 80px;
+        }
+        
+        .group-buy-options {
+            display: flex;
+            margin: 10px 0;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+        
+        .group-option {
+            flex-shrink: 0;
+            padding: 8px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 20px;
+            margin-right: 10px;
+            font-size: 13px;
+        }
+        
+        .group-option.active {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: #fff4f4;
+        }
+        
+        .shop-info {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            margin: 10px 0;
+        }
+        
+        .shop-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        
+        .shop-name {
+            font-weight: 500;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        
+        .shop-stats {
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .shop-action {
+            margin-left: auto;
+            padding: 5px 10px;
+            border: 1px solid var(--light-gray);
+            border-radius: 15px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="time">14:25</div>
+            <div class="right">
+                <div class="signal"><i class="fas fa-signal"></i></div>
+                <div class="wifi"><i class="fas fa-wifi"></i></div>
+                <div class="battery"><i class="fas fa-battery-full"></i> 100%</div>
+            </div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="content">
+            <!-- 返回导航 -->
+            <div class="navbar">
+                <div class="navbar-left">
+                    <i class="fas fa-chevron-left text-gray-600"></i>
+                </div>
+                <div class="navbar-right">
+                    <i class="fas fa-share-alt text-gray-600 mr-4"></i>
+                    <i class="fas fa-ellipsis-v text-gray-600"></i>
+                </div>
+            </div>
+            
+            <!-- 商品图片轮播 -->
+            <div class="product-detail-slider">
+                <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-full h-full object-cover">
+                <div class="indicator">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+            
+            <!-- 价格和标题区域 -->
+            <div class="product-detail-info">
+                <div class="flex items-center mb-2">
+                    <div class="product-detail-price">¥29.9</div>
+                    <div class="text-sm text-gray-400 line-through ml-2">¥39.9</div>
+                </div>
+                
+                <div class="product-detail-title">【限时团购】新鲜草莓 500g装 甜香多汁</div>
+                
+                <div class="flex items-center mt-2">
+                    <div class="tag">包邮</div>
+                    <div class="tag">48小时发货</div>
+                    <div class="tag">7天无理由退换</div>
+                </div>
+                
+                <div class="text-sm text-gray-500 mt-3">已售 1342 | 好评率 98%</div>
+            </div>
+            
+            <!-- 团购选项 -->
+            <div class="bg-white p-3 mt-2">
+                <div class="text-base font-medium mb-2">团购优惠</div>
+                <div class="group-buy-options">
+                    <div class="group-option active">
+                        3人团 · ¥29.9/件
+                    </div>
+                    <div class="group-option">
+                        5人团 · ¥27.9/件
+                    </div>
+                    <div class="group-option">
+                        10人团 · ¥25.9/件
+                    </div>
+                    <div class="group-option">
+                        单独购买 · ¥39.9/件
+                    </div>
+                </div>
+                
+                <div class="flex mt-3">
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-6 h-6 rounded-full border border-white">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-6 h-6 rounded-full border border-white -ml-2">
+                        <div class="text-xs text-gray-500 ml-2">还差1人成团，距结束 <span class="text-red-500">12:45:30</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商家信息 -->
+            <div class="shop-info">
+                <img src="https://randomuser.me/api/portraits/men/75.jpg" class="shop-logo">
+                <div>
+                    <div class="shop-name">天河生鲜超市</div>
+                    <div class="shop-stats">商品 1234 | 关注 3.5万</div>
+                </div>
+                <div class="shop-action">进店逛逛</div>
+            </div>
+            
+            <!-- 商品规格 -->
+            <div class="bg-white p-3 mt-2">
+                <div class="text-base font-medium mb-2">商品参数</div>
+                <table class="specs-table">
+                    <tr>
+                        <td>产地</td>
+                        <td>中国大陆·广东</td>
+                    </tr>
+                    <tr>
+                        <td>净含量</td>
+                        <td>500g±10g</td>
+                    </tr>
+                    <tr>
+                        <td>保质期</td>
+                        <td>7天（冷藏保存）</td>
+                    </tr>
+                    <tr>
+                        <td>储存方式</td>
+                        <td>请放入冰箱冷藏保存</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <!-- 商品详情 -->
+            <div class="bg-white p-3 mt-2">
+                <div class="text-base font-medium mb-2">商品详情</div>
+                <div class="product-detail-desc">
+                    新鲜草莓，产地直发，48小时内采摘发货，保证新鲜度。果实饱满，色泽鲜艳，香甜多汁。
+                    <br><br>
+                    【品种】红颜草莓
+                    <br>
+                    【规格】500g±10g/盒
+                    <br>
+                    【等级】特级果
+                    <br>
+                    【温馨提示】
+                    <br>
+                    1. 收到后请尽快食用，最佳食用期3天内
+                    <br>
+                    2. 请放冰箱冷藏保存，延长保鲜
+                    <br>
+                    3. 水果属于生鲜产品，请以收到实物为准
+                </div>
+                
+                <div class="mt-3">
+                    <img src="https://images.pexels.com/photos/70746/strawberries-red-fruit-royalty-free-70746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-full rounded-lg mb-3">
+                    <img src="https://images.pexels.com/photos/1120575/pexels-photo-1120575.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-full rounded-lg">
+                </div>
+            </div>
+            
+            <!-- 底部操作栏 -->
+            <div class="product-actions">
+                <div class="flex items-center justify-center px-4">
+                    <div class="text-center mr-5">
+                        <i class="far fa-heart text-gray-500 text-xl"></i>
+                        <div class="text-xs text-gray-500 mt-1">收藏</div>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-shopping-cart text-gray-500 text-xl"></i>
+                        <div class="text-xs text-gray-500 mt-1">购物车</div>
+                    </div>
+                </div>
+                <button class="btn bg-orange-500">单独购买</button>
+                <button class="btn">3人团购</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

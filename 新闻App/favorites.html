@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收藏 - 新闻 App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .status-bar {
+            height: 44px;
+            background: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .nav-bar {
+            height: 44px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .tab-bar {
+            height: 83px;
+            background: #fff;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+        }
+        .tab-item.active {
+            color: #007AFF;
+        }
+        .favorite-card {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 16px;
+        }
+        .favorite-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div class="flex gap-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <h1 class="text-xl font-bold">我的收藏</h1>
+        <div class="ml-auto flex gap-4">
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-trash"></i>
+        </div>
+    </div>
+
+    <!-- 收藏内容 -->
+    <div class="pb-20">
+        <!-- 收藏新闻列表 -->
+        <div class="favorite-card">
+            <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e" alt="收藏新闻" class="favorite-image mb-4">
+            <h2 class="text-xl font-bold mb-2">全球科技巨头发布最新财报，AI 业务增长超预期</h2>
+            <p class="text-gray-600 mb-2">多家科技公司公布最新季度财报，AI 相关业务表现亮眼，带动整体营收增长...</p>
+            <div class="flex justify-between text-sm text-gray-500">
+                <span>科技日报</span>
+                <span>收藏于 2024-02-20</span>
+            </div>
+        </div>
+
+        <div class="favorite-card">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2">新能源汽车市场持续升温，多家车企加码布局</h3>
+                    <p class="text-gray-600 text-sm mb-2">随着政策支持力度加大，新能源汽车市场迎来新一轮发展机遇...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>财经周刊</span>
+                        <span>收藏于 2024-02-19</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <div class="favorite-card">
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <h3 class="font-bold mb-2">2024年全球气候变化报告：极端天气事件频发</h3>
+                    <p class="text-gray-600 text-sm mb-2">最新研究显示，全球气温持续上升，极端天气事件发生频率显著增加...</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>环球时报</span>
+                        <span>收藏于 2024-02-18</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd" alt="新闻配图" class="w-24 h-24 object-cover rounded-lg">
+            </div>
+        </div>
+
+        <!-- 空状态 -->
+        <div class="flex flex-col items-center justify-center py-20 text-gray-500">
+            <i class="fas fa-bookmark text-4xl mb-4"></i>
+            <p>暂无收藏内容</p>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <i class="fas fa-home text-xl mb-1"></i>
+            <span class="text-xs">首页</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-th-large text-xl mb-1"></i>
+            <span class="text-xs">分类</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-search text-xl mb-1"></i>
+            <span class="text-xs">搜索</span>
+        </div>
+        <div class="tab-item active">
+            <i class="fas fa-bookmark text-xl mb-1"></i>
+            <span class="text-xs">收藏</span>
+        </div>
+        <div class="tab-item">
+            <i class="fas fa-user text-xl mb-1"></i>
+            <span class="text-xs">我的</span>
+        </div>
+    </div>
+</body>
+</html>

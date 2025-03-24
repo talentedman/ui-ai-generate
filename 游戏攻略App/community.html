@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏攻略 - 社区</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="app-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="status-bar-left">
+                <span>9:41</span>
+            </div>
+            <div class="status-bar-right">
+                <i class="fas fa-signal mr-2"></i>
+                <i class="fas fa-wifi mr-2"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- 主要内容区 -->
+        <div class="main-content p-4">
+            <!-- 搜索栏 -->
+            <div class="search-bar mb-4">
+                <div class="relative">
+                    <input type="text" placeholder="搜索游戏或攻略" class="w-full pl-10 pr-4 py-2 rounded-full bg-white border border-gray-200 focus:outline-none focus:border-primary">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+            </div>
+
+            <!-- 发帖按钮 -->
+            <div class="mb-4">
+                <button class="w-full bg-primary text-white py-3 rounded-full font-semibold flex items-center justify-center">
+                    <i class="fas fa-plus mr-2"></i>
+                    发布新帖子
+                </button>
+            </div>
+
+            <!-- 帖子列表 -->
+            <div class="space-y-4">
+                <!-- 帖子1 -->
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <div class="flex items-start mb-4">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="用户头像" 
+                             class="w-10 h-10 rounded-full mr-3">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold">游戏达人</h3>
+                                <span class="text-sm text-gray-500">2小时前</span>
+                            </div>
+                            <p class="text-sm text-gray-500">原神玩家</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2">分享一个原神3.0版本的新手攻略</h4>
+                        <p class="text-gray-600 text-sm">最近看到很多新玩家入坑，整理了一份详细的攻略，包括角色选择、资源获取、队伍搭配等内容...</p>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <div class="flex items-center space-x-4">
+                            <span><i class="far fa-heart mr-1"></i>128</span>
+                            <span><i class="far fa-comment mr-1"></i>32</span>
+                            <span><i class="far fa-share-square mr-1"></i>16</span>
+                        </div>
+                        <span class="badge">原神</span>
+                    </div>
+                </div>
+
+                <!-- 帖子2 -->
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <div class="flex items-start mb-4">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="用户头像" 
+                             class="w-10 h-10 rounded-full mr-3">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold">电竞教练</h3>
+                                <span class="text-sm text-gray-500">4小时前</span>
+                            </div>
+                            <p class="text-sm text-gray-500">王者荣耀教练</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2">S30赛季最强打野英雄推荐</h4>
+                        <p class="text-gray-600 text-sm">新赛季打野位变化很大，给大家推荐几个当前版本强势的打野英雄，并附上详细的打法思路...</p>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <div class="flex items-center space-x-4">
+                            <span><i class="far fa-heart mr-1"></i>256</span>
+                            <span><i class="far fa-comment mr-1"></i>64</span>
+                            <span><i class="far fa-share-square mr-1"></i>32</span>
+                        </div>
+                        <span class="badge">王者荣耀</span>
+                    </div>
+                </div>
+
+                <!-- 帖子3 -->
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <div class="flex items-start mb-4">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="用户头像" 
+                             class="w-10 h-10 rounded-full mr-3">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold">游戏玩家</h3>
+                                <span class="text-sm text-gray-500">6小时前</span>
+                            </div>
+                            <p class="text-sm text-gray-500">和平精英玩家</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2">和平精英新版本武器搭配推荐</h4>
+                        <p class="text-gray-600 text-sm">新版本更新后，很多武器的属性都发生了变化，分享一下我的武器搭配心得...</p>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <div class="flex items-center space-x-4">
+                            <span><i class="far fa-heart mr-1"></i>192</span>
+                            <span><i class="far fa-comment mr-1"></i>48</span>
+                            <span><i class="far fa-share-square mr-1"></i>24</span>
+                        </div>
+                        <span class="badge">和平精英</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="tab-bar">
+            <div class="tab">
+                <i class="fas fa-home"></i>
+                <span class="tab-text">首页</span>
+            </div>
+            <div class="tab">
+                <i class="fas fa-th-large"></i>
+                <span class="tab-text">分类</span>
+            </div>
+            <div class="tab active">
+                <i class="fas fa-comments"></i>
+                <span class="tab-text">社区</span>
+            </div>
+            <div class="tab">
+                <i class="fas fa-user"></i>
+                <span class="tab-text">我的</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

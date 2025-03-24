@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 电商App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #F5F5F5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 80px;
+        }
+        
+        .search-bar {
+            border-radius: 20px;
+            background-color: #F0F0F0;
+        }
+        
+        .carousel {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: #FFF0F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+            color: #FF6B6B;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .product-image {
+            height: 160px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .price {
+            color: #FF6B6B;
+            font-weight: bold;
+        }
+        
+        .nav-header {
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部搜索栏 -->
+    <div class="nav-header p-4 shadow-sm">
+        <div class="flex items-center">
+            <div class="search-bar flex-1 flex items-center p-2 px-4">
+                <i class="fas fa-search text-gray-400 mr-2"></i>
+                <input type="text" placeholder="搜索商品" class="bg-transparent w-full outline-none text-sm">
+            </div>
+            <div class="ml-3">
+                <i class="fas fa-bell text-gray-500 text-xl"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 主内容区 -->
+    <div class="p-4">
+        <!-- 轮播图 -->
+        <div class="carousel mb-5">
+            <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="促销活动" class="carousel-image">
+            <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/50 to-transparent text-white">
+                <h3 class="font-bold">夏季特惠活动</h3>
+                <p class="text-sm opacity-80">精选夏季商品低至5折起</p>
+            </div>
+        </div>
+        
+        <!-- 分类导航 -->
+        <div class="grid grid-cols-5 gap-2 mb-6">
+            <div class="category-item">
+                <div class="category-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <span class="text-xs">手机</span>
+            </div>
+            <div class="category-item">
+                <div class="category-icon">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <span class="text-xs">电脑</span>
+            </div>
+            <div class="category-item">
+                <div class="category-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <span class="text-xs">服饰</span>
+            </div>
+            <div class="category-item">
+                <div class="category-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <span class="text-xs">美食</span>
+            </div>
+            <div class="category-item">
+                <div class="category-icon">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <span class="text-xs">更多</span>
+            </div>
+        </div>
+        
+        <!-- 限时抢购 -->
+        <div class="mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-bold">限时抢购</h2>
+                <a href="#" class="text-sm text-gray-500">更多 <i class="fas fa-chevron-right text-xs"></i></a>
+            </div>
+            <div class="flex overflow-x-auto pb-2 -mx-4 px-4">
+                <div class="flex-shrink-0 w-28 mr-3 bg-white rounded-lg p-2 text-center">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80" alt="运动鞋" class="w-full h-24 object-cover rounded mb-2">
+                    <div class="price text-sm">¥199</div>
+                    <div class="text-xs line-through text-gray-400">¥399</div>
+                </div>
+                <div class="flex-shrink-0 w-28 mr-3 bg-white rounded-lg p-2 text-center">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80" alt="智能手表" class="w-full h-24 object-cover rounded mb-2">
+                    <div class="price text-sm">¥599</div>
+                    <div class="text-xs line-through text-gray-400">¥899</div>
+                </div>
+                <div class="flex-shrink-0 w-28 mr-3 bg-white rounded-lg p-2 text-center">
+                    <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80" alt="耳机" class="w-full h-24 object-cover rounded mb-2">
+                    <div class="price text-sm">¥129</div>
+                    <div class="text-xs line-through text-gray-400">¥259</div>
+                </div>
+                <div class="flex-shrink-0 w-28 mr-3 bg-white rounded-lg p-2 text-center">
+                    <img src="https://images.unsplash.com/photo-1564466809058-bf4114d55352?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80" alt="手机壳" class="w-full h-24 object-cover rounded mb-2">
+                    <div class="price text-sm">¥39</div>
+                    <div class="text-xs line-through text-gray-400">¥69</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 热门商品 -->
+        <div>
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-bold">热门商品</h2>
+                <a href="#" class="text-sm text-gray-500">更多 <i class="fas fa-chevron-right text-xs"></i></a>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="iPhone 13" class="product-image">
+                    <div class="p-2">
+                        <div class="text-sm font-medium mb-1 truncate">Apple iPhone 13 Pro 256GB</div>
+                        <div class="text-xs text-gray-500 mb-2">超视网膜XDR显示屏</div>
+                        <div class="price">¥8,999</div>
+                        <div class="text-xs text-gray-500 mt-1">已售 5823</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="耳机" class="product-image">
+                    <div class="p-2">
+                        <div class="text-sm font-medium mb-1 truncate">Sony WH-1000XM4 降噪耳机</div>
+                        <div class="text-xs text-gray-500 mb-2">业界领先降噪效果</div>
+                        <div class="price">¥2,299</div>
+                        <div class="text-xs text-gray-500 mt-1">已售 3211</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1574269910231-6daa6bdf6a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="平板电脑" class="product-image">
+                    <div class="p-2">
+                        <div class="text-sm font-medium mb-1 truncate">iPad Pro 12.9英寸 M1芯片</div>
+                        <div class="text-xs text-gray-500 mb-2">Liquid视网膜XDR屏幕</div>
+                        <div class="price">¥7,399</div>
+                        <div class="text-xs text-gray-500 mt-1">已售 2456</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="笔记本电脑" class="product-image">
+                    <div class="p-2">
+                        <div class="text-sm font-medium mb-1 truncate">MacBook Pro 14英寸 M1 Pro</div>
+                        <div class="text-xs text-gray-500 mb-2">16GB内存 512GB SSD</div>
+                        <div class="price">¥14,999</div>
+                        <div class="text-xs text-gray-500 mt-1">已售 1892</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item active">
+            <i class="fas fa-home tab-icon"></i>
+            <span>首页</span>
+        </a>
+        <a href="category.html" class="tab-item">
+            <i class="fas fa-th-large tab-icon"></i>
+            <span>分类</span>
+        </a>
+        <a href="cart.html" class="tab-item">
+            <i class="fas fa-shopping-cart tab-icon"></i>
+            <span>购物车</span>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <i class="fas fa-user tab-icon"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <style>
+        .tab-bar {
+            display: flex;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background-color: white;
+            border-top: 1px solid #e0e0e0;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 25px; /* 适配 iPhone 底部边距 */
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            font-size: 10px;
+            text-decoration: none;
+        }
+        .tab-item.active {
+            color: #FF6B6B;
+        }
+        .tab-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+    </style>
+</body>
+</html> 

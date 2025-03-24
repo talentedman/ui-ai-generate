@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车 - 外卖点餐App</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="iphone-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="status-bar-time">9:41</div>
+            <div class="status-bar-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- 页面内容 -->
+        <div class="page-container">
+            <!-- 顶部导航栏 -->
+            <div class="flex items-center justify-between p-4 bg-white sticky top-0 z-10 shadow-sm">
+                <a href="../restaurant/restaurant-detail.html" class="text-black">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1 class="text-lg font-bold">购物车</h1>
+                <button class="text-gray-500 text-sm">
+                    清空 <i class="fas fa-trash-alt ml-1"></i>
+                </button>
+            </div>
+
+            <!-- 餐厅信息 -->
+            <div class="p-4 bg-white border-b border-gray-100">
+                <div class="flex items-center">
+                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="餐厅logo" class="w-10 h-10 rounded-lg object-cover mr-3">
+                    <div>
+                        <h2 class="font-semibold text-base">老北京炸酱面</h2>
+                        <div class="text-xs text-gray-500 mt-1">预计35分钟送达</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 购物车列表 -->
+            <div class="bg-white mb-4">
+                <div class="p-4 border-b border-gray-100">
+                    <div class="flex justify-between items-center">
+                        <div class="flex-1">
+                            <h3 class="font-medium">经典炸酱面</h3>
+                            <div class="text-gray-500 text-xs mt-1">小份 / 不辣</div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="text-red-500 font-medium mr-4">¥18</div>
+                            <div class="flex items-center">
+                                <button class="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-gray-500">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="mx-2 text-sm">1</span>
+                                <button class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-4 border-b border-gray-100">
+                    <div class="flex justify-between items-center">
+                        <div class="flex-1">
+                            <h3 class="font-medium">香菇肉丝面</h3>
+                            <div class="text-gray-500 text-xs mt-1">小份 / 不辣 / 加卤蛋</div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="text-red-500 font-medium mr-4">¥25</div>
+                            <div class="flex items-center">
+                                <button class="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-gray-500">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="mx-2 text-sm">1</span>
+                                <button class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 优惠券选择 -->
+            <div class="bg-white p-4 flex justify-between items-center mb-2">
+                <span>优惠券</span>
+                <div class="flex items-center text-gray-500">
+                    <span class="text-red-500 mr-1">满30减5</span>
+                    <i class="fas fa-chevron-right text-xs"></i>
+                </div>
+            </div>
+
+            <!-- 备注 -->
+            <div class="bg-white p-4 flex justify-between items-center mb-2">
+                <span>备注</span>
+                <div class="flex items-center text-gray-500">
+                    <span>口味、偏好等</span>
+                    <i class="fas fa-chevron-right text-xs ml-1"></i>
+                </div>
+            </div>
+
+            <!-- 餐具数量 -->
+            <div class="bg-white p-4 flex justify-between items-center mb-4">
+                <span>餐具数量</span>
+                <div class="flex items-center">
+                    <button class="px-3 py-1 bg-gray-100 rounded-l-lg text-gray-500">
+                        <i class="fas fa-minus text-xs"></i>
+                    </button>
+                    <span class="px-4 py-1 bg-gray-100">1</span>
+                    <button class="px-3 py-1 bg-gray-100 rounded-r-lg text-gray-500">
+                        <i class="fas fa-plus text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 费用明细 -->
+            <div class="bg-white p-4 mb-20">
+                <h3 class="font-semibold mb-3">费用明细</h3>
+                <div class="flex justify-between text-sm mb-2">
+                    <span class="text-gray-500">商品金额</span>
+                    <span>¥43</span>
+                </div>
+                <div class="flex justify-between text-sm mb-2">
+                    <span class="text-gray-500">配送费</span>
+                    <span>¥3</span>
+                </div>
+                <div class="flex justify-between text-sm mb-2">
+                    <span class="text-gray-500">优惠金额</span>
+                    <span class="text-red-500">-¥5</span>
+                </div>
+                <div class="border-t border-gray-100 mt-3 pt-3 flex justify-between font-bold">
+                    <span>实付金额</span>
+                    <span class="text-red-500">¥41</span>
+                </div>
+            </div>
+
+            <!-- 底部结算栏 -->
+            <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 flex items-center justify-between">
+                <div>
+                    <span class="text-red-500 font-bold text-xl">¥41</span>
+                    <span class="text-gray-500 text-xs ml-1">已优惠¥5</span>
+                </div>
+                <a href="checkout.html" class="bg-red-500 text-white px-8 py-3 rounded-full font-medium">
+                    去结算
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

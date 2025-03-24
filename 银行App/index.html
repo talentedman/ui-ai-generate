@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>银行App原型集合</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f5f5f7;
+      padding: 20px;
+    }
+    
+    .prototype-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .prototype-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .screens-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+    
+    .screen-item {
+      width: 410px;
+      margin-bottom: 40px;
+    }
+    
+    .screen-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .screen-title i {
+      margin-right: 8px;
+    }
+    
+    .screen-frame {
+      border: none;
+      border-radius: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+    
+    .divider {
+      height: 1px;
+      background-color: #e5e5e5;
+      margin: 60px 0 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="prototype-container">
+    <div class="prototype-header">
+      <h1 class="text-4xl font-bold mb-4">银行App原型设计</h1>
+      <p class="text-xl text-gray-600">高保真交互原型，用于App界面演示</p>
+    </div>
+    
+    <!-- 主要流程页面 -->
+    <h2 class="text-2xl font-bold mb-6">主要页面</h2>
+    <div class="screens-container">
+      <div class="screen-item">
+        <div class="screen-title">
+          <i class="fas fa-sign-in-alt text-blue-600"></i>
+          <span>登录</span>
+        </div>
+        <iframe src="pages/login.html" width="390" height="844" class="screen-frame"></iframe>
+      </div>
+      
+      <div class="screen-item">
+        <div class="screen-title">
+          <i class="fas fa-home text-blue-600"></i>
+          <span>首页</span>
+        </div>
+        <iframe src="pages/home.html" width="390" height="844" class="screen-frame"></iframe>
+      </div>
+      
+      <div class="screen-item">
+        <div class="screen-title">
+          <i class="fas fa-credit-card text-blue-600"></i>
+          <span>账户</span>
+        </div>
+        <iframe src="pages/account.html" width="390" height="844" class="screen-frame"></iframe>
+      </div>
+      
+      <div class="screen-item">
+        <div class="screen-title">
+          <i class="fas fa-exchange-alt text-blue-600"></i>
+          <span>转账</span>
+        </div>
+        <iframe src="pages/transfer.html" width="390" height="844" class="screen-frame"></iframe>
+      </div>
+      
+      <div class="screen-item">
+        <div class="screen-title">
+          <i class="fas fa-chart-line text-blue-600"></i>
+          <span>理财</span>
+        </div>
+        <iframe src="pages/wealth.html" width="390" height="844" class="screen-frame"></iframe>
+      </div>
+      
+      <div class="screen-item">
+        <div class="screen-title">
+          <i class="fas fa-user text-blue-600"></i>
+          <span>我的</span>
+        </div>
+        <iframe src="pages/profile.html" width="390" height="844" class="screen-frame"></iframe>
+      </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <!-- 开发指南 -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-bold mb-6">原型使用说明</h2>
+      
+      <div class="bg-white p-6 rounded-lg shadow-sm">
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">设计规范</h3>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>设备尺寸：iPhone 15 Pro (390×844px)</li>
+            <li>主色系：深蓝色 (#0052CC)、浅蓝色 (#4C9AFF)</li>
+            <li>强调色：橙色 (#FF8800)、绿色 (#00875A)、红色 (#FF5630)</li>
+            <li>字体系列：System Font (SF Pro Display/Inter)</li>
+          </ul>
+        </div>
+        
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">页面结构</h3>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>顶部状态栏：展示时间、网络状态、电池电量</li>
+            <li>内容区域：各页面主要内容</li>
+            <li>底部导航栏：首页、账户、转账、理财、我的</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-2">开发说明</h3>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>所有页面基于HTML + Tailwind CSS + FontAwesome开发</li>
+            <li>目录结构清晰：css/、components/、pages/</li>
+            <li>组件化设计：状态栏、导航栏等为独立组件</li>
+            <li>所有原型均支持基本的交互操作</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // 调整iframe高度以适应内容
+    document.addEventListener('DOMContentLoaded', function() {
+      const frames = document.querySelectorAll('iframe');
+      frames.forEach(frame => {
+        frame.onload = function() {
+          // 保持固定高度，不做调整
+        }
+      });
+    });
+  </script>
+</body>
+</html> 

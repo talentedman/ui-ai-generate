@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料 - 健身应用</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 顶部状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content bg-gray-50">
+        <!-- 顶部导航 -->
+        <div class="bg-white px-4 py-4 flex justify-between items-center shadow-sm">
+            <h1 class="text-xl font-bold">个人资料</h1>
+            <div class="flex items-center">
+                <button class="w-10 h-10 flex items-center justify-center text-gray-600">
+                    <i class="fas fa-cog text-lg"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 用户信息 -->
+        <div class="bg-white px-4 py-6 border-b border-gray-200">
+            <div class="flex items-center">
+                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                     alt="用户头像" class="avatar-lg mr-5">
+                <div>
+                    <h2 class="text-xl font-bold">王小明</h2>
+                    <p class="text-gray-500 text-sm">健身爱好者，热爱生活</p>
+                    <div class="flex mt-2">
+                        <button class="btn-primary text-xs py-1 px-4 mr-2">编辑资料</button>
+                        <button class="btn-outline text-xs py-1 px-4">分享</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 会员信息 -->
+        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 m-4 rounded-lg p-4 text-white shadow-md">
+            <div class="flex justify-between items-center mb-3">
+                <div>
+                    <h3 class="font-semibold">健身会员</h3>
+                    <p class="text-xs opacity-80">高级会员 · 有效期至2024年8月</p>
+                </div>
+                <i class="fas fa-crown text-yellow-300 text-2xl"></i>
+            </div>
+            <div class="text-right">
+                <button class="bg-white text-primary text-sm px-4 py-1.5 rounded-full font-medium">续费会员</button>
+            </div>
+        </div>
+        
+        <!-- 统计数据 -->
+        <div class="px-4 py-3 bg-white mb-3">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="font-semibold">我的统计</h3>
+                <span class="text-primary text-sm">查看详情</span>
+            </div>
+            
+            <div class="grid grid-cols-4 gap-2 text-center">
+                <div>
+                    <div class="text-lg font-bold text-primary">68</div>
+                    <div class="text-xs text-gray-500">总锻炼</div>
+                </div>
+                <div>
+                    <div class="text-lg font-bold text-primary">42</div>
+                    <div class="text-xs text-gray-500">总时长(h)</div>
+                </div>
+                <div>
+                    <div class="text-lg font-bold text-primary">15</div>
+                    <div class="text-xs text-gray-500">本月锻炼</div>
+                </div>
+                <div>
+                    <div class="text-lg font-bold text-primary">8</div>
+                    <div class="text-xs text-gray-500">连续天数</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 成就 -->
+        <div class="px-4 py-3 bg-white mb-3">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="font-semibold">我的成就</h3>
+                <span class="text-primary text-sm">全部成就</span>
+            </div>
+            
+            <div class="flex flex-wrap">
+                <div class="w-1/4 p-2 text-center">
+                    <div class="w-14 h-14 bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-full flex items-center justify-center mx-auto mb-1">
+                        <i class="fas fa-medal text-white text-xl"></i>
+                    </div>
+                    <div class="text-xs">连续7天</div>
+                </div>
+                <div class="w-1/4 p-2 text-center">
+                    <div class="w-14 h-14 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full flex items-center justify-center mx-auto mb-1">
+                        <i class="fas fa-fire text-white text-xl"></i>
+                    </div>
+                    <div class="text-xs">燃脂专家</div>
+                </div>
+                <div class="w-1/4 p-2 text-center">
+                    <div class="w-14 h-14 bg-gradient-to-r from-purple-400 to-purple-300 rounded-full flex items-center justify-center mx-auto mb-1">
+                        <i class="fas fa-dumbbell text-white text-xl"></i>
+                    </div>
+                    <div class="text-xs">力量达人</div>
+                </div>
+                <div class="w-1/4 p-2 text-center">
+                    <div class="w-14 h-14 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-1">
+                        <i class="fas fa-plus text-gray-400 text-xl"></i>
+                    </div>
+                    <div class="text-xs text-gray-400">更多</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 设置菜单 -->
+        <div class="bg-white rounded-lg mx-4 mt-3 overflow-hidden">
+            <a href="#" class="list-item">
+                <i class="fas fa-heart text-red-500 list-item-icon"></i>
+                <div class="list-item-content">
+                    <div class="list-item-title">我的收藏</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-300"></i>
+            </a>
+            
+            <a href="#" class="list-item">
+                <i class="fas fa-clipboard-list text-green-500 list-item-icon"></i>
+                <div class="list-item-content">
+                    <div class="list-item-title">我的计划</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-300"></i>
+            </a>
+            
+            <a href="#" class="list-item">
+                <i class="fas fa-bullseye text-blue-500 list-item-icon"></i>
+                <div class="list-item-content">
+                    <div class="list-item-title">目标设置</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-300"></i>
+            </a>
+        </div>
+        
+        <div class="bg-white rounded-lg mx-4 mt-3 overflow-hidden">
+            <a href="#" class="list-item">
+                <i class="fas fa-user-friends text-purple-500 list-item-icon"></i>
+                <div class="list-item-content">
+                    <div class="list-item-title">邀请好友</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-300"></i>
+            </a>
+            
+            <a href="#" class="list-item">
+                <i class="fas fa-headset text-yellow-500 list-item-icon"></i>
+                <div class="list-item-content">
+                    <div class="list-item-title">客服帮助</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-300"></i>
+            </a>
+            
+            <a href="#" class="list-item">
+                <i class="fas fa-info-circle text-gray-500 list-item-icon"></i>
+                <div class="list-item-content">
+                    <div class="list-item-title">关于我们</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-300"></i>
+            </a>
+        </div>
+        
+        <div class="flex justify-center my-6">
+            <button class="text-gray-500 text-sm font-medium">退出登录</button>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="workout.html" class="tab-item">
+            <i class="fas fa-dumbbell"></i>
+            <span>锻炼</span>
+        </a>
+        <a href="progress.html" class="tab-item">
+            <i class="fas fa-chart-line"></i>
+            <span>进度</span>
+        </a>
+        <a href="community.html" class="tab-item">
+            <i class="fas fa-users"></i>
+            <span>社区</span>
+        </a>
+        <a href="profile.html" class="tab-item active">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 
