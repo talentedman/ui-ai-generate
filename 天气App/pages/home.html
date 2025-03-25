@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>天气</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #4a90e2, #87cefa);
+      background-size: cover; 
+      background-position: center;
+    }
+  </style>
+</head>
+<body data-page="home">
+  <div class="page-container">
+    <!-- 状态栏 -->
+    <div id="status-bar-container"></div>
+    
+    <!-- 页面头部 -->
+    <div class="header bg-transparent text-white p-4 flex items-center justify-between">
+      <div class="left-button">
+        
+      </div>
+      <div class="header-title font-semibold text-lg">天气</div>
+      <div class="right-button">
+        <button class="text-white opacity-80"><i class="fas fa-ellipsis-v"></i></button>
+      </div>
+    </div>
+    
+    <!-- 页面内容 -->
+    <div class="page-content">
+      <div class="flex flex-col items-center mt-4 mb-8">
+        <h2 class="text-2xl font-bold text-white">北京市</h2>
+        <p class="text-white opacity-80">星期三, 3月25日</p>
+      </div>
+      
+      <div class="flex flex-col items-center mb-10">
+        <i class="fas fa-sun weather-icon sunny text-5xl text-yellow-400 mb-2"></i>
+        <h1 class="text-6xl font-light text-white mb-2">26°</h1>
+        <p class="text-white text-lg">晴朗</p>
+        <p class="text-white opacity-70">体感温度 28°</p>
+      </div>
+      
+      <div class="weather-card p-4">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="font-medium">今日</h3>
+          <span class="text-sm opacity-70">3月25日</span>
+        </div>
+        
+        <div class="flex justify-between mb-4">
+          <div class="flex-1 text-center">
+            <p class="text-sm opacity-70">最高</p>
+            <p class="text-xl font-medium">28°</p>
+          </div>
+          <div class="flex-1 text-center">
+            <p class="text-sm opacity-70">最低</p>
+            <p class="text-xl font-medium">16°</p>
+          </div>
+          <div class="flex-1 text-center">
+            <p class="text-sm opacity-70">湿度</p>
+            <p class="text-xl font-medium">45%</p>
+          </div>
+          <div class="flex-1 text-center">
+            <p class="text-sm opacity-70">风速</p>
+            <p class="text-xl font-medium">3km/h</p>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-200 pt-4">
+          <p class="text-sm mb-2">今日白天晴朗无云，傍晚可能转多云。</p>
+          <a href="details.html" class="text-blue-500 text-sm">查看详情 <i class="fas fa-chevron-right text-xs ml-1"></i></a>
+        </div>
+      </div>
+      
+      <div class="weather-card p-4">
+        <h3 class="font-medium mb-4">未来七天</h3>
+        
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="w-16">今天</span>
+            <i class="fas fa-sun weather-icon sunny"></i>
+            <div class="flex-1 px-4">
+              <div class="h-1.5 bg-gray-200 rounded-full">
+                <div class="h-1.5 bg-blue-500 rounded-full" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="flex gap-2 w-20 text-right">
+              <span class="font-medium">28°</span>
+              <span class="opacity-60">16°</span>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <span class="w-16">周四</span>
+            <i class="fas fa-cloud weather-icon cloudy"></i>
+            <div class="flex-1 px-4">
+              <div class="h-1.5 bg-gray-200 rounded-full">
+                <div class="h-1.5 bg-blue-500 rounded-full" style="width: 75%"></div>
+              </div>
+            </div>
+            <div class="flex gap-2 w-20 text-right">
+              <span class="font-medium">26°</span>
+              <span class="opacity-60">15°</span>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <span class="w-16">周五</span>
+            <i class="fas fa-cloud-rain weather-icon rainy"></i>
+            <div class="flex-1 px-4">
+              <div class="h-1.5 bg-gray-200 rounded-full">
+                <div class="h-1.5 bg-blue-500 rounded-full" style="width: 65%"></div>
+              </div>
+            </div>
+            <div class="flex gap-2 w-20 text-right">
+              <span class="font-medium">22°</span>
+              <span class="opacity-60">14°</span>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <span class="w-16">周六</span>
+            <i class="fas fa-cloud-sun weather-icon"></i>
+            <div class="flex-1 px-4">
+              <div class="h-1.5 bg-gray-200 rounded-full">
+                <div class="h-1.5 bg-blue-500 rounded-full" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="flex gap-2 w-20 text-right">
+              <span class="font-medium">24°</span>
+              <span class="opacity-60">15°</span>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <span class="w-16">周日</span>
+            <i class="fas fa-sun weather-icon sunny"></i>
+            <div class="flex-1 px-4">
+              <div class="h-1.5 bg-gray-200 rounded-full">
+                <div class="h-1.5 bg-blue-500 rounded-full" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="flex gap-2 w-20 text-right">
+              <span class="font-medium">27°</span>
+              <span class="opacity-60">16°</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div id="tab-bar-container"></div>
+  </div>
+  
+  <script src="../js/components.js"></script>
+  <script>
+    // 页面特定的脚本可以在这里添加
+  </script>
+</body>
+</html> 

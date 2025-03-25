@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>搜索城市</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="search">
+  <div class="page-container">
+    <!-- 状态栏 -->
+    <div id="status-bar-container"></div>
+    
+    <!-- 页面头部 -->
+    <div class="header bg-white p-4 flex items-center justify-between">
+      <div class="left-button">
+        <a href="cities.html" class="text-lg"><i class="fas fa-chevron-left"></i></a>
+      </div>
+      <div class="header-title font-semibold text-lg">搜索城市</div>
+      <div class="right-button"></div>
+    </div>
+    
+    <!-- 页面内容 -->
+    <div class="page-content">
+      <div class="relative mb-6">
+        <input type="text" class="w-full bg-gray-100 h-12 px-4 pl-10 rounded-lg" placeholder="搜索城市...">
+        <i class="fas fa-search absolute left-3 top-4 text-gray-400"></i>
+      </div>
+      
+      <div class="mb-6">
+        <h3 class="text-lg font-medium mb-3">最近搜索</h3>
+        
+        <div class="weather-card">
+          <div class="list-item">
+            <div class="list-item-content">
+              <div class="list-item-title">深圳市</div>
+              <div class="list-item-subtitle">中国</div>
+            </div>
+            <div class="list-item-action">
+              <i class="fas fa-plus-circle text-blue-500"></i>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="list-item-content">
+              <div class="list-item-title">杭州市</div>
+              <div class="list-item-subtitle">中国</div>
+            </div>
+            <div class="list-item-action">
+              <i class="fas fa-plus-circle text-blue-500"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-medium mb-3">热门城市</h3>
+        
+        <div class="weather-card">
+          <div class="list-item">
+            <div class="list-item-content">
+              <div class="list-item-title">北京市</div>
+              <div class="list-item-subtitle">中国</div>
+            </div>
+            <div class="list-item-action">
+              <i class="fas fa-check-circle text-green-500"></i>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="list-item-content">
+              <div class="list-item-title">上海市</div>
+              <div class="list-item-subtitle">中国</div>
+            </div>
+            <div class="list-item-action">
+              <i class="fas fa-check-circle text-green-500"></i>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="list-item-content">
+              <div class="list-item-title">广州市</div>
+              <div class="list-item-subtitle">中国</div>
+            </div>
+            <div class="list-item-action">
+              <i class="fas fa-check-circle text-green-500"></i>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="list-item-content">
+              <div class="list-item-title">成都市</div>
+              <div class="list-item-subtitle">中国</div>
+            </div>
+            <div class="list-item-action">
+              <i class="fas fa-plus-circle text-blue-500"></i>
+            </div>
+          </div>
+          
+          <div class="list-item">
+            <div class="list-item-content">
+              <div class="list-item-title">武汉市</div>
+              <div class="list-item-subtitle">中国</div>
+            </div>
+            <div class="list-item-action">
+              <i class="fas fa-plus-circle text-blue-500"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div id="tab-bar-container"></div>
+  </div>
+  
+  <script src="../js/components.js"></script>
+  <script>
+    // 页面特定的脚本可以在这里添加
+  </script>
+</body>
+</html> 

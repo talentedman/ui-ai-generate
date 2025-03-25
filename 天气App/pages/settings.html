@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>设置</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="settings">
+  <div class="page-container">
+    <!-- 状态栏 -->
+    <div id="status-bar-container"></div>
+    
+    <!-- 页面头部 -->
+    <div class="header bg-white p-4 flex items-center justify-between">
+      <div class="left-button"></div>
+      <div class="header-title font-semibold text-lg">设置</div>
+      <div class="right-button"></div>
+    </div>
+    
+    <!-- 页面内容 -->
+    <div class="page-content">
+      <div class="weather-card mb-4">
+        <div class="list-item">
+          <div class="list-item-icon">
+            <i class="fas fa-thermometer-half"></i>
+          </div>
+          <div class="list-item-content">
+            <div class="list-item-title">温度单位</div>
+            <div class="list-item-subtitle">摄氏度 (°C)</div>
+          </div>
+          <div class="list-item-action">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+        
+        <div class="list-item">
+          <div class="list-item-icon">
+            <i class="fas fa-wind"></i>
+          </div>
+          <div class="list-item-content">
+            <div class="list-item-title">风速单位</div>
+            <div class="list-item-subtitle">公里每小时 (km/h)</div>
+          </div>
+          <div class="list-item-action">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+        
+        <div class="list-item">
+          <div class="list-item-icon">
+            <i class="fas fa-tint"></i>
+          </div>
+          <div class="list-item-content">
+            <div class="list-item-title">降水量单位</div>
+            <div class="list-item-subtitle">毫米 (mm)</div>
+          </div>
+          <div class="list-item-action">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+        
+        <div class="list-item">
+          <div class="list-item-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="list-item-content">
+            <div class="list-item-title">时间格式</div>
+            <div class="list-item-subtitle">24小时制</div>
+          </div>
+          <div class="list-item-action">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="weather-card mb-4">
+        <div class="list-item">
+          <div class="list-item-icon">
+            <i class="fas fa-bell"></i>
+          </div>
+          <div class="list-item-content">
+            <div class="list-item-title">通知</div>
+            <div class="list-item-subtitle">天气预警、日报</div>
+          </div>
+          <div class="list-item-action">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+        
+        <div class="list-item">
+          <div class="list-item-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="list-item-content">
+            <div class="list-item-title">位置服务</div>
+            <div class="list-item-subtitle">已开启</div>
+          </div>
+          <div class="list-item-action">
+            <label class="relative inline-block w-12 h-6">
+              <input type="checkbox" class="hidden" checked>
+              <div class="bg-blue-500 absolute inset-0 rounded-full transition"></div>
+              <div class="absolute h-5 w-5 bg-white rounded-full top-0.5 left-0.5 transition transform translate-x-6"></div>
+            </label>
+          </div>
+        </div>
+        
+        <div class="list-item">
+          <div class="list-item-icon">
+            <i class="fas fa-moon"></i>
+          </div>
+          <div class="list-item-content">
+            <div class="list-item-title">深色模式</div>
+            <div class="list-item-subtitle">跟随系统</div>
+          </div>
+          <div class="list-item-action">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="weather-card">
+        <div class="list-item">
+          <div class="list-item-icon">
+            <i class="fas fa-info-circle"></i>
+          </div>
+          <div class="list-item-content">
+            <div class="list-item-title">关于</div>
+            <div class="list-item-subtitle">版本 1.0.0</div>
+          </div>
+          <div class="list-item-action">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+        
+        <div class="list-item">
+          <div class="list-item-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="list-item-content">
+            <div class="list-item-title">评分与反馈</div>
+          </div>
+          <div class="list-item-action">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+        
+        <div class="list-item">
+          <div class="list-item-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="list-item-content">
+            <div class="list-item-title">隐私政策</div>
+          </div>
+          <div class="list-item-action">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div id="tab-bar-container"></div>
+  </div>
+  
+  <script src="../js/components.js"></script>
+  <script>
+    // 页面特定的脚本可以在这里添加
+  </script>
+</body>
+</html> 

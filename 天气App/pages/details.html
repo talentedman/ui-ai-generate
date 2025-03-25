@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>天气详情</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #4a90e2, #87cefa);
+      background-size: cover; 
+      background-position: center;
+    }
+  </style>
+</head>
+<body data-page="details">
+  <div class="page-container">
+    <!-- 状态栏 -->
+    <div id="status-bar-container"></div>
+    
+    <!-- 页面头部 -->
+    <div class="header bg-transparent text-white p-4 flex items-center justify-between">
+      <div class="left-button">
+        <a href="home.html" class="text-lg"><i class="fas fa-chevron-left"></i></a>
+      </div>
+      <div class="header-title font-semibold text-lg">天气详情</div>
+      <div class="right-button">
+        <button class="text-white opacity-80"><i class="fas fa-share-alt"></i></button>
+      </div>
+    </div>
+    
+    <!-- 页面内容 -->
+    <div class="page-content">
+      <div class="flex flex-col items-center mt-2 mb-6">
+        <h2 class="text-2xl font-bold text-white">北京市</h2>
+        <p class="text-white opacity-80">星期三, 3月25日</p>
+      </div>
+      
+      <div class="flex flex-col items-center mb-6">
+        <i class="fas fa-sun weather-icon sunny text-5xl text-yellow-400 mb-2"></i>
+        <h1 class="text-6xl font-light text-white mb-2">26°</h1>
+        <p class="text-white text-lg">晴朗</p>
+        <p class="text-white opacity-70">最高 28° | 最低 16°</p>
+      </div>
+      
+      <div class="weather-card p-4 mb-4">
+        <h3 class="font-medium mb-4">每小时预报</h3>
+        
+        <div class="flex space-x-4 overflow-x-auto pb-2">
+          <div class="flex flex-col items-center min-w-[60px]">
+            <span class="text-sm">现在</span>
+            <i class="fas fa-sun my-2 text-yellow-400"></i>
+            <span class="font-medium">26°</span>
+          </div>
+          
+          <div class="flex flex-col items-center min-w-[60px]">
+            <span class="text-sm">12时</span>
+            <i class="fas fa-sun my-2 text-yellow-400"></i>
+            <span class="font-medium">27°</span>
+          </div>
+          
+          <div class="flex flex-col items-center min-w-[60px]">
+            <span class="text-sm">13时</span>
+            <i class="fas fa-sun my-2 text-yellow-400"></i>
+            <span class="font-medium">28°</span>
+          </div>
+          
+          <div class="flex flex-col items-center min-w-[60px]">
+            <span class="text-sm">14时</span>
+            <i class="fas fa-sun my-2 text-yellow-400"></i>
+            <span class="font-medium">28°</span>
+          </div>
+          
+          <div class="flex flex-col items-center min-w-[60px]">
+            <span class="text-sm">15时</span>
+            <i class="fas fa-cloud-sun my-2 text-gray-600"></i>
+            <span class="font-medium">27°</span>
+          </div>
+          
+          <div class="flex flex-col items-center min-w-[60px]">
+            <span class="text-sm">16时</span>
+            <i class="fas fa-cloud-sun my-2 text-gray-600"></i>
+            <span class="font-medium">26°</span>
+          </div>
+          
+          <div class="flex flex-col items-center min-w-[60px]">
+            <span class="text-sm">17时</span>
+            <i class="fas fa-cloud my-2 text-gray-500"></i>
+            <span class="font-medium">25°</span>
+          </div>
+          
+          <div class="flex flex-col items-center min-w-[60px]">
+            <span class="text-sm">18时</span>
+            <i class="fas fa-cloud my-2 text-gray-500"></i>
+            <span class="font-medium">23°</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="weather-card p-4 mb-4">
+        <h3 class="font-medium mb-4">气象详情</h3>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-3 bg-gray-50 rounded-xl">
+            <p class="text-sm opacity-70 mb-1">体感温度</p>
+            <p class="text-xl font-medium">28°</p>
+          </div>
+          
+          <div class="p-3 bg-gray-50 rounded-xl">
+            <p class="text-sm opacity-70 mb-1">湿度</p>
+            <p class="text-xl font-medium">45%</p>
+          </div>
+          
+          <div class="p-3 bg-gray-50 rounded-xl">
+            <p class="text-sm opacity-70 mb-1">风速</p>
+            <p class="text-xl font-medium">3 km/h</p>
+          </div>
+          
+          <div class="p-3 bg-gray-50 rounded-xl">
+            <p class="text-sm opacity-70 mb-1">气压</p>
+            <p class="text-xl font-medium">1013 hPa</p>
+          </div>
+          
+          <div class="p-3 bg-gray-50 rounded-xl">
+            <p class="text-sm opacity-70 mb-1">能见度</p>
+            <p class="text-xl font-medium">10 km</p>
+          </div>
+          
+          <div class="p-3 bg-gray-50 rounded-xl">
+            <p class="text-sm opacity-70 mb-1">紫外线指数</p>
+            <p class="text-xl font-medium">6 (强)</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="weather-card p-4">
+        <h3 class="font-medium mb-4">日出日落</h3>
+        
+        <div class="relative pt-2 pb-6">
+          <div class="absolute w-full h-[120px] flex items-center justify-center">
+            <div class="w-[80%] h-[120px] border-t-[2px] border-dashed border-yellow-400 rounded-[150px_150px_0_0]"></div>
+          </div>
+          
+          <div class="flex justify-between relative z-10 mt-2">
+            <div class="text-center">
+              <i class="fas fa-sunrise text-yellow-500 text-xl mb-1"></i>
+              <p class="font-medium">06:28</p>
+              <p class="text-xs opacity-70">日出</p>
+            </div>
+            
+            <div class="text-center pt-12">
+              <i class="fas fa-sun text-yellow-500 text-xl"></i>
+              <p class="text-xs opacity-70">12:42</p>
+            </div>
+            
+            <div class="text-center">
+              <i class="fas fa-sunset text-orange-500 text-xl mb-1"></i>
+              <p class="font-medium">18:56</p>
+              <p class="text-xs opacity-70">日落</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div id="tab-bar-container"></div>
+  </div>
+  
+  <script src="../js/components.js"></script>
+  <script>
+    // 页面特定的脚本可以在这里添加
+  </script>
+</body>
+</html> 
