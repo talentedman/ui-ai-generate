@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>待办App - 统计分析</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --app-primary: #007aff;
+            --app-background: #f8f8f8;
+            --app-secondary: #34c759;
+            --app-text-primary: #000000;
+            --app-text-secondary: #8e8e93;
+            --app-danger: #ff3b30;
+            --app-warning: #ffcc00;
+            --app-success: #34c759;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--app-background);
+            color: var(--app-text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            max-width: 100%;
+            min-height: 100vh;
+        }
+        
+        /* 统计卡片样式 */
+        .stats-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+        
+        .stats-card-header {
+            padding: 16px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .stats-card-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .stats-card-subtitle {
+            font-size: 14px;
+            color: var(--app-text-secondary);
+            margin-top: 4px;
+        }
+        
+        .stats-card-body {
+            padding: 16px;
+        }
+        
+        /* 统计数值样式 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .stat-item {
+            padding: 16px;
+            text-align: center;
+            border-radius: 8px;
+            background-color: rgba(0,0,0,0.02);
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: var(--app-text-secondary);
+        }
+        
+        /* 进度条样式 */
+        .progress-bar {
+            height: 8px;
+            background-color: #e5e5ea;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 8px 0 16px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+        
+        .progress-fill.completed {
+            background-color: var(--app-success);
+        }
+        
+        .progress-fill.pending {
+            background-color: var(--app-warning);
+        }
+        
+        .progress-fill.overdue {
+            background-color: var(--app-danger);
+        }
+        
+        /* 图表容器样式 */
+        .chart-container {
+            position: relative;
+            height: 200px;
+            width: 100%;
+        }
+        
+        /* 时间筛选器样式 */
+        .time-filter {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 8px 0;
+            margin-bottom: 16px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .time-filter::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Edge */
+        }
+        
+        .time-option {
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--app-text-secondary);
+            background-color: white;
+            white-space: nowrap;
+            scroll-snap-align: start;
+        }
+        
+        .time-option.active {
+            color: white;
+            background-color: var(--app-primary);
+        }
+        
+        /* 类别指示器样式 */
+        .category-indicators {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .category-indicator {
+            display: flex;
+            align-items: center;
+            margin-right: 8px;
+        }
+        
+        .category-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            margin-right: 6px;
+        }
+        
+        .category-name {
+            font-size: 13px;
+        }
+        
+        /* 生产力得分样式 */
+        .productivity-score {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            background: conic-gradient(#007aff 0% 85%, #e5e5ea 85% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            background-color: white;
+        }
+        
+        .score-value {
+            position: relative;
+            z-index: 1;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .score-label {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .score-description {
+            font-size: 14px;
+            color: var(--app-text-secondary);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面内容区域 -->
+    <div class="page-content">
+        <!-- 页面标题区域 -->
+        <div class="page-header px-4 py-6">
+            <h1 class="page-title">统计分析</h1>
+            
+            <!-- 时间筛选器 -->
+            <div class="time-filter">
+                <div class="time-option">今日</div>
+                <div class="time-option active">本周</div>
+                <div class="time-option">本月</div>
+                <div class="time-option">季度</div>
+                <div class="time-option">年度</div>
+                <div class="time-option">全部</div>
+            </div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="page-body px-4">
+            <!-- 生产力得分卡片 -->
+            <div class="stats-card">
+                <div class="stats-card-header">
+                    <div class="stats-card-title">生产力得分</div>
+                    <div class="stats-card-subtitle">基于您的任务完成情况和准时率</div>
+                </div>
+                <div class="stats-card-body">
+                    <div class="productivity-score">
+                        <div class="score-circle">
+                            <div class="score-value">85</div>
+                        </div>
+                        <div class="score-label">非常好</div>
+                        <div class="score-description">您的生产力高于90%的用户</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 任务完成统计卡片 -->
+            <div class="stats-card">
+                <div class="stats-card-header">
+                    <div class="stats-card-title">任务完成统计</div>
+                    <div class="stats-card-subtitle">本周任务完成情况</div>
+                </div>
+                <div class="stats-card-body">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">24</div>
+                            <div class="stat-label">总任务数</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">18</div>
+                            <div class="stat-label">已完成</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">4</div>
+                            <div class="stat-label">待完成</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">已逾期</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <div class="flex justify-between text-sm">
+                            <span>已完成</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill completed" style="width: 75%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between text-sm">
+                            <span>待完成</span>
+                            <span>17%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill pending" style="width: 17%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between text-sm">
+                            <span>已逾期</span>
+                            <span>8%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill overdue" style="width: 8%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 任务分类统计卡片 -->
+            <div class="stats-card">
+                <div class="stats-card-header">
+                    <div class="stats-card-title">任务分类分布</div>
+                    <div class="stats-card-subtitle">按分类查看任务分布情况</div>
+                </div>
+                <div class="stats-card-body">
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                    
+                    <div class="category-indicators">
+                        <div class="category-indicator">
+                            <div class="category-color" style="background-color: #0288d1;"></div>
+                            <div class="category-name">工作 (50%)</div>
+                        </div>
+                        <div class="category-indicator">
+                            <div class="category-color" style="background-color: #9c27b0;"></div>
+                            <div class="category-name">个人 (20%)</div>
+                        </div>
+                        <div class="category-indicator">
+                            <div class="category-color" style="background-color: #f44336;"></div>
+                            <div class="category-name">购物 (15%)</div>
+                        </div>
+                        <div class="category-indicator">
+                            <div class="category-color" style="background-color: #4caf50;"></div>
+                            <div class="category-name">健康 (15%)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 每日完成趋势卡片 -->
+            <div class="stats-card">
+                <div class="stats-card-header">
+                    <div class="stats-card-title">每日任务完成趋势</div>
+                    <div class="stats-card-subtitle">过去7天的任务完成情况</div>
+                </div>
+                <div class="stats-card-body">
+                    <div class="chart-container">
+                        <canvas id="trendsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 动态加载iOS组件 -->
+    <script>
+        // 动态加载iOS组件
+        function loadIOSComponents() {
+            fetch('../components/ios-components.html')
+                .then(response => response.text())
+                .then(html => {
+                    // 创建一个临时容器来解析HTML
+                    const tempContainer = document.createElement('div');
+                    tempContainer.innerHTML = html;
+                    
+                    // 提取状态栏和导航栏
+                    const statusBar = tempContainer.querySelector('#ios-status-bar');
+                    const tabBar = tempContainer.querySelector('#ios-tab-bar');
+                    
+                    // 插入状态栏到body开始位置
+                    document.body.insertBefore(statusBar, document.body.firstChild);
+                    
+                    // 插入导航栏到body结束位置
+                    document.body.appendChild(tabBar);
+                    
+                    // 添加样式
+                    const styles = tempContainer.querySelectorAll('style');
+                    styles.forEach(style => document.head.appendChild(style.cloneNode(true)));
+                    
+                    // 添加脚本
+                    const scripts = tempContainer.querySelectorAll('script');
+                    scripts.forEach(script => {
+                        const newScript = document.createElement('script');
+                        newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript);
+                    });
+                })
+                .catch(error => console.error('加载iOS组件失败:', error));
+        }
+        
+        // 时间筛选器初始化
+        function setupTimeFilter() {
+            document.querySelectorAll('.time-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelector('.time-option.active').classList.remove('active');
+                    this.classList.add('active');
+                    
+                    // 更新图表数据（实际应用中会根据选择的时间范围加载不同数据）
+                    updateCharts(this.textContent.trim());
+                });
+            });
+        }
+        
+        // 初始化图表
+        function initCharts() {
+            // 分类分布饼图
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            window.categoryChart = new Chart(categoryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['工作', '个人', '购物', '健康'],
+                    datasets: [{
+                        data: [50, 20, 15, 15],
+                        backgroundColor: ['#0288d1', '#9c27b0', '#f44336', '#4caf50'],
+                        borderWidth: 0,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: true,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 任务完成趋势线图
+            const trendsCtx = document.getElementById('trendsChart').getContext('2d');
+            window.trendsChart = new Chart(trendsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                    datasets: [{
+                        label: '已完成任务',
+                        data: [3, 5, 4, 6, 2, 3, 4],
+                        borderColor: '#007aff',
+                        backgroundColor: 'rgba(0, 122, 255, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 2,
+                        pointBackgroundColor: '#ffffff',
+                        pointBorderColor: '#007aff',
+                        pointBorderWidth: 2,
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                display: true,
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: {
+                                stepSize: 2
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+        
+        // 更新图表数据（模拟不同时间段的数据）
+        function updateCharts(timeRange) {
+            let categoryData, trendsLabels, trendsData;
+            
+            switch(timeRange) {
+                case '今日':
+                    categoryData = [60, 10, 20, 10];
+                    trendsLabels = ['9时', '12时', '15时', '18时', '21时'];
+                    trendsData = [1, 3, 2, 4, 1];
+                    break;
+                    
+                case '本月':
+                    categoryData = [45, 25, 15, 15];
+                    trendsLabels = ['第1周', '第2周', '第3周', '第4周'];
+                    trendsData = [14, 18, 15, 21];
+                    break;
+                    
+                case '季度':
+                    categoryData = [40, 30, 15, 15];
+                    trendsLabels = ['1月', '2月', '3月'];
+                    trendsData = [45, 52, 48];
+                    break;
+                    
+                case '年度':
+                    categoryData = [35, 30, 20, 15];
+                    trendsLabels = ['第1季', '第2季', '第3季', '第4季'];
+                    trendsData = [120, 145, 130, 160];
+                    break;
+                    
+                case '全部':
+                    categoryData = [30, 30, 25, 15];
+                    trendsLabels = ['2020', '2021', '2022', '2023'];
+                    trendsData = [340, 420, 380, 450];
+                    break;
+                    
+                default: // 本周
+                    categoryData = [50, 20, 15, 15];
+                    trendsLabels = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+                    trendsData = [3, 5, 4, 6, 2, 3, 4];
+            }
+            
+            // 更新饼图数据
+            window.categoryChart.data.datasets[0].data = categoryData;
+            window.categoryChart.update();
+            
+            // 更新线图数据
+            window.trendsChart.data.labels = trendsLabels;
+            window.trendsChart.data.datasets[0].data = trendsData;
+            window.trendsChart.update();
+            
+            // 更新指示器百分比
+            document.querySelectorAll('.category-indicator .category-name').forEach((indicator, index) => {
+                const category = ['工作', '个人', '购物', '健康'][index];
+                indicator.textContent = `${category} (${categoryData[index]}%)`;
+            });
+        }
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', () => {
+            loadIOSComponents();
+            setupTimeFilter();
+            initCharts();
+        });
+    </script>
+</body>
+</html> 

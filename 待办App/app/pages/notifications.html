@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>待办App - 通知中心</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --app-primary: #007aff;
+            --app-background: #f8f8f8;
+            --app-secondary: #34c759;
+            --app-text-primary: #000000;
+            --app-text-secondary: #8e8e93;
+            --app-danger: #ff3b30;
+            --app-warning: #ffcc00;
+            --app-success: #34c759;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--app-background);
+            color: var(--app-text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            max-width: 100%;
+            min-height: 100vh;
+        }
+        
+        /* 通知列表样式 */
+        .notification-list {
+            margin-bottom: 24px;
+        }
+        
+        .notification-item {
+            display: flex;
+            padding: 16px;
+            background-color: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .notification-item.unread::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--app-primary);
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+        
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .notification-content {
+            flex: 1;
+        }
+        
+        .notification-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .notification-message {
+            font-size: 14px;
+            color: var(--app-text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .notification-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .notification-time {
+            font-size: 12px;
+            color: var(--app-text-secondary);
+        }
+        
+        .notification-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .notification-action {
+            font-size: 12px;
+            color: var(--app-primary);
+            text-decoration: none;
+        }
+        
+        /* 日期分隔线样式 */
+        .date-divider {
+            display: flex;
+            align-items: center;
+            margin: 24px 0 16px;
+        }
+        
+        .date-divider-line {
+            flex: 1;
+            height: 1px;
+            background-color: rgba(0,0,0,0.1);
+        }
+        
+        .date-divider-text {
+            padding: 0 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--app-text-secondary);
+        }
+        
+        /* 空状态样式 */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 24px;
+            text-align: center;
+        }
+        
+        .empty-state-icon {
+            font-size: 64px;
+            color: #e5e5ea;
+            margin-bottom: 24px;
+        }
+        
+        .empty-state-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--app-text-primary);
+        }
+        
+        .empty-state-message {
+            font-size: 16px;
+            color: var(--app-text-secondary);
+            max-width: 280px;
+            line-height: 1.5;
+        }
+        
+        /* 切换视图按钮样式 */
+        .view-toggle {
+            display: flex;
+            background-color: #e5e5ea;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        
+        .view-toggle-option {
+            flex: 1;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--app-text-secondary);
+            cursor: pointer;
+        }
+        
+        .view-toggle-option.active {
+            background-color: white;
+            color: var(--app-text-primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* 操作按钮样式 */
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 16px;
+        }
+        
+        .action-button {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: white;
+            color: var(--app-primary);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .action-button i {
+            margin-right: 6px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面内容区域 -->
+    <div class="page-content">
+        <!-- 页面标题区域 -->
+        <div class="page-header px-4 py-6">
+            <h1 class="page-title">通知中心</h1>
+            
+            <!-- 视图切换 -->
+            <div class="view-toggle">
+                <div class="view-toggle-option active" data-view="all">全部</div>
+                <div class="view-toggle-option" data-view="unread">未读</div>
+                <div class="view-toggle-option" data-view="task">任务</div>
+                <div class="view-toggle-option" data-view="system">系统</div>
+            </div>
+            
+            <!-- 操作按钮 -->
+            <div class="action-buttons">
+                <button class="action-button" id="markAllReadButton">
+                    <i class="fas fa-check-double"></i>全部已读
+                </button>
+            </div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="page-body px-4">
+            <!-- 通知列表 -->
+            <div class="notification-list" id="notificationList">
+                <!-- 今天的通知 -->
+                <div class="date-divider">
+                    <div class="date-divider-line"></div>
+                    <div class="date-divider-text">今天</div>
+                    <div class="date-divider-line"></div>
+                </div>
+                
+                <div class="notification-item unread">
+                    <div class="notification-icon" style="background-color: var(--app-primary);">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">即将到期的任务</div>
+                        <div class="notification-message">任务 "准备周会演示文稿" 将在 30 分钟后到期，请及时完成。</div>
+                        <div class="notification-meta">
+                            <div class="notification-time">10:30</div>
+                            <div class="notification-actions">
+                                <a href="task-detail.html" class="notification-action">查看任务</a>
+                                <a href="#" class="notification-action mark-read" data-id="1">标记已读</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-icon" style="background-color: var(--app-secondary);">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">任务已完成</div>
+                        <div class="notification-message">您已完成任务 "回复客户邮件"，继续保持！</div>
+                        <div class="notification-meta">
+                            <div class="notification-time">09:45</div>
+                            <div class="notification-actions">
+                                <a href="statistics.html" class="notification-action">查看进度</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="notification-item unread">
+                    <div class="notification-icon" style="background-color: var(--app-warning);">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">系统更新</div>
+                        <div class="notification-message">待办App 已更新到 v1.0.0 版本，查看新功能和改进。</div>
+                        <div class="notification-meta">
+                            <div class="notification-time">08:15</div>
+                            <div class="notification-actions">
+                                <a href="#" class="notification-action">查看详情</a>
+                                <a href="#" class="notification-action mark-read" data-id="3">标记已读</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 昨天的通知 -->
+                <div class="date-divider">
+                    <div class="date-divider-line"></div>
+                    <div class="date-divider-text">昨天</div>
+                    <div class="date-divider-line"></div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-icon" style="background-color: var(--app-danger);">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">任务已逾期</div>
+                        <div class="notification-message">任务 "提交季度报告" 已逾期，请尽快处理。</div>
+                        <div class="notification-meta">
+                            <div class="notification-time">昨天 16:20</div>
+                            <div class="notification-actions">
+                                <a href="task-detail.html" class="notification-action">查看任务</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-icon" style="background-color: #9c27b0;">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">生产力小贴士</div>
+                        <div class="notification-message">试试番茄工作法，每25分钟专注工作后短暂休息，可以提高工作效率。</div>
+                        <div class="notification-meta">
+                            <div class="notification-time">昨天 14:05</div>
+                            <div class="notification-actions">
+                                <a href="#" class="notification-action">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 空状态 (默认隐藏) -->
+            <div class="empty-state" style="display: none;" id="emptyState">
+                <div class="empty-state-icon">
+                    <i class="far fa-bell"></i>
+                </div>
+                <div class="empty-state-title">没有通知</div>
+                <div class="empty-state-message">
+                    当您收到任务提醒或系统通知时，它们将显示在这里。
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 动态加载iOS组件 -->
+    <script>
+        // 动态加载iOS组件
+        function loadIOSComponents() {
+            fetch('../components/ios-components.html')
+                .then(response => response.text())
+                .then(html => {
+                    // 创建一个临时容器来解析HTML
+                    const tempContainer = document.createElement('div');
+                    tempContainer.innerHTML = html;
+                    
+                    // 提取状态栏和导航栏
+                    const statusBar = tempContainer.querySelector('#ios-status-bar');
+                    const tabBar = tempContainer.querySelector('#ios-tab-bar');
+                    
+                    // 插入状态栏到body开始位置
+                    document.body.insertBefore(statusBar, document.body.firstChild);
+                    
+                    // 插入导航栏到body结束位置
+                    document.body.appendChild(tabBar);
+                    
+                    // 添加样式
+                    const styles = tempContainer.querySelectorAll('style');
+                    styles.forEach(style => document.head.appendChild(style.cloneNode(true)));
+                    
+                    // 添加脚本
+                    const scripts = tempContainer.querySelectorAll('script');
+                    scripts.forEach(script => {
+                        const newScript = document.createElement('script');
+                        newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript);
+                    });
+                })
+                .catch(error => console.error('加载iOS组件失败:', error));
+        }
+        
+        // 设置视图切换
+        function setupViewToggle() {
+            document.querySelectorAll('.view-toggle-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // 更新选中状态
+                    document.querySelector('.view-toggle-option.active').classList.remove('active');
+                    this.classList.add('active');
+                    
+                    // 获取选中的视图类型
+                    const viewType = this.dataset.view;
+                    
+                    // 根据视图类型过滤通知
+                    filterNotifications(viewType);
+                });
+            });
+        }
+        
+        // 根据视图类型过滤通知
+        function filterNotifications(viewType) {
+            const notificationItems = document.querySelectorAll('.notification-item');
+            const notificationList = document.getElementById('notificationList');
+            const emptyState = document.getElementById('emptyState');
+            
+            let visibleCount = 0;
+            
+            notificationItems.forEach(item => {
+                // 根据视图类型决定是否显示
+                switch(viewType) {
+                    case 'unread':
+                        if (item.classList.contains('unread')) {
+                            item.style.display = '';
+                            visibleCount++;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                        break;
+                        
+                    case 'task':
+                        const title = item.querySelector('.notification-title').textContent.toLowerCase();
+                        if (title.includes('任务')) {
+                            item.style.display = '';
+                            visibleCount++;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                        break;
+                        
+                    case 'system':
+                        const sysTitle = item.querySelector('.notification-title').textContent.toLowerCase();
+                        if (sysTitle.includes('系统') || sysTitle.includes('更新') || sysTitle.includes('小贴士')) {
+                            item.style.display = '';
+                            visibleCount++;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                        break;
+                        
+                    default: // 'all'
+                        item.style.display = '';
+                        visibleCount++;
+                }
+            });
+            
+            // 处理日期分隔线
+            document.querySelectorAll('.date-divider').forEach(divider => {
+                const nextElement = divider.nextElementSibling;
+                const prevElement = divider.previousElementSibling;
+                
+                // 如果分隔线后面没有可见的通知项，或者前一个元素是另一个分隔线，则隐藏这个分隔线
+                if ((nextElement && nextElement.style.display === 'none' && (!nextElement.nextElementSibling || nextElement.nextElementSibling.classList.contains('date-divider'))) ||
+                    (prevElement && prevElement.classList.contains('date-divider'))) {
+                    divider.style.display = 'none';
+                } else {
+                    divider.style.display = '';
+                }
+            });
+            
+            // 如果没有可见的通知，显示空状态
+            if (visibleCount === 0) {
+                notificationList.style.display = 'none';
+                emptyState.style.display = 'flex';
+                
+                // 根据视图类型更新空状态消息
+                const emptyMessage = document.querySelector('.empty-state-message');
+                switch(viewType) {
+                    case 'unread':
+                        emptyMessage.textContent = '您没有未读的通知。';
+                        break;
+                    case 'task':
+                        emptyMessage.textContent = '您没有任务相关的通知。';
+                        break;
+                    case 'system':
+                        emptyMessage.textContent = '您没有系统相关的通知。';
+                        break;
+                    default:
+                        emptyMessage.textContent = '当您收到任务提醒或系统通知时，它们将显示在这里。';
+                }
+            } else {
+                notificationList.style.display = '';
+                emptyState.style.display = 'none';
+            }
+        }
+        
+        // 标记单个通知为已读
+        function setupMarkReadButtons() {
+            document.querySelectorAll('.mark-read').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const notificationId = this.dataset.id;
+                    const notificationItem = this.closest('.notification-item');
+                    
+                    // 移除未读标记
+                    notificationItem.classList.remove('unread');
+                    
+                    // 移除"标记已读"按钮
+                    this.remove();
+                    
+                    // 实际应用中这里会发送请求到服务器标记通知为已读
+                    console.log(`标记通知 ${notificationId} 为已读`);
+                });
+            });
+        }
+        
+        // 标记所有通知为已读
+        function setupMarkAllReadButton() {
+            document.getElementById('markAllReadButton').addEventListener('click', function() {
+                // 移除所有未读标记
+                document.querySelectorAll('.notification-item.unread').forEach(item => {
+                    item.classList.remove('unread');
+                });
+                
+                // 移除所有"标记已读"按钮
+                document.querySelectorAll('.mark-read').forEach(button => {
+                    button.remove();
+                });
+                
+                // 实际应用中这里会发送请求到服务器标记所有通知为已读
+                console.log('标记所有通知为已读');
+                
+                // 如果当前视图是"未读"，则可能需要显示空状态
+                const activeView = document.querySelector('.view-toggle-option.active').dataset.view;
+                if (activeView === 'unread') {
+                    filterNotifications('unread');
+                }
+            });
+        }
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', () => {
+            loadIOSComponents();
+            setupViewToggle();
+            setupMarkReadButtons();
+            setupMarkAllReadButton();
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,150 @@
+<!-- iOS 组件 - 包含状态栏和底部导航栏 -->
+<!-- 这个文件会被其他页面通过JS加载和使用 -->
+
+<!-- iOS 状态栏 -->
+<div id="ios-status-bar" class="ios-status-bar">
+    <div class="status-bar-content">
+        <div class="status-time">14:21</div>
+        <div class="status-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+</div>
+
+<!-- iOS 底部导航栏 -->
+<div id="ios-tab-bar" class="ios-tab-bar">
+    <a href="home.html" class="tab-item active" data-page="home">
+        <i class="fas fa-tasks"></i>
+        <span>任务</span>
+    </a>
+    <a href="categories.html" class="tab-item" data-page="categories">
+        <i class="fas fa-folder"></i>
+        <span>分类</span>
+    </a>
+    <a href="statistics.html" class="tab-item" data-page="statistics">
+        <i class="fas fa-chart-bar"></i>
+        <span>统计</span>
+    </a>
+    <a href="notifications.html" class="tab-item" data-page="notifications">
+        <i class="fas fa-bell"></i>
+        <span>通知</span>
+    </a>
+    <a href="settings.html" class="tab-item" data-page="settings">
+        <i class="fas fa-cog"></i>
+        <span>设置</span>
+    </a>
+</div>
+
+<style>
+    /* iOS状态栏样式 */
+    .ios-status-bar {
+        height: 44px;
+        width: 100%;
+        background-color: #f8f8f8;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+    }
+    
+    .status-bar-content {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 16px;
+    }
+    
+    .status-time {
+        font-weight: 600;
+        font-size: 15px;
+    }
+    
+    .status-icons {
+        display: flex;
+        gap: 8px;
+    }
+    
+    /* iOS底部导航栏样式 */
+    .ios-tab-bar {
+        height: 83px;
+        width: 100%;
+        background-color: rgba(248, 248, 248, 0.94);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        padding-bottom: env(safe-area-inset-bottom, 20px);
+    }
+    
+    .tab-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #8e8e93;
+        font-size: 10px;
+        text-decoration: none;
+        padding: 8px 0;
+        width: 20%;
+    }
+    
+    .tab-item i {
+        font-size: 22px;
+        margin-bottom: 4px;
+    }
+    
+    .tab-item.active {
+        color: #007aff;
+    }
+    
+    /* 主内容区域样式，为了避免被状态栏和导航栏遮挡 */
+    .page-content {
+        padding-top: 44px; /* 状态栏高度 */
+        padding-bottom: 83px; /* 导航栏高度 */
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+</style>
+
+<script>
+    // 设置正确的时间
+    function updateStatusBarTime() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        document.querySelector('.status-time').textContent = `${hours}:${minutes}`;
+    }
+    
+    // 高亮当前页面的底部导航项
+    function highlightCurrentTab() {
+        const currentPage = window.location.pathname.split('/').pop().split('.')[0];
+        document.querySelectorAll('.tab-item').forEach(tab => {
+            if (tab.dataset.page === currentPage) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+    }
+    
+    // 初始化
+    function initIOSComponents() {
+        updateStatusBarTime();
+        highlightCurrentTab();
+        
+        // 每分钟更新一次时间
+        setInterval(updateStatusBarTime, 60000);
+    }
+    
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', initIOSComponents);
+</script> 

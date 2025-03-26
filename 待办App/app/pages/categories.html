@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>待办App - 分类管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --app-primary: #007aff;
+            --app-background: #f8f8f8;
+            --app-secondary: #34c759;
+            --app-text-primary: #000000;
+            --app-text-secondary: #8e8e93;
+            --app-danger: #ff3b30;
+            --app-warning: #ffcc00;
+            --app-success: #34c759;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--app-background);
+            color: var(--app-text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            max-width: 100%;
+            min-height: 100vh;
+        }
+        
+        /* 分类列表样式 */
+        .category-list {
+            margin-bottom: 20px;
+        }
+        
+        .category-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background-color: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        
+        .category-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        
+        .category-details {
+            flex: 1;
+        }
+        
+        .category-name {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .category-count {
+            font-size: 13px;
+            color: var(--app-text-secondary);
+        }
+        
+        .category-actions {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .category-action {
+            color: var(--app-text-secondary);
+            font-size: 18px;
+        }
+        
+        .category-action.edit {
+            color: var(--app-primary);
+        }
+        
+        .category-action.delete {
+            color: var(--app-danger);
+        }
+        
+        /* 添加分类按钮 */
+        .add-category-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            border-radius: 12px;
+            background-color: white;
+            border: 1px dashed var(--app-text-secondary);
+            color: var(--app-primary);
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .add-category-button i {
+            margin-right: 8px;
+        }
+        
+        /* 分类统计卡片 */
+        .stats-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+        
+        .stats-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            background-color: rgba(0,0,0,0.03);
+        }
+        
+        .stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--app-text-secondary);
+        }
+        
+        /* 分类创建模态框 */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .modal-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .modal-container.active {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .modal-close {
+            font-size: 24px;
+            color: var(--app-text-secondary);
+            background: transparent;
+            border: none;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .color-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        
+        .color-option {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .color-option.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .modal-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background-color: var(--app-primary);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面内容区域 -->
+    <div class="page-content">
+        <!-- 页面标题区域 -->
+        <div class="page-header px-4 py-6">
+            <h1 class="page-title">分类管理</h1>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="page-body px-4">
+            <!-- 分类统计卡片 -->
+            <div class="stats-card">
+                <div class="stats-title">分类统计</div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">分类总数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">18</div>
+                        <div class="stat-label">任务总数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">今日任务</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">11</div>
+                        <div class="stat-label">已完成</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 添加分类按钮 -->
+            <div class="add-category-button" id="addCategoryButton">
+                <i class="fas fa-plus"></i>添加新分类
+            </div>
+            
+            <!-- 分类列表 -->
+            <div class="category-list">
+                <div class="category-item">
+                    <div class="category-color" style="background-color: #0288d1;"></div>
+                    <div class="category-details">
+                        <div class="category-name">工作</div>
+                        <div class="category-count">9 个任务</div>
+                    </div>
+                    <div class="category-actions">
+                        <i class="fas fa-pen category-action edit"></i>
+                        <i class="fas fa-trash category-action delete"></i>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-color" style="background-color: #9c27b0;"></div>
+                    <div class="category-details">
+                        <div class="category-name">个人</div>
+                        <div class="category-count">3 个任务</div>
+                    </div>
+                    <div class="category-actions">
+                        <i class="fas fa-pen category-action edit"></i>
+                        <i class="fas fa-trash category-action delete"></i>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-color" style="background-color: #f44336;"></div>
+                    <div class="category-details">
+                        <div class="category-name">购物</div>
+                        <div class="category-count">2 个任务</div>
+                    </div>
+                    <div class="category-actions">
+                        <i class="fas fa-pen category-action edit"></i>
+                        <i class="fas fa-trash category-action delete"></i>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-color" style="background-color: #4caf50;"></div>
+                    <div class="category-details">
+                        <div class="category-name">健康</div>
+                        <div class="category-count">4 个任务</div>
+                    </div>
+                    <div class="category-actions">
+                        <i class="fas fa-pen category-action edit"></i>
+                        <i class="fas fa-trash category-action delete"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 创建分类模态框 -->
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-container" id="categoryModal">
+        <div class="modal-header">
+            <div class="modal-title">创建新分类</div>
+            <button class="modal-close" id="closeModalButton">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label">分类名称</label>
+                <input type="text" class="form-input" placeholder="输入分类名称" id="categoryName">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">分类颜色</label>
+                <div class="color-options">
+                    <div class="color-option active" style="background-color: #f44336;"></div>
+                    <div class="color-option" style="background-color: #ff9800;"></div>
+                    <div class="color-option" style="background-color: #ffeb3b;"></div>
+                    <div class="color-option" style="background-color: #4caf50;"></div>
+                    <div class="color-option" style="background-color: #2196f3;"></div>
+                    <div class="color-option" style="background-color: #673ab7;"></div>
+                    <div class="color-option" style="background-color: #9c27b0;"></div>
+                    <div class="color-option" style="background-color: #607d8b;"></div>
+                </div>
+            </div>
+            
+            <button class="modal-button" id="saveCategoryButton">保存分类</button>
+        </div>
+    </div>
+    
+    <!-- 动态加载iOS组件 -->
+    <script>
+        // 动态加载iOS组件
+        function loadIOSComponents() {
+            fetch('../components/ios-components.html')
+                .then(response => response.text())
+                .then(html => {
+                    // 创建一个临时容器来解析HTML
+                    const tempContainer = document.createElement('div');
+                    tempContainer.innerHTML = html;
+                    
+                    // 提取状态栏和导航栏
+                    const statusBar = tempContainer.querySelector('#ios-status-bar');
+                    const tabBar = tempContainer.querySelector('#ios-tab-bar');
+                    
+                    // 插入状态栏到body开始位置
+                    document.body.insertBefore(statusBar, document.body.firstChild);
+                    
+                    // 插入导航栏到body结束位置
+                    document.body.appendChild(tabBar);
+                    
+                    // 添加样式
+                    const styles = tempContainer.querySelectorAll('style');
+                    styles.forEach(style => document.head.appendChild(style.cloneNode(true)));
+                    
+                    // 添加脚本
+                    const scripts = tempContainer.querySelectorAll('script');
+                    scripts.forEach(script => {
+                        const newScript = document.createElement('script');
+                        newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript);
+                    });
+                })
+                .catch(error => console.error('加载iOS组件失败:', error));
+        }
+        
+        // 模态框控制
+        function setupModalControls() {
+            const addCategoryButton = document.getElementById('addCategoryButton');
+            const closeModalButton = document.getElementById('closeModalButton');
+            const modalBackdrop = document.getElementById('modalBackdrop');
+            const categoryModal = document.getElementById('categoryModal');
+            const saveCategoryButton = document.getElementById('saveCategoryButton');
+            
+            // 打开模态框
+            addCategoryButton.addEventListener('click', () => {
+                modalBackdrop.classList.add('active');
+                categoryModal.classList.add('active');
+            });
+            
+            // 关闭模态框
+            function closeModal() {
+                modalBackdrop.classList.remove('active');
+                categoryModal.classList.remove('active');
+            }
+            
+            closeModalButton.addEventListener('click', closeModal);
+            modalBackdrop.addEventListener('click', closeModal);
+            
+            // 保存分类
+            saveCategoryButton.addEventListener('click', () => {
+                const categoryName = document.getElementById('categoryName').value.trim();
+                
+                if (!categoryName) {
+                    alert('请输入分类名称');
+                    return;
+                }
+                
+                // 获取选中的颜色
+                const activeColor = document.querySelector('.color-option.active');
+                const color = window.getComputedStyle(activeColor).backgroundColor;
+                
+                // 实际应用中这里会保存分类数据
+                // 这里简单演示保存成功后关闭模态框
+                alert(`分类 "${categoryName}" 创建成功！`);
+                closeModal();
+            });
+        }
+        
+        // 颜色选择器
+        function setupColorPicker() {
+            document.querySelectorAll('.color-option').forEach(color => {
+                color.addEventListener('click', function() {
+                    // 移除其他颜色的选中状态
+                    document.querySelectorAll('.color-option').forEach(c => c.classList.remove('active'));
+                    // 给当前颜色添加选中状态
+                    this.classList.add('active');
+                });
+            });
+        }
+        
+        // 分类操作
+        function setupCategoryActions() {
+            // 编辑分类点击事件
+            document.querySelectorAll('.category-action.edit').forEach(editBtn => {
+                editBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const categoryItem = this.closest('.category-item');
+                    const categoryName = categoryItem.querySelector('.category-name').textContent;
+                    
+                    // 打开编辑模态框 (实际应用中会预填充数据)
+                    document.getElementById('categoryName').value = categoryName;
+                    document.getElementById('modalBackdrop').classList.add('active');
+                    document.getElementById('categoryModal').classList.add('active');
+                    document.querySelector('.modal-title').textContent = "编辑分类";
+                });
+            });
+            
+            // 删除分类点击事件
+            document.querySelectorAll('.category-action.delete').forEach(deleteBtn => {
+                deleteBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const categoryItem = this.closest('.category-item');
+                    const categoryName = categoryItem.querySelector('.category-name').textContent;
+                    
+                    // 确认删除
+                    const confirmed = confirm(`确定要删除分类 "${categoryName}" 吗？关联的任务将会被移动到默认分类。`);
+                    
+                    if (confirmed) {
+                        // 实际应用中这里会删除分类数据
+                        // 这里简单演示删除UI元素
+                        categoryItem.style.height = '0';
+                        categoryItem.style.opacity = '0';
+                        categoryItem.style.margin = '0';
+                        categoryItem.style.padding = '0';
+                        categoryItem.style.overflow = 'hidden';
+                        categoryItem.style.transition = 'all 0.3s ease';
+                        
+                        setTimeout(() => {
+                            categoryItem.remove();
+                        }, 300);
+                    }
+                });
+            });
+        }
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', () => {
+            loadIOSComponents();
+            setupModalControls();
+            setupColorPicker();
+            setupCategoryActions();
+        });
+    </script>
+</body>
+</html> 
