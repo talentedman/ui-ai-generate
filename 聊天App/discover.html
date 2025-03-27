@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发现 - 聊天App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f2f2f7;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .discover-content {
+            height: calc(100vh - 6.5rem);
+            overflow-y: auto;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: white;
+            border-bottom: 1px solid #e5e5ea;
+        }
+        
+        .menu-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.25rem;
+            margin-right: 0.75rem;
+            color: white;
+        }
+        
+        .moments-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.25rem;
+            margin-top: 0.5rem;
+        }
+        
+        .moments-image {
+            width: 100%;
+            height: 4rem;
+            object-fit: cover;
+            border-radius: 0.25rem;
+        }
+        
+        .section-header {
+            font-size: 0.8rem;
+            color: #8e8e93;
+            padding: 0.5rem 1rem;
+            background-color: #f2f2f7;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="bg-black text-white h-6 px-5 flex items-center justify-between text-xs">
+        <div class="flex items-center">
+            <span>9:41</span>
+        </div>
+        <div class="flex items-center space-x-1">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 导航栏 -->
+    <div class="bg-white border-b border-gray-200 flex items-center justify-between px-4 py-2">
+        <h1 class="text-xl font-semibold">发现</h1>
+    </div>
+    
+    <!-- 发现内容 -->
+    <div class="discover-content">
+        <!-- 朋友圈 -->
+        <div class="menu-item">
+            <div class="menu-icon bg-gradient-to-br from-green-400 to-blue-500">
+                <i class="fas fa-image"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold">朋友圈</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+                <div class="moments-preview">
+                    <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="朋友圈图片" class="moments-image">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="朋友圈图片" class="moments-image">
+                    <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="朋友圈图片" class="moments-image">
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-header">社交</div>
+        
+        <!-- 扫一扫 -->
+        <div class="menu-item">
+            <div class="menu-icon bg-blue-500">
+                <i class="fas fa-qrcode"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center">
+                    <span>扫一扫</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 摇一摇 -->
+        <div class="menu-item">
+            <div class="menu-icon bg-purple-500">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center">
+                    <span>摇一摇</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 附近的人 -->
+        <div class="menu-item">
+            <div class="menu-icon bg-red-500">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center">
+                    <span>附近的人</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-header">娱乐</div>
+        
+        <!-- 游戏 -->
+        <div class="menu-item">
+            <div class="menu-icon bg-green-500">
+                <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center">
+                    <span>游戏</span>
+                    <div class="flex items-center">
+                        <span class="text-red-500 text-xs mr-1">2</span>
+                        <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 小程序 -->
+        <div class="menu-item">
+            <div class="menu-icon bg-yellow-500">
+                <i class="fas fa-th-large"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center">
+                    <span>小程序</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-header">健康</div>
+        
+        <!-- 健康码 -->
+        <div class="menu-item">
+            <div class="menu-icon bg-green-600">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center">
+                    <span>健康码</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 运动 -->
+        <div class="menu-item">
+            <div class="menu-icon bg-blue-400">
+                <i class="fas fa-running"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center">
+                    <span>运动</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-header">购物</div>
+        
+        <!-- 购物 -->
+        <div class="menu-item">
+            <div class="menu-icon bg-red-400">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center">
+                    <span>购物</span>
+                    <div class="flex items-center">
+                        <span class="text-xs text-gray-500 mr-1">新品上线</span>
+                        <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 卡包 -->
+        <div class="menu-item">
+            <div class="menu-icon bg-orange-500">
+                <i class="fas fa-credit-card"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-center">
+                    <span>卡包</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-2">
+        <a href="chat_list.html" class="flex flex-col items-center text-gray-500">
+            <i class="fas fa-comment text-xl"></i>
+            <span class="text-xs mt-1">消息</span>
+        </a>
+        <a href="contacts.html" class="flex flex-col items-center text-gray-500">
+            <i class="fas fa-address-book text-xl"></i>
+            <span class="text-xs mt-1">联系人</span>
+        </a>
+        <a href="discover.html" class="flex flex-col items-center text-blue-500">
+            <i class="fas fa-compass text-xl"></i>
+            <span class="text-xs mt-1">发现</span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center text-gray-500">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs mt-1">我</span>
+        </a>
+    </div>
+</body>
+</html> 

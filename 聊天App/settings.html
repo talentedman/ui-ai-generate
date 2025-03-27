@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置 - 聊天App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f2f2f7;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .settings-content {
+            height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+        
+        .setting-item {
+            display: flex;
+            align-items: center;
+            padding: 0.875rem 1rem;
+            background-color: white;
+            border-bottom: 1px solid #e5e5ea;
+        }
+        
+        .setting-group {
+            margin-bottom: 1rem;
+        }
+        
+        .ios-toggle {
+            position: relative;
+            display: inline-block;
+            width: 51px;
+            height: 31px;
+        }
+        
+        .ios-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e5ea;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 27px;
+            width: 27px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        input:checked + .slider {
+            background-color: #4CD964;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="bg-black text-white h-6 px-5 flex items-center justify-between text-xs">
+        <div class="flex items-center">
+            <span>9:41</span>
+        </div>
+        <div class="flex items-center space-x-1">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 导航栏 -->
+    <div class="bg-white border-b border-gray-200 flex items-center px-4 py-2">
+        <a href="profile.html" class="text-blue-500 mr-4">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <h1 class="text-xl font-semibold">设置</h1>
+    </div>
+    
+    <!-- 设置内容 -->
+    <div class="settings-content">
+        <!-- 账号与安全 -->
+        <div class="setting-group">
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span class="font-semibold">账号与安全</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-red-500 text-xs bg-red-100 px-1 rounded mr-2">1</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 通知设置 -->
+        <div class="setting-group">
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span>新消息通知</span>
+                </div>
+                <div>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span>勿扰模式</span>
+                </div>
+                <div>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 隐私设置 -->
+        <div class="setting-group">
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span>隐私</span>
+                </div>
+                <div>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span>安全</span>
+                </div>
+                <div>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+            
+            <div class="setting-item flex justify-between items-center">
+                <div>
+                    <span>指纹锁定聊天</span>
+                </div>
+                <label class="ios-toggle">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        
+        <!-- 通用设置 -->
+        <div class="setting-group">
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span>聊天背景</span>
+                </div>
+                <div>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span>字体大小</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-gray-500 text-xs mr-1">中</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span>多语言</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-gray-500 text-xs mr-1">简体中文</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span>清除聊天记录</span>
+                </div>
+                <div>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 其他设置 -->
+        <div class="setting-group">
+            <div class="setting-item flex justify-between items-center">
+                <div>
+                    <span>省流量模式</span>
+                </div>
+                <label class="ios-toggle">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span>储存空间</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-gray-500 text-xs mr-1">5.2GB</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+            
+            <div class="setting-item flex justify-between items-center">
+                <div>
+                    <span>深色模式</span>
+                </div>
+                <label class="ios-toggle">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        
+        <!-- 关于 -->
+        <div class="setting-group">
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span>关于畅聊</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-gray-500 text-xs mr-1">v2.4.1</span>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="flex-1">
+                    <span>帮助与反馈</span>
+                </div>
+                <div>
+                    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 退出账号 -->
+        <div class="px-4 py-6">
+            <button class="w-full py-3 text-center text-red-500 bg-white rounded-lg font-semibold border border-gray-200">
+                退出登录
+            </button>
+        </div>
+    </div>
+</body>
+</html> 

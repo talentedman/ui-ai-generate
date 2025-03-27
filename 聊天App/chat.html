@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天 - 聊天App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f2f2f7;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .chat-area {
+            height: calc(100vh - 10.5rem);
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .message-bubble {
+            max-width: 75%;
+            padding: 0.5rem 0.75rem;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+            word-break: break-word;
+        }
+        
+        .message-sent {
+            background-color: #007aff;
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 0.25rem;
+        }
+        
+        .message-received {
+            background-color: #e5e5ea;
+            color: black;
+            margin-right: auto;
+            border-bottom-left-radius: 0.25rem;
+        }
+        
+        .time-divider {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #8e8e93;
+            margin: 1rem 0;
+        }
+        
+        .input-area {
+            border-top: 1px solid #e5e5ea;
+            padding: 0.5rem 0.75rem;
+            background-color: #f2f2f7;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .input-field {
+            border: none;
+            border-radius: 1.25rem;
+            padding: 0.5rem 1rem;
+            background-color: white;
+            width: 100%;
+            outline: none;
+            resize: none;
+            max-height: 5rem;
+            min-height: 2rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        .message-image {
+            max-width: 12rem;
+            max-height: 12rem;
+            border-radius: 0.5rem;
+            object-fit: cover;
+        }
+        
+        .voice-message {
+            display: flex;
+            align-items: center;
+            min-width: 5rem;
+        }
+        
+        .voice-waves {
+            flex: 1;
+            height: 1rem;
+            background: linear-gradient(to bottom, currentColor 0%, currentColor 30%, transparent 30%, transparent 70%, currentColor 70%, currentColor 100%);
+            background-size: 0.5rem 1rem;
+            background-repeat: repeat-x;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="bg-black text-white h-6 px-5 flex items-center justify-between text-xs">
+        <div class="flex items-center">
+            <span>9:41</span>
+        </div>
+        <div class="flex items-center space-x-1">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 聊天导航栏 -->
+    <div class="bg-white border-b border-gray-200 flex items-center justify-between px-4 py-2">
+        <a href="chat_list.html" class="text-blue-500">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <div class="flex-1 text-center">
+            <h1 class="text-lg font-semibold">张小红</h1>
+            <p class="text-xs text-gray-500">在线</p>
+        </div>
+        <div class="flex space-x-4">
+            <button class="text-gray-600">
+                <i class="fas fa-phone"></i>
+            </button>
+            <button class="text-gray-600">
+                <i class="fas fa-video"></i>
+            </button>
+            <button class="text-gray-600">
+                <i class="fas fa-ellipsis-vertical"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- 聊天区域 -->
+    <div class="chat-area">
+        <div class="time-divider">
+            <span class="bg-f2f2f7 px-2 rounded">今天 09:15</span>
+        </div>
+        
+        <!-- 对方消息 -->
+        <div class="flex items-end mb-3">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=64&q=80" alt="头像" class="w-8 h-8 rounded-full mr-2">
+            <div class="message-bubble message-received">
+                <p>嗨，早上好！</p>
+            </div>
+        </div>
+        
+        <div class="flex items-end mb-3">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=64&q=80" alt="头像" class="w-8 h-8 rounded-full mr-2">
+            <div class="message-bubble message-received">
+                <p>晚上有空一起吃饭吗？</p>
+            </div>
+        </div>
+        
+        <!-- 我的消息 -->
+        <div class="message-bubble message-sent">
+            <p>早上好！</p>
+        </div>
+        
+        <div class="message-bubble message-sent">
+            <p>有空的，你想吃什么？</p>
+        </div>
+        
+        <!-- 对方消息 - 图片 -->
+        <div class="flex items-end mb-3">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=64&q=80" alt="头像" class="w-8 h-8 rounded-full mr-2">
+            <div class="message-bubble message-received">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="食物图片" class="message-image">
+            </div>
+        </div>
+        
+        <div class="flex items-end mb-3">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=64&q=80" alt="头像" class="w-8 h-8 rounded-full mr-2">
+            <div class="message-bubble message-received">
+                <p>这家新开的餐厅，看起来不错！</p>
+            </div>
+        </div>
+        
+        <!-- 我的消息 - 语音 -->
+        <div class="message-bubble message-sent">
+            <div class="voice-message">
+                <i class="fas fa-play mr-2"></i>
+                <div class="voice-waves"></div>
+                <span class="ml-2 text-sm">0:08''</span>
+            </div>
+        </div>
+        
+        <!-- 对方消息 -->
+        <div class="flex items-end mb-3">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=64&q=80" alt="头像" class="w-8 h-8 rounded-full mr-2">
+            <div class="message-bubble message-received">
+                <p>好的，那就这家吧！晚上7点？</p>
+            </div>
+        </div>
+        
+        <!-- 正在输入提示 -->
+        <div class="flex items-end mb-3">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=64&q=80" alt="头像" class="w-8 h-8 rounded-full mr-2">
+            <div class="message-bubble message-received flex">
+                <span class="typing-indicator flex">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 输入区域 -->
+    <div class="input-area">
+        <div class="flex items-center">
+            <button class="text-gray-600 mx-1">
+                <i class="fas fa-plus-circle text-xl"></i>
+            </button>
+            <div class="flex-1 mx-2 relative">
+                <textarea class="input-field" placeholder="输入消息..."></textarea>
+            </div>
+            <button class="text-gray-600 mx-1">
+                <i class="fas fa-microphone text-xl"></i>
+            </button>
+            <button class="text-gray-600 mx-1">
+                <i class="far fa-face-smile text-xl"></i>
+            </button>
+        </div>
+        <div class="flex justify-around pt-2">
+            <button class="px-2 py-1 text-gray-600 text-xs flex flex-col items-center">
+                <i class="fas fa-camera text-lg"></i>
+                <span>相册</span>
+            </button>
+            <button class="px-2 py-1 text-gray-600 text-xs flex flex-col items-center">
+                <i class="fas fa-camera text-lg"></i>
+                <span>拍摄</span>
+            </button>
+            <button class="px-2 py-1 text-gray-600 text-xs flex flex-col items-center">
+                <i class="fas fa-video text-lg"></i>
+                <span>视频通话</span>
+            </button>
+            <button class="px-2 py-1 text-gray-600 text-xs flex flex-col items-center">
+                <i class="fas fa-map-marker-alt text-lg"></i>
+                <span>位置</span>
+            </button>
+            <button class="px-2 py-1 text-gray-600 text-xs flex flex-col items-center">
+                <i class="fas fa-file text-lg"></i>
+                <span>文件</span>
+            </button>
+        </div>
+    </div>
+    
+    <style>
+        /* 输入提示动画 */
+        .typing-indicator {
+            padding: 0.25rem;
+        }
+        
+        .dot {
+            display: block;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: #999;
+            margin: 0 0.1rem;
+            animation: typing 1.5s infinite ease-in-out;
+        }
+        
+        .dot:nth-child(1) { animation-delay: 0s; }
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-0.25rem); }
+        }
+    </style>
+</body>
+</html> 

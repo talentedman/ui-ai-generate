@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 聊天App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: white;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .input-field {
+            border: none;
+            border-bottom: 1px solid #e5e5ea;
+            padding: 1rem 0.5rem;
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .input-field:focus {
+            border-color: #007aff;
+        }
+        
+        .btn-primary {
+            background-color: #007aff;
+            color: white;
+            border-radius: 1.5rem;
+            padding: 0.75rem;
+            font-weight: 600;
+            border: none;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary:active {
+            background-color: #0062cc;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #007aff;
+            border: none;
+            padding: 0.75rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="bg-black text-white h-6 px-5 flex items-center justify-between text-xs">
+        <div class="flex items-center">
+            <span>9:41</span>
+        </div>
+        <div class="flex items-center space-x-1">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <div class="flex flex-col h-full">
+        <div class="flex-1 flex flex-col justify-center px-8">
+            <div class="text-center mb-12">
+                <div class="w-20 h-20 mx-auto bg-blue-500 rounded-2xl flex items-center justify-center mb-4">
+                    <i class="fas fa-comment-dots text-white text-4xl"></i>
+                </div>
+                <h1 class="text-3xl font-bold">畅聊</h1>
+                <p class="text-gray-500 mt-2">连接你我的交流平台</p>
+            </div>
+            
+            <form class="space-y-6">
+                <div>
+                    <input type="tel" placeholder="手机号码" class="input-field" />
+                </div>
+                <div class="relative">
+                    <input type="password" placeholder="密码" class="input-field pr-10" />
+                    <button type="button" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+                <div class="pt-4">
+                    <button type="button" class="btn-primary">登录</button>
+                </div>
+                <div class="flex justify-between items-center text-sm pt-2">
+                    <a href="register.html" class="text-blue-500">注册新账号</a>
+                    <a href="#" class="text-blue-500">忘记密码？</a>
+                </div>
+            </form>
+        </div>
+        
+        <div class="pb-8 px-8">
+            <div class="flex items-center justify-center space-x-4 mb-4">
+                <span class="flex-1 h-px bg-gray-300"></span>
+                <span class="text-gray-400 text-sm">其他登录方式</span>
+                <span class="flex-1 h-px bg-gray-300"></span>
+            </div>
+            
+            <div class="flex justify-center space-x-8">
+                <button class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">
+                    <i class="fab fa-weixin text-white text-xl"></i>
+                </button>
+                <button class="w-12 h-12 rounded-full bg-blue-400 flex items-center justify-center">
+                    <i class="fab fa-qq text-white text-xl"></i>
+                </button>
+                <button class="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center">
+                    <i class="fab fa-weibo text-white text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="text-center text-xs text-gray-400 pb-4">
+            登录即表示您同意<a href="#" class="text-blue-500">用户协议</a>和<a href="#" class="text-blue-500">隐私政策</a>
+        </div>
+    </div>
+</body>
+</html> 
