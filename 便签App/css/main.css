@@ -1,0 +1,111 @@
+/* 自定义样式 */
+.note-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.note-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.ios-status-bar {
+  height: 44px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.iphone-frame {
+  width: 375px;
+  height: 812px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 10px solid #000;
+}
+
+.app-frame {
+  width: 100%;
+  height: calc(100% - 50px);
+  border: none;
+}
+
+.tab-bar {
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tab-item {
+  transition: color 0.2s;
+}
+
+.tab-item.active {
+  color: #FFDE59;
+}
+
+.tab-item:not(.active) {
+  color: #6B7280;
+}
+
+.notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 30px;
+  background-color: #000;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 10;
+}
+
+.note-yellow { background-color: rgba(255, 222, 89, 0.2); }
+.note-blue { background-color: rgba(74, 144, 226, 0.2); }
+.note-green { background-color: rgba(0, 200, 83, 0.2); }
+.note-pink { background-color: rgba(255, 145, 77, 0.2); }
+.note-purple { background-color: rgba(155, 81, 224, 0.2); }
+
+.modal {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 自定义动画 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFDE59;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF914D;
+} 
