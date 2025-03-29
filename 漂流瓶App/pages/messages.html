@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息 - 漂流瓶App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="bg-gray-50 h-screen flex flex-col">
+    <!-- 顶部导航栏 -->
+    <div class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
+        <h1 class="text-xl font-semibold">消息</h1>
+        <div class="flex items-center space-x-3">
+            <button class="p-2 rounded-full hover:bg-blue-500 transition">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 选项卡切换 -->
+    <div class="bg-white border-b border-gray-200">
+        <div class="flex">
+            <button class="flex-1 py-3 text-center text-blue-600 border-b-2 border-blue-600 font-medium">
+                全部消息
+            </button>
+            <button class="flex-1 py-3 text-center text-gray-500 font-medium">
+                未读消息
+            </button>
+        </div>
+    </div>
+
+    <!-- 消息列表 -->
+    <div class="flex-1 overflow-auto">
+        <!-- 系统通知 -->
+        <div class="bg-blue-50 p-4 flex items-center text-sm">
+            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-bell text-blue-600"></i>
+            </div>
+            <div class="ml-3 flex-1">
+                <div class="font-medium text-blue-800">系统通知</div>
+                <div class="text-blue-600">你有3条新的漂流瓶回复消息</div>
+            </div>
+            <div class="flex-shrink-0 rounded-full bg-red-500 w-5 h-5 flex items-center justify-center text-white text-xs">
+                3
+            </div>
+        </div>
+        
+        <!-- 消息项列表 -->
+        <div class="bg-white">
+            <!-- 消息项1 -->
+            <a href="chat.html?id=conv1" class="block border-b border-gray-100">
+                <div class="p-4 flex">
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="用户头像" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between items-center">
+                            <div class="font-medium">星辰大海</div>
+                            <div class="text-xs text-gray-500">14:28</div>
+                        </div>
+                        <div class="text-gray-600 text-sm mt-1 line-clamp-1">谢谢你的漂流瓶，我最近也有类似的感受...</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 消息项2（有未读） -->
+            <a href="chat.html?id=conv2" class="block border-b border-gray-100 bg-blue-50">
+                <div class="p-4 flex">
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="用户头像" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between items-center">
+                            <div class="font-medium">山间的风</div>
+                            <div class="text-xs text-gray-500">昨天</div>
+                        </div>
+                        <div class="text-gray-800 font-medium text-sm mt-1 line-clamp-1">我们可以约个时间一起去海边啊，我知道一个很棒的地方!</div>
+                        <div class="mt-1 flex items-center">
+                            <span class="inline-block px-2 py-0.5 bg-blue-100 text-blue-600 text-xs rounded-md">
+                                <i class="fas fa-wine-bottle text-xs mr-1"></i>来自漂流瓶
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ml-2 flex-shrink-0 self-center">
+                        <div class="rounded-full bg-red-500 w-5 h-5 flex items-center justify-center text-white text-xs">
+                            1
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 消息项3 -->
+            <a href="chat.html?id=conv3" class="block border-b border-gray-100">
+                <div class="p-4 flex">
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="用户头像" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between items-center">
+                            <div class="font-medium">城市漫步者</div>
+                            <div class="text-xs text-gray-500">周一</div>
+                        </div>
+                        <div class="text-gray-600 text-sm mt-1 line-clamp-1">你说的那个地方是在青岛吗？我今年夏天正打算去那边旅行。</div>
+                        <div class="mt-1 flex items-center">
+                            <span class="inline-block px-2 py-0.5 bg-blue-100 text-blue-600 text-xs rounded-md">
+                                <i class="fas fa-wine-bottle text-xs mr-1"></i>来自漂流瓶
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 消息项4（有未读） -->
+            <a href="chat.html?id=conv4" class="block border-b border-gray-100 bg-blue-50">
+                <div class="p-4 flex">
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="用户头像" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between items-center">
+                            <div class="font-medium">雨后彩虹</div>
+                            <div class="text-xs text-gray-500">上周</div>
+                        </div>
+                        <div class="text-gray-800 font-medium text-sm mt-1 line-clamp-1">最近心情不太好，看到你的漂流瓶很有感触，能聊聊吗？</div>
+                        <div class="mt-1 flex items-center">
+                            <span class="inline-block px-2 py-0.5 bg-red-100 text-red-600 text-xs rounded-md">
+                                <i class="fas fa-heart text-xs mr-1"></i>来自情感瓶
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ml-2 flex-shrink-0 self-center">
+                        <div class="rounded-full bg-red-500 w-5 h-5 flex items-center justify-center text-white text-xs">
+                            2
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 消息项5 -->
+            <a href="chat.html?id=conv5" class="block border-b border-gray-100">
+                <div class="p-4 flex">
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="用户头像" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between items-center">
+                            <div class="font-medium">数码迷</div>
+                            <div class="text-xs text-gray-500">9月3日</div>
+                        </div>
+                        <div class="text-gray-600 text-sm mt-1 line-clamp-1">关于你问的那个相机型号，我查了一下资料，是佳能EOS R5。</div>
+                        <div class="mt-1 flex items-center">
+                            <span class="inline-block px-2 py-0.5 bg-green-100 text-green-600 text-xs rounded-md">
+                                <i class="fas fa-music text-xs mr-1"></i>来自兴趣瓶
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 清空提示弹窗 -->
+    <div id="clearModal" class="modal hidden">
+        <div class="modal-content bg-white rounded-xl max-w-xs overflow-hidden">
+            <div class="p-4 bg-blue-600 text-white">
+                <h3 class="text-lg font-semibold">确认清空</h3>
+            </div>
+            <div class="p-4">
+                <p class="text-gray-700 mb-4">确定要清空所有消息记录吗？此操作无法撤销。</p>
+                <div class="flex justify-end space-x-2">
+                    <button class="close-modal px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">取消</button>
+                    <button id="confirmClearButton" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">确认清空</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置页面标题
+            setPageTitle('消息');
+            
+            // 搜索按钮事件
+            document.querySelector('.fa-search').parentElement.addEventListener('click', function() {
+                // 实际应用中会打开搜索界面
+                alert('打开搜索界面');
+            });
+            
+            // 选项卡切换逻辑
+            const tabs = document.querySelectorAll('.flex-1.py-3');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => {
+                        t.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+                        t.classList.add('text-gray-500');
+                    });
+                    this.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+                    this.classList.remove('text-gray-500');
+                    
+                    // 实际应用中这里会切换消息列表
+                });
+            });
+            
+            // 长按消息项显示操作菜单
+            const messageItems = document.querySelectorAll('.block.border-b');
+            let pressTimer;
+            
+            messageItems.forEach(item => {
+                item.addEventListener('touchstart', function(e) {
+                    pressTimer = setTimeout(function() {
+                        // 显示操作菜单（删除、标为已读等）
+                        alert('显示操作菜单');
+                    }, 500);
+                });
+                
+                item.addEventListener('touchend', function() {
+                    clearTimeout(pressTimer);
+                });
+                
+                item.addEventListener('touchmove', function() {
+                    clearTimeout(pressTimer);
+                });
+            });
+            
+            // 模拟右上角更多按钮点击事件（在实际应用中）
+            function showMoreOptions() {
+                const options = [
+                    { icon: 'fa-check-double', text: '全部已读' },
+                    { icon: 'fa-trash', text: '清空消息' }
+                ];
+                
+                // 这里简化，实际应用中会显示一个下拉菜单
+                // 如果点击了"清空消息"
+                document.getElementById('clearModal').classList.remove('hidden');
+            }
+            
+            // 确认清空按钮事件
+            document.getElementById('confirmClearButton').addEventListener('click', function() {
+                document.getElementById('clearModal').classList.add('hidden');
+                
+                // 实际应用中这里会清空消息
+                showToast('所有消息已清空');
+                
+                // 模拟清空后的界面
+                setTimeout(function() {
+                    const messageList = document.querySelector('.bg-white');
+                    messageList.innerHTML = `
+                        <div class="flex flex-col items-center justify-center py-16">
+                            <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="far fa-comment-alt text-gray-400 text-3xl"></i>
+                            </div>
+                            <p class="text-gray-500">暂无消息</p>
+                            <p class="text-sm text-gray-400 mt-2">扔个漂流瓶，说不定会有人回复你哦</p>
+                        </div>
+                    `;
+                }, 500);
+            });
+            
+            // 关闭模态框按钮事件
+            document.querySelectorAll('.close-modal').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.modal').forEach(function(modal) {
+                        modal.classList.add('hidden');
+                    });
+                });
+            });
+        });
+        
+        // 显示提示信息
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(function() {
+                toast.classList.add('show');
+            }, 100);
+            
+            setTimeout(function() {
+                toast.classList.remove('show');
+                setTimeout(function() {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 

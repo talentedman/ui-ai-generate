@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漂流瓶App原型</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-6 shadow-md">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-bold mb-2">漂流瓶App原型展示</h1>
+            <p class="text-blue-100">高保真UI原型，支持交互操作</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-8 px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">探索未知，连接彼此</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                漂流瓶App让你在数字海洋中分享想法、故事和秘密，与世界各地的陌生人建立神秘联系。
+                以下是App的主要界面，可以通过底部导航栏切换不同页面。
+            </p>
+        </div>
+
+        <!-- 设备展示网格 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 justify-items-center">
+            <!-- 设备1：首页 -->
+            <div class="flex flex-col items-center">
+                <h3 class="text-xl font-medium text-gray-800 mb-4">首页</h3>
+                <div class="ios-frame">
+                    <div class="notch"></div>
+                    <!-- 状态栏 -->
+                    <div class="status-bar">
+                        <span class="status-bar-time text-sm font-semibold">14:30</span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 内容区域 -->
+                    <iframe src="pages/home.html" class="app-frame"></iframe>
+                    
+                    <!-- 底部导航栏 -->
+                    <div class="tab-bar">
+                        <div class="tab-item active" data-target="home">
+                            <i class="fas fa-water"></i>
+                            <span>大海</span>
+                        </div>
+                        <div class="tab-item" data-target="discover">
+                            <i class="fas fa-compass"></i>
+                            <span>发现</span>
+                        </div>
+                        <div class="tab-item" data-target="messages">
+                            <i class="fas fa-envelope"></i>
+                            <span>消息</span>
+                        </div>
+                        <div class="tab-item" data-target="profile">
+                            <i class="fas fa-user"></i>
+                            <span>我的</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 设备2：扔瓶子页面 -->
+            <div class="flex flex-col items-center">
+                <h3 class="text-xl font-medium text-gray-800 mb-4">扔瓶子</h3>
+                <div class="ios-frame">
+                    <div class="notch"></div>
+                    <!-- 状态栏 -->
+                    <div class="status-bar">
+                        <span class="status-bar-time text-sm font-semibold">14:30</span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 内容区域 -->
+                    <iframe src="pages/throw-bottle.html" class="app-frame"></iframe>
+                    
+                    <!-- 底部导航栏 -->
+                    <div class="tab-bar">
+                        <div class="tab-item active" data-target="home">
+                            <i class="fas fa-water"></i>
+                            <span>大海</span>
+                        </div>
+                        <div class="tab-item" data-target="discover">
+                            <i class="fas fa-compass"></i>
+                            <span>发现</span>
+                        </div>
+                        <div class="tab-item" data-target="messages">
+                            <i class="fas fa-envelope"></i>
+                            <span>消息</span>
+                        </div>
+                        <div class="tab-item" data-target="profile">
+                            <i class="fas fa-user"></i>
+                            <span>我的</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 设备3：捞瓶子结果页 -->
+            <div class="flex flex-col items-center">
+                <h3 class="text-xl font-medium text-gray-800 mb-4">捞到的瓶子</h3>
+                <div class="ios-frame">
+                    <div class="notch"></div>
+                    <!-- 状态栏 -->
+                    <div class="status-bar">
+                        <span class="status-bar-time text-sm font-semibold">14:30</span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 内容区域 -->
+                    <iframe src="pages/bottle-detail.html?id=1" class="app-frame"></iframe>
+                    
+                    <!-- 底部导航栏 -->
+                    <div class="tab-bar">
+                        <div class="tab-item active" data-target="home">
+                            <i class="fas fa-water"></i>
+                            <span>大海</span>
+                        </div>
+                        <div class="tab-item" data-target="discover">
+                            <i class="fas fa-compass"></i>
+                            <span>发现</span>
+                        </div>
+                        <div class="tab-item" data-target="messages">
+                            <i class="fas fa-envelope"></i>
+                            <span>消息</span>
+                        </div>
+                        <div class="tab-item" data-target="profile">
+                            <i class="fas fa-user"></i>
+                            <span>我的</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 设备4：消息页 -->
+            <div class="flex flex-col items-center mt-10">
+                <h3 class="text-xl font-medium text-gray-800 mb-4">消息列表</h3>
+                <div class="ios-frame">
+                    <div class="notch"></div>
+                    <!-- 状态栏 -->
+                    <div class="status-bar">
+                        <span class="status-bar-time text-sm font-semibold">14:30</span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 内容区域 -->
+                    <iframe src="pages/messages.html" class="app-frame"></iframe>
+                    
+                    <!-- 底部导航栏 -->
+                    <div class="tab-bar">
+                        <div class="tab-item" data-target="home">
+                            <i class="fas fa-water"></i>
+                            <span>大海</span>
+                        </div>
+                        <div class="tab-item" data-target="discover">
+                            <i class="fas fa-compass"></i>
+                            <span>发现</span>
+                        </div>
+                        <div class="tab-item active" data-target="messages">
+                            <i class="fas fa-envelope"></i>
+                            <span>消息</span>
+                        </div>
+                        <div class="tab-item" data-target="profile">
+                            <i class="fas fa-user"></i>
+                            <span>我的</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 设备5：聊天详情页 -->
+            <div class="flex flex-col items-center mt-10">
+                <h3 class="text-xl font-medium text-gray-800 mb-4">聊天对话</h3>
+                <div class="ios-frame">
+                    <div class="notch"></div>
+                    <!-- 状态栏 -->
+                    <div class="status-bar">
+                        <span class="status-bar-time text-sm font-semibold">14:30</span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 内容区域 -->
+                    <iframe src="pages/chat.html?id=conv1" class="app-frame"></iframe>
+                    
+                    <!-- 底部导航栏 -->
+                    <div class="tab-bar">
+                        <div class="tab-item" data-target="home">
+                            <i class="fas fa-water"></i>
+                            <span>大海</span>
+                        </div>
+                        <div class="tab-item" data-target="discover">
+                            <i class="fas fa-compass"></i>
+                            <span>发现</span>
+                        </div>
+                        <div class="tab-item active" data-target="messages">
+                            <i class="fas fa-envelope"></i>
+                            <span>消息</span>
+                        </div>
+                        <div class="tab-item" data-target="profile">
+                            <i class="fas fa-user"></i>
+                            <span>我的</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 设备6：个人资料页 -->
+            <div class="flex flex-col items-center mt-10">
+                <h3 class="text-xl font-medium text-gray-800 mb-4">个人中心</h3>
+                <div class="ios-frame">
+                    <div class="notch"></div>
+                    <!-- 状态栏 -->
+                    <div class="status-bar">
+                        <span class="status-bar-time text-sm font-semibold">14:30</span>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 内容区域 -->
+                    <iframe src="pages/profile.html" class="app-frame"></iframe>
+                    
+                    <!-- 底部导航栏 -->
+                    <div class="tab-bar">
+                        <div class="tab-item" data-target="home">
+                            <i class="fas fa-water"></i>
+                            <span>大海</span>
+                        </div>
+                        <div class="tab-item" data-target="discover">
+                            <i class="fas fa-compass"></i>
+                            <span>发现</span>
+                        </div>
+                        <div class="tab-item" data-target="messages">
+                            <i class="fas fa-envelope"></i>
+                            <span>消息</span>
+                        </div>
+                        <div class="tab-item active" data-target="profile">
+                            <i class="fas fa-user"></i>
+                            <span>我的</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p>漂流瓶App原型 © 2024</p>
+            <p class="text-sm mt-2 text-gray-400">本原型仅用于演示，所有数据均为模拟数据</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 更新所有设备状态栏的时间
+        function updateAllTimes() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes}`;
+            
+            const timeElements = document.querySelectorAll('.status-bar-time');
+            timeElements.forEach(el => {
+                el.textContent = timeString;
+            });
+        }
+        
+        // 页面加载时更新时间
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAllTimes();
+            // 每分钟更新一次时间
+            setInterval(updateAllTimes, 60000);
+        });
+    </script>
+</body>
+</html> 

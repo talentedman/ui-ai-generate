@@ -25,6 +25,7 @@
 - 外卖点餐App
 - 新闻App
 - 健身App
+- more...
 
 ## 使用方法
 
@@ -54,4 +55,4 @@ git clone https://github.com/talentedman/ui-ai-generate.git
 
 ## 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情 
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瓶子详情 - 漂流瓶App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="bg-blue-50 h-screen flex flex-col">
+    <!-- 顶部导航栏 -->
+    <div class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
+        <div class="flex items-center">
+            <button id="backButton" class="mr-2">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="text-xl font-semibold">漂流瓶</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button id="collectButton" class="text-white">
+                <i class="far fa-star"></i>
+            </button>
+            <button id="moreButton" class="text-white">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="flex-1 overflow-auto">
+        <!-- 瓶子内容区 -->
+        <div class="p-4 bg-white mb-2 shadow-sm">
+            <!-- 用户信息 -->
+            <div class="flex items-center mb-4">
+                <div class="w-10 h-10 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="用户头像" class="w-full h-full object-cover">
+                </div>
+                <div class="ml-3">
+                    <div class="font-medium">海边的梦想家</div>
+                    <div class="text-xs text-gray-500">上海 · 5小时前</div>
+                </div>
+            </div>
+            
+            <!-- 瓶子类型标签 -->
+            <div class="mb-3">
+                <span class="inline-block px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">
+                    <i class="fas fa-wine-bottle mr-1"></i>普通瓶子
+                </span>
+            </div>
+            
+            <!-- 瓶子内容 -->
+            <div class="mb-4">
+                <p class="text-gray-800 leading-relaxed">
+                    今天在海边看了日落，美得难以形容。阳光洒在海面上，像铺了一层金色的地毯。
+                    有时候觉得人生就像大海，有风平浪静的时候，也有波涛汹涌的时刻。
+                    不知道捡到这个瓶子的你，最近过得怎么样？希望你一切都好。
+                </p>
+            </div>
+            
+            <!-- 互动统计 -->
+            <div class="flex items-center justify-between text-sm text-gray-500 py-2 border-t border-gray-100">
+                <div>
+                    <i class="far fa-eye mr-1"></i>
+                    <span>238人看过</span>
+                </div>
+                <div>
+                    <i class="far fa-comment mr-1"></i>
+                    <span>12条回复</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 回复区域标题 -->
+        <div class="px-4 py-3 bg-white border-b border-gray-100 sticky top-0 z-10">
+            <h2 class="font-medium">回复 (12)</h2>
+        </div>
+        
+        <!-- 回复列表 -->
+        <div class="bg-white">
+            <!-- 回复项1 -->
+            <div class="p-4 border-b border-gray-100">
+                <div class="flex">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="用户头像" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between items-start">
+                            <div class="font-medium">山间的风</div>
+                            <div class="text-xs text-gray-500">3小时前</div>
+                        </div>
+                        <div class="mt-2 text-gray-700">
+                            我昨天也去海边了！最近的海边真的特别美，尤其是黄昏时分。
+                        </div>
+                        <div class="mt-2 flex items-center text-sm text-gray-500">
+                            <button class="flex items-center mr-4">
+                                <i class="far fa-heart mr-1"></i>
+                                <span>12</span>
+                            </button>
+                            <button class="flex items-center">
+                                <i class="far fa-comment mr-1"></i>
+                                <span>回复</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回复项2 -->
+            <div class="p-4 border-b border-gray-100">
+                <div class="flex">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="用户头像" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between items-start">
+                            <div class="font-medium">星辰大海</div>
+                            <div class="text-xs text-gray-500">2小时前</div>
+                        </div>
+                        <div class="mt-2 text-gray-700">
+                            最近工作很忙，看到你的漂流瓶让我想起我好久没去海边了，谢谢你的分享，让我放松了一下心情。
+                        </div>
+                        <div class="mt-2 flex items-center text-sm text-gray-500">
+                            <button class="flex items-center mr-4">
+                                <i class="far fa-heart mr-1"></i>
+                                <span>8</span>
+                            </button>
+                            <button class="flex items-center">
+                                <i class="far fa-comment mr-1"></i>
+                                <span>回复</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回复项3 -->
+            <div class="p-4 border-b border-gray-100">
+                <div class="flex">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="用户头像" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between items-start">
+                            <div class="font-medium">城市漫步者</div>
+                            <div class="text-xs text-gray-500">1小时前</div>
+                        </div>
+                        <div class="mt-2 text-gray-700">
+                            你这么一说，我也想去海边了。我每年都会安排一次海边旅行，今年因为疫情还没去成。
+                        </div>
+                        <div class="mt-2 flex items-center text-sm text-gray-500">
+                            <button class="flex items-center mr-4">
+                                <i class="far fa-heart mr-1"></i>
+                                <span>5</span>
+                            </button>
+                            <button class="flex items-center">
+                                <i class="far fa-comment mr-1"></i>
+                                <span>回复</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 更多回复 -->
+            <div class="p-4 text-center">
+                <button class="text-blue-500 text-sm">
+                    查看更多回复
+                    <i class="fas fa-chevron-down ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部回复栏 -->
+    <div class="bg-white border-t border-gray-200 p-2 flex items-center">
+        <div class="flex-1 bg-gray-100 rounded-full flex items-center px-4 py-2 mr-2">
+            <input type="text" placeholder="说点什么..." class="bg-transparent w-full focus:outline-none">
+            <button class="ml-2 text-gray-400">
+                <i class="far fa-smile"></i>
+            </button>
+        </div>
+        <button id="sendReplyButton" class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+
+    <!-- 更多操作菜单 -->
+    <div id="moreActionsSheet" class="action-sheet hidden">
+        <div class="action-sheet-content">
+            <div class="action-sheet-title">更多操作</div>
+            <div class="action-sheet-options">
+                <button class="action-sheet-option">
+                    <i class="fas fa-share-alt text-blue-500"></i>
+                    <span>分享到社交媒体</span>
+                </button>
+                <button class="action-sheet-option">
+                    <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+                    <span>举报不良内容</span>
+                </button>
+                <button class="action-sheet-option">
+                    <i class="fas fa-user-plus text-green-500"></i>
+                    <span>关注作者</span>
+                </button>
+                <button class="action-sheet-option">
+                    <i class="fas fa-envelope-open-text text-blue-500"></i>
+                    <span>开始私聊</span>
+                </button>
+            </div>
+            <button class="action-sheet-cancel">取消</button>
+        </div>
+    </div>
+    
+    <!-- 回复成功提示 -->
+    <div id="replySuccessToast" class="fixed bottom-20 left-0 right-0 flex justify-center hidden">
+        <div class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm">
+            回复已发送，对方会收到通知
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置页面标题
+            setPageTitle('漂流瓶详情');
+            
+            // 获取URL参数
+            const bottleId = getUrlParam('id');
+            
+            // 模拟获取瓶子数据
+            const bottleData = getBottleData(bottleId);
+            
+            // 返回按钮事件
+            document.getElementById('backButton').addEventListener('click', function() {
+                window.location.href = 'home.html';
+            });
+            
+            // 收藏按钮事件
+            let isCollected = false;
+            document.getElementById('collectButton').addEventListener('click', function() {
+                isCollected = !isCollected;
+                this.innerHTML = isCollected ? '<i class="fas fa-star text-yellow-300"></i>' : '<i class="far fa-star"></i>';
+                showToast(isCollected ? '已收藏到我的瓶子' : '已取消收藏');
+            });
+            
+            // 更多按钮事件
+            document.getElementById('moreButton').addEventListener('click', function() {
+                document.getElementById('moreActionsSheet').classList.remove('hidden');
+            });
+            
+            // 关闭操作表
+            document.querySelector('.action-sheet-cancel').addEventListener('click', function() {
+                document.getElementById('moreActionsSheet').classList.add('hidden');
+            });
+            
+            // 发送回复事件
+            document.getElementById('sendReplyButton').addEventListener('click', function() {
+                const input = document.querySelector('input[type="text"]');
+                if (input.value.trim() !== '') {
+                    // 发送回复成功后清空输入框
+                    input.value = '';
+                    
+                    // 显示发送成功提示
+                    const toast = document.getElementById('replySuccessToast');
+                    toast.classList.remove('hidden');
+                    
+                    // 3秒后隐藏提示
+                    setTimeout(function() {
+                        toast.classList.add('hidden');
+                    }, 3000);
+                    
+                    // 模拟添加新回复到列表
+                    // 此处省略实际插入DOM的代码
+                }
+            });
+            
+            // 点击回复列表中的回复按钮
+            document.querySelectorAll('.far.fa-comment').forEach(function(btn) {
+                btn.parentElement.addEventListener('click', function() {
+                    // 获取要回复的用户名
+                    const username = this.closest('.flex-1').querySelector('.font-medium').textContent;
+                    document.querySelector('input[type="text"]').value = `@${username} `;
+                    document.querySelector('input[type="text"]').focus();
+                });
+            });
+        });
+        
+        // 模拟获取瓶子数据的函数
+        function getBottleData(id) {
+            // 实际应用中这里会从服务器获取数据
+            // 这里只是模拟
+            return {
+                id: id,
+                title: '今天的海边日落',
+                content: '今天在海边看了日落，美得难以形容。阳光洒在海面上，像铺了一层金色的地毯。有时候觉得人生就像大海，有风平浪静的时候，也有波涛汹涌的时刻。不知道捡到这个瓶子的你，最近过得怎么样？希望你一切都好。',
+                type: 'normal',
+                author: {
+                    id: 'user123',
+                    name: '海边的梦想家',
+                    avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+                    location: '上海'
+                },
+                timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000),
+                views: 238,
+                replies: 12
+            };
+        }
+        
+        // 显示提示信息
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(function() {
+                toast.classList.add('show');
+            }, 100);
+            
+            setTimeout(function() {
+                toast.classList.remove('show');
+                setTimeout(function() {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 

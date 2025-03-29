@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大海 - 漂流瓶App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="bg-blue-50 h-screen">
+    <!-- 顶部导航栏 -->
+    <div class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
+        <h1 class="text-xl font-semibold">数字海洋</h1>
+        <div class="flex items-center space-x-3">
+            <button class="p-2 rounded-full hover:bg-blue-500 transition">
+                <i class="fas fa-history"></i>
+            </button>
+            <button class="p-2 rounded-full hover:bg-blue-500 transition">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 海洋背景 -->
+    <div class="ocean-container relative flex-1 overflow-hidden h-5/6">
+        <div class="ocean-surface absolute bottom-0 w-full">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+
+        <!-- 漂浮的瓶子动画 -->
+        <div class="floating-bottle bottle-1">
+            <i class="fas fa-wine-bottle text-blue-100 opacity-60 transform rotate-45"></i>
+        </div>
+        <div class="floating-bottle bottle-2">
+            <i class="fas fa-wine-bottle text-blue-100 opacity-60 transform rotate-15"></i>
+        </div>
+        <div class="floating-bottle bottle-3">
+            <i class="fas fa-wine-bottle text-blue-100 opacity-60 transform -rotate-30"></i>
+        </div>
+
+        <!-- 瓶子数量统计卡片 -->
+        <div class="absolute top-4 right-4 bg-white bg-opacity-80 p-3 rounded-xl shadow-lg">
+            <div class="text-sm text-gray-600">今日海洋中的瓶子</div>
+            <div class="text-2xl font-bold text-blue-700">2,568 <span class="text-sm font-normal">个</span></div>
+        </div>
+
+        <!-- 功能按钮组 -->
+        <div class="absolute inset-x-0 bottom-20 flex justify-center space-x-6">
+            <!-- 扔瓶子按钮 -->
+            <button id="throwButton" class="action-button throw-button bg-blue-600 hover:bg-blue-700">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-paper-plane text-2xl mb-1"></i>
+                    <span class="text-sm">扔瓶子</span>
+                </div>
+            </button>
+            
+            <!-- 捞瓶子按钮 -->
+            <button id="pickButton" class="action-button pick-button bg-green-600 hover:bg-green-700">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-fish text-2xl mb-1"></i>
+                    <span class="text-sm">捞瓶子</span>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- 弹出动画容器 -->
+    <div id="bottleAnimationContainer" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-50">
+        <div id="animationContent" class="relative">
+            <!-- 动画将在这里展示 -->
+        </div>
+    </div>
+
+    <!-- 扔瓶子模态框 -->
+    <div id="throwBottleModal" class="modal hidden">
+        <div class="modal-content bg-white rounded-xl max-w-xs overflow-hidden">
+            <div class="p-4 bg-blue-600 text-white">
+                <h3 class="text-lg font-semibold">扔一个漂流瓶</h3>
+            </div>
+            <div class="p-4">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">写下你的心情、秘密或者故事</label>
+                    <textarea class="w-full h-32 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" placeholder="有什么想和陌生人分享的吗？"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">选择瓶子类型</label>
+                    <div class="grid grid-cols-4 gap-2">
+                        <div class="p-2 border rounded-md text-center cursor-pointer hover:bg-blue-50 selected-bottle-type">
+                            <i class="fas fa-wine-bottle text-blue-600"></i>
+                            <div class="text-xs mt-1">普通</div>
+                        </div>
+                        <div class="p-2 border rounded-md text-center cursor-pointer hover:bg-blue-50">
+                            <i class="fas fa-heart text-red-500"></i>
+                            <div class="text-xs mt-1">情感</div>
+                        </div>
+                        <div class="p-2 border rounded-md text-center cursor-pointer hover:bg-blue-50">
+                            <i class="fas fa-question text-purple-500"></i>
+                            <div class="text-xs mt-1">求助</div>
+                        </div>
+                        <div class="p-2 border rounded-md text-center cursor-pointer hover:bg-blue-50">
+                            <i class="fas fa-music text-green-500"></i>
+                            <div class="text-xs mt-1">兴趣</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-2">
+                    <button class="close-modal px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">取消</button>
+                    <button id="confirmThrowButton" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">扔出去</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 正在捞瓶子模态框 -->
+    <div id="pickingBottleModal" class="modal hidden">
+        <div class="modal-content bg-white rounded-xl max-w-xs overflow-hidden">
+            <div class="p-4 bg-green-600 text-white">
+                <h3 class="text-lg font-semibold">正在捞瓶子</h3>
+            </div>
+            <div class="p-8 text-center">
+                <div class="animate-spin mb-4 mx-auto">
+                    <i class="fas fa-sync text-green-600 text-3xl"></i>
+                </div>
+                <p class="text-gray-700">正在海洋中寻找漂流瓶...</p>
+                <p class="text-sm text-gray-500 mt-2">每天可以捞取3个瓶子</p>
+                <div class="mt-6">
+                    <button class="close-modal px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化海洋动画
+            initOceanAnimation();
+            
+            // 扔瓶子按钮事件
+            document.getElementById('throwButton').addEventListener('click', function() {
+                document.getElementById('throwBottleModal').classList.remove('hidden');
+            });
+            
+            // 捞瓶子按钮事件
+            document.getElementById('pickButton').addEventListener('click', function() {
+                document.getElementById('pickingBottleModal').classList.remove('hidden');
+                
+                // 模拟2秒后捞到瓶子
+                setTimeout(function() {
+                    document.getElementById('pickingBottleModal').classList.add('hidden');
+                    
+                    // 显示捞瓶子动画
+                    showPickBottleAnimation();
+                    
+                    // 动画结束后跳转到瓶子详情页面
+                    setTimeout(function() {
+                        window.location.href = 'bottle-detail.html?id=1';
+                    }, 2500);
+                }, 2000);
+            });
+            
+            // 确认扔瓶子事件
+            document.getElementById('confirmThrowButton').addEventListener('click', function() {
+                document.getElementById('throwBottleModal').classList.add('hidden');
+                
+                // 显示扔瓶子动画
+                showThrowBottleAnimation();
+                
+                // 动画结束后返回首页
+                setTimeout(function() {
+                    document.getElementById('bottleAnimationContainer').classList.add('hidden');
+                    
+                    // 显示成功提示
+                    showToast('漂流瓶已成功扔出，祝你好运！');
+                }, 2500);
+            });
+            
+            // 关闭模态框按钮事件
+            document.querySelectorAll('.close-modal').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.modal').forEach(function(modal) {
+                        modal.classList.add('hidden');
+                    });
+                });
+            });
+            
+            // 瓶子类型选择事件
+            document.querySelectorAll('.bottle-type').forEach(function(type) {
+                type.addEventListener('click', function() {
+                    document.querySelectorAll('.bottle-type').forEach(function(t) {
+                        t.classList.remove('selected-bottle-type');
+                    });
+                    this.classList.add('selected-bottle-type');
+                });
+            });
+        });
+        
+        // 显示扔瓶子动画
+        function showThrowBottleAnimation() {
+            const container = document.getElementById('bottleAnimationContainer');
+            const content = document.getElementById('animationContent');
+            
+            container.classList.remove('hidden');
+            content.innerHTML = '<div class="throw-animation"><i class="fas fa-wine-bottle text-white text-5xl"></i></div>';
+        }
+        
+        // 显示捞瓶子动画
+        function showPickBottleAnimation() {
+            const container = document.getElementById('bottleAnimationContainer');
+            const content = document.getElementById('animationContent');
+            
+            container.classList.remove('hidden');
+            content.innerHTML = '<div class="pick-animation"><i class="fas fa-wine-bottle text-white text-5xl"></i><div class="glow"></div></div>';
+        }
+        
+        // 显示提示信息
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(function() {
+                toast.classList.add('show');
+            }, 100);
+            
+            setTimeout(function() {
+                toast.classList.remove('show');
+                setTimeout(function() {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 

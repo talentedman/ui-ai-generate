@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天 - 漂流瓶App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="bg-gray-100 h-screen flex flex-col">
+    <!-- 顶部导航栏 -->
+    <div class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
+        <div class="flex items-center">
+            <button id="backButton" class="mr-2">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="flex flex-col">
+                <h1 class="text-lg font-semibold">星辰大海</h1>
+                <div class="text-xs text-blue-200">正在输入...</div>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button id="profileButton" class="text-white">
+                <i class="fas fa-user-circle"></i>
+            </button>
+            <button id="moreButton" class="text-white">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 聊天记录区域 -->
+    <div class="flex-1 overflow-auto p-4" id="chatContainer">
+        <!-- 漂流瓶信息卡片 -->
+        <div class="bg-blue-50 rounded-lg p-3 mb-4 mx-auto max-w-sm">
+            <div class="flex items-center mb-2">
+                <i class="fas fa-wine-bottle text-blue-600 mr-2"></i>
+                <span class="text-sm font-medium text-blue-800">来自漂流瓶的对话</span>
+            </div>
+            <div class="text-sm text-gray-600 border-l-2 border-blue-300 pl-2">
+                今天在海边看了日落，美得难以形容。阳光洒在海面上，像铺了一层金色的地毯...
+            </div>
+            <div class="text-right mt-1">
+                <a href="bottle-detail.html?id=1" class="text-blue-600 text-xs">查看完整内容</a>
+            </div>
+        </div>
+        
+        <!-- 时间分割线 -->
+        <div class="flex justify-center mb-4">
+            <span class="bg-gray-200 text-gray-500 text-xs px-2 py-1 rounded-full">昨天 14:28</span>
+        </div>
+        
+        <!-- 对方消息 -->
+        <div class="flex mb-4">
+            <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="用户头像" class="w-full h-full object-cover">
+            </div>
+            <div class="ml-2 max-w-xs">
+                <div class="bg-white rounded-lg p-3 shadow-sm message-bubble">
+                    <p>谢谢你的漂流瓶，我最近也有类似的感受。海边的日落真的很美，能治愈人心。</p>
+                </div>
+                <div class="text-xs text-gray-500 ml-2 mt-1">14:28</div>
+            </div>
+        </div>
+        
+        <!-- 我的消息 -->
+        <div class="flex justify-end mb-4">
+            <div class="mr-2 max-w-xs">
+                <div class="bg-blue-600 text-white rounded-lg p-3 shadow-sm message-bubble">
+                    <p>是的，大海有一种神奇的力量，总能让人平静下来。你经常去海边吗？</p>
+                </div>
+                <div class="text-xs text-gray-500 mr-2 mt-1 text-right">14:30</div>
+            </div>
+            <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="我的头像" class="w-full h-full object-cover">
+            </div>
+        </div>
+        
+        <!-- 对方消息 -->
+        <div class="flex mb-4">
+            <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="用户头像" class="w-full h-full object-cover">
+            </div>
+            <div class="ml-2 max-w-xs">
+                <div class="bg-white rounded-lg p-3 shadow-sm message-bubble">
+                    <p>不是很经常，但我住的地方离海边很近。每当心情不好的时候，我就会去海边走走。你呢？</p>
+                </div>
+                <div class="text-xs text-gray-500 ml-2 mt-1">14:33</div>
+            </div>
+        </div>
+        
+        <!-- 时间分割线 -->
+        <div class="flex justify-center mb-4">
+            <span class="bg-gray-200 text-gray-500 text-xs px-2 py-1 rounded-full">今天 09:15</span>
+        </div>
+        
+        <!-- 我的消息 -->
+        <div class="flex justify-end mb-4">
+            <div class="mr-2 max-w-xs">
+                <div class="bg-blue-600 text-white rounded-lg p-3 shadow-sm message-bubble">
+                    <p>我住在城市里，离海边有点远。但每年夏天我都会安排一次海边之旅。你有什么推荐的海边地点吗？</p>
+                </div>
+                <div class="text-xs text-gray-500 mr-2 mt-1 text-right">09:15</div>
+            </div>
+            <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="我的头像" class="w-full h-full object-cover">
+            </div>
+        </div>
+        
+        <!-- 对方消息 -->
+        <div class="flex mb-4">
+            <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="用户头像" class="w-full h-full object-cover">
+            </div>
+            <div class="ml-2 max-w-xs">
+                <div class="bg-white rounded-lg p-3 shadow-sm message-bubble">
+                    <p>我很喜欢青岛的海滩，特别是石老人海水浴场，那里人相对少一些，风景也很美。</p>
+                </div>
+                <div class="text-xs text-gray-500 ml-2 mt-1">09:20</div>
+            </div>
+        </div>
+        
+        <!-- 对方消息（图片） -->
+        <div class="flex mb-4">
+            <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="用户头像" class="w-full h-full object-cover">
+            </div>
+            <div class="ml-2 max-w-xs">
+                <div class="bg-white rounded-lg p-2 shadow-sm message-bubble">
+                    <img src="https://source.unsplash.com/random/300x200/?beach,sunset" alt="海滩照片" class="rounded-md w-full h-auto">
+                </div>
+                <div class="text-xs text-gray-500 ml-2 mt-1">09:21</div>
+            </div>
+        </div>
+        
+        <!-- 对方消息 -->
+        <div class="flex mb-4">
+            <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="用户头像" class="w-full h-full object-cover">
+            </div>
+            <div class="ml-2 max-w-xs">
+                <div class="bg-white rounded-lg p-3 shadow-sm message-bubble">
+                    <p>这是我上个月拍的，很美吧？</p>
+                </div>
+                <div class="text-xs text-gray-500 ml-2 mt-1">09:22</div>
+            </div>
+        </div>
+        
+        <!-- 我的消息 -->
+        <div class="flex justify-end mb-4">
+            <div class="mr-2 max-w-xs">
+                <div class="bg-blue-600 text-white rounded-lg p-3 shadow-sm message-bubble">
+                    <p>哇，真的很美！我一定要去看看。谢谢你的推荐！</p>
+                </div>
+                <div class="text-xs text-gray-500 mr-2 mt-1 text-right">09:25</div>
+            </div>
+            <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="我的头像" class="w-full h-full object-cover">
+            </div>
+        </div>
+        
+        <!-- 对方正在输入提示 -->
+        <div class="flex mb-4 typing-indicator">
+            <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="用户头像" class="w-full h-full object-cover">
+            </div>
+            <div class="ml-2">
+                <div class="bg-white rounded-lg p-3 shadow-sm message-bubble flex space-x-1">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部输入区域 -->
+    <div class="bg-white border-t border-gray-200 p-2 flex items-center">
+        <button class="p-2 text-gray-500 hover:text-blue-600">
+            <i class="fas fa-plus"></i>
+        </button>
+        <div class="flex-1 bg-gray-100 rounded-full flex items-center px-4 py-2 mx-2">
+            <input type="text" placeholder="说点什么..." class="bg-transparent w-full focus:outline-none">
+            <button class="ml-2 text-gray-400">
+                <i class="far fa-smile"></i>
+            </button>
+        </div>
+        <button id="sendButton" class="p-2 text-blue-600 hover:text-blue-700">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+
+    <!-- 更多操作菜单 -->
+    <div id="moreActionsSheet" class="action-sheet hidden">
+        <div class="action-sheet-content">
+            <div class="action-sheet-title">聊天选项</div>
+            <div class="action-sheet-options">
+                <button class="action-sheet-option">
+                    <i class="fas fa-trash text-red-500"></i>
+                    <span>清空聊天记录</span>
+                </button>
+                <button class="action-sheet-option">
+                    <i class="fas fa-ban text-yellow-500"></i>
+                    <span>屏蔽此用户</span>
+                </button>
+                <button class="action-sheet-option">
+                    <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+                    <span>举报</span>
+                </button>
+                <button class="action-sheet-option">
+                    <i class="fas fa-share-alt text-blue-500"></i>
+                    <span>分享瓶子</span>
+                </button>
+            </div>
+            <button class="action-sheet-cancel">取消</button>
+        </div>
+    </div>
+
+    <!-- 扩展功能菜单 -->
+    <div id="extendedFeaturesSheet" class="action-sheet hidden">
+        <div class="action-sheet-content pt-4">
+            <div class="grid grid-cols-4 gap-4 p-4">
+                <div class="flex flex-col items-center">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-1">
+                        <i class="fas fa-image text-xl"></i>
+                    </div>
+                    <span class="text-xs">图片</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center text-red-600 mb-1">
+                        <i class="fas fa-camera text-xl"></i>
+                    </div>
+                    <span class="text-xs">拍照</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-1">
+                        <i class="fas fa-video text-xl"></i>
+                    </div>
+                    <span class="text-xs">视频</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-1">
+                        <i class="fas fa-map-marker-alt text-xl"></i>
+                    </div>
+                    <span class="text-xs">位置</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center text-yellow-600 mb-1">
+                        <i class="fas fa-microphone text-xl"></i>
+                    </div>
+                    <span class="text-xs">语音</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 mb-1">
+                        <i class="fas fa-wine-bottle text-xl"></i>
+                    </div>
+                    <span class="text-xs">瓶子</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 mb-1">
+                        <i class="fas fa-gift text-xl"></i>
+                    </div>
+                    <span class="text-xs">礼物</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center text-gray-600 mb-1">
+                        <i class="fas fa-ellipsis-h text-xl"></i>
+                    </div>
+                    <span class="text-xs">更多</span>
+                </div>
+            </div>
+            <button class="action-sheet-cancel">取消</button>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置页面标题
+            setPageTitle('星辰大海');
+            
+            // 获取URL参数中的会话ID
+            const conversationId = getUrlParam('id');
+            
+            // 模拟获取会话数据
+            const conversationData = getConversationData(conversationId);
+            
+            // 返回按钮事件
+            document.getElementById('backButton').addEventListener('click', function() {
+                window.location.href = 'messages.html';
+            });
+            
+            // 更多按钮事件
+            document.getElementById('moreButton').addEventListener('click', function() {
+                document.getElementById('moreActionsSheet').classList.remove('hidden');
+            });
+            
+            // 扩展功能按钮事件
+            document.querySelector('.fa-plus').parentElement.addEventListener('click', function() {
+                document.getElementById('extendedFeaturesSheet').classList.remove('hidden');
+            });
+            
+            // 关闭操作表
+            document.querySelectorAll('.action-sheet-cancel').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.action-sheet').forEach(function(sheet) {
+                        sheet.classList.add('hidden');
+                    });
+                });
+            });
+            
+            // 发送按钮事件
+            document.getElementById('sendButton').addEventListener('click', function() {
+                sendMessage();
+            });
+            
+            // 输入框回车事件
+            document.querySelector('input[type="text"]').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // 滚动到底部
+            scrollToBottom();
+            
+            // 打开页面后1秒，模拟对方发送新消息
+            setTimeout(function() {
+                // 隐藏正在输入提示
+                document.querySelector('.typing-indicator').classList.add('hidden');
+                
+                // 添加新消息
+                addMessage({
+                    sender: 'other',
+                    content: '如果你决定去青岛，可以联系我，我可以给你更多推荐！',
+                    time: '09:45'
+                });
+                
+                // 滚动到底部
+                scrollToBottom();
+            }, 4000);
+        });
+        
+        // 获取会话数据（模拟）
+        function getConversationData(id) {
+            // 实际应用中会从服务器获取数据
+            return {
+                id: id,
+                user: {
+                    id: 'user456',
+                    name: '星辰大海',
+                    avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
+                    online: true
+                },
+                messages: [
+                    // 消息数据在HTML中已经静态展示
+                ]
+            };
+        }
+        
+        // 发送消息
+        function sendMessage() {
+            const input = document.querySelector('input[type="text"]');
+            const message = input.value.trim();
+            
+            if (message !== '') {
+                // 清空输入框
+                input.value = '';
+                
+                // 获取当前时间
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const timeString = `${hours}:${minutes}`;
+                
+                // 添加消息到聊天区域
+                addMessage({
+                    sender: 'me',
+                    content: message,
+                    time: timeString
+                });
+                
+                // 滚动到底部
+                scrollToBottom();
+                
+                // 模拟对方回复
+                simulateReply(message);
+            }
+        }
+        
+        // 添加消息到聊天区域
+        function addMessage(message) {
+            const chatContainer = document.getElementById('chatContainer');
+            
+            // 创建消息元素
+            const messageDiv = document.createElement('div');
+            messageDiv.className = message.sender === 'me' ? 'flex justify-end mb-4' : 'flex mb-4';
+            
+            // 设置消息内容
+            if (message.sender === 'me') {
+                messageDiv.innerHTML = `
+                    <div class="mr-2 max-w-xs">
+                        <div class="bg-blue-600 text-white rounded-lg p-3 shadow-sm message-bubble">
+                            <p>${message.content}</p>
+                        </div>
+                        <div class="text-xs text-gray-500 mr-2 mt-1 text-right">${message.time}</div>
+                    </div>
+                    <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                        <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="我的头像" class="w-full h-full object-cover">
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="用户头像" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-2 max-w-xs">
+                        <div class="bg-white rounded-lg p-3 shadow-sm message-bubble">
+                            <p>${message.content}</p>
+                        </div>
+                        <div class="text-xs text-gray-500 ml-2 mt-1">${message.time}</div>
+                    </div>
+                `;
+            }
+            
+            // 添加到聊天容器
+            chatContainer.appendChild(messageDiv);
+        }
+        
+        // 模拟对方回复
+        function simulateReply(message) {
+            // 显示对方正在输入状态
+            const typingIndicator = document.querySelector('.typing-indicator');
+            typingIndicator.classList.remove('hidden');
+            document.querySelector('.text-xs.text-blue-200').textContent = '正在输入...';
+            
+            // 随机延迟2-4秒后回复
+            const delay = Math.floor(Math.random() * 2000) + 2000;
+            setTimeout(function() {
+                // 隐藏正在输入提示
+                typingIndicator.classList.add('hidden');
+                document.querySelector('.text-xs.text-blue-200').textContent = '在线';
+                
+                // 获取当前时间
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const timeString = `${hours}:${minutes}`;
+                
+                // 根据消息内容生成回复
+                let reply = '';
+                if (message.includes('?') || message.includes('？')) {
+                    reply = '这是个好问题，让我想想...';
+                } else if (message.includes('谢谢') || message.includes('感谢')) {
+                    reply = '不客气，很高兴能帮到你！';
+                } else if (message.length < 5) {
+                    reply = '嗯，还有什么想聊的吗？';
+                } else {
+                    const replies = [
+                        '我明白你的意思了，很有趣的想法！',
+                        '说得好，我完全同意。',
+                        '确实如此，你说的很对。',
+                        '这让我想起了一些事情...',
+                        '我也有类似的经历，真的很有共鸣。'
+                    ];
+                    reply = replies[Math.floor(Math.random() * replies.length)];
+                }
+                
+                // 添加回复消息
+                addMessage({
+                    sender: 'other',
+                    content: reply,
+                    time: timeString
+                });
+                
+                // 滚动到底部
+                scrollToBottom();
+            }, delay);
+        }
+        
+        // 滚动到底部
+        function scrollToBottom() {
+            const chatContainer = document.getElementById('chatContainer');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html> 

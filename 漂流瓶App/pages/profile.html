@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 漂流瓶App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="bg-gray-100 h-screen flex flex-col">
+    <!-- 顶部导航栏 -->
+    <div class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
+        <h1 class="text-xl font-semibold">个人中心</h1>
+        <div class="flex items-center space-x-3">
+            <button class="p-2 rounded-full hover:bg-blue-500 transition">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="flex-1 overflow-auto">
+        <!-- 用户信息卡片 -->
+        <div class="bg-white p-5 shadow-sm mb-3">
+            <div class="flex items-center">
+                <div class="w-20 h-20 rounded-full overflow-hidden bg-gray-200 mr-4">
+                    <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="用户头像" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center mb-1">
+                        <h2 class="text-xl font-bold mr-2">海之子</h2>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full">Lv.8</span>
+                    </div>
+                    <div class="text-gray-500 text-sm mb-2">
+                        <i class="fas fa-map-marker-alt text-blue-500 mr-1"></i>上海市
+                    </div>
+                    <div class="text-gray-600 text-sm">
+                        喜欢旅行，喜欢大海，喜欢一切美好的事物。
+                    </div>
+                </div>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition">
+                    编辑资料
+                </button>
+            </div>
+            <!-- 用户数据统计 -->
+            <div class="flex justify-between mt-6 pt-4 border-t border-gray-100">
+                <div class="text-center">
+                    <div class="text-xl font-bold text-gray-800">238</div>
+                    <div class="text-xs text-gray-500">扔出的瓶子</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-xl font-bold text-gray-800">156</div>
+                    <div class="text-xs text-gray-500">收到的回复</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-xl font-bold text-gray-800">42</div>
+                    <div class="text-xs text-gray-500">捞到的瓶子</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-xl font-bold text-gray-800">18</div>
+                    <div class="text-xs text-gray-500">收藏的瓶子</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 功能菜单 -->
+        <div class="bg-white shadow-sm rounded-lg mb-3 overflow-hidden">
+            <div class="px-4 py-3 border-b border-gray-100">
+                <h3 class="font-medium text-gray-700">我的瓶子</h3>
+            </div>
+            
+            <!-- 我的瓶子选项 -->
+            <div class="grid grid-cols-4 py-4">
+                <a href="#" class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-1">
+                        <i class="fas fa-paper-plane text-blue-600"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">我扔的</span>
+                </a>
+                <a href="#" class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-1">
+                        <i class="fas fa-fish text-green-600"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">我捞的</span>
+                </a>
+                <a href="#" class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-1">
+                        <i class="fas fa-star text-yellow-600"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">收藏</span>
+                </a>
+                <a href="#" class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-1">
+                        <i class="fas fa-heart text-red-600"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">喜欢</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 设置菜单列表 -->
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+            <div class="px-4 py-3 border-b border-gray-100">
+                <h3 class="font-medium text-gray-700">设置与帮助</h3>
+            </div>
+            
+            <div class="divide-y divide-gray-100">
+                <!-- 账号安全 -->
+                <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-shield-alt text-blue-600"></i>
+                        </div>
+                        <span>账号安全</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </a>
+                
+                <!-- 隐私设置 -->
+                <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-user-shield text-purple-600"></i>
+                        </div>
+                        <span>隐私设置</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </a>
+                
+                <!-- 通知设置 -->
+                <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-bell text-green-600"></i>
+                        </div>
+                        <span>通知设置</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </a>
+                
+                <!-- 数据与存储 -->
+                <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-database text-yellow-600"></i>
+                        </div>
+                        <span>数据与存储</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </a>
+                
+                <!-- 关于我们 -->
+                <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-info-circle text-blue-600"></i>
+                        </div>
+                        <span>关于我们</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </a>
+                
+                <!-- 帮助与反馈 -->
+                <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-question-circle text-red-600"></i>
+                        </div>
+                        <span>帮助与反馈</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 退出登录按钮 -->
+        <div class="p-4">
+            <button class="w-full py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50">
+                退出登录
+            </button>
+        </div>
+    </div>
+
+    <!-- 编辑资料弹窗 -->
+    <div id="editProfileModal" class="modal hidden">
+        <div class="modal-content bg-white rounded-xl max-w-sm overflow-hidden">
+            <div class="p-4 bg-blue-600 text-white flex justify-between items-center">
+                <h3 class="text-lg font-semibold">编辑个人资料</h3>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <!-- 头像选择 -->
+                <div class="flex items-center justify-center mb-4">
+                    <div class="relative">
+                        <div class="w-20 h-20 rounded-full overflow-hidden bg-gray-200">
+                            <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="用户头像" class="w-full h-full object-cover">
+                        </div>
+                        <button class="absolute bottom-0 right-0 bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center shadow-md">
+                            <i class="fas fa-camera text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 表单字段 -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">昵称</label>
+                        <input type="text" value="海之子" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">性别</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="gender" checked class="form-radio text-blue-600">
+                                <span class="ml-2">男</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="gender" class="form-radio text-blue-600">
+                                <span class="ml-2">女</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="gender" class="form-radio text-blue-600">
+                                <span class="ml-2">不显示</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">地区</label>
+                        <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option>上海市</option>
+                            <option>北京市</option>
+                            <option>广州市</option>
+                            <option>深圳市</option>
+                            <option>杭州市</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">个人简介</label>
+                        <textarea class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none h-24">喜欢旅行，喜欢大海，喜欢一切美好的事物。</textarea>
+                    </div>
+                    
+                    <div class="flex justify-end space-x-2 pt-2">
+                        <button class="close-modal px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">取消</button>
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置页面标题
+            setPageTitle('个人中心');
+            
+            // 编辑资料按钮事件
+            document.querySelector('.bg-blue-600.text-white.px-4.py-2.rounded-full').addEventListener('click', function() {
+                document.getElementById('editProfileModal').classList.remove('hidden');
+            });
+            
+            // 关闭模态框按钮事件
+            document.querySelectorAll('.close-modal').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.modal').forEach(function(modal) {
+                        modal.classList.add('hidden');
+                    });
+                });
+            });
+            
+            // 退出登录按钮事件
+            document.querySelector('.w-full.py-3.border').addEventListener('click', function() {
+                if (confirm('确定要退出登录吗？')) {
+                    // 实际应用中这里会跳转到登录页面
+                    showToast('已退出登录');
+                }
+            });
+            
+            // 设置按钮事件
+            document.querySelector('.fas.fa-cog').parentElement.addEventListener('click', function() {
+                // 实际应用中这里会跳转到设置页面
+                alert('打开设置页面');
+            });
+        });
+        
+        // 显示提示信息
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(function() {
+                toast.classList.add('show');
+            }, 100);
+            
+            setTimeout(function() {
+                toast.classList.remove('show');
+                setTimeout(function() {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 

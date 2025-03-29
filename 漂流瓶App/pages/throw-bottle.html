@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扔瓶子 - 漂流瓶App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="bg-blue-50 h-screen flex flex-col">
+    <!-- 顶部导航栏 -->
+    <div class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
+        <div class="flex items-center">
+            <button id="backButton" class="mr-2">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="text-xl font-semibold">写漂流瓶</h1>
+        </div>
+        <button id="sendButton" class="px-4 py-1 bg-white text-blue-600 rounded-full font-medium hover:bg-blue-50 transition">
+            扔出去
+        </button>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="flex-1 p-4 overflow-auto pb-20">
+        <!-- 瓶子类型选择 -->
+        <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-medium mb-2">选择瓶子类型</label>
+            <div class="flex space-x-4 overflow-x-auto py-2">
+                <div class="bottle-type flex-shrink-0 p-3 border rounded-lg text-center cursor-pointer bg-blue-100 border-blue-500">
+                    <i class="fas fa-wine-bottle text-blue-600 text-lg"></i>
+                    <div class="mt-1 whitespace-nowrap">普通瓶子</div>
+                </div>
+                <div class="bottle-type flex-shrink-0 p-3 border rounded-lg text-center cursor-pointer hover:bg-red-50">
+                    <i class="fas fa-heart text-red-500 text-lg"></i>
+                    <div class="mt-1 whitespace-nowrap">情感瓶子</div>
+                </div>
+                <div class="bottle-type flex-shrink-0 p-3 border rounded-lg text-center cursor-pointer hover:bg-purple-50">
+                    <i class="fas fa-question text-purple-500 text-lg"></i>
+                    <div class="mt-1 whitespace-nowrap">求助瓶子</div>
+                </div>
+                <div class="bottle-type flex-shrink-0 p-3 border rounded-lg text-center cursor-pointer hover:bg-green-50">
+                    <i class="fas fa-music text-green-500 text-lg"></i>
+                    <div class="mt-1 whitespace-nowrap">兴趣瓶子</div>
+                </div>
+                <div class="bottle-type flex-shrink-0 p-3 border rounded-lg text-center cursor-pointer hover:bg-yellow-50">
+                    <i class="fas fa-star text-yellow-500 text-lg"></i>
+                    <div class="mt-1 whitespace-nowrap">想法瓶子</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 内容输入区 -->
+        <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-2">写下你的内容</label>
+            <textarea id="bottleContent" class="w-full h-40 border border-gray-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" placeholder="有什么想和陌生人分享的吗？"></textarea>
+            <div class="text-right text-gray-500 text-sm mt-1">0/300字</div>
+        </div>
+
+        <!-- 心情选择 -->
+        <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-2">你现在的心情</label>
+            <div class="flex justify-between">
+                <button class="mood-btn p-2 hover:bg-blue-50 rounded-full">
+                    <i class="far fa-smile text-2xl text-yellow-500"></i>
+                </button>
+                <button class="mood-btn p-2 hover:bg-blue-50 rounded-full">
+                    <i class="far fa-meh text-2xl text-gray-400"></i>
+                </button>
+                <button class="mood-btn p-2 hover:bg-blue-50 rounded-full">
+                    <i class="far fa-frown text-2xl text-blue-400"></i>
+                </button>
+                <button class="mood-btn p-2 hover:bg-blue-50 rounded-full">
+                    <i class="far fa-angry text-2xl text-red-400"></i>
+                </button>
+                <button class="mood-btn p-2 hover:bg-blue-50 rounded-full">
+                    <i class="far fa-tired text-2xl text-purple-400"></i>
+                </button>
+                <button class="mood-btn p-2 hover:bg-blue-50 rounded-full">
+                    <i class="far fa-surprise text-2xl text-green-400"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 附加选项 -->
+        <div class="bg-white rounded-lg shadow-sm p-4">
+            <h3 class="font-medium text-gray-700 mb-3">附加选项</h3>
+            
+            <!-- 匿名设置 -->
+            <div class="flex justify-between items-center mb-4 pb-3 border-b border-gray-100">
+                <div>
+                    <div class="font-medium">匿名发送</div>
+                    <div class="text-sm text-gray-500">不显示你的昵称和头像</div>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            
+            <!-- 回复设置 -->
+            <div class="flex justify-between items-center mb-4 pb-3 border-b border-gray-100">
+                <div>
+                    <div class="font-medium">允许回复</div>
+                    <div class="text-sm text-gray-500">捡到的人可以给你回复消息</div>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            
+            <!-- 地理位置设置 -->
+            <div class="flex justify-between items-center">
+                <div>
+                    <div class="font-medium">附加地理位置</div>
+                    <div class="text-sm text-gray-500">显示你所在的城市</div>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部工具栏 -->
+    <div class="bg-white border-t border-gray-200 px-4 py-3 flex items-center space-x-6">
+        <button class="p-2 text-gray-500 hover:text-blue-600">
+            <i class="fas fa-image text-xl"></i>
+        </button>
+        <button class="p-2 text-gray-500 hover:text-blue-600">
+            <i class="fas fa-microphone text-xl"></i>
+        </button>
+        <button class="p-2 text-gray-500 hover:text-blue-600">
+            <i class="fas fa-map-marker-alt text-xl"></i>
+        </button>
+        <button class="p-2 text-gray-500 hover:text-blue-600">
+            <i class="fas fa-music text-xl"></i>
+        </button>
+    </div>
+
+    <!-- 扔瓶子成功弹窗 -->
+    <div id="successModal" class="modal hidden">
+        <div class="modal-content bg-white rounded-xl max-w-xs overflow-hidden">
+            <div class="p-6 text-center">
+                <div class="mb-4 mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-check text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">漂流瓶已发送</h3>
+                <p class="text-gray-600 mb-4">你的漂流瓶已成功投入大海，希望能被有缘人捡到！</p>
+                <button id="confirmSuccessButton" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                    返回大海
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置页面标题
+            setPageTitle('扔瓶子');
+            
+            // 返回按钮事件
+            document.getElementById('backButton').addEventListener('click', function() {
+                window.location.href = 'home.html';
+            });
+            
+            // 发送按钮事件
+            document.getElementById('sendButton').addEventListener('click', function() {
+                // 显示扔瓶子动画并等待动画完成
+                animateBottleThrowing(function() {
+                    // 显示成功弹窗
+                    document.getElementById('successModal').classList.remove('hidden');
+                });
+            });
+            
+            // 确认成功按钮事件
+            document.getElementById('confirmSuccessButton').addEventListener('click', function() {
+                document.getElementById('successModal').classList.add('hidden');
+                window.location.href = 'home.html';
+            });
+            
+            // 瓶子类型选择
+            document.querySelectorAll('.bottle-type').forEach(function(type) {
+                type.addEventListener('click', function() {
+                    document.querySelectorAll('.bottle-type').forEach(function(t) {
+                        t.classList.remove('bg-blue-100', 'border-blue-500');
+                        t.classList.add('hover:bg-blue-50');
+                    });
+                    this.classList.add('bg-blue-100', 'border-blue-500');
+                    this.classList.remove('hover:bg-blue-50');
+                });
+            });
+            
+            // 心情按钮选择
+            document.querySelectorAll('.mood-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.mood-btn').forEach(function(b) {
+                        b.classList.remove('bg-blue-100');
+                    });
+                    this.classList.add('bg-blue-100');
+                });
+            });
+            
+            // 监听内容变化更新字数
+            const textarea = document.getElementById('bottleContent');
+            const counter = textarea.nextElementSibling;
+            
+            textarea.addEventListener('input', function() {
+                const length = this.value.length;
+                counter.textContent = `${length}/300字`;
+                
+                if (length > 300) {
+                    counter.classList.add('text-red-500');
+                    counter.classList.remove('text-gray-500');
+                } else {
+                    counter.classList.remove('text-red-500');
+                    counter.classList.add('text-gray-500');
+                }
+            });
+        });
+        
+        // 瓶子抛出动画
+        function animateBottleThrowing(callback) {
+            // 在实际应用中这里会有更复杂的动画
+            // 为了简化，我们这里只是简单地在一段时间后回调
+            setTimeout(callback, 500);
+        }
+    </script>
+</body>
+</html> 
