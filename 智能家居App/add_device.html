@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能家居 - 添加设备</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #F8F9FA;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 状态栏样式 */
+        .status-bar {
+            background-color: #000;
+            color: white;
+            padding: 5px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* 内容区域样式 */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 20px;
+        }
+        
+        /* 按钮样式 */
+        .btn-primary {
+            background-color: #3366FF;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* 设备卡片样式 */
+        .device-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .device-card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #F1F3F9;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3366FF;
+            font-size: 30px;
+        }
+        
+        /* 搜索栏样式 */
+        .search-bar {
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            height: 48px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .search-bar input {
+            flex: 1;
+            border: none;
+            padding: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+        
+        .search-bar i {
+            color: #6C757D;
+            font-size: 16px;
+            margin-right: 8px;
+        }
+        
+        /* 品牌网格样式 */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        .brand-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .brand-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+        
+        /* 步骤指示器样式 */
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #DEE2E6;
+            z-index: 1;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border: 2px solid #DEE2E6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            color: #6C757D;
+            font-weight: 600;
+        }
+        
+        .step.active .step-circle {
+            background-color: #3366FF;
+            border-color: #3366FF;
+            color: white;
+        }
+        
+        .step.completed .step-circle {
+            background-color: #3366FF;
+            border-color: #3366FF;
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 12px;
+            color: #6C757D;
+        }
+        
+        .step.active .step-label {
+            color: #3366FF;
+            font-weight: 600;
+        }
+        
+        /* 标签筛选 */
+        .tab-filter {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 0;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab-item {
+            background-color: white;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            white-space: nowrap;
+            color: #495057;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab-item.active {
+            background-color: #3366FF;
+            color: white;
+        }
+        
+        /* Wi-Fi连接样式 */
+        .wifi-strength {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .wifi-bars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 8px;
+        }
+        
+        .wifi-bar {
+            width: 5px;
+            background-color: #3366FF;
+            border-radius: 2px;
+        }
+        
+        .wifi-bar.bar-1 {
+            height: 10px;
+        }
+        
+        .wifi-bar.bar-2 {
+            height: 15px;
+        }
+        
+        .wifi-bar.bar-3 {
+            height: 20px;
+        }
+        
+        .wifi-bar.bar-4 {
+            height: 25px;
+        }
+        
+        /* 加载动画 */
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border-left-color: #3366FF;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* 帮助提示 */
+        .help-tip {
+            background-color: #FFF3CD;
+            border-left: 4px solid #FFC107;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content">
+        <!-- 顶部导航栏 -->
+        <div class="flex justify-between items-center p-4">
+            <a href="devices.html" class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
+                <i class="fas fa-chevron-left text-gray-500"></i>
+            </a>
+            <h1 class="text-xl font-bold">添加设备</h1>
+            <div class="w-10 h-10 opacity-0">
+                <!-- 占位元素保持导航栏平衡 -->
+            </div>
+        </div>
+        
+        <!-- 步骤指示器 -->
+        <div class="px-4">
+            <div class="step-indicator">
+                <div class="step completed">
+                    <div class="step-circle">
+                        <i class="fas fa-check text-sm"></i>
+                    </div>
+                    <div class="step-label">选择设备</div>
+                </div>
+                <div class="step active">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">连接设备</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">设备设置</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">完成</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 连接设备内容 -->
+        <div class="px-4">
+            <div class="bg-white rounded-2xl p-5 shadow-sm">
+                <div class="flex justify-between items-center mb-5">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-lightbulb text-blue-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-bold">智能灯泡</h2>
+                            <p class="text-sm text-gray-500">Philips Hue A19</p>
+                        </div>
+                    </div>
+                    <div class="wifi-strength">
+                        <div class="wifi-bars">
+                            <div class="wifi-bar bar-1"></div>
+                            <div class="wifi-bar bar-2"></div>
+                            <div class="wifi-bar bar-3"></div>
+                            <div class="wifi-bar bar-4 opacity-30"></div>
+                        </div>
+                        <span class="text-xs text-gray-500">信号强度</span>
+                    </div>
+                </div>
+                
+                <div class="help-tip mb-6">
+                    <i class="fas fa-info-circle text-yellow-600 mr-2"></i>
+                    <span class="text-sm">请确保设备处于配对模式，通常需要长按电源键或重置按钮</span>
+                </div>
+                
+                <div class="flex flex-col items-center my-8">
+                    <div class="loading-spinner mb-4"></div>
+                    <h3 class="font-bold mb-2">正在连接到设备...</h3>
+                    <p class="text-sm text-gray-500 text-center">这可能需要一分钟时间，请勿离开此页面</p>
+                </div>
+                
+                <div class="mt-6">
+                    <button class="btn-primary">取消连接</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 设备选择区域 (不可见，作为前一步参考) -->
+        <div class="px-4 mt-6 hidden">
+            <h2 class="text-lg font-semibold mb-4">选择设备类型</h2>
+            
+            <div class="tab-filter">
+                <div class="tab-item active">全部</div>
+                <div class="tab-item">灯光</div>
+                <div class="tab-item">安防</div>
+                <div class="tab-item">家电</div>
+                <div class="tab-item">传感器</div>
+                <div class="tab-item">音频</div>
+            </div>
+            
+            <div class="search-bar mb-5">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="搜索设备类型或品牌">
+            </div>
+            
+            <!-- 常用设备选择 -->
+            <h3 class="font-semibold mb-4">常用设备</h3>
+            
+            <div class="device-card">
+                <div class="device-card-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div>
+                    <h3 class="font-medium">智能灯泡</h3>
+                    <p class="text-sm text-gray-500">控制灯光颜色和亮度</p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400 ml-auto"></i>
+            </div>
+            
+            <div class="device-card">
+                <div class="device-card-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div>
+                    <h3 class="font-medium">智能摄像头</h3>
+                    <p class="text-sm text-gray-500">远程监控和移动检测</p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400 ml-auto"></i>
+            </div>
+            
+            <div class="device-card">
+                <div class="device-card-icon">
+                    <i class="fas fa-temperature-low"></i>
+                </div>
+                <div>
+                    <h3 class="font-medium">智能温控器</h3>
+                    <p class="text-sm text-gray-500">自动调节家庭温度</p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400 ml-auto"></i>
+            </div>
+            
+            <div class="device-card">
+                <div class="device-card-icon">
+                    <i class="fas fa-plug"></i>
+                </div>
+                <div>
+                    <h3 class="font-medium">智能插座</h3>
+                    <p class="text-sm text-gray-500">远程控制电器电源</p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400 ml-auto"></i>
+            </div>
+            
+            <!-- 品牌选择 -->
+            <h3 class="font-semibold mt-8 mb-4">按品牌选择</h3>
+            
+            <div class="brand-grid">
+                <div class="brand-item">
+                    <img src="https://www.philips-hue.com/content/dam/hue/logo/philips-hue-logo-black.svg" alt="Philips Hue" class="brand-logo">
+                    <span class="text-sm">飞利浦 Hue</span>
+                </div>
+                <div class="brand-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Xiaomi_Logo.svg/1200px-Xiaomi_Logo.svg.png" alt="Xiaomi" class="brand-logo">
+                    <span class="text-sm">小米</span>
+                </div>
+                <div class="brand-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Aqara_Logo.svg/1200px-Aqara_Logo.svg.png" alt="Aqara" class="brand-logo">
+                    <span class="text-sm">绿米 Aqara</span>
+                </div>
+                <div class="brand-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Haier_logo.svg/1200px-Haier_logo.svg.png" alt="Haier" class="brand-logo">
+                    <span class="text-sm">海尔</span>
+                </div>
+                <div class="brand-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Samsung_Logo.svg/1200px-Samsung_Logo.svg.png" alt="Samsung" class="brand-logo">
+                    <span class="text-sm">三星</span>
+                </div>
+                <div class="brand-item">
+                    <img src="https://1000logos.net/wp-content/uploads/2017/12/Sonos-logo.png" alt="Sonos" class="brand-logo">
+                    <span class="text-sm">Sonos</span>
+                </div>
+            </div>
+            
+            <div class="mt-8 mb-4">
+                <button class="btn-primary">手动添加设备</button>
+            </div>
+        </div>
+        
+        <!-- 设备设置部分 (不可见，作为下一步参考) -->
+        <div class="px-4 mt-6 hidden">
+            <div class="bg-white rounded-2xl p-5 shadow-sm">
+                <h2 class="font-bold text-xl mb-5">设备设置</h2>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">设备名称</label>
+                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl" value="客厅灯泡">
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">房间</label>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-xl">
+                        <option>客厅</option>
+                        <option>卧室</option>
+                        <option>厨房</option>
+                        <option>浴室</option>
+                        <option>书房</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">图标颜色</label>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-500 border-2 border-blue-700"></div>
+                        <div class="w-10 h-10 rounded-full bg-green-500"></div>
+                        <div class="w-10 h-10 rounded-full bg-red-500"></div>
+                        <div class="w-10 h-10 rounded-full bg-yellow-500"></div>
+                        <div class="w-10 h-10 rounded-full bg-purple-500"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">添加到收藏</label>
+                    <div class="flex items-center">
+                        <input type="checkbox" class="mr-2 h-5 w-5 text-blue-600" checked>
+                        <span>在首页显示此设备</span>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <button class="btn-primary">完成设置</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 设备添加成功部分 (不可见，作为最后一步参考) -->
+        <div class="px-4 mt-6 hidden">
+            <div class="bg-white rounded-2xl p-5 shadow-sm flex flex-col items-center">
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-check text-green-500 text-3xl"></i>
+                </div>
+                
+                <h2 class="font-bold text-xl mb-2">设备添加成功！</h2>
+                <p class="text-center text-gray-500 mb-6">您的智能灯泡已成功添加到智能家居系统</p>
+                
+                <div class="mb-8 w-full">
+                    <div class="flex justify-between items-center p-4 bg-gray-50 rounded-xl">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-lightbulb text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">客厅灯泡</h3>
+                                <p class="text-xs text-gray-500">Philips Hue A19</p>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="w-full">
+                    <button class="btn-primary mb-3">控制设备</button>
+                    <button class="w-full py-3 text-gray-600 font-medium">添加更多设备</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

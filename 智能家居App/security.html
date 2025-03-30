@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能家居 - 安防</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #F8F9FA;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 状态栏样式 */
+        .status-bar {
+            background-color: #000;
+            color: white;
+            padding: 5px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* 底部导航栏样式 */
+        .bottom-nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-top: 1px solid #DEE2E6;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 25px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #6C757D;
+            font-size: 10px;
+        }
+        
+        .nav-item.active {
+            color: #3366FF;
+        }
+        
+        .nav-item i {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        
+        /* 内容区域样式 */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 85px; /* 为底部导航留出空间 */
+        }
+        
+        /* 安全状态卡片 */
+        .security-status-card {
+            background: linear-gradient(135deg, #0061FF, #60EFFF);
+            border-radius: 20px;
+            padding: 20px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .security-status-card.warning {
+            background: linear-gradient(135deg, #FF512F, #F09819);
+        }
+        
+        .security-status-card.danger {
+            background: linear-gradient(135deg, #ED213A, #93291E);
+        }
+        
+        /* 摄像头卡片样式 */
+        .camera-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 16px;
+        }
+        
+        .camera-view {
+            width: 100%;
+            height: 180px;
+            background-color: #212529;
+            background-image: url('https://images.unsplash.com/photo-1565610222536-ef125c59da2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .camera-status {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .camera-status i {
+            color: #FF0000;
+            margin-right: 5px;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .camera-controls {
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+        }
+        
+        .camera-control-btn {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #F1F3F9;
+            color: #495057;
+            font-size: 12px;
+        }
+        
+        .camera-control-btn i {
+            margin-right: 5px;
+        }
+        
+        /* 安防设备卡片样式 */
+        .security-device-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .security-device-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #F1F3F9;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3366FF;
+            font-size: 24px;
+        }
+        
+        /* 开关样式 */
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 32px;
+        }
+        
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #DEE2E6;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: #3366FF;
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+        
+        /* 安全警报样式 */
+        .security-alert {
+            display: flex;
+            align-items: center;
+            padding: 14px;
+            background-color: #FEF2F2;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #EF4444;
+        }
+        
+        .security-alert-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #FECACA;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #EF4444;
+            font-size: 20px;
+            margin-right: 14px;
+        }
+        
+        /* 标签筛选 */
+        .tab-filter {
+            display: flex;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        
+        .tab-item {
+            flex: 1;
+            padding: 12px 0;
+            text-align: center;
+            font-weight: 500;
+            color: #6C757D;
+        }
+        
+        .tab-item.active {
+            background-color: #3366FF;
+            color: white;
+        }
+        
+        /* 快速操作按钮 */
+        .quick-action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            height: 100px;
+        }
+        
+        .quick-action-btn i {
+            font-size: 24px;
+            color: #3366FF;
+            margin-bottom: 10px;
+        }
+        
+        .quick-action-btn.red i {
+            color: #EF4444;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content">
+        <!-- 顶部导航栏 -->
+        <div class="flex justify-between items-center p-4">
+            <h1 class="text-2xl font-bold">家庭安防</h1>
+            <div class="flex gap-3">
+                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-bell text-gray-500"></i>
+                </div>
+                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-ellipsis-h text-gray-500"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 安全状态 -->
+        <div class="px-4">
+            <div class="security-status-card">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-shield-alt text-white"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold">系统状态: 已启用</h2>
+                        <p class="text-sm opacity-80">全部设备运行正常</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 mt-4">
+                    <div class="flex-1 bg-white bg-opacity-20 rounded-lg p-3">
+                        <h3 class="text-sm font-medium mb-1">摄像头</h3>
+                        <p class="text-xl font-bold">4/4</p>
+                    </div>
+                    <div class="flex-1 bg-white bg-opacity-20 rounded-lg p-3">
+                        <h3 class="text-sm font-medium mb-1">门窗传感器</h3>
+                        <p class="text-xl font-bold">6/6</p>
+                    </div>
+                    <div class="flex-1 bg-white bg-opacity-20 rounded-lg p-3">
+                        <h3 class="text-sm font-medium mb-1">动态检测</h3>
+                        <p class="text-xl font-bold">开启</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 标签筛选 -->
+        <div class="px-4">
+            <div class="tab-filter">
+                <div class="tab-item active">摄像头</div>
+                <div class="tab-item">门锁</div>
+                <div class="tab-item">传感器</div>
+                <div class="tab-item">警报</div>
+            </div>
+        </div>
+        
+        <!-- 快速操作按钮 -->
+        <div class="px-4 mb-6">
+            <div class="grid grid-cols-3 gap-4">
+                <div class="quick-action-btn">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="text-sm">在家模式</span>
+                </div>
+                <div class="quick-action-btn">
+                    <i class="fas fa-home"></i>
+                    <span class="text-sm">离家模式</span>
+                </div>
+                <div class="quick-action-btn red">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span class="text-sm">紧急警报</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 摄像头视图 -->
+        <div class="px-4 mb-6">
+            <h2 class="text-lg font-semibold mb-4">实时监控</h2>
+            
+            <div class="camera-card">
+                <div class="camera-view">
+                    <div class="camera-status">
+                        <i class="fas fa-circle"></i>
+                        <span>录制中</span>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <h3 class="font-medium">前门摄像头</h3>
+                    <p class="text-sm text-gray-500">在线 • 最后移动检测: 10分钟前</p>
+                </div>
+                <div class="camera-controls">
+                    <div class="camera-control-btn">
+                        <i class="fas fa-volume-up"></i>
+                        <span>语音</span>
+                    </div>
+                    <div class="camera-control-btn">
+                        <i class="fas fa-video"></i>
+                        <span>录制</span>
+                    </div>
+                    <div class="camera-control-btn">
+                        <i class="fas fa-camera"></i>
+                        <span>截图</span>
+                    </div>
+                    <div class="camera-control-btn">
+                        <i class="fas fa-expand-alt"></i>
+                        <span>全屏</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <div class="camera-card">
+                    <div class="camera-view" style="height: 120px; background-image: url('https://images.unsplash.com/photo-1558882224-dda166733046?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                        <div class="camera-status">
+                            <i class="fas fa-circle"></i>
+                            <span>录制中</span>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <h3 class="font-medium text-sm">后院摄像头</h3>
+                        <p class="text-xs text-gray-500">在线</p>
+                    </div>
+                </div>
+                
+                <div class="camera-card">
+                    <div class="camera-view" style="height: 120px; background-image: url('https://images.unsplash.com/photo-1513366208864-87536b8bd7b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                        <div class="camera-status">
+                            <i class="fas fa-circle"></i>
+                            <span>录制中</span>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <h3 class="font-medium text-sm">客厅摄像头</h3>
+                        <p class="text-xs text-gray-500">在线</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 安防设备 -->
+        <div class="px-4 mb-6">
+            <h2 class="text-lg font-semibold mb-4">门锁系统</h2>
+            
+            <div class="security-device-card">
+                <div class="flex items-center gap-3">
+                    <div class="security-device-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium">前门智能锁</h3>
+                        <p class="text-sm text-gray-500">已上锁</p>
+                    </div>
+                </div>
+                <button class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm">解锁</button>
+            </div>
+            
+            <div class="security-device-card">
+                <div class="flex items-center gap-3">
+                    <div class="security-device-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium">后门智能锁</h3>
+                        <p class="text-sm text-gray-500">已上锁</p>
+                    </div>
+                </div>
+                <button class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm">解锁</button>
+            </div>
+        </div>
+        
+        <!-- 安全警报 -->
+        <div class="px-4 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">最近警报</h2>
+                <a href="#" class="text-blue-500 text-sm">查看全部</a>
+            </div>
+            
+            <div class="security-alert">
+                <div class="security-alert-icon">
+                    <i class="fas fa-user-alt"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between">
+                        <h3 class="font-medium">检测到移动</h3>
+                        <span class="text-sm text-gray-500">今天 14:32</span>
+                    </div>
+                    <p class="text-sm text-gray-600">前门摄像头检测到移动</p>
+                </div>
+            </div>
+            
+            <div class="security-alert">
+                <div class="security-alert-icon">
+                    <i class="fas fa-door-open"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between">
+                        <h3 class="font-medium">门窗状态变化</h3>
+                        <span class="text-sm text-gray-500">今天 10:15</span>
+                    </div>
+                    <p class="text-sm text-gray-600">厨房窗户打开</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 传感器状态 -->
+        <div class="px-4 mb-6">
+            <h2 class="text-lg font-semibold mb-4">传感器状态</h2>
+            
+            <div class="security-device-card">
+                <div class="flex items-center gap-3">
+                    <div class="security-device-icon">
+                        <i class="fas fa-door-closed"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium">前门传感器</h3>
+                        <p class="text-sm text-gray-500">已关闭</p>
+                    </div>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            
+            <div class="security-device-card">
+                <div class="flex items-center gap-3">
+                    <div class="security-device-icon">
+                        <i class="fas fa-window-maximize"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium">客厅窗户传感器</h3>
+                        <p class="text-sm text-gray-500">已关闭</p>
+                    </div>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            
+            <div class="security-device-card">
+                <div class="flex items-center gap-3">
+                    <div class="security-device-icon">
+                        <i class="fas fa-window-maximize"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium">厨房窗户传感器</h3>
+                        <p class="text-sm text-gray-500 font-bold text-red-500">已打开</p>
+                    </div>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="devices.html" class="nav-item">
+            <i class="fas fa-lightbulb"></i>
+            <span>设备</span>
+        </a>
+        <a href="scenes.html" class="nav-item">
+            <i class="fas fa-magic"></i>
+            <span>场景</span>
+        </a>
+        <a href="security.html" class="nav-item active">
+            <i class="fas fa-shield-alt"></i>
+            <span>安防</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

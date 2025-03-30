@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能家居 - 场景</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #F8F9FA;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 状态栏样式 */
+        .status-bar {
+            background-color: #000;
+            color: white;
+            padding: 5px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* 底部导航栏样式 */
+        .bottom-nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-top: 1px solid #DEE2E6;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 25px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #6C757D;
+            font-size: 10px;
+        }
+        
+        .nav-item.active {
+            color: #3366FF;
+        }
+        
+        .nav-item i {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        
+        /* 内容区域样式 */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 85px; /* 为底部导航留出空间 */
+        }
+        
+        /* 场景卡片样式 */
+        .scene-card-large {
+            border-radius: 20px;
+            padding: 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        
+        .scene-card-large.morning {
+            background: linear-gradient(135deg, #FF9D6C, #FF5E62);
+        }
+        
+        .scene-card-large.night {
+            background: linear-gradient(135deg, #141E30, #243B55);
+        }
+        
+        .scene-card-large.away {
+            background: linear-gradient(135deg, #06BEB6, #48B1BF);
+        }
+        
+        .scene-card-large.movie {
+            background: linear-gradient(135deg, #834D9B, #D04ED6);
+        }
+        
+        .scene-card-large.party {
+            background: linear-gradient(135deg, #4776E6, #8E54E9);
+        }
+        
+        .scene-card-large.work {
+            background: linear-gradient(135deg, #2980B9, #6DD5FA);
+        }
+        
+        .scene-card-large i.scene-icon {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            font-size: 100px;
+            opacity: 0.2;
+        }
+        
+        /* 场景活动列表样式 */
+        .scene-activity {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 12px;
+        }
+        
+        .scene-activity-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-right: 16px;
+        }
+        
+        .scene-activity-icon.morning {
+            background: linear-gradient(135deg, #FF9D6C, #FF5E62);
+        }
+        
+        .scene-activity-icon.night {
+            background: linear-gradient(135deg, #141E30, #243B55);
+        }
+        
+        .scene-activity-icon.away {
+            background: linear-gradient(135deg, #06BEB6, #48B1BF);
+        }
+        
+        /* 智能建议卡片样式 */
+        .suggestion-card {
+            background-color: #F1F3F9;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        /* 创建场景按钮 */
+        .create-scene-btn {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background-color: #3366FF;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(51, 102, 255, 0.3);
+        }
+        
+        /* 标签筛选 */
+        .tab-filter {
+            display: flex;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab-item {
+            flex: 1;
+            padding: 12px 0;
+            text-align: center;
+            font-weight: 500;
+            color: #6C757D;
+        }
+        
+        .tab-item.active {
+            background-color: #3366FF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content">
+        <!-- 顶部导航栏 -->
+        <div class="flex justify-between items-center p-4">
+            <h1 class="text-2xl font-bold">智能场景</h1>
+            <div class="flex gap-3">
+                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-search text-gray-500"></i>
+                </div>
+                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-ellipsis-h text-gray-500"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 标签筛选 -->
+        <div class="px-4 mb-5">
+            <div class="tab-filter">
+                <div class="tab-item active">我的场景</div>
+                <div class="tab-item">发现</div>
+            </div>
+        </div>
+        
+        <!-- 常用场景 -->
+        <div class="px-4">
+            <h2 class="text-lg font-semibold mb-4">常用场景</h2>
+            
+            <div class="scene-card-large morning">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold">早晨模式</h3>
+                    <div class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm">活跃</div>
+                </div>
+                <div>
+                    <p class="text-sm opacity-80 mb-1">每天 7:00 自动执行</p>
+                    <p class="text-sm opacity-80">开灯、拉窗帘、打开音乐</p>
+                </div>
+                <i class="fas fa-sun scene-icon"></i>
+            </div>
+            
+            <div class="scene-card-large night">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold">睡眠模式</h3>
+                    <div class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm">活跃</div>
+                </div>
+                <div>
+                    <p class="text-sm opacity-80 mb-1">每天 23:00 自动执行</p>
+                    <p class="text-sm opacity-80">关灯、关闭音乐、锁门</p>
+                </div>
+                <i class="fas fa-moon scene-icon"></i>
+            </div>
+        </div>
+        
+        <!-- 智能建议 -->
+        <div class="px-4 mt-6">
+            <h2 class="text-lg font-semibold mb-4">智能建议</h2>
+            
+            <div class="suggestion-card">
+                <div class="flex gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-lightbulb text-blue-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium">离家省电模式</h3>
+                        <p class="text-sm text-gray-500">检测到您经常忘记关闭设备</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">离家时自动关闭所有灯光、电视和空调，节省能源。</p>
+                <div class="flex gap-2">
+                    <button class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium">立即创建</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">忽略</button>
+                </div>
+            </div>
+            
+            <div class="suggestion-card">
+                <div class="flex gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-home text-blue-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium">回家欢迎模式</h3>
+                        <p class="text-sm text-gray-500">基于您的习惯推荐</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">检测到您回家时，自动开灯、调整空调温度并播放您喜欢的音乐。</p>
+                <div class="flex gap-2">
+                    <button class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium">立即创建</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">忽略</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 创建的场景 -->
+        <div class="px-4 mt-6">
+            <h2 class="text-lg font-semibold mb-4">全部场景</h2>
+            
+            <div class="scene-card-large movie">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold">影院模式</h3>
+                    <div class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm">手动</div>
+                </div>
+                <div>
+                    <p class="text-sm opacity-80 mb-1">最近使用：昨天</p>
+                    <p class="text-sm opacity-80">调暗灯光、开启电视、环绕音响</p>
+                </div>
+                <i class="fas fa-film scene-icon"></i>
+            </div>
+            
+            <div class="scene-card-large away">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold">离家模式</h3>
+                    <div class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm">手动</div>
+                </div>
+                <div>
+                    <p class="text-sm opacity-80 mb-1">最近使用：今天</p>
+                    <p class="text-sm opacity-80">关闭所有设备、开启安防系统</p>
+                </div>
+                <i class="fas fa-home scene-icon"></i>
+            </div>
+            
+            <div class="scene-card-large party">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold">派对模式</h3>
+                    <div class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm">手动</div>
+                </div>
+                <div>
+                    <p class="text-sm opacity-80 mb-1">最近使用：上周</p>
+                    <p class="text-sm opacity-80">彩色灯光、音乐、开派对气氛</p>
+                </div>
+                <i class="fas fa-glass-cheers scene-icon"></i>
+            </div>
+            
+            <div class="scene-card-large work">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold">工作模式</h3>
+                    <div class="px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm">定时</div>
+                </div>
+                <div>
+                    <p class="text-sm opacity-80 mb-1">每周一至五 9:00</p>
+                    <p class="text-sm opacity-80">适合工作的灯光、温度和背景音乐</p>
+                </div>
+                <i class="fas fa-briefcase scene-icon"></i>
+            </div>
+        </div>
+        
+        <!-- 场景活动 -->
+        <div class="px-4 mt-6 mb-4">
+            <h2 class="text-lg font-semibold mb-4">最近活动</h2>
+            
+            <div class="scene-activity">
+                <div class="scene-activity-icon morning">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between">
+                        <h3 class="font-medium">早晨模式</h3>
+                        <span class="text-sm text-gray-500">今天 07:00</span>
+                    </div>
+                    <p class="text-sm text-gray-500">自动执行成功</p>
+                </div>
+            </div>
+            
+            <div class="scene-activity">
+                <div class="scene-activity-icon away">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between">
+                        <h3 class="font-medium">离家模式</h3>
+                        <span class="text-sm text-gray-500">今天 08:30</span>
+                    </div>
+                    <p class="text-sm text-gray-500">手动执行成功</p>
+                </div>
+            </div>
+            
+            <div class="scene-activity">
+                <div class="scene-activity-icon night">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between">
+                        <h3 class="font-medium">睡眠模式</h3>
+                        <span class="text-sm text-gray-500">昨天 23:00</span>
+                    </div>
+                    <p class="text-sm text-gray-500">自动执行成功</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 创建场景按钮 -->
+        <a href="scene_edit.html" class="create-scene-btn">
+            <i class="fas fa-plus"></i>
+        </a>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="devices.html" class="nav-item">
+            <i class="fas fa-lightbulb"></i>
+            <span>设备</span>
+        </a>
+        <a href="scenes.html" class="nav-item active">
+            <i class="fas fa-magic"></i>
+            <span>场景</span>
+        </a>
+        <a href="security.html" class="nav-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>安防</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

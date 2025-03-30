@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能家居App原型</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .prototype-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 30px;
+        }
+        .prototype-frame {
+            width: 390px;
+            height: 844px;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 10px solid #000;
+            position: relative;
+        }
+        .prototype-title {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+        .prototype-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold text-center mb-12">智能家居App高保真原型</h1>
+        
+        <div class="prototype-container">
+            <div class="prototype-wrapper">
+                <div class="prototype-frame">
+                    <iframe src="home.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+                <div class="prototype-title">首页</div>
+            </div>
+            
+            <div class="prototype-wrapper">
+                <div class="prototype-frame">
+                    <iframe src="devices.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+                <div class="prototype-title">设备页</div>
+            </div>
+            
+            <div class="prototype-wrapper">
+                <div class="prototype-frame">
+                    <iframe src="device_detail.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+                <div class="prototype-title">设备详情</div>
+            </div>
+            
+            <div class="prototype-wrapper">
+                <div class="prototype-frame">
+                    <iframe src="scenes.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+                <div class="prototype-title">场景页</div>
+            </div>
+            
+            <div class="prototype-wrapper">
+                <div class="prototype-frame">
+                    <iframe src="scene_edit.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+                <div class="prototype-title">场景编辑</div>
+            </div>
+            
+            <div class="prototype-wrapper">
+                <div class="prototype-frame">
+                    <iframe src="security.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+                <div class="prototype-title">安防监控</div>
+            </div>
+            
+            <div class="prototype-wrapper">
+                <div class="prototype-frame">
+                    <iframe src="profile.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+                <div class="prototype-title">个人中心</div>
+            </div>
+            
+            <div class="prototype-wrapper">
+                <div class="prototype-frame">
+                    <iframe src="settings.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+                <div class="prototype-title">设置页面</div>
+            </div>
+            
+            <div class="prototype-wrapper">
+                <div class="prototype-frame">
+                    <iframe src="add_device.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+                <div class="prototype-title">添加设备</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

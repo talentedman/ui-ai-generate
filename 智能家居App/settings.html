@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能家居 - 设置</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #F8F9FA;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 状态栏样式 */
+        .status-bar {
+            background-color: #000;
+            color: white;
+            padding: 5px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* 内容区域样式 */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 20px;
+        }
+        
+        /* 设置卡片样式 */
+        .settings-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 16px;
+        }
+        
+        /* 设置项样式 */
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid #E9ECEF;
+        }
+        
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* 开关样式 */
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 32px;
+        }
+        
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #DEE2E6;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: #3366FF;
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+        
+        /* 选择器样式 */
+        .selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .selector-option {
+            padding: 8px 16px;
+            border-radius: 30px;
+            background-color: #F1F3F9;
+            font-size: 14px;
+            color: #495057;
+            cursor: pointer;
+        }
+        
+        .selector-option.selected {
+            background-color: #3366FF;
+            color: white;
+        }
+        
+        /* 搜索栏样式 */
+        .search-bar {
+            background-color: #F1F3F9;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            height: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            border: none;
+            background-color: transparent;
+            padding: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+        
+        .search-bar i {
+            color: #6C757D;
+            font-size: 16px;
+            margin-right: 8px;
+        }
+        
+        /* 版本信息样式 */
+        .version-info {
+            text-align: center;
+            margin-top: 40px;
+            color: #6C757D;
+            font-size: 12px;
+        }
+        
+        /* 设置分组标题 */
+        .settings-section-title {
+            padding: 8px 16px;
+            color: #6C757D;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi ml-1"></i>
+            <i class="fas fa-battery-full ml-1"></i>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content">
+        <!-- 顶部导航栏 -->
+        <div class="flex justify-between items-center p-4">
+            <a href="profile.html" class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
+                <i class="fas fa-chevron-left text-gray-500"></i>
+            </a>
+            <h1 class="text-xl font-bold">设置</h1>
+            <div class="w-10 h-10 opacity-0">
+                <!-- 占位元素保持导航栏平衡 -->
+            </div>
+        </div>
+        
+        <!-- 搜索栏 -->
+        <div class="px-4">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="搜索设置选项">
+            </div>
+        </div>
+        
+        <!-- 常规设置 -->
+        <div class="px-4">
+            <div class="settings-section-title">常规设置</div>
+            <div class="settings-card">
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">深色模式</h3>
+                        <p class="text-sm text-gray-500">切换应用主题</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">语言</h3>
+                        <p class="text-sm text-gray-500">当前设置为简体中文</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">字体大小</h3>
+                        <p class="text-sm text-gray-500">设置应用文字大小</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 通知设置 -->
+        <div class="px-4 mt-6">
+            <div class="settings-section-title">通知设置</div>
+            <div class="settings-card">
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">应用通知</h3>
+                        <p class="text-sm text-gray-500">启用应用推送通知</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">设备警报</h3>
+                        <p class="text-sm text-gray-500">设备异常状态通知</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">安防通知</h3>
+                        <p class="text-sm text-gray-500">安防系统警报和动态检测</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">静音时段</h3>
+                        <p class="text-sm text-gray-500">设置通知静音时间</p>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-sm text-gray-500 mr-2">22:00 - 07:00</span>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 隐私与安全 -->
+        <div class="px-4 mt-6">
+            <div class="settings-section-title">隐私与安全</div>
+            <div class="settings-card">
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">Face ID / Touch ID</h3>
+                        <p class="text-sm text-gray-500">使用生物识别解锁应用</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">自动锁定</h3>
+                        <p class="text-sm text-gray-500">应用退出后自动锁定</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">敏感操作验证</h3>
+                        <p class="text-sm text-gray-500">重要操作需要额外验证</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">隐私设置</h3>
+                        <p class="text-sm text-gray-500">管理应用权限和数据共享</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 设备与连接 -->
+        <div class="px-4 mt-6">
+            <div class="settings-section-title">设备与连接</div>
+            <div class="settings-card">
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">WiFi设置</h3>
+                        <p class="text-sm text-gray-500">管理设备连接的WiFi网络</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">蓝牙设置</h3>
+                        <p class="text-sm text-gray-500">管理蓝牙设备连接</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">设备自动发现</h3>
+                        <p class="text-sm text-gray-500">自动搜索并添加新设备</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 备份与恢复 -->
+        <div class="px-4 mt-6">
+            <div class="settings-section-title">备份与恢复</div>
+            <div class="settings-card">
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">云备份</h3>
+                        <p class="text-sm text-gray-500">自动备份设置和场景到云端</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">备份管理</h3>
+                        <p class="text-sm text-gray-500">查看和恢复历史备份</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">立即备份</h3>
+                        <p class="text-sm text-gray-500">创建一个手动备份</p>
+                    </div>
+                    <button class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm">备份</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 账户设置 -->
+        <div class="px-4 mt-6">
+            <div class="settings-section-title">账户设置</div>
+            <div class="settings-card">
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">个人信息</h3>
+                        <p class="text-sm text-gray-500">修改您的账户信息</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">账户安全</h3>
+                        <p class="text-sm text-gray-500">管理密码和安全设置</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">第三方账户绑定</h3>
+                        <p class="text-sm text-gray-500">管理关联的第三方账户</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 关于与支持 -->
+        <div class="px-4 mt-6">
+            <div class="settings-section-title">关于与支持</div>
+            <div class="settings-card">
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">检查更新</h3>
+                        <p class="text-sm text-gray-500">当前版本 v2.5.1</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">帮助中心</h3>
+                        <p class="text-sm text-gray-500">常见问题和使用指南</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">意见反馈</h3>
+                        <p class="text-sm text-gray-500">帮助我们改进产品</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">隐私政策</h3>
+                        <p class="text-sm text-gray-500">了解我们如何保护您的数据</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <div class="setting-item">
+                    <div>
+                        <h3 class="font-medium">用户协议</h3>
+                        <p class="text-sm text-gray-500">查看用户协议条款</p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 清除缓存 -->
+        <div class="px-4 mt-6">
+            <button class="w-full py-4 bg-white rounded-xl text-red-500 font-semibold shadow-sm">清除应用缓存</button>
+        </div>
+        
+        <!-- 退出登录 -->
+        <div class="px-4 mt-4 mb-6">
+            <button class="w-full py-4 bg-white rounded-xl text-red-500 font-semibold shadow-sm">退出登录</button>
+        </div>
+        
+        <!-- 版本信息 -->
+        <div class="version-info">
+            <p>智能家居 v2.5.1 (250134)</p>
+            <p class="mt-1">© 2023 智能家居科技有限公司</p>
+        </div>
+    </div>
+</body>
+</html> 
