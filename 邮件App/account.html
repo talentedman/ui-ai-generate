@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>账户管理 - 邮件App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <style>
+        .account-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .back-button {
+            color: #0070f3;
+            margin-right: 15px;
+            font-size: 16px;
+        }
+        .account-title {
+            font-weight: 600;
+            font-size: 18px;
+            flex: 1;
+        }
+        .action-button {
+            color: #0070f3;
+            font-size: 16px;
+        }
+        .account-section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            padding: 10px 20px;
+            font-weight: 600;
+            color: #8e8e93;
+            font-size: 14px;
+            background-color: #f9f9f9;
+        }
+        .account-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .account-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #fff;
+            font-size: 24px;
+        }
+        .account-info {
+            flex: 1;
+        }
+        .account-name {
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .account-email {
+            color: #8e8e93;
+            font-size: 14px;
+        }
+        .account-status {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        .account-status.active {
+            color: #34c759;
+        }
+        .account-status.inactive {
+            color: #8e8e93;
+        }
+        .account-status i {
+            margin-right: 5px;
+        }
+        .accent-blue {
+            background-color: #0070f3;
+        }
+        .accent-red {
+            background-color: #ff3b30;
+        }
+        .accent-green {
+            background-color: #34c759;
+        }
+        .accent-orange {
+            background-color: #ff9500;
+        }
+        .accent-yellow {
+            background-color: #ffcc00;
+        }
+        .accent-purple {
+            background-color: #af52de;
+        }
+        .add-account-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            color: #0070f3;
+            font-weight: 500;
+        }
+        .add-account-button i {
+            margin-right: 10px;
+        }
+        .sync-section {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .sync-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .sync-description {
+            color: #8e8e93;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .sync-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .sync-option {
+            display: flex;
+            align-items: center;
+        }
+        .sync-radio {
+            margin-right: 15px;
+        }
+        .sync-option-text {
+            flex: 1;
+        }
+        .advanced-options {
+            margin-top: 15px;
+        }
+        .advanced-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .advanced-toggle-text {
+            font-weight: 500;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #0070f3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            <span>9:41</span>
+        </div>
+        <div class="status-bar-center">
+            <!-- 空白或放置应用名称 -->
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-1"><i class="fas fa-wifi"></i></span>
+            <span class="ml-1"><i class="fas fa-battery-full"></i></span>
+        </div>
+    </div>
+    
+    <!-- 账户管理头部 -->
+    <div class="account-header">
+        <div class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="account-title">
+            账户管理
+        </div>
+        <div class="action-button">
+            编辑
+        </div>
+    </div>
+    
+    <!-- 账户列表 -->
+    <div class="account-section">
+        <div class="section-title">已连接的账户</div>
+        
+        <div class="account-item">
+            <div class="account-icon accent-blue">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="account-info">
+                <div class="account-name">工作邮箱</div>
+                <div class="account-email">wang@example.com</div>
+            </div>
+            <div class="account-status active">
+                <i class="fas fa-circle"></i>
+                <span>已同步</span>
+            </div>
+        </div>
+        
+        <div class="account-item">
+            <div class="account-icon accent-red">
+                <i class="fab fa-google"></i>
+            </div>
+            <div class="account-info">
+                <div class="account-name">Gmail</div>
+                <div class="account-email">wang.personal@gmail.com</div>
+            </div>
+            <div class="account-status active">
+                <i class="fas fa-circle"></i>
+                <span>已同步</span>
+            </div>
+        </div>
+        
+        <div class="account-item">
+            <div class="account-icon accent-purple">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="account-info">
+                <div class="account-name">iCloud</div>
+                <div class="account-email">wang.cloud@icloud.com</div>
+            </div>
+            <div class="account-status inactive">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>同步失败</span>
+            </div>
+        </div>
+        
+        <div class="add-account-button">
+            <i class="fas fa-plus-circle"></i>
+            <span>添加新账户</span>
+        </div>
+    </div>
+    
+    <!-- 同步设置 -->
+    <div class="account-section">
+        <div class="section-title">同步设置</div>
+        
+        <div class="sync-section">
+            <div class="sync-title">同步频率</div>
+            <div class="sync-description">选择邮件同步的频率，更频繁的同步可能增加电量消耗</div>
+            
+            <div class="sync-options">
+                <div class="sync-option">
+                    <input type="radio" name="sync-frequency" id="sync-auto" class="sync-radio" checked>
+                    <label for="sync-auto" class="sync-option-text">自动（推荐）</label>
+                </div>
+                
+                <div class="sync-option">
+                    <input type="radio" name="sync-frequency" id="sync-15min" class="sync-radio">
+                    <label for="sync-15min" class="sync-option-text">每15分钟</label>
+                </div>
+                
+                <div class="sync-option">
+                    <input type="radio" name="sync-frequency" id="sync-30min" class="sync-radio">
+                    <label for="sync-30min" class="sync-option-text">每30分钟</label>
+                </div>
+                
+                <div class="sync-option">
+                    <input type="radio" name="sync-frequency" id="sync-1hour" class="sync-radio">
+                    <label for="sync-1hour" class="sync-option-text">每小时</label>
+                </div>
+                
+                <div class="sync-option">
+                    <input type="radio" name="sync-frequency" id="sync-manual" class="sync-radio">
+                    <label for="sync-manual" class="sync-option-text">手动</label>
+                </div>
+            </div>
+            
+            <div class="advanced-options">
+                <div class="advanced-toggle">
+                    <div class="advanced-toggle-text">仅在WiFi下同步</div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="advanced-toggle">
+                    <div class="advanced-toggle-text">下载附件</div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="advanced-toggle">
+                    <div class="advanced-toggle-text">同步联系人</div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 默认账户 -->
+    <div class="account-section">
+        <div class="section-title">默认账户</div>
+        
+        <div class="account-item">
+            <div class="account-icon accent-blue">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="account-info">
+                <div class="account-name">工作邮箱</div>
+                <div class="account-email">wang@example.com</div>
+            </div>
+            <div>
+                <i class="fas fa-check text-blue-500"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="nav-item">
+            <i class="fas fa-inbox"></i>
+            <span>收件箱</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-paper-plane"></i>
+            <span>已发送</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-edit"></i>
+            <span>写邮件</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-folder"></i>
+            <span>文件夹</span>
+        </div>
+        <div class="nav-item active">
+            <i class="fas fa-cog"></i>
+            <span>设置</span>
+        </div>
+    </div>
+</body>
+</html> 

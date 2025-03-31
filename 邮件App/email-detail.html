@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮件详情 - 邮件App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <style>
+        .email-detail-header {
+            padding: 15px 20px 10px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .back-button {
+            display: flex;
+            align-items: center;
+            color: #0070f3;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .back-button i {
+            margin-right: 5px;
+        }
+        .email-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .email-action-button {
+            color: #888;
+            font-size: 18px;
+        }
+        .email-detail-content {
+            padding: 20px;
+            background-color: #fff;
+        }
+        .email-subject {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .email-info {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .sender-avatar {
+            margin-right: 15px;
+        }
+        .sender-info {
+            flex: 1;
+        }
+        .sender-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .sender-email {
+            color: #8e8e93;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .email-date {
+            color: #8e8e93;
+            font-size: 14px;
+        }
+        .email-recipients {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            color: #8e8e93;
+            font-size: 14px;
+        }
+        .recipients-label {
+            margin-right: 10px;
+        }
+        .recipients-list {
+            flex: 1;
+        }
+        .email-body {
+            line-height: 1.6;
+            color: #333;
+            margin-top: 30px;
+        }
+        .email-attachments {
+            margin-top: 30px;
+        }
+        .attachment-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .attachment-title i {
+            margin-right: 10px;
+            color: #8e8e93;
+        }
+        .attachment-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .attachment-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #e1f5fe;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        .attachment-icon i {
+            font-size: 20px;
+            color: #0070f3;
+        }
+        .attachment-info {
+            flex: 1;
+        }
+        .attachment-name {
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+        .attachment-size {
+            font-size: 12px;
+            color: #8e8e93;
+        }
+        .reply-container {
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .reply-header {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .reply-actions {
+            display: flex;
+            gap: 15px;
+        }
+        .reply-button {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f2f5;
+            color: #333;
+            font-weight: 500;
+        }
+        .reply-button i {
+            margin-right: 8px;
+        }
+        .reply-all-button {
+            background-color: #0070f3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            <span>9:41</span>
+        </div>
+        <div class="status-bar-center">
+            <!-- 空白或放置应用名称 -->
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-1"><i class="fas fa-wifi"></i></span>
+            <span class="ml-1"><i class="fas fa-battery-full"></i></span>
+        </div>
+    </div>
+    
+    <!-- 邮件详情头部 -->
+    <div class="email-detail-header">
+        <div class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span>返回</span>
+        </div>
+        
+        <div class="email-actions">
+            <div class="email-action-button">
+                <i class="far fa-trash-alt"></i>
+            </div>
+            <div class="email-action-button">
+                <i class="far fa-envelope"></i>
+            </div>
+            <div class="email-action-button">
+                <i class="fas fa-reply"></i>
+            </div>
+            <div class="email-action-button">
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 邮件详情内容 -->
+    <div class="email-detail-content content">
+        <h1 class="email-subject">关于下周会议的安排</h1>
+        
+        <div class="email-info">
+            <div class="sender-avatar">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sender Avatar" class="avatar">
+            </div>
+            <div class="sender-info">
+                <div class="sender-name">张小姐</div>
+                <div class="sender-email">zhang@example.com</div>
+                <div class="email-date">今天 09:30</div>
+                
+                <div class="email-recipients">
+                    <span class="recipients-label">收件人:</span>
+                    <span class="recipients-list">me@example.com</span>
+                </div>
+                <div class="email-recipients">
+                    <span class="recipients-label">抄送:</span>
+                    <span class="recipients-list">team@example.com, manager@example.com</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="email-body">
+            <p>尊敬的王先生，</p>
+            <p>您好！</p>
+            <p>我想确认一下下周三（6月28日）下午2:00的项目进度会议是否仍按计划进行？</p>
+            <p>我需要提前准备一些材料，包括：</p>
+            <ul class="list-disc pl-5 my-3">
+                <li>上个月的销售数据分析</li>
+                <li>新功能开发进度报告</li>
+                <li>用户反馈汇总</li>
+                <li>下阶段工作计划</li>
+            </ul>
+            <p>此外，我想邀请我们的设计团队负责人李明一起参加，不知您是否同意？</p>
+            <p>如果您有任何其他需要我准备的材料，请告知。</p>
+            <p class="mt-5">谢谢！</p>
+            <p>祝好，</p>
+            <p>张小姐</p>
+            <p class="text-sm text-gray-500 mt-5">产品经理 | 科技创新部</p>
+            <p class="text-sm text-gray-500">电话: 123-4567-8910</p>
+        </div>
+        
+        <div class="email-attachments">
+            <div class="attachment-title">
+                <i class="fas fa-paperclip"></i>
+                <span>附件 (2)</span>
+            </div>
+            
+            <div class="attachment-item">
+                <div class="attachment-icon">
+                    <i class="far fa-file-pdf"></i>
+                </div>
+                <div class="attachment-info">
+                    <div class="attachment-name">会议议程.pdf</div>
+                    <div class="attachment-size">2.4 MB</div>
+                </div>
+            </div>
+            
+            <div class="attachment-item">
+                <div class="attachment-icon">
+                    <i class="far fa-file-excel"></i>
+                </div>
+                <div class="attachment-info">
+                    <div class="attachment-name">销售数据.xlsx</div>
+                    <div class="attachment-size">1.8 MB</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="reply-container">
+            <div class="reply-header">快速回复</div>
+            <div class="reply-actions">
+                <div class="reply-button">
+                    <i class="fas fa-reply"></i>
+                    <span>回复</span>
+                </div>
+                <div class="reply-button reply-all-button">
+                    <i class="fas fa-reply-all"></i>
+                    <span>回复全部</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="nav-item active">
+            <i class="fas fa-inbox"></i>
+            <span>收件箱</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-paper-plane"></i>
+            <span>已发送</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-edit"></i>
+            <span>写邮件</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-folder"></i>
+            <span>文件夹</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-cog"></i>
+            <span>设置</span>
+        </div>
+    </div>
+</body>
+</html> 

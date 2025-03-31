@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件夹 - 邮件App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <style>
+        .folders-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .search-bar {
+            background-color: #f2f2f7;
+            border-radius: 10px;
+            padding: 8px 15px;
+            margin: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+        .search-bar i {
+            color: #8e8e93;
+            margin-right: 10px;
+        }
+        .search-input {
+            background: transparent;
+            border: none;
+            width: 100%;
+            color: #333;
+            font-size: 16px;
+        }
+        .search-input:focus {
+            outline: none;
+        }
+        .folder-section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            padding: 10px 20px;
+            font-weight: 600;
+            color: #8e8e93;
+            font-size: 14px;
+            background-color: #f9f9f9;
+        }
+        .folder-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .folder-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #fff;
+            font-size: 18px;
+        }
+        .folder-info {
+            flex: 1;
+        }
+        .folder-name {
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+        .folder-count {
+            color: #8e8e93;
+            font-size: 14px;
+        }
+        .folder-action {
+            color: #8e8e93;
+            padding: 10px;
+        }
+        .add-folder {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            width: 60px;
+            height: 60px;
+            background-color: #0070f3;
+            color: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 112, 243, 0.3);
+        }
+        .add-folder i {
+            font-size: 24px;
+        }
+        .icon-blue {
+            background-color: #0070f3;
+        }
+        .icon-green {
+            background-color: #34c759;
+        }
+        .icon-orange {
+            background-color: #ff9500;
+        }
+        .icon-red {
+            background-color: #ff3b30;
+        }
+        .icon-purple {
+            background-color: #af52de;
+        }
+        .icon-yellow {
+            background-color: #ffcc00;
+        }
+        .icon-teal {
+            background-color: #5ac8fa;
+        }
+        .unread-badge {
+            background-color: #0070f3;
+            color: white;
+            border-radius: 10px;
+            padding: 2px 8px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .user-accounts {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px 20px;
+            gap: 10px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .account-tag {
+            background-color: #f0f2f5;
+            border-radius: 16px;
+            padding: 5px 12px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        .account-tag.active {
+            background-color: #0070f3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            <span>9:41</span>
+        </div>
+        <div class="status-bar-center">
+            <!-- 空白或放置应用名称 -->
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-1"><i class="fas fa-wifi"></i></span>
+            <span class="ml-1"><i class="fas fa-battery-full"></i></span>
+        </div>
+    </div>
+    
+    <!-- 文件夹头部 -->
+    <div class="folders-header">
+        <h1 class="text-xl font-bold">文件夹</h1>
+        <div>
+            <i class="fas fa-ellipsis-h text-gray-500"></i>
+        </div>
+    </div>
+    
+    <!-- 用户账户 -->
+    <div class="user-accounts">
+        <div class="account-tag active">
+            <span>工作邮箱</span>
+        </div>
+        <div class="account-tag">
+            <span>个人Gmail</span>
+        </div>
+        <div class="account-tag">
+            <span>iCloud</span>
+        </div>
+        <div class="account-tag">
+            <span>+ 添加账户</span>
+        </div>
+    </div>
+    
+    <!-- 搜索栏 -->
+    <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" class="search-input" placeholder="搜索文件夹">
+    </div>
+    
+    <!-- 文件夹列表 -->
+    <div class="folders-list content">
+        <!-- 系统文件夹 -->
+        <div class="folder-section">
+            <div class="section-title">系统文件夹</div>
+            
+            <div class="folder-item">
+                <div class="folder-icon icon-blue">
+                    <i class="fas fa-inbox"></i>
+                </div>
+                <div class="folder-info">
+                    <div class="folder-name">收件箱<span class="unread-badge">8</span></div>
+                    <div class="folder-count">84封邮件</div>
+                </div>
+                <div class="folder-action">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="folder-item">
+                <div class="folder-icon icon-green">
+                    <i class="far fa-paper-plane"></i>
+                </div>
+                <div class="folder-info">
+                    <div class="folder-name">已发送</div>
+                    <div class="folder-count">36封邮件</div>
+                </div>
+                <div class="folder-action">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="folder-item">
+                <div class="folder-icon icon-orange">
+                    <i class="far fa-file-alt"></i>
+                </div>
+                <div class="folder-info">
+                    <div class="folder-name">草稿</div>
+                    <div class="folder-count">2封邮件</div>
+                </div>
+                <div class="folder-action">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="folder-item">
+                <div class="folder-icon icon-red">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <div class="folder-info">
+                    <div class="folder-name">垃圾邮件</div>
+                    <div class="folder-count">15封邮件</div>
+                </div>
+                <div class="folder-action">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="folder-item">
+                <div class="folder-icon icon-teal">
+                    <i class="far fa-trash-alt"></i>
+                </div>
+                <div class="folder-info">
+                    <div class="folder-name">已删除</div>
+                    <div class="folder-count">28封邮件</div>
+                </div>
+                <div class="folder-action">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 自定义文件夹 -->
+        <div class="folder-section">
+            <div class="section-title">自定义文件夹</div>
+            
+            <div class="folder-item">
+                <div class="folder-icon icon-purple">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="folder-info">
+                    <div class="folder-name">工作</div>
+                    <div class="folder-count">42封邮件</div>
+                </div>
+                <div class="folder-action">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="folder-item">
+                <div class="folder-icon icon-yellow">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="folder-info">
+                    <div class="folder-name">重要</div>
+                    <div class="folder-count">18封邮件</div>
+                </div>
+                <div class="folder-action">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="folder-item">
+                <div class="folder-icon icon-blue">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="folder-info">
+                    <div class="folder-name">项目</div>
+                    <div class="folder-count">26封邮件</div>
+                </div>
+                <div class="folder-action">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <div class="folder-item">
+                <div class="folder-icon icon-green">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <div class="folder-info">
+                    <div class="folder-name">账单</div>
+                    <div class="folder-count">8封邮件</div>
+                </div>
+                <div class="folder-action">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 添加文件夹按钮 -->
+    <div class="add-folder">
+        <i class="fas fa-folder-plus"></i>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="nav-item">
+            <i class="fas fa-inbox"></i>
+            <span>收件箱</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-paper-plane"></i>
+            <span>已发送</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-edit"></i>
+            <span>写邮件</span>
+        </div>
+        <div class="nav-item active">
+            <i class="fas fa-folder"></i>
+            <span>文件夹</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-cog"></i>
+            <span>设置</span>
+        </div>
+    </div>
+</body>
+</html> 

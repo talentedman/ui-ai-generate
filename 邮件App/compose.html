@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>撰写邮件 - 邮件App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <style>
+        .compose-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .compose-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .close-button {
+            color: #8e8e93;
+            font-size: 24px;
+        }
+        .compose-form {
+            background-color: #fff;
+            flex: 1;
+            overflow-y: auto;
+        }
+        .form-group {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .form-label {
+            color: #8e8e93;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .form-control {
+            width: 100%;
+            border: none;
+            font-size: 16px;
+            color: #333;
+        }
+        .form-control:focus {
+            outline: none;
+        }
+        .recipient-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .recipient-chip {
+            background-color: #f0f2f5;
+            border-radius: 16px;
+            padding: 5px 12px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        .recipient-chip i {
+            font-size: 12px;
+            margin-left: 8px;
+            color: #8e8e93;
+        }
+        .email-editor {
+            padding: 15px 20px;
+            min-height: 300px;
+        }
+        .editor-toolbar {
+            display: flex;
+            padding: 10px 20px;
+            border-top: 1px solid #eee;
+            background-color: #fff;
+        }
+        .toolbar-button {
+            color: #8e8e93;
+            font-size: 18px;
+            margin-right: 20px;
+        }
+        .compose-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-top: 1px solid #eee;
+        }
+        .send-button {
+            background-color: #0070f3;
+            color: white;
+            border-radius: 20px;
+            padding: 8px 20px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        .send-button i {
+            margin-left: 8px;
+        }
+        .draft-info {
+            color: #8e8e93;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            <span>9:41</span>
+        </div>
+        <div class="status-bar-center">
+            <!-- 空白或放置应用名称 -->
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-1"><i class="fas fa-wifi"></i></span>
+            <span class="ml-1"><i class="fas fa-battery-full"></i></span>
+        </div>
+    </div>
+    
+    <!-- 撰写邮件头部 -->
+    <div class="compose-header">
+        <div class="compose-title">新邮件</div>
+        <div class="close-button">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
+    
+    <!-- 撰写邮件表单 -->
+    <div class="compose-form content">
+        <!-- 收件人 -->
+        <div class="form-group">
+            <div class="form-label">收件人</div>
+            <div class="recipient-chips">
+                <div class="recipient-chip">
+                    team@example.com
+                    <i class="fas fa-times-circle"></i>
+                </div>
+                <input type="text" class="form-control" placeholder="添加收件人">
+            </div>
+        </div>
+        
+        <!-- 抄送 -->
+        <div class="form-group">
+            <div class="form-label">抄送</div>
+            <input type="text" class="form-control" placeholder="添加抄送">
+        </div>
+        
+        <!-- 主题 -->
+        <div class="form-group">
+            <div class="form-label">主题</div>
+            <input type="text" class="form-control" placeholder="添加主题" value="会议确认：项目进度讨论">
+        </div>
+        
+        <!-- 邮件编辑器 -->
+        <div class="email-editor">
+            <p>尊敬的团队成员，</p>
+            <p>您好！</p>
+            <p>我想确认下周的项目进度讨论会议，具体安排如下：</p>
+            <p>时间：2023年6月28日（周三）下午2:00-4:00</p>
+            <p>地点：会议室A</p>
+            <p>议程：</p>
+            <p>1. 上月工作进度回顾</p>
+            <p>2. 当前项目挑战讨论</p>
+            <p>3. 下阶段工作计划</p>
+            <p>请各位准备相关材料，如有特殊情况无法参加，请提前告知。</p>
+            <p>&nbsp;</p>
+            <p>谢谢！</p>
+            <p>&nbsp;</p>
+            <p>王先生</p>
+        </div>
+    </div>
+    
+    <!-- 编辑器工具栏 -->
+    <div class="editor-toolbar">
+        <div class="toolbar-button">
+            <i class="fas fa-bold"></i>
+        </div>
+        <div class="toolbar-button">
+            <i class="fas fa-italic"></i>
+        </div>
+        <div class="toolbar-button">
+            <i class="fas fa-underline"></i>
+        </div>
+        <div class="toolbar-button">
+            <i class="fas fa-list-ul"></i>
+        </div>
+        <div class="toolbar-button">
+            <i class="fas fa-paperclip"></i>
+        </div>
+        <div class="toolbar-button">
+            <i class="fas fa-camera"></i>
+        </div>
+    </div>
+    
+    <!-- 撰写邮件底部 -->
+    <div class="compose-footer">
+        <div class="draft-info">草稿已保存</div>
+        <button class="send-button">
+            <span>发送</span>
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="nav-item">
+            <i class="fas fa-inbox"></i>
+            <span>收件箱</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-paper-plane"></i>
+            <span>已发送</span>
+        </div>
+        <div class="nav-item active">
+            <i class="fas fa-edit"></i>
+            <span>写邮件</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-folder"></i>
+            <span>文件夹</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-cog"></i>
+            <span>设置</span>
+        </div>
+    </div>
+</body>
+</html> 

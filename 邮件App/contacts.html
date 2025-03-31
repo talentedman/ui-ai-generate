@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系人 - 邮件App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <style>
+        .contacts-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .search-bar {
+            background-color: #f2f2f7;
+            border-radius: 10px;
+            padding: 8px 15px;
+            margin: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+        .search-bar i {
+            color: #8e8e93;
+            margin-right: 10px;
+        }
+        .search-input {
+            background: transparent;
+            border: none;
+            width: 100%;
+            color: #333;
+            font-size: 16px;
+        }
+        .search-input:focus {
+            outline: none;
+        }
+        .tabs {
+            display: flex;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: 500;
+            color: #8e8e93;
+            border-bottom: 2px solid transparent;
+        }
+        .tab.active {
+            color: #0070f3;
+            border-bottom-color: #0070f3;
+        }
+        .contacts-list {
+            background-color: #fff;
+        }
+        .contact-group {
+            padding: 0 20px;
+        }
+        .group-header {
+            padding: 10px 0;
+            font-weight: 600;
+            color: #8e8e93;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        .contact-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-name {
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .contact-email {
+            color: #8e8e93;
+            font-size: 14px;
+        }
+        .contact-action {
+            display: flex;
+            gap: 15px;
+        }
+        .action-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #f2f2f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0070f3;
+        }
+        .alphabet-index {
+            position: fixed;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            font-size: 11px;
+            color: #0070f3;
+        }
+        .alphabet-index span {
+            padding: 2px 4px;
+        }
+        .add-contact {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            width: 60px;
+            height: 60px;
+            background-color: #0070f3;
+            color: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 112, 243, 0.3);
+        }
+        .add-contact i {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            <span>9:41</span>
+        </div>
+        <div class="status-bar-center">
+            <!-- 空白或放置应用名称 -->
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-1"><i class="fas fa-wifi"></i></span>
+            <span class="ml-1"><i class="fas fa-battery-full"></i></span>
+        </div>
+    </div>
+    
+    <!-- 联系人头部 -->
+    <div class="contacts-header">
+        <h1 class="text-xl font-bold">联系人</h1>
+        <div>
+            <i class="fas fa-ellipsis-h text-gray-500"></i>
+        </div>
+    </div>
+    
+    <!-- 搜索栏 -->
+    <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" class="search-input" placeholder="搜索联系人">
+    </div>
+    
+    <!-- 标签栏 -->
+    <div class="tabs">
+        <div class="tab active">全部</div>
+        <div class="tab">收藏</div>
+        <div class="tab">最近</div>
+    </div>
+    
+    <!-- 联系人列表 -->
+    <div class="contacts-list content">
+        <!-- A组 -->
+        <div class="contact-group">
+            <div class="group-header">A</div>
+            
+            <div class="contact-item">
+                <div class="contact-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="联系人头像" class="w-full h-full object-cover">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-name">安娜</div>
+                    <div class="contact-email">anna@example.com</div>
+                </div>
+                <div class="contact-action">
+                    <div class="action-button">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="action-button">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C组 -->
+        <div class="contact-group">
+            <div class="group-header">C</div>
+            
+            <div class="contact-item">
+                <div class="contact-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="联系人头像" class="w-full h-full object-cover">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-name">陈明</div>
+                    <div class="contact-email">chen.ming@example.com</div>
+                </div>
+                <div class="contact-action">
+                    <div class="action-button">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="action-button">
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- L组 -->
+        <div class="contact-group">
+            <div class="group-header">L</div>
+            
+            <div class="contact-item">
+                <div class="contact-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="联系人头像" class="w-full h-full object-cover">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-name">李伟</div>
+                    <div class="contact-email">li.wei@example.com</div>
+                </div>
+                <div class="contact-action">
+                    <div class="action-button">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="action-button">
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="联系人头像" class="w-full h-full object-cover">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-name">刘芳</div>
+                    <div class="contact-email">liu.fang@example.com</div>
+                </div>
+                <div class="contact-action">
+                    <div class="action-button">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="action-button">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- W组 -->
+        <div class="contact-group">
+            <div class="group-header">W</div>
+            
+            <div class="contact-item">
+                <div class="contact-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="联系人头像" class="w-full h-full object-cover">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-name">王丽</div>
+                    <div class="contact-email">wang.li@example.com</div>
+                </div>
+                <div class="contact-action">
+                    <div class="action-button">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="action-button">
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="联系人头像" class="w-full h-full object-cover">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-name">吴冰</div>
+                    <div class="contact-email">wu.bing@example.com</div>
+                </div>
+                <div class="contact-action">
+                    <div class="action-button">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="action-button">
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Z组 -->
+        <div class="contact-group">
+            <div class="group-header">Z</div>
+            
+            <div class="contact-item">
+                <div class="contact-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="联系人头像" class="w-full h-full object-cover">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-name">张小姐</div>
+                    <div class="contact-email">zhang@example.com</div>
+                </div>
+                <div class="contact-action">
+                    <div class="action-button">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="action-button">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="联系人头像" class="w-full h-full object-cover">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-name">赵明</div>
+                    <div class="contact-email">zhao.ming@example.com</div>
+                </div>
+                <div class="contact-action">
+                    <div class="action-button">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="action-button">
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 字母索引 -->
+    <div class="alphabet-index">
+        <span>A</span>
+        <span>B</span>
+        <span>C</span>
+        <span>D</span>
+        <span>E</span>
+        <span>F</span>
+        <span>G</span>
+        <span>H</span>
+        <span>I</span>
+        <span>J</span>
+        <span>K</span>
+        <span>L</span>
+        <span>M</span>
+        <span>N</span>
+        <span>O</span>
+        <span>P</span>
+        <span>Q</span>
+        <span>R</span>
+        <span>S</span>
+        <span>T</span>
+        <span>U</span>
+        <span>V</span>
+        <span>W</span>
+        <span>X</span>
+        <span>Y</span>
+        <span>Z</span>
+        <span>#</span>
+    </div>
+    
+    <!-- 添加联系人按钮 -->
+    <div class="add-contact">
+        <i class="fas fa-plus"></i>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="nav-item">
+            <i class="fas fa-inbox"></i>
+            <span>收件箱</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-paper-plane"></i>
+            <span>已发送</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-edit"></i>
+            <span>写邮件</span>
+        </div>
+        <div class="nav-item active">
+            <i class="fas fa-address-book"></i>
+            <span>联系人</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-cog"></i>
+            <span>设置</span>
+        </div>
+    </div>
+</body>
+</html> 

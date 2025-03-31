@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮件App原型</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .phone-container {
+            width: 375px;
+            height: 812px;
+            background-color: white;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border: 12px solid #1a1a1a;
+        }
+        .notch {
+            position: absolute;
+            width: 180px;
+            height: 30px;
+            background-color: #1a1a1a;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 100;
+        }
+        .frame-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .frames-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-6">
+        <h1 class="text-3xl font-bold text-center mb-8">邮件App原型界面</h1>
+        
+        <div class="frames-container">
+            <!-- 登录界面 -->
+            <div class="mb-8">
+                <p class="frame-title">登录界面</p>
+                <div class="phone-container">
+                    <div class="notch"></div>
+                    <iframe src="login.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+            
+            <!-- 收件箱界面 -->
+            <div class="mb-8">
+                <p class="frame-title">收件箱界面</p>
+                <div class="phone-container">
+                    <div class="notch"></div>
+                    <iframe src="inbox.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+            
+            <!-- 邮件详情界面 -->
+            <div class="mb-8">
+                <p class="frame-title">邮件详情界面</p>
+                <div class="phone-container">
+                    <div class="notch"></div>
+                    <iframe src="email-detail.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+            
+            <!-- 撰写邮件界面 -->
+            <div class="mb-8">
+                <p class="frame-title">撰写邮件界面</p>
+                <div class="phone-container">
+                    <div class="notch"></div>
+                    <iframe src="compose.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+            
+            <!-- 联系人界面 -->
+            <div class="mb-8">
+                <p class="frame-title">联系人界面</p>
+                <div class="phone-container">
+                    <div class="notch"></div>
+                    <iframe src="contacts.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+            
+            <!-- 文件夹界面 -->
+            <div class="mb-8">
+                <p class="frame-title">文件夹界面</p>
+                <div class="phone-container">
+                    <div class="notch"></div>
+                    <iframe src="folders.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+            
+            <!-- 搜索界面 -->
+            <div class="mb-8">
+                <p class="frame-title">搜索界面</p>
+                <div class="phone-container">
+                    <div class="notch"></div>
+                    <iframe src="search.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+            
+            <!-- 设置界面 -->
+            <div class="mb-8">
+                <p class="frame-title">设置界面</p>
+                <div class="phone-container">
+                    <div class="notch"></div>
+                    <iframe src="settings.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+            
+            <!-- 账户管理界面 -->
+            <div class="mb-8">
+                <p class="frame-title">账户管理界面</p>
+                <div class="phone-container">
+                    <div class="notch"></div>
+                    <iframe src="account.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

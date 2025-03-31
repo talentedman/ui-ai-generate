@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索 - 邮件App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <style>
+        .search-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .back-button {
+            color: #0070f3;
+            margin-right: 15px;
+            font-size: 16px;
+        }
+        .search-input-container {
+            flex: 1;
+            background-color: #f2f2f7;
+            border-radius: 10px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+        }
+        .search-input-icon {
+            color: #8e8e93;
+            margin-right: 10px;
+        }
+        .search-input {
+            background: transparent;
+            border: none;
+            flex: 1;
+            color: #333;
+            font-size: 16px;
+        }
+        .search-input:focus {
+            outline: none;
+        }
+        .clear-input {
+            color: #8e8e93;
+            font-size: 14px;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background-color: #d1d1d6;
+            border-radius: 10px;
+        }
+        .search-filters {
+            display: flex;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .filter-tag {
+            background-color: #f0f2f5;
+            border-radius: 16px;
+            padding: 5px 12px;
+            font-size: 14px;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+        .filter-tag.active {
+            background-color: #0070f3;
+            color: white;
+        }
+        .search-section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            padding: 10px 20px;
+            font-weight: 600;
+            color: #8e8e93;
+            font-size: 14px;
+            background-color: #f9f9f9;
+        }
+        .recent-search-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .recent-icon {
+            color: #8e8e93;
+            margin-right: 15px;
+        }
+        .recent-text {
+            flex: 1;
+            font-size: 16px;
+        }
+        .email-item {
+            display: flex;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            background-color: #fff;
+        }
+        .email-avatar {
+            margin-right: 15px;
+        }
+        .email-content {
+            flex: 1;
+        }
+        .email-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .email-sender {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .email-time {
+            color: #8e8e93;
+            font-size: 14px;
+        }
+        .email-subject {
+            font-weight: 500;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .email-preview {
+            color: #8e8e93;
+            font-size: 14px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .highlight {
+            background-color: #ffeb99;
+            font-weight: 500;
+        }
+        .search-tips {
+            padding: 20px;
+            color: #8e8e93;
+            text-align: center;
+        }
+        .search-tip-item {
+            margin-bottom: 10px;
+        }
+        .search-tip-item i {
+            margin-right: 5px;
+            color: #0070f3;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            <span>9:41</span>
+        </div>
+        <div class="status-bar-center">
+            <!-- 空白或放置应用名称 -->
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-1"><i class="fas fa-wifi"></i></span>
+            <span class="ml-1"><i class="fas fa-battery-full"></i></span>
+        </div>
+    </div>
+    
+    <!-- 搜索头部 -->
+    <div class="search-header">
+        <div class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="search-input-container">
+            <div class="search-input-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <input type="text" class="search-input" placeholder="搜索邮件" value="会议安排">
+            <div class="clear-input">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 搜索过滤器 -->
+    <div class="search-filters">
+        <div class="filter-tag active">所有</div>
+        <div class="filter-tag">收件箱</div>
+        <div class="filter-tag">已发送</div>
+        <div class="filter-tag">重要</div>
+        <div class="filter-tag">已加星标</div>
+        <div class="filter-tag">有附件</div>
+        <div class="filter-tag">日期</div>
+    </div>
+    
+    <!-- 搜索结果 -->
+    <div class="search-results content">
+        <!-- 最近搜索 -->
+        <div class="search-section">
+            <div class="section-title">搜索结果: "会议安排"</div>
+            
+            <!-- 搜索结果项 -->
+            <div class="email-item">
+                <div class="email-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sender Avatar" class="avatar-sm">
+                </div>
+                <div class="email-content">
+                    <div class="email-header">
+                        <div class="email-sender">张小姐</div>
+                        <div class="email-time">今天 09:30</div>
+                    </div>
+                    <div class="email-subject">关于下周<span class="highlight">会议</span>的<span class="highlight">安排</span></div>
+                    <div class="email-preview">您好，我想确认一下下周三下午的<span class="highlight">会议</span>是否仍按计划进行？我需要提前准备一些材料...</div>
+                </div>
+            </div>
+            
+            <div class="email-item">
+                <div class="email-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Sender Avatar" class="avatar-sm">
+                </div>
+                <div class="email-content">
+                    <div class="email-header">
+                        <div class="email-sender">李先生</div>
+                        <div class="email-time">昨天</div>
+                    </div>
+                    <div class="email-subject">产品发布<span class="highlight">会议</span><span class="highlight">安排</span></div>
+                    <div class="email-preview">关于下周的产品发布<span class="highlight">会议</span>，请各部门负责人准备相关材料，<span class="highlight">会议</span><span class="highlight">安排</span>如下...</div>
+                </div>
+            </div>
+            
+            <div class="email-item">
+                <div class="email-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Sender Avatar" class="avatar-sm">
+                </div>
+                <div class="email-content">
+                    <div class="email-header">
+                        <div class="email-sender">王女士</div>
+                        <div class="email-time">3天前</div>
+                    </div>
+                    <div class="email-subject">团队<span class="highlight">会议</span>室<span class="highlight">安排</span>变更</div>
+                    <div class="email-preview">由于会议室装修，本周的团队<span class="highlight">会议</span>地点变更为B栋305室，时间<span class="highlight">安排</span>不变...</div>
+                </div>
+            </div>
+            
+            <div class="email-item">
+                <div class="email-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Sender Avatar" class="avatar-sm">
+                </div>
+                <div class="email-content">
+                    <div class="email-header">
+                        <div class="email-sender">陈明</div>
+                        <div class="email-time">上周</div>
+                    </div>
+                    <div class="email-subject">季度回顾<span class="highlight">会议</span><span class="highlight">安排</span></div>
+                    <div class="email-preview">根据公司<span class="highlight">安排</span>，第二季度回顾<span class="highlight">会议</span>将于6月30日举行，请各位准备...</div>
+                </div>
+            </div>
+            
+            <div class="email-item">
+                <div class="email-avatar">
+                    <div class="avatar-sm bg-purple-500 flex items-center justify-center text-white font-bold">H</div>
+                </div>
+                <div class="email-content">
+                    <div class="email-header">
+                        <div class="email-sender">人力资源部</div>
+                        <div class="email-time">两周前</div>
+                    </div>
+                    <div class="email-subject">6月培训<span class="highlight">会议</span><span class="highlight">安排</span></div>
+                    <div class="email-preview">6月份各部门培训<span class="highlight">会议</span>的具体<span class="highlight">安排</span>已经确定，详情请见附件...</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 搜索提示 -->
+        <div class="search-tips">
+            <p class="font-medium mb-3">搜索技巧:</p>
+            <div class="search-tip-item">
+                <i class="fas fa-info-circle"></i>
+                <span>使用引号"精确搜索"特定短语</span>
+            </div>
+            <div class="search-tip-item">
+                <i class="fas fa-info-circle"></i>
+                <span>使用 from: 搜索特定发件人</span>
+            </div>
+            <div class="search-tip-item">
+                <i class="fas fa-info-circle"></i>
+                <span>使用 subject: 搜索邮件主题</span>
+            </div>
+            <div class="search-tip-item">
+                <i class="fas fa-info-circle"></i>
+                <span>使用 has:attachment 搜索含附件邮件</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="nav-item active">
+            <i class="fas fa-inbox"></i>
+            <span>收件箱</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-paper-plane"></i>
+            <span>已发送</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-edit"></i>
+            <span>写邮件</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-folder"></i>
+            <span>文件夹</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-cog"></i>
+            <span>设置</span>
+        </div>
+    </div>
+</body>
+</html> 

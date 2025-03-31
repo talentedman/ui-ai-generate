@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置 - 邮件App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <style>
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .settings-section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            padding: 10px 20px;
+            font-weight: 600;
+            color: #8e8e93;
+            font-size: 14px;
+            background-color: #f9f9f9;
+        }
+        .setting-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .setting-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #fff;
+            font-size: 18px;
+        }
+        .setting-info {
+            flex: 1;
+        }
+        .setting-name {
+            font-weight: 500;
+            font-size: 16px;
+        }
+        .setting-description {
+            color: #8e8e93;
+            font-size: 14px;
+            margin-top: 3px;
+        }
+        .setting-value {
+            display: flex;
+            align-items: center;
+            color: #8e8e93;
+        }
+        .setting-value-text {
+            margin-right: 10px;
+        }
+        .bg-blue {
+            background-color: #0070f3;
+        }
+        .bg-green {
+            background-color: #34c759;
+        }
+        .bg-orange {
+            background-color: #ff9500;
+        }
+        .bg-red {
+            background-color: #ff3b30;
+        }
+        .bg-purple {
+            background-color: #af52de;
+        }
+        .bg-teal {
+            background-color: #5ac8fa;
+        }
+        .bg-gray {
+            background-color: #8e8e93;
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .profile-picture {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        .profile-info {
+            flex: 1;
+        }
+        .profile-name {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .profile-email {
+            color: #8e8e93;
+            font-size: 14px;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #0070f3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            <span>9:41</span>
+        </div>
+        <div class="status-bar-center">
+            <!-- 空白或放置应用名称 -->
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-1"><i class="fas fa-wifi"></i></span>
+            <span class="ml-1"><i class="fas fa-battery-full"></i></span>
+        </div>
+    </div>
+    
+    <!-- 设置头部 -->
+    <div class="settings-header">
+        <h1 class="text-xl font-bold">设置</h1>
+    </div>
+    
+    <!-- 用户资料 -->
+    <div class="user-profile">
+        <div class="profile-picture">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile Picture" class="w-full h-full object-cover">
+        </div>
+        <div class="profile-info">
+            <div class="profile-name">王先生</div>
+            <div class="profile-email">wang@example.com</div>
+        </div>
+        <div>
+            <i class="fas fa-chevron-right text-gray-400"></i>
+        </div>
+    </div>
+    
+    <!-- 账户设置 -->
+    <div class="settings-section">
+        <div class="section-title">账户</div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-blue">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">账户管理</div>
+                <div class="setting-description">添加和管理您的邮箱账户</div>
+            </div>
+            <div class="setting-value">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-green">
+                <i class="fas fa-signature"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">签名设置</div>
+                <div class="setting-description">自定义邮件签名</div>
+            </div>
+            <div class="setting-value">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-purple">
+                <i class="fas fa-reply"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">自动回复</div>
+                <div class="setting-description">设置离开办公室时的自动回复</div>
+            </div>
+            <div class="setting-value">
+                <div class="setting-value-text">关闭</div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 通知设置 -->
+    <div class="settings-section">
+        <div class="section-title">通知</div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-orange">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">推送通知</div>
+                <div class="setting-description">接收新邮件的推送通知</div>
+            </div>
+            <div class="setting-value">
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-red">
+                <i class="fas fa-volume-up"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">声音提醒</div>
+                <div class="setting-description">新邮件到达时播放声音</div>
+            </div>
+            <div class="setting-value">
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-teal">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">VIP通知</div>
+                <div class="setting-description">接收VIP联系人的特别通知</div>
+            </div>
+            <div class="setting-value">
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 通用设置 -->
+    <div class="settings-section">
+        <div class="section-title">通用</div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-blue">
+                <i class="fas fa-paint-brush"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">主题设置</div>
+                <div class="setting-description">自定义应用外观</div>
+            </div>
+            <div class="setting-value">
+                <div class="setting-value-text">浅色</div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-purple">
+                <i class="fas fa-font"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">字体大小</div>
+                <div class="setting-description">调整邮件内容字体大小</div>
+            </div>
+            <div class="setting-value">
+                <div class="setting-value-text">中</div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-green">
+                <i class="fas fa-language"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">语言</div>
+                <div class="setting-description">选择应用显示语言</div>
+            </div>
+            <div class="setting-value">
+                <div class="setting-value-text">简体中文</div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 隐私与安全 -->
+    <div class="settings-section">
+        <div class="section-title">隐私与安全</div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-red">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">垃圾邮件过滤</div>
+                <div class="setting-description">自动过滤垃圾邮件</div>
+            </div>
+            <div class="setting-value">
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-gray">
+                <i class="fas fa-eye-slash"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">屏蔽外部图片</div>
+                <div class="setting-description">不自动加载外部图片</div>
+            </div>
+            <div class="setting-value">
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-orange">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">隐私政策</div>
+                <div class="setting-description">了解我们如何保护您的数据</div>
+            </div>
+            <div class="setting-value">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 关于与支持 -->
+    <div class="settings-section">
+        <div class="section-title">关于与支持</div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-blue">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">关于</div>
+                <div class="setting-description">版本信息和开发者</div>
+            </div>
+            <div class="setting-value">
+                <div class="setting-value-text">v1.0.0</div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-green">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">帮助与反馈</div>
+                <div class="setting-description">获取帮助或提交反馈</div>
+            </div>
+            <div class="setting-value">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="setting-item">
+            <div class="setting-icon bg-red">
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
+            <div class="setting-info">
+                <div class="setting-name">退出登录</div>
+                <div class="setting-description">退出当前账户</div>
+            </div>
+            <div class="setting-value">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="nav-item">
+            <i class="fas fa-inbox"></i>
+            <span>收件箱</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-paper-plane"></i>
+            <span>已发送</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-edit"></i>
+            <span>写邮件</span>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-folder"></i>
+            <span>文件夹</span>
+        </div>
+        <div class="nav-item active">
+            <i class="fas fa-cog"></i>
+            <span>设置</span>
+        </div>
+    </div>
+</body>
+</html> 
