@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎 - 个人中心</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/common.css">
+    <style>
+        .profile-header {
+            background-color: white;
+            padding: 20px 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .stats-bar {
+            display: flex;
+            padding: 12px 0;
+            margin-top: 16px;
+        }
+        
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid var(--border-color);
+        }
+        
+        .stat-item:last-child {
+            border-right: none;
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: white;
+        }
+        
+        .menu-icon {
+            width: 24px;
+            text-align: center;
+            margin-right: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .header-tabs {
+            display: flex;
+            background-color: white;
+            padding: 0 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header-tab {
+            padding: 12px 16px;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .header-tab.active {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .header-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .section-gap {
+            height: 8px;
+            background-color: var(--app-bg);
+        }
+        
+        .edit-profile-btn {
+            padding: 6px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            9:41
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2">100% <i class="fas fa-battery-full battery-icon"></i></span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="text-lg font-semibold">我的</div>
+        <div>
+            <i class="fas fa-cog text-gray-600"></i>
+        </div>
+    </div>
+
+    <!-- 页面内容区域 -->
+    <div class="content">
+        <!-- 个人信息 -->
+        <div class="profile-header">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" class="avatar-lg" alt="用户头像">
+                    <div class="ml-4">
+                        <div class="text-lg font-semibold">David Zhang</div>
+                        <div class="text-sm text-gray-500">软件工程师 @ 科技公司</div>
+                    </div>
+                </div>
+                <button class="edit-profile-btn">编辑资料</button>
+            </div>
+            
+            <div class="mt-3 text-sm text-gray-700">
+                热爱技术，关注人工智能、Web开发和产品设计。分享学习经验和职场感悟。
+            </div>
+            
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value">142</div>
+                    <div class="stat-label">回答</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">32</div>
+                    <div class="stat-label">文章</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">12.5k</div>
+                    <div class="stat-label">关注者</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 功能菜单 -->
+        <div class="section-gap"></div>
+        
+        <div class="menu-list">
+            <div class="menu-item">
+                <div class="menu-icon">
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="flex-1">我的收藏</div>
+                <div class="text-gray-400">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-icon">
+                    <i class="far fa-clock"></i>
+                </div>
+                <div class="flex-1">最近浏览</div>
+                <div class="text-gray-400">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-icon">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <div class="flex-1">我的关注</div>
+                <div class="text-gray-400">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-gap"></div>
+
+        <!-- 内容标签页 -->
+        <div class="header-tabs">
+            <div class="header-tab active">回答</div>
+            <div class="header-tab">文章</div>
+            <div class="header-tab">想法</div>
+            <div class="header-tab">提问</div>
+        </div>
+
+        <!-- 内容列表 -->
+        <div class="content-list">
+            <div class="card mx-4 mt-3">
+                <div class="text-blue-600 text-sm mb-2">回答了问题：</div>
+                <h3 class="text-base font-bold mb-2">Java与Python在企业应用中如何选择？各有什么优势？</h3>
+                <p class="text-gray-700 mb-3 text-sm line-clamp-3">
+                    作为曾经同时负责过Java和Python项目的工程师，这两种语言各有优势。Java的优势在于：1）强类型系统，减少运行时错误；2）成熟的企业级框架如Spring；3）高性能JVM和并发处理能力；4）庞大的社区支持。Python优势：1）开发效率高；2）数据科学和AI领域生态完善；3）简洁易读的语法；4）原型开发速度快。选择时应考虑：项目类型、团队技能、性能需求、长期维护等因素。
+                </p>
+                <div class="text-sm text-gray-500">2.8k 赞同 · 103 评论</div>
+            </div>
+            
+            <div class="card mx-4">
+                <div class="text-green-600 text-sm mb-2">发表了文章：</div>
+                <h3 class="text-base font-bold mb-2">Web开发中常见的10个性能优化误区</h3>
+                <p class="text-gray-700 mb-3 text-sm line-clamp-2">
+                    在开发高性能Web应用时，有些"优化"实际上可能弊大于利。本文梳理了10个常见的性能优化误区，并提供了正确的解决方案...
+                </p>
+                <div class="text-sm text-gray-500">4.5k 赞同 · 12 评论 · 5天前</div>
+            </div>
+            
+            <div class="card mx-4">
+                <div class="text-blue-600 text-sm mb-2">回答了问题：</div>
+                <h3 class="text-base font-bold mb-2">作为程序员，你有哪些提高生产力的小技巧？</h3>
+                <p class="text-gray-700 mb-3 text-sm line-clamp-3">
+                    我在多年编程经验中总结了几点提高效率的方法：1）熟练掌握IDE快捷键，设置常用代码片段；2）使用版本控制系统如Git，养成规范提交习惯；3）建立个人知识库，记录解决方案和学习笔记；4）合理使用AI辅助编程，但保持批判思维；5）定期代码审查，避免同样错误反复出现；6）学会说"不"，专注于重要任务；7）保持健康作息，定期休息避免疲劳编程。
+                </p>
+                <div class="text-sm text-gray-500">3.1k 赞同 · 156 评论</div>
+            </div>
+            
+            <div class="card mx-4">
+                <div class="text-blue-600 text-sm mb-2">回答了问题：</div>
+                <h3 class="text-base font-bold mb-2">前端工程化对项目有哪些实际收益？</h3>
+                <p class="text-gray-700 mb-3 text-sm line-clamp-2">
+                    前端工程化不仅是趋势，也是大型项目的必然选择。实际收益包括：1）提高开发效率，通过自动化流程减少重复工作；2）代码质量保障，借助ESLint等工具强制代码规范；3）...
+                </p>
+                <div class="text-sm text-gray-500">1.4k 赞同 · 46 评论 · 2周前</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-home"></i></div>
+            <div>首页</div>
+        </a>
+        <a href="discover.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-compass"></i></div>
+            <div>发现</div>
+        </a>
+        <a href="create.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-plus-circle"></i></div>
+            <div>创作</div>
+        </a>
+        <a href="notifications.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-bell"></i></div>
+            <div>消息</div>
+        </a>
+        <a href="profile.html" class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-user"></i></div>
+            <div>我的</div>
+        </a>
+    </div>
+</body>
+</html> 

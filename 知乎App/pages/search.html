@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎 - 搜索</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/common.css">
+    <style>
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #f0f2f5;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin: 0 16px;
+        }
+        
+        .search-input {
+            flex: 1;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            padding: 4px 8px;
+            font-size: 15px;
+            color: var(--text-color);
+        }
+        
+        .filter-tabs {
+            display: flex;
+            padding: 0 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .filter-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .filter-tab {
+            padding: 6px 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-right: 12px;
+            border-radius: 16px;
+        }
+        
+        .filter-tab.active {
+            background-color: #e6f3ff;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .search-result-item {
+            background-color: white;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .result-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        
+        .result-excerpt {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .result-meta {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .result-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            object-fit: cover;
+            margin-left: 12px;
+        }
+        
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .suggestion-list {
+            padding: 12px 16px;
+        }
+        
+        .suggestion-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .suggestion-icon {
+            color: var(--text-secondary);
+            margin-right: 12px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            9:41
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2">100% <i class="fas fa-battery-full battery-icon"></i></span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="w-full">
+            <div class="search-box">
+                <i class="fas fa-search text-gray-500"></i>
+                <input type="text" class="search-input" value="大语言模型" placeholder="搜索知乎内容">
+                <i class="fas fa-times-circle text-gray-400"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面内容区域 -->
+    <div class="content">
+        <!-- 分类标签 -->
+        <div class="filter-tabs">
+            <div class="filter-tab active">综合</div>
+            <div class="filter-tab">问题</div>
+            <div class="filter-tab">回答</div>
+            <div class="filter-tab">文章</div>
+            <div class="filter-tab">用户</div>
+            <div class="filter-tab">视频</div>
+            <div class="filter-tab">话题</div>
+        </div>
+
+        <!-- 搜索结果列表 -->
+        <div class="search-results mt-3">
+            <div class="search-result-item">
+                <div class="flex">
+                    <div class="flex-1">
+                        <div class="result-title"><span class="highlight">大语言模型</span>（LLM）未来两年的发展方向会是什么？</div>
+                        <div class="result-excerpt">随着GPT-4等模型的出现，<span class="highlight">大语言模型</span>正在迅速改变人们的工作与生活。作为该领域的研究者，我认为未来两年内LLM将主要在以下方向发展：1）多模态能力增强，将视觉、听觉信息整合处理；2）领域专精化...</div>
+                        <div class="result-meta">
+                            <span>234 个回答</span>
+                            <span class="mx-2">·</span>
+                            <span>42.5万 浏览</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="search-result-item">
+                <div class="flex">
+                    <div class="flex-1">
+                        <div class="result-title"><span class="highlight">大语言模型</span>如何重塑未来工作与生活方式</div>
+                        <div class="result-excerpt"><span class="highlight">大语言模型</span>（LLM）已经成为人工智能领域的革命性突破，从OpenAI的GPT系列到Google的Gemini，这些模型正在以前所未有的方式改变我们的工作和生活...</div>
+                        <div class="result-meta">
+                            <span>陈教授</span>
+                            <span class="mx-2">·</span>
+                            <span>2.3k 赞同</span>
+                            <span class="mx-2">·</span>
+                            <span>28.5k 阅读</span>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="result-image" alt="文章配图">
+                </div>
+            </div>
+            
+            <div class="search-result-item">
+                <div class="flex">
+                    <div class="flex-1">
+                        <div class="result-title">如何评价最新的<span class="highlight">大语言模型</span> Claude 3？</div>
+                        <div class="result-excerpt">Anthropic公司最新发布的Claude 3系列<span class="highlight">大语言模型</span>在多项基准测试中超越了GPT-4，特别是在数学推理、代码生成和多语言理解能力方面有显著提升。作为AI研究者，我认为Claude 3最大的亮点在于...</div>
+                        <div class="result-meta">
+                            <span>69 个回答</span>
+                            <span class="mx-2">·</span>
+                            <span>12.8万 浏览</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="search-result-item">
+                <div class="flex">
+                    <div class="flex-1">
+                        <div class="result-title"><span class="highlight">大语言模型</span>训练技术全解析</div>
+                        <div class="result-excerpt">本文将深入探讨<span class="highlight">大语言模型</span>的训练流程，包括数据收集与清洗、预训练策略、指令微调（Instruction Tuning）、RLHF（基于人类反馈的强化学习）等核心技术，并分析当前训练过程中的主要挑战...</div>
+                        <div class="result-meta">
+                            <span>李工程师</span>
+                            <span class="mx-2">·</span>
+                            <span>1.4k 赞同</span>
+                            <span class="mx-2">·</span>
+                            <span>18.2k 阅读</span>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="result-image" alt="文章配图">
+                </div>
+            </div>
+            
+            <div class="search-result-item">
+                <div class="flex">
+                    <div class="flex-1">
+                        <div class="result-title">国产<span class="highlight">大语言模型</span>的崛起与挑战</div>
+                        <div class="result-excerpt">近一年来，以文心一言、讯飞星火、通义千问为代表的国产<span class="highlight">大语言模型</span>取得了长足进步。本文将分析这些模型的技术特点、市场定位以及与国际顶尖模型的差距，并探讨中国AI企业在发展自主<span class="highlight">大语言模型</span>过程中面临的机遇与挑战...</div>
+                        <div class="result-meta">
+                            <span>王分析师</span>
+                            <span class="mx-2">·</span>
+                            <span>3.7k 赞同</span>
+                            <span class="mx-2">·</span>
+                            <span>32.1k 阅读</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="search-result-item">
+                <div class="flex items-center">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="avatar" alt="用户头像">
+                    <div class="ml-3 flex-1">
+                        <div class="font-semibold">张教授</div>
+                        <div class="text-xs text-gray-500">清华大学计算机系教授，<span class="highlight">大语言模型</span>研究专家</div>
+                        <div class="text-xs mt-1">12.5k 关注者 · 142 回答</div>
+                    </div>
+                    <button class="btn btn-outline btn-sm">关注</button>
+                </div>
+            </div>
+            
+            <div class="search-result-item">
+                <div class="flex">
+                    <div class="flex-1">
+                        <div class="result-title">#<span class="highlight">大语言模型</span></div>
+                        <div class="result-excerpt">关注<span class="highlight">大语言模型</span>技术发展与应用的话题</div>
+                        <div class="result-meta">
+                            <span>8.3万 关注者</span>
+                            <span class="mx-2">·</span>
+                            <span>1.4万 问题</span>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="result-image" alt="话题图片">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-home"></i></div>
+            <div>首页</div>
+        </a>
+        <a href="discover.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-compass"></i></div>
+            <div>发现</div>
+        </a>
+        <a href="create.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-plus-circle"></i></div>
+            <div>创作</div>
+        </a>
+        <a href="notifications.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-bell"></i></div>
+            <div>消息</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-user"></i></div>
+            <div>我的</div>
+        </a>
+    </div>
+</body>
+</html> 

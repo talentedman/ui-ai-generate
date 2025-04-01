@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎 - 文章详情</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/common.css">
+    <style>
+        .article-container {
+            background-color: white;
+            padding: 16px;
+        }
+        
+        .article-header {
+            margin-bottom: 20px;
+        }
+        
+        .article-title {
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .author-info {
+            margin-left: 12px;
+            flex: 1;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .author-bio {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+        
+        .follow-btn {
+            background-color: #f0f2f5;
+            color: var(--text-color);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 13px;
+        }
+        
+        .article-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+        
+        .article-content p,
+        .article-content ul,
+        .article-content h2,
+        .article-content h3 {
+            margin-bottom: 16px;
+        }
+        
+        .article-content h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 32px;
+        }
+        
+        .article-content h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 24px;
+        }
+        
+        .article-content img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .article-content ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+        
+        .article-content ol {
+            padding-left: 20px;
+            list-style-type: decimal;
+        }
+        
+        .article-content li {
+            margin-bottom: 8px;
+        }
+        
+        .article-content blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 16px;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin: 16px 0;
+        }
+        
+        .article-stats {
+            display: flex;
+            padding: 12px 16px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        .bottom-actions {
+            display: flex;
+            padding: 12px 16px;
+            background-color: white;
+            border-top: 1px solid var(--border-color);
+            position: fixed;
+            bottom: var(--tab-bar-height);
+            left: 0;
+            right: 0;
+        }
+        
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-secondary);
+            flex: 1;
+        }
+        
+        .action-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+        
+        .action-text {
+            font-size: 11px;
+        }
+        
+        .comment-section {
+            background-color: white;
+            padding: 16px;
+            margin-top: 8px;
+        }
+        
+        .comment-header {
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .comment-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .comment-content {
+            margin-left: 12px;
+            flex: 1;
+        }
+        
+        .comment-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .comment-text {
+            margin-top: 4px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .comment-actions {
+            display: flex;
+            margin-top: 8px;
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        .comment-action {
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            9:41
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2">100% <i class="fas fa-battery-full battery-icon"></i></span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div>
+            <i class="fas fa-arrow-left text-gray-600"></i>
+        </div>
+        <div>
+            <i class="fas fa-ellipsis-h text-gray-600"></i>
+        </div>
+    </div>
+
+    <!-- 页面内容区域 -->
+    <div class="content" style="padding-bottom: calc(var(--tab-bar-height) + 56px);">
+        <!-- 文章内容 -->
+        <div class="article-container">
+            <div class="article-header">
+                <h1 class="article-title">大型语言模型（LLM）如何重塑未来工作与生活方式</h1>
+                
+                <div class="article-meta">
+                    <img src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="avatar" alt="作者头像">
+                    <div class="author-info">
+                        <div class="author-name">陈教授</div>
+                        <div class="author-bio">AI研究员，清华大学计算机系副教授</div>
+                    </div>
+                    <button class="follow-btn">关注</button>
+                </div>
+            </div>
+            
+            <div class="article-content">
+                <p>大型语言模型（LLM）已经成为人工智能领域的革命性突破，从OpenAI的GPT系列到Google的Gemini，这些模型正在以前所未有的方式改变我们的工作和生活。本文将探讨LLM的发展现状、应用场景以及对未来的深远影响。</p>
+                
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="AI生成的图像">
+                
+                <h2>一、LLM的发展现状</h2>
+                
+                <p>大型语言模型的发展速度令人瞠目。从2018年的BERT到2022年的GPT-4，模型规模从1亿参数增长到数千亿参数，能力也从简单的文本理解发展到了复杂的推理、编程和创作。</p>
+                
+                <p>目前，LLM的主要技术路线包括：</p>
+                
+                <ul>
+                    <li><strong>自回归模型</strong>：如GPT系列，擅长生成连贯文本</li>
+                    <li><strong>编码器-解码器模型</strong>：如T5，适合翻译等任务</li>
+                    <li><strong>多模态模型</strong>：如GPT-4V，可处理文本和图像</li>
+                </ul>
+                
+                <p>值得注意的是，近期LLM在推理能力和对齐人类价值观方面取得了显著进步，这使其更加适合复杂任务和真实场景应用。</p>
+                
+                <h2>二、LLM重塑工作方式</h2>
+                
+                <p>LLM对职场的影响已经开始显现，并将在未来几年加速。以下是几个关键领域：</p>
+                
+                <h3>1. 知识工作自动化</h3>
+                
+                <p>对于知识工作者而言，LLM正在成为"数字助手"，帮助完成以下任务：</p>
+                
+                <ul>
+                    <li>撰写和优化各类文档、邮件和报告</li>
+                    <li>总结长文本，提取关键信息</li>
+                    <li>辅助研究，快速检索和整合信息</li>
+                    <li>提供创意灵感和不同视角</li>
+                </ul>
+                
+                <p>这并不意味着LLM会替代知识工作者，而是将提高生产力，让人类更专注于创造性和战略性工作。</p>
+                
+                <h3>2. 编程与软件开发</h3>
+                
+                <p>在技术领域，LLM正在改变软件开发流程：</p>
+                
+                <ul>
+                    <li>代码生成与补全，提高编程效率</li>
+                    <li>代码解释与文档生成</li>
+                    <li>调试辅助和错误修复建议</li>
+                    <li>低代码/无代码平台的能力增强</li>
+                </ul>
+                
+                <blockquote>
+                    "AI不会取代程序员，但使用AI的程序员会取代不使用AI的程序员。" —— 业内流行观点
+                </blockquote>
+                
+                <h3>3. 客户服务与体验</h3>
+                
+                <p>LLM正在重塑企业与客户的互动方式：</p>
+                
+                <ul>
+                    <li>智能客服系统，处理复杂查询</li>
+                    <li>个性化产品推荐和服务</li>
+                    <li>多语言无障碍沟通</li>
+                    <li>全天候服务可用性</li>
+                </ul>
+                
+                <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="客户服务场景">
+                
+                <h2>三、LLM改变生活方式</h2>
+                
+                <p>除了工作领域，LLM也在深刻改变我们的日常生活：</p>
+                
+                <h3>1. 个人助理与生活管理</h3>
+                
+                <p>智能手机上的LLM应用正在成为我们的数字管家：</p>
+                
+                <ul>
+                    <li>行程管理与智能提醒</li>
+                    <li>健康建议与追踪</li>
+                    <li>个性化学习助手</li>
+                    <li>日常决策辅助</li>
+                </ul>
+                
+                <h3>2. 创意与表达</h3>
+                
+                <p>LLM为普通人的创意表达提供了新工具：</p>
+                
+                <ul>
+                    <li>写作辅助，从情书到商业计划</li>
+                    <li>创意构思和头脑风暴</li>
+                    <li>内容创作辅助，包括视频脚本、博客等</li>
+                    <li>语言学习与表达优化</li>
+                </ul>
+                
+                <h3>3. 信息获取与过滤</h3>
+                
+                <p>在信息爆炸的时代，LLM帮助我们更高效地获取和处理信息：</p>
+                
+                <ul>
+                    <li>个性化新闻摘要</li>
+                    <li>专业文献解读</li>
+                    <li>复杂概念简化解释</li>
+                    <li>多角度信息分析，减少信息茧房</li>
+                </ul>
+                
+                <h2>四、未来展望与挑战</h2>
+                
+                <p>尽管LLM前景广阔，我们仍面临诸多挑战：</p>
+                
+                <ul>
+                    <li><strong>幻觉问题</strong>：模型可能生成看似合理但实际不正确的内容</li>
+                    <li><strong>隐私安全</strong>：个人数据保护与模型使用的平衡</li>
+                    <li><strong>就业转型</strong>：某些工作可能消失，需要新技能适应</li>
+                    <li><strong>数字鸿沟</strong>：不同群体获取AI技术的能力差异</li>
+                    <li><strong>伦理问题</strong>：如何确保AI符合人类价值观和伦理标准</li>
+                </ul>
+                
+                <p>面对这些挑战，我们需要多方协作：政策制定者需建立适当监管框架；企业需负责任地开发AI技术；教育系统需培养AI时代所需技能；个人则需提高数字素养和批判性思维。</p>
+                
+                <h2>结语</h2>
+                
+                <p>大型语言模型正引领我们进入一个新时代，它既不是乌托邦式的万能工具，也不是反乌托邦的威胁。它是一种强大的工具，最终如何影响我们的未来，取决于我们如何引导其发展和应用。</p>
+                
+                <p>未来属于那些能够与AI协同工作、利用其优势同时克服其局限的人。无论是工作还是生活，我们都需要学会与这些数字智能和谐共处，共同创造更美好的未来。</p>
+            </div>
+            
+            <div class="article-stats">
+                <div>字数 3,421</div>
+                <div class="ml-4">阅读 28,536</div>
+                <div class="ml-4">最后更新于 2小时前</div>
+            </div>
+        </div>
+        
+        <!-- 评论区 -->
+        <div class="comment-section">
+            <div class="comment-header">
+                <div>125 条评论</div>
+                <div class="text-sm text-blue-500">默认排序 <i class="fas fa-chevron-down ml-1"></i></div>
+            </div>
+            
+            <div class="comment-list">
+                <div class="comment-item">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" class="avatar avatar-sm" alt="评论者头像">
+                    <div class="comment-content">
+                        <div class="comment-name">王工程师</div>
+                        <div class="comment-text">非常深刻的分析！我在软件开发工作中已经开始使用LLM辅助编程，确实能提高效率，但也存在"过度依赖"的风险。建议开发者需要保持自己的核心编程能力，将AI视为辅助工具而非完全替代。</div>
+                        <div class="comment-actions">
+                            <div class="comment-action">
+                                <i class="far fa-thumbs-up mr-1"></i> 24
+                            </div>
+                            <div class="comment-action">
+                                <i class="far fa-comment mr-1"></i> 回复
+                            </div>
+                            <div class="comment-action text-gray-400">
+                                1小时前
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comment-item">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" class="avatar avatar-sm" alt="评论者头像">
+                    <div class="comment-content">
+                        <div class="comment-name">李老师</div>
+                        <div class="comment-text">作为一名教育工作者，我既期待又担忧LLM在教育领域的应用。一方面，它能为学生提供个性化辅导；另一方面，也可能导致学生批判性思维能力下降。我认为教育工作者需要重新思考如何在AI时代培养真正的思考能力。</div>
+                        <div class="comment-actions">
+                            <div class="comment-action">
+                                <i class="far fa-thumbs-up mr-1"></i> 37
+                            </div>
+                            <div class="comment-action">
+                                <i class="far fa-comment mr-1"></i> 回复
+                            </div>
+                            <div class="comment-action text-gray-400">
+                                3小时前
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comment-item">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" class="avatar avatar-sm" alt="评论者头像">
+                    <div class="comment-content">
+                        <div class="comment-name">张医生</div>
+                        <div class="comment-text">文章提到LLM在医疗领域的应用前景，但需要补充的是，医疗决策中的"可解释性"问题尤为重要。目前的LLM仍存在"黑箱"特性，这在关乎生命的医疗决策中是一个巨大挑战。</div>
+                        <div class="comment-actions">
+                            <div class="comment-action">
+                                <i class="far fa-thumbs-up mr-1"></i> 19
+                            </div>
+                            <div class="comment-action">
+                                <i class="far fa-comment mr-1"></i> 回复
+                            </div>
+                            <div class="comment-action text-gray-400">
+                                5小时前
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部操作栏 -->
+    <div class="bottom-actions">
+        <div class="action-btn">
+            <div class="action-icon"><i class="far fa-thumbs-up"></i></div>
+            <div class="action-text">赞同 2.3k</div>
+        </div>
+        <div class="action-btn">
+            <div class="action-icon"><i class="far fa-comment"></i></div>
+            <div class="action-text">评论 125</div>
+        </div>
+        <div class="action-btn">
+            <div class="action-icon"><i class="far fa-star"></i></div>
+            <div class="action-text">收藏</div>
+        </div>
+        <div class="action-btn">
+            <div class="action-icon"><i class="fas fa-share-alt"></i></div>
+            <div class="action-text">分享</div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-home"></i></div>
+            <div>首页</div>
+        </a>
+        <a href="discover.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-compass"></i></div>
+            <div>发现</div>
+        </a>
+        <a href="create.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-plus-circle"></i></div>
+            <div>创作</div>
+        </a>
+        <a href="notifications.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-bell"></i></div>
+            <div>消息</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-user"></i></div>
+            <div>我的</div>
+        </a>
+    </div>
+</body>
+</html> 

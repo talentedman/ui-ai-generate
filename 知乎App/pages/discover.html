@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎 - 发现</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/common.css">
+    <style>
+        .search-bar {
+            background-color: var(--highlight-bg);
+            border-radius: 8px;
+            margin: 0 16px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+        
+        .hot-topic-card {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .hot-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff9607;
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .hot-content {
+            flex: 1;
+        }
+        
+        .trending-tag {
+            display: inline-flex;
+            align-items: center;
+            color: #ff9607;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+        
+        .section-header {
+            padding: 16px;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 0 16px 16px;
+        }
+        
+        .topic-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+        
+        .topic-image {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+        }
+        
+        .topic-info {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            9:41
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2">100% <i class="fas fa-battery-full battery-icon"></i></span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="w-full">
+            <div class="search-bar">
+                <i class="fas fa-search mr-2"></i>
+                <span>搜索知乎内容</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面内容区域 -->
+    <div class="content">
+        <!-- 热榜标题 -->
+        <div class="section-header">
+            <div class="flex items-center">
+                <i class="fas fa-fire-alt text-red-500 mr-2"></i>
+                热榜
+            </div>
+            <div class="text-sm text-gray-500">
+                <i class="fas fa-sync-alt mr-1"></i> 10分钟前更新
+            </div>
+        </div>
+
+        <!-- 热榜内容 -->
+        <div class="hot-topics">
+            <div class="hot-topic-card">
+                <div class="hot-number">1</div>
+                <div class="hot-content">
+                    <div class="font-semibold mb-1">国务院：支持知识产权密集型中小企业在创业板上市</div>
+                    <div class="text-sm text-gray-500">3.4万讨论 · 5小时前</div>
+                </div>
+            </div>
+            
+            <div class="hot-topic-card">
+                <div class="hot-number">2</div>
+                <div class="hot-content">
+                    <div class="font-semibold mb-1">美联储宣布降息50个基点，为2020年以来首次降息</div>
+                    <div class="text-sm text-gray-500">2.9万讨论 · 2小时前</div>
+                </div>
+            </div>
+            
+            <div class="hot-topic-card">
+                <div class="hot-number">3</div>
+                <div class="hot-content">
+                    <div class="font-semibold mb-1">新一代iPhone搭载Apple Intelligence，用户隐私如何保护？
+                        <span class="trending-tag"><i class="fas fa-arrow-up mr-1"></i>热度上升</span>
+                    </div>
+                    <div class="text-sm text-gray-500">2.5万讨论 · 6小时前</div>
+                </div>
+            </div>
+            
+            <div class="hot-topic-card">
+                <div class="hot-number">4</div>
+                <div class="hot-content">
+                    <div class="font-semibold mb-1">人工智能大模型在医疗领域的应用进展与挑战</div>
+                    <div class="text-sm text-gray-500">1.8万讨论 · 1天前</div>
+                </div>
+            </div>
+            
+            <div class="hot-topic-card">
+                <div class="hot-number">5</div>
+                <div class="hot-content">
+                    <div class="font-semibold mb-1">研究表明：每天8杯水可能不适合所有人，应该如何科学饮水？</div>
+                    <div class="text-sm text-gray-500">1.5万讨论 · 10小时前</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 热门话题 -->
+        <div class="section-header">
+            <div>热门话题</div>
+            <div class="text-sm text-blue-500">查看更多</div>
+        </div>
+
+        <div class="topic-grid">
+            <div class="topic-item">
+                <img class="topic-image" src="https://images.unsplash.com/photo-1592659762303-90081d34b277?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="AI话题">
+                <div class="topic-info">
+                    <div class="font-semibold text-sm">人工智能</div>
+                    <div class="text-xs text-gray-500">3.2万人关注 · 8.5万问题</div>
+                </div>
+            </div>
+            
+            <div class="topic-item">
+                <img class="topic-image" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="职场话题">
+                <div class="topic-info">
+                    <div class="font-semibold text-sm">职场</div>
+                    <div class="text-xs text-gray-500">4.5万人关注 · 12.3万问题</div>
+                </div>
+            </div>
+            
+            <div class="topic-item">
+                <img class="topic-image" src="https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="健康话题">
+                <div class="topic-info">
+                    <div class="font-semibold text-sm">健康生活</div>
+                    <div class="text-xs text-gray-500">5.1万人关注 · 9.8万问题</div>
+                </div>
+            </div>
+            
+            <div class="topic-item">
+                <img class="topic-image" src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="心理学话题">
+                <div class="topic-info">
+                    <div class="font-semibold text-sm">心理学</div>
+                    <div class="text-xs text-gray-500">2.8万人关注 · 6.3万问题</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 热门圈子 -->
+        <div class="section-header">
+            <div>热门圈子</div>
+            <div class="text-sm text-blue-500">查看全部</div>
+        </div>
+
+        <div class="px-4">
+            <div class="card mb-3 p-0 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="职场圈子" class="w-full h-32 object-cover">
+                <div class="p-3">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="font-bold">职场新人成长营</div>
+                        <button class="btn btn-outline btn-sm">加入</button>
+                    </div>
+                    <div class="text-sm text-gray-600">3.5万人已加入 · 今日更新152条</div>
+                </div>
+            </div>
+            
+            <div class="card mb-3 p-0 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1523289333742-be1143f6b766?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="程序员圈子" class="w-full h-32 object-cover">
+                <div class="p-3">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="font-bold">程序员技术交流</div>
+                        <button class="btn btn-outline btn-sm">加入</button>
+                    </div>
+                    <div class="text-sm text-gray-600">2.8万人已加入 · 今日更新98条</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-home"></i></div>
+            <div>首页</div>
+        </a>
+        <a href="discover.html" class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-compass"></i></div>
+            <div>发现</div>
+        </a>
+        <a href="create.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-plus-circle"></i></div>
+            <div>创作</div>
+        </a>
+        <a href="notifications.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-bell"></i></div>
+            <div>消息</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-user"></i></div>
+            <div>我的</div>
+        </a>
+    </div>
+</body>
+</html> 

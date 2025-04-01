@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎 - 问题详情</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/common.css">
+    <style>
+        .question-header {
+            background-color: white;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .action-bar {
+            display: flex;
+            padding: 12px 16px;
+            background-color: white;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .action-button {
+            display: flex;
+            align-items: center;
+            margin-right: 16px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .meta-info {
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        .answer-item {
+            background-color: white;
+            margin-top: 8px;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .answer-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .author-info {
+            margin-left: 12px;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .author-title {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .answer-content {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        .bottom-actions {
+            display: flex;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .interact-btn {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .topic-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 100px;
+            background-color: #f0f2f5;
+            font-size: 12px;
+            margin-right: 8px;
+            color: var(--text-secondary);
+        }
+        
+        .answer-box {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 12px 16px;
+            position: fixed;
+            bottom: var(--tab-bar-height);
+            left: 0;
+            right: 0;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .answer-input {
+            flex: 1;
+            background-color: #f0f2f5;
+            padding: 8px 12px;
+            border-radius: 100px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            9:41
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2">100% <i class="fas fa-battery-full battery-icon"></i></span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div>
+            <i class="fas fa-arrow-left text-gray-600"></i>
+        </div>
+        <div>
+            <i class="fas fa-ellipsis-h text-gray-600"></i>
+        </div>
+    </div>
+
+    <!-- 页面内容区域 -->
+    <div class="content" style="padding-bottom: calc(var(--tab-bar-height) + 56px);">
+        <!-- 问题标题和描述 -->
+        <div class="question-header">
+            <h1 class="text-xl font-bold">人工智能会在哪些领域率先取代人类工作？未来十年有哪些工作会消失？</h1>
+            
+            <div class="meta-info">
+                <span>5,642 关注</span>
+                <span class="mx-2">·</span>
+                <span>752 回答</span>
+                <span class="mx-2">·</span>
+                <span>128.5万 浏览</span>
+            </div>
+            
+            <div class="mt-3 text-sm">
+                <div class="topic-tag">人工智能</div>
+                <div class="topic-tag">职业规划</div>
+                <div class="topic-tag">未来趋势</div>
+            </div>
+        </div>
+        
+        <!-- 操作栏 -->
+        <div class="action-bar">
+            <div class="action-button">
+                <i class="far fa-edit mr-1"></i> 回答
+            </div>
+            <div class="action-button">
+                <i class="far fa-star mr-1"></i> 关注
+            </div>
+            <div class="action-button">
+                <i class="fas fa-comment-dots mr-1"></i> 评论
+            </div>
+            <div class="action-button">
+                <i class="fas fa-share-alt mr-1"></i> 分享
+            </div>
+        </div>
+
+        <!-- 回答列表 -->
+        <div class="answer-list">
+            <div class="answer-item">
+                <div class="answer-author">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="avatar" alt="作者头像">
+                    <div class="author-info">
+                        <div class="author-name">张教授</div>
+                        <div class="author-title">清华大学计算机系教授，AI研究专家</div>
+                    </div>
+                </div>
+                
+                <div class="answer-content">
+                    <p class="mb-3">人工智能替代人类工作将是一个渐进过程，不同领域受到的影响时间和程度各不相同。基于当前AI技术发展趋势，以下领域可能率先受到影响：</p>
+                    
+                    <p class="mb-2 font-semibold">一、短期内（1-3年）已经开始受到影响的工作：</p>
+                    <p class="mb-3">1. <strong>数据分析和处理</strong>：涉及重复性数据处理的工作，AI已能高效完成。<br>
+                    2. <strong>客户服务</strong>：智能客服、聊天机器人已广泛应用，处理常规查询效率高。<br>
+                    3. <strong>内容创作</strong>：AI生成文案、新闻摘要、简单图像设计等已较为成熟。<br>
+                    4. <strong>初级翻译</strong>：通用文本翻译质量已接近人类水平。</p>
+                    
+                    <p class="mb-2 font-semibold">二、中期（3-7年）可能面临替代风险的领域：</p>
+                    <p class="mb-3">1. <strong>中层管理</strong>：涉及数据分析和决策的管理职位。<br>
+                    2. <strong>金融分析</strong>：市场分析、投资建议、风险评估等。<br>
+                    3. <strong>部分法律服务</strong>：合同审查、法律文件准备等标准化工作。<br>
+                    4. <strong>医疗诊断辅助</strong>：影像诊断、基础病情分析等辅助性工作。</p>
+                    
+                    <p class="mb-2 font-semibold">三、长期（7-10年）可能受影响的高技能领域：</p>
+                    <p>1. <strong>程序开发</strong>：特别是标准化的代码编写工作。<br>
+                    2. <strong>物流规划</strong>：运输路线和资源优化。<br>
+                    3. <strong>基础教育</strong>：个性化学习辅导、基础知识传授。</p>
+                    
+                    <p class="my-3">但我们也要看到，AI发展也会创造新工作机会：AI系统训练师、AI伦理专家、人机协作设计师等新职业将会兴起。未来就业市场将更重视人类独特优势：创造力、情感智能、跨学科思维、复杂问题解决等能力。</p>
+                    
+                    <p>最后，技术变革是一把双刃剑。要应对这些变化，持续学习、培养人机协作能力、发展创造性思维将是必要的适应策略。</p>
+                </div>
+                
+                <div class="bottom-actions">
+                    <div class="interact-btn text-blue-500">
+                        <i class="fas fa-thumbs-up mr-1"></i> 12.3k
+                    </div>
+                    <div class="interact-btn">
+                        <i class="far fa-comment mr-1"></i> 428
+                    </div>
+                    <div class="interact-btn">
+                        <i class="far fa-star mr-1"></i> 收藏
+                    </div>
+                    <div class="interact-btn">
+                        <i class="fas fa-share-alt mr-1"></i> 分享
+                    </div>
+                </div>
+            </div>
+            
+            <div class="answer-item">
+                <div class="answer-author">
+                    <img src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="avatar" alt="作者头像">
+                    <div class="author-info">
+                        <div class="author-name">王经理</div>
+                        <div class="author-title">某科技公司AI产品负责人</div>
+                    </div>
+                </div>
+                
+                <div class="answer-content">
+                    <p class="mb-3">作为AI产品从业者，我想从产品和商业角度分析这个问题。</p>
+                    
+                    <p class="mb-3">首先，AI替代人类工作的路径遵循这样的规律：<strong>结构化 → 半结构化 → 非结构化</strong>。也就是说，越是有明确规则、固定流程的工作，越容易被AI取代。</p>
+                    
+                    <p class="mb-2">以下工作在未来十年高危：</p>
+                    <p class="mb-3">1. <strong>数据录入员</strong>：OCR和自动化技术已经可以完成大部分工作<br>
+                    2. <strong>客服代表</strong>：大型语言模型已经能处理80%以上的常见问题<br>
+                    3. <strong>基础会计</strong>：财务软件正在整合AI，自动化记账和报表生成<br>
+                    4. <strong>快递分拣</strong>：机器人和自动化系统正在取代人工分拣<br>
+                    5. <strong>基础编程</strong>：AI辅助编程工具已能生成大量基础代码</p>
+                    
+                    <p class="mb-3">但同时，AI也创造了新的就业机会，比如：</p>
+                    <p class="mb-3">• AI训练师/数据标注专家<br>
+                    • 算法伦理专家<br>
+                    • 人机交互设计师<br>
+                    • AI系统监管者</p>
+                    
+                    <p class="mb-3">关键在于，未来的工作将更多依赖于：</p>
+                    <p>• 创造性思维<br>
+                    • 情感智能和人际沟通<br>
+                    • 复杂问题解决能力<br>
+                    • 跨领域整合能力</p>
+                    
+                    <p class="mt-3">建议大家提升这些"难以被AI替代"的能力，并学会与AI协作而非抗拒它。</p>
+                </div>
+                
+                <div class="bottom-actions">
+                    <div class="interact-btn">
+                        <i class="far fa-thumbs-up mr-1"></i> 7.8k
+                    </div>
+                    <div class="interact-btn">
+                        <i class="far fa-comment mr-1"></i> 216
+                    </div>
+                    <div class="interact-btn">
+                        <i class="far fa-star mr-1"></i> 收藏
+                    </div>
+                    <div class="interact-btn">
+                        <i class="fas fa-share-alt mr-1"></i> 分享
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 回答框 -->
+    <div class="answer-box">
+        <div class="answer-input">写回答...</div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-home"></i></div>
+            <div>首页</div>
+        </a>
+        <a href="discover.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-compass"></i></div>
+            <div>发现</div>
+        </a>
+        <a href="create.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-plus-circle"></i></div>
+            <div>创作</div>
+        </a>
+        <a href="notifications.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-bell"></i></div>
+            <div>消息</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-user"></i></div>
+            <div>我的</div>
+        </a>
+    </div>
+</body>
+</html> 

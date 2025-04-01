@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎 - 设置</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/common.css">
+    <style>
+        .settings-group {
+            margin-bottom: 12px;
+            background-color: white;
+        }
+        
+        .settings-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+        
+        .settings-label {
+            flex: 1;
+            font-size: 15px;
+        }
+        
+        .settings-value {
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .settings-arrow {
+            color: var(--text-secondary);
+            margin-left: 8px;
+        }
+        
+        .settings-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+        
+        .settings-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+        
+        .settings-group-title {
+            padding: 12px 16px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            background-color: var(--app-bg);
+        }
+        
+        .logout-button {
+            background-color: white;
+            color: #f56565;
+            text-align: center;
+            padding: 16px;
+            font-size: 15px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+        
+        .version-info {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            9:41
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2">100% <i class="fas fa-battery-full battery-icon"></i></span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div>
+            <i class="fas fa-arrow-left text-gray-600"></i>
+        </div>
+        <div class="text-lg font-semibold">设置</div>
+        <div style="width: 24px;"></div> <!-- 占位 -->
+    </div>
+
+    <!-- 页面内容区域 -->
+    <div class="content">
+        <!-- 账号设置 -->
+        <div class="settings-group-title">账号设置</div>
+        <div class="settings-group">
+            <div class="settings-item">
+                <div class="settings-label">个人资料</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right settings-arrow"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">账号安全</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right settings-arrow"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">隐私设置</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right settings-arrow"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">黑名单</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right settings-arrow"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 通知设置 -->
+        <div class="settings-group-title">通知设置</div>
+        <div class="settings-group">
+            <div class="settings-item">
+                <div class="settings-label">推送通知</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right settings-arrow"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">邮件提醒</div>
+                <div class="settings-value">
+                    <label class="settings-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">关注更新提醒</div>
+                <div class="settings-value">
+                    <label class="settings-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 隐私与安全 -->
+        <div class="settings-group-title">隐私与安全</div>
+        <div class="settings-group">
+            <div class="settings-item">
+                <div class="settings-label">阅读历史</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right settings-arrow"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">搜索历史</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right settings-arrow"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">隐身模式</div>
+                <div class="settings-value">
+                    <label class="settings-switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 通用设置 -->
+        <div class="settings-group-title">通用设置</div>
+        <div class="settings-group">
+            <div class="settings-item">
+                <div class="settings-label">深色模式</div>
+                <div class="settings-value">
+                    跟随系统
+                    <i class="fas fa-chevron-right settings-arrow"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">字体大小</div>
+                <div class="settings-value">
+                    默认
+                    <i class="fas fa-chevron-right settings-arrow"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">清除缓存</div>
+                <div class="settings-value">
+                    23.5MB
+                    <i class="fas fa-chevron-right settings-arrow"></i>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-label">关于知乎</div>
+                <div class="settings-value">
+                    <i class="fas fa-chevron-right settings-arrow"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 退出按钮 -->
+        <div class="logout-button">
+            退出登录
+        </div>
+
+        <!-- 版本信息 -->
+        <div class="version-info">
+            知乎 v7.36.0
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-home"></i></div>
+            <div>首页</div>
+        </a>
+        <a href="discover.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-compass"></i></div>
+            <div>发现</div>
+        </a>
+        <a href="create.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-plus-circle"></i></div>
+            <div>创作</div>
+        </a>
+        <a href="notifications.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-bell"></i></div>
+            <div>消息</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-user"></i></div>
+            <div>我的</div>
+        </a>
+    </div>
+</body>
+</html> 

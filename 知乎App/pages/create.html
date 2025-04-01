@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎 - 创作中心</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/common.css">
+    <style>
+        .create-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+        }
+        
+        .create-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .create-content {
+            flex: 1;
+        }
+        
+        .draft-item {
+            display: flex;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .draft-icon {
+            margin-right: 16px;
+            font-size: 20px;
+            color: #8590a6;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 20px 16px 0;
+        }
+        
+        .section-divider {
+            height: 8px;
+            background-color: #f6f6f6;
+        }
+        
+        .waiting-item {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            9:41
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2">100% <i class="fas fa-battery-full battery-icon"></i></span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="text-lg font-semibold">创作中心</div>
+        <div>
+            <i class="fas fa-history text-gray-600"></i>
+        </div>
+    </div>
+
+    <!-- 页面内容区域 -->
+    <div class="content">
+        <!-- 创作选项 -->
+        <div class="create-card">
+            <div class="create-icon" style="background-color: #0084ff;">
+                <i class="fas fa-question"></i>
+            </div>
+            <div class="create-content">
+                <div class="font-semibold">提问</div>
+                <div class="text-gray-500 text-sm">发布问题，邀请回答</div>
+            </div>
+            <div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+        </div>
+        
+        <div class="create-card">
+            <div class="create-icon" style="background-color: #f85959;">
+                <i class="fas fa-pen"></i>
+            </div>
+            <div class="create-content">
+                <div class="font-semibold">回答</div>
+                <div class="text-gray-500 text-sm">分享你的知识、经验和见解</div>
+            </div>
+            <div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+        </div>
+        
+        <div class="create-card">
+            <div class="create-icon" style="background-color: #9c27b0;">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="create-content">
+                <div class="font-semibold">写文章</div>
+                <div class="text-gray-500 text-sm">发布原创文章</div>
+            </div>
+            <div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+        </div>
+        
+        <div class="create-card">
+            <div class="create-icon" style="background-color: #ff9607;">
+                <i class="fas fa-video"></i>
+            </div>
+            <div class="create-content">
+                <div class="font-semibold">视频</div>
+                <div class="text-gray-500 text-sm">发布短视频内容</div>
+            </div>
+            <div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- 草稿箱 -->
+        <div class="section-title">草稿箱</div>
+        
+        <div class="draft-list bg-white mt-3">
+            <div class="draft-item">
+                <div class="draft-icon">
+                    <i class="fas fa-pen"></i>
+                </div>
+                <div class="w-full">
+                    <div class="font-semibold mb-1">如何看待前端和后端开发的发展趋势？</div>
+                    <div class="text-sm text-gray-500 mb-2">最近修改于 3小时前</div>
+                    <div class="text-xs line-clamp-2 text-gray-600">随着技术的发展，前端和后端的边界正在变得模糊。全栈开发成为趋势，但专精某一领域依然重要。我认为未来...</div>
+                </div>
+            </div>
+            
+            <div class="draft-item">
+                <div class="draft-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="w-full">
+                    <div class="font-semibold mb-1">人工智能时代的个人成长策略</div>
+                    <div class="text-sm text-gray-500 mb-2">最近修改于 昨天</div>
+                    <div class="text-xs line-clamp-2 text-gray-600">AI正在改变我们的工作方式，如何在这个时代保持竞争力？本文将分享几点个人成长策略...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider my-4"></div>
+
+        <!-- 等你回答 -->
+        <div class="section-title">等你回答</div>
+        
+        <div class="waiting-list bg-white mt-3">
+            <div class="waiting-item">
+                <div class="font-semibold mb-2">有哪些被低估的学习方法，学习效率却很高？</div>
+                <div class="text-sm text-gray-500 mb-2">来自话题：学习方法 · 4.5万浏览</div>
+                <div class="text-xs text-blue-500">10人回答了该问题</div>
+            </div>
+            
+            <div class="waiting-item">
+                <div class="font-semibold mb-2">程序员35岁以后的职业发展方向有哪些？</div>
+                <div class="text-sm text-gray-500 mb-2">来自话题：程序员 · 8.2万浏览</div>
+                <div class="text-xs text-blue-500">42人回答了该问题</div>
+            </div>
+            
+            <div class="waiting-item">
+                <div class="font-semibold mb-2">如何平衡工作与生活？有什么实用的建议？</div>
+                <div class="text-sm text-gray-500 mb-2">来自话题：职场 · 3.1万浏览</div>
+                <div class="text-xs text-blue-500">28人回答了该问题</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-home"></i></div>
+            <div>首页</div>
+        </a>
+        <a href="discover.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-compass"></i></div>
+            <div>发现</div>
+        </a>
+        <a href="create.html" class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-plus-circle"></i></div>
+            <div>创作</div>
+        </a>
+        <a href="notifications.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-bell"></i></div>
+            <div>消息</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-user"></i></div>
+            <div>我的</div>
+        </a>
+    </div>
+</body>
+</html> 

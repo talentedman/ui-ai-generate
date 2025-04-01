@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎 - 首页</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/common.css">
+    <style>
+        .topic-pill {
+            background-color: var(--highlight-bg);
+            border-radius: 16px;
+            padding: 6px 14px;
+            white-space: nowrap;
+            font-size: 14px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        .topics-scroll {
+            overflow-x: auto;
+            padding: 12px 16px;
+            display: flex;
+            gap: 10px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .topics-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .search-bar {
+            background-color: var(--highlight-bg);
+            border-radius: 8px;
+            margin: 0 16px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+        
+        .interact-btn {
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            9:41
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2">100% <i class="fas fa-battery-full battery-icon"></i></span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="w-full">
+            <div class="search-bar">
+                <i class="fas fa-search mr-2"></i>
+                <span>搜索知乎内容</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面内容区域 -->
+    <div class="content">
+        <!-- 话题栏 -->
+        <div class="topics-scroll">
+            <div class="topic-pill active bg-blue-50 text-blue-600">推荐</div>
+            <div class="topic-pill">热榜</div>
+            <div class="topic-pill">关注</div>
+            <div class="topic-pill">IT</div>
+            <div class="topic-pill">科技</div>
+            <div class="topic-pill">数码</div>
+            <div class="topic-pill">设计</div>
+            <div class="topic-pill">心理学</div>
+            <div class="topic-pill">旅行</div>
+            <div class="topic-pill">美食</div>
+        </div>
+
+        <!-- 内容卡片 -->
+        <div class="card mx-4">
+            <div class="flex items-start mb-3">
+                <img class="avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="用户头像">
+                <div class="ml-3">
+                    <div class="font-semibold">李教授</div>
+                    <div class="text-xs text-gray-500">人工智能研究员，清华大学计算机系教授</div>
+                </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">大型语言模型（LLM）未来两年的发展方向会是什么？</h3>
+            <p class="text-gray-700 mb-3 line-clamp-3">随着GPT-4等模型的出现，大型语言模型正在迅速改变人们的工作与生活。作为该领域的研究者，我认为未来两年内LLM将主要在以下方向发展：1）多模态能力增强，将视觉、听觉信息整合处理；2）领域专精化，为特定行业优化的模型会更具价值；3）计算效率提升，使模型可以在更广泛的设备上运行...</p>
+            <div class="divider"></div>
+            <div class="flex justify-start">
+                <div class="interact-btn">
+                    <i class="far fa-thumbs-up mr-1"></i> 4.2k
+                </div>
+                <div class="interact-btn">
+                    <i class="far fa-comment mr-1"></i> 382
+                </div>
+                <div class="interact-btn">
+                    <i class="far fa-star mr-1"></i> 收藏
+                </div>
+                <div class="interact-btn">
+                    <i class="fas fa-share-alt mr-1"></i> 分享
+                </div>
+            </div>
+        </div>
+
+        <div class="card mx-4">
+            <div class="flex items-start mb-3">
+                <img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="用户头像">
+                <div class="ml-3">
+                    <div class="font-semibold">张医生</div>
+                    <div class="text-xs text-gray-500">心理咨询师，北京某三甲医院</div>
+                </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">每天坚持冥想15分钟，会对大脑产生什么影响？</h3>
+            <p class="text-gray-700 mb-3 line-clamp-3">作为心理咨询师，我经常建议患者尝试冥想。研究表明，每天冥想15分钟持续8周后，大脑前额叶皮质（负责决策和情绪调节）的灰质密度会增加。同时，杏仁核（与压力和焦虑相关的区域）活动减少。实际效果包括：降低压力水平、提高注意力、改善情绪稳定性、增强创造力、提高免疫功能等...</p>
+            <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="w-full h-48 object-cover rounded-lg mb-3" alt="冥想图片">
+            <div class="divider"></div>
+            <div class="flex justify-start">
+                <div class="interact-btn">
+                    <i class="far fa-thumbs-up mr-1"></i> 3.8k
+                </div>
+                <div class="interact-btn">
+                    <i class="far fa-comment mr-1"></i> 521
+                </div>
+                <div class="interact-btn">
+                    <i class="far fa-star mr-1"></i> 收藏
+                </div>
+                <div class="interact-btn">
+                    <i class="fas fa-share-alt mr-1"></i> 分享
+                </div>
+            </div>
+        </div>
+
+        <div class="card mx-4">
+            <div class="flex items-start mb-3">
+                <img class="avatar" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="用户头像">
+                <div class="ml-3">
+                    <div class="font-semibold">王工程师</div>
+                    <div class="text-xs text-gray-500">前端开发工程师，某互联网大厂</div>
+                </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">2024年前端开发还值得学习吗？现在入行是否已经太晚？</h3>
+            <p class="text-gray-700 mb-3 line-clamp-3">作为一名工作7年的前端开发，我认为2024年学习前端依然值得。虽然入行门槛提高，但机会仍然很多。当前前端发展趋势：1）AI辅助开发成为标配，但需要人类指导；2）全栈开发能力越来越受重视；3）WebAssembly带来新机遇；4）微前端架构继续流行；5）性能优化要求更高。建议新人：打好基础，学习React/Vue等主流框架，了解Node.js，熟悉至少一种后端语言...</p>
+            <div class="divider"></div>
+            <div class="flex justify-start">
+                <div class="interact-btn">
+                    <i class="far fa-thumbs-up mr-1"></i> 5.3k
+                </div>
+                <div class="interact-btn">
+                    <i class="far fa-comment mr-1"></i> 1.2k
+                </div>
+                <div class="interact-btn">
+                    <i class="far fa-star mr-1"></i> 收藏
+                </div>
+                <div class="interact-btn">
+                    <i class="fas fa-share-alt mr-1"></i> 分享
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-home"></i></div>
+            <div>首页</div>
+        </a>
+        <a href="discover.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-compass"></i></div>
+            <div>发现</div>
+        </a>
+        <a href="create.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-plus-circle"></i></div>
+            <div>创作</div>
+        </a>
+        <a href="notifications.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-bell"></i></div>
+            <div>消息</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-user"></i></div>
+            <div>我的</div>
+        </a>
+    </div>
+</body>
+</html> 

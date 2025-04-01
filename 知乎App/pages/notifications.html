@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎 - 消息</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/common.css">
+    <style>
+        .header-tabs {
+            display: flex;
+            background-color: white;
+            padding: 0 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header-tab {
+            padding: 12px 0;
+            margin-right: 24px;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .header-tab.active {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .header-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .notification-item {
+            display: flex;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: white;
+        }
+        
+        .notification-avatar {
+            margin-right: 12px;
+        }
+        
+        .notification-content {
+            flex: 1;
+        }
+        
+        .notification-time {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        
+        .notification-target {
+            background-color: var(--highlight-bg);
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-top: 8px;
+            font-size: 13px;
+        }
+        
+        .chat-list-item {
+            display: flex;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: white;
+        }
+        
+        .badge {
+            background-color: #f52525;
+            color: white;
+            border-radius: 50%;
+            min-width: 18px;
+            height: 18px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            9:41
+        </div>
+        <div class="status-bar-right">
+            <span><i class="fas fa-signal"></i></span>
+            <span class="ml-2"><i class="fas fa-wifi"></i></span>
+            <span class="ml-2">100% <i class="fas fa-battery-full battery-icon"></i></span>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="text-lg font-semibold">消息</div>
+        <div>
+            <i class="fas fa-cog text-gray-600"></i>
+        </div>
+    </div>
+
+    <!-- 标签页 -->
+    <div class="header-tabs">
+        <div class="header-tab active">通知</div>
+        <div class="header-tab">私信<span class="badge ml-1">3</span></div>
+    </div>
+
+    <!-- 页面内容区域 -->
+    <div class="content" style="padding-top: calc(var(--status-bar-height) + 44px + 41px);">
+        <!-- 通知列表 -->
+        <div class="notification-list">
+            <div class="notification-item">
+                <div class="notification-avatar">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" class="avatar" alt="头像">
+                </div>
+                <div class="notification-content">
+                    <div>
+                        <span class="font-semibold">陈经理</span>
+                        <span>赞同了你的回答</span>
+                    </div>
+                    <div class="notification-time">12分钟前</div>
+                    <div class="notification-target">
+                        如何提高工作效率？合理规划时间，设置优先级，减少干扰源，使用番茄工作法...
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notification-item">
+                <div class="notification-avatar">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" class="avatar" alt="头像">
+                </div>
+                <div class="notification-content">
+                    <div>
+                        <span class="font-semibold">王小明</span>
+                        <span>回答了你的问题</span>
+                    </div>
+                    <div class="notification-time">1小时前</div>
+                    <div class="notification-target">
+                        问题：远程工作有哪些实用技巧可以分享？
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notification-item">
+                <div class="notification-avatar">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" class="avatar" alt="头像">
+                </div>
+                <div class="notification-content">
+                    <div>
+                        <span class="font-semibold">李工程师</span>
+                        <span>关注了你</span>
+                    </div>
+                    <div class="notification-time">3小时前</div>
+                </div>
+            </div>
+            
+            <div class="notification-item">
+                <div class="notification-avatar">
+                    <div class="avatar flex items-center justify-center bg-blue-100 text-blue-500 text-lg font-semibold">
+                        知
+                    </div>
+                </div>
+                <div class="notification-content">
+                    <div>
+                        <span class="font-semibold">知乎小管家</span>
+                        <span>你的文章获得了编辑推荐</span>
+                    </div>
+                    <div class="notification-time">昨天 16:35</div>
+                    <div class="notification-target">
+                        文章：《人工智能如何改变未来工作模式》
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notification-item">
+                <div class="notification-avatar">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" class="avatar" alt="头像">
+                </div>
+                <div class="notification-content">
+                    <div>
+                        <span class="font-semibold">张教授</span>
+                        <span>评论了你的回答</span>
+                    </div>
+                    <div class="notification-time">昨天 10:23</div>
+                    <div class="notification-target">
+                        评论：非常有见地的分析，对机器学习理论的解读很透彻。
+                    </div>
+                </div>
+            </div>
+
+            <div class="notification-item">
+                <div class="notification-avatar">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" class="avatar" alt="头像">
+                </div>
+                <div class="notification-content">
+                    <div>
+                        <span class="font-semibold">刘医生</span>
+                        <span>回答了你关注的问题</span>
+                    </div>
+                    <div class="notification-time">2天前</div>
+                    <div class="notification-target">
+                        问题：每天坚持冥想有什么科学依据和实际好处？
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 私信列表（默认隐藏） -->
+        <div class="chat-list hidden">
+            <div class="chat-list-item">
+                <div class="notification-avatar">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" class="avatar" alt="头像">
+                </div>
+                <div class="notification-content">
+                    <div class="flex justify-between">
+                        <span class="font-semibold">刘医生</span>
+                        <span class="text-xs text-gray-500">昨天</span>
+                    </div>
+                    <div class="text-gray-600 text-sm">您好，关于您提问的健康问题，我建议您可以...</div>
+                </div>
+            </div>
+            
+            <div class="chat-list-item">
+                <div class="notification-avatar">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" class="avatar" alt="头像">
+                </div>
+                <div class="notification-content">
+                    <div class="flex justify-between">
+                        <span class="font-semibold">王小明</span>
+                        <span class="text-xs text-gray-500">3天前</span>
+                    </div>
+                    <div class="text-gray-600 text-sm">感谢您的回答，对我帮助很大！</div>
+                </div>
+            </div>
+            
+            <div class="chat-list-item">
+                <div class="notification-avatar">
+                    <div class="avatar flex items-center justify-center bg-blue-100 text-blue-500 text-lg font-semibold">
+                        知
+                    </div>
+                </div>
+                <div class="notification-content">
+                    <div class="flex justify-between">
+                        <span class="font-semibold">知乎小管家</span>
+                        <span class="text-xs text-gray-500">上周</span>
+                    </div>
+                    <div class="text-gray-600 text-sm">尊敬的用户，您的账号已升级为创作者计划成员...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <a href="home.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-home"></i></div>
+            <div>首页</div>
+        </a>
+        <a href="discover.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-compass"></i></div>
+            <div>发现</div>
+        </a>
+        <a href="create.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-plus-circle"></i></div>
+            <div>创作</div>
+        </a>
+        <a href="notifications.html" class="tab-item active">
+            <div class="tab-icon"><i class="fas fa-bell"></i></div>
+            <div>消息</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-user"></i></div>
+            <div>我的</div>
+        </a>
+    </div>
+</body>
+</html> 
