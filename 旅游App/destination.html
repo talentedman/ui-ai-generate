@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目的地 - 旅游App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+        .status-bar {
+            height: 44px;
+            background-color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            color: white;
+            font-size: 12px;
+        }
+        .status-bar-time {
+            font-weight: 600;
+        }
+        .status-bar-icons {
+            display: flex;
+            gap: 5px;
+        }
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            height: 83px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #e5e5e5;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 0;
+            color: #8e8e8e;
+        }
+        .tab-item.active {
+            color: #0078ff;
+        }
+        .tab-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .tab-label {
+            font-size: 10px;
+        }
+        .search-bar {
+            background-color: rgba(142, 142, 147, 0.12);
+            border-radius: 10px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            margin: 8px 16px;
+        }
+        .category-scroller {
+            display: flex;
+            overflow-x: auto;
+            padding: 16px;
+            gap: 16px;
+            scrollbar-width: none;
+        }
+        .category-scroller::-webkit-scrollbar {
+            display: none;
+        }
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+        }
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 24px;
+            color: #0078ff;
+        }
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 0 16px 100px 16px;
+        }
+        .destination-card {
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .location-info {
+            display: flex;
+            align-items: center;
+            margin-top: 4px;
+        }
+        .location-dot {
+            color: #8e8e8e;
+            font-size: 12px;
+            margin-right: 4px;
+        }
+        .text-primary {
+            color: #0078ff;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 顶部标题 -->
+    <div class="px-4 py-3 flex justify-between items-center">
+        <h1 class="text-xl font-bold">目的地</h1>
+        <i class="far fa-map text-xl"></i>
+    </div>
+    
+    <!-- 搜索栏 -->
+    <div class="search-bar">
+        <i class="fas fa-search text-gray-400 mr-2"></i>
+        <div class="text-gray-400">搜索目的地、酒店、景点...</div>
+    </div>
+    
+    <!-- 分类滚动条 -->
+    <div class="category-scroller">
+        <div class="category-item">
+            <div class="category-icon">
+                <i class="fas fa-mountain"></i>
+            </div>
+            <span class="text-xs">山岳</span>
+        </div>
+        
+        <div class="category-item">
+            <div class="category-icon">
+                <i class="fas fa-umbrella-beach"></i>
+            </div>
+            <span class="text-xs">海滩</span>
+        </div>
+        
+        <div class="category-item">
+            <div class="category-icon">
+                <i class="fas fa-city"></i>
+            </div>
+            <span class="text-xs">城市</span>
+        </div>
+        
+        <div class="category-item">
+            <div class="category-icon">
+                <i class="fas fa-tree"></i>
+            </div>
+            <span class="text-xs">森林</span>
+        </div>
+        
+        <div class="category-item">
+            <div class="category-icon">
+                <i class="fas fa-monument"></i>
+            </div>
+            <span class="text-xs">历史</span>
+        </div>
+        
+        <div class="category-item">
+            <div class="category-icon">
+                <i class="fas fa-snowflake"></i>
+            </div>
+            <span class="text-xs">冰雪</span>
+        </div>
+        
+        <div class="category-item">
+            <div class="category-icon">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <span class="text-xs">美食</span>
+        </div>
+    </div>
+    
+    <!-- 目的地标签 -->
+    <div class="flex p-4 gap-2 overflow-x-auto pb-2 scrollbar-none">
+        <div class="px-3 py-1 bg-blue-100 text-primary rounded-full text-sm whitespace-nowrap">全部</div>
+        <div class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">国内</div>
+        <div class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">亚洲</div>
+        <div class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">欧洲</div>
+        <div class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">美洲</div>
+        <div class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">大洋洲</div>
+        <div class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">非洲</div>
+    </div>
+    
+    <!-- 目的地卡片网格 -->
+    <div class="destination-grid">
+        <div class="destination-card">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1548919973-5cef591cb629?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="巴厘岛" class="w-full h-40 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                    <div class="text-white font-semibold">巴厘岛</div>
+                    <div class="text-white text-xs opacity-80">印度尼西亚</div>
+                </div>
+            </div>
+            <div class="p-3">
+                <div class="flex justify-between">
+                    <div class="text-sm text-gray-600">热门景点: 38</div>
+                    <div class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">热门</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="destination-card">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="巴黎" class="w-full h-40 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                    <div class="text-white font-semibold">巴黎</div>
+                    <div class="text-white text-xs opacity-80">法国</div>
+                </div>
+            </div>
+            <div class="p-3">
+                <div class="flex justify-between">
+                    <div class="text-sm text-gray-600">热门景点: 56</div>
+                    <div class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">热门</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="destination-card">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="纽约" class="w-full h-40 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                    <div class="text-white font-semibold">纽约</div>
+                    <div class="text-white text-xs opacity-80">美国</div>
+                </div>
+            </div>
+            <div class="p-3">
+                <div class="flex justify-between">
+                    <div class="text-sm text-gray-600">热门景点: 42</div>
+                    <div class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">推荐</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="destination-card">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="东京" class="w-full h-40 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                    <div class="text-white font-semibold">东京</div>
+                    <div class="text-white text-xs opacity-80">日本</div>
+                </div>
+            </div>
+            <div class="p-3">
+                <div class="flex justify-between">
+                    <div class="text-sm text-gray-600">热门景点: 39</div>
+                    <div class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">热门</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="destination-card">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1523059623039-a9ed027e7fad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="北京" class="w-full h-40 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                    <div class="text-white font-semibold">北京</div>
+                    <div class="text-white text-xs opacity-80">中国</div>
+                </div>
+            </div>
+            <div class="p-3">
+                <div class="flex justify-between">
+                    <div class="text-sm text-gray-600">热门景点: 45</div>
+                    <div class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">热门</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="destination-card">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="威尼斯" class="w-full h-40 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                    <div class="text-white font-semibold">威尼斯</div>
+                    <div class="text-white text-xs opacity-80">意大利</div>
+                </div>
+            </div>
+            <div class="p-3">
+                <div class="flex justify-between">
+                    <div class="text-sm text-gray-600">热门景点: 32</div>
+                    <div class="text-xs bg-blue-100 text-primary px-2 py-1 rounded">推荐</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <i class="tab-icon fas fa-home"></i>
+            <span class="tab-label">首页</span>
+        </div>
+        <div class="tab-item active">
+            <i class="tab-icon fas fa-compass"></i>
+            <span class="tab-label">目的地</span>
+        </div>
+        <div class="tab-item">
+            <i class="tab-icon fas fa-globe"></i>
+            <span class="tab-label">社区</span>
+        </div>
+        <div class="tab-item">
+            <i class="tab-icon fas fa-suitcase"></i>
+            <span class="tab-label">行程</span>
+        </div>
+        <div class="tab-item">
+            <i class="tab-icon fas fa-user"></i>
+            <span class="tab-label">我的</span>
+        </div>
+    </div>
+</body>
+</html> 

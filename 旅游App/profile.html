@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 旅游App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+        .status-bar {
+            height: 44px;
+            background-color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            color: white;
+            font-size: 12px;
+        }
+        .status-bar-time {
+            font-weight: 600;
+        }
+        .status-bar-icons {
+            display: flex;
+            gap: 5px;
+        }
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            height: 83px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #e5e5e5;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 0;
+            color: #8e8e8e;
+        }
+        .tab-item.active {
+            color: #0078ff;
+        }
+        .tab-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .tab-label {
+            font-size: 10px;
+        }
+        .profile-header {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(120deg, #0078ff, #00bfff);
+            padding: 24px 20px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            overflow: hidden;
+        }
+        .profile-header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-image: url('https://images.unsplash.com/photo-1476067897447-d0c5df27b5df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .profile-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+        .profile-actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 16px;
+        }
+        .profile-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .stat-value {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 2px;
+        }
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            background-color: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 16px;
+            color: #0078ff;
+        }
+        .menu-text {
+            flex: 1;
+            font-size: 15px;
+        }
+        .menu-arrow {
+            color: #d1d5db;
+        }
+        .section-title {
+            font-weight: 600;
+            margin: 20px 20px 12px;
+            font-size: 16px;
+        }
+        .card-container {
+            padding: 0 12px;
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            scrollbar-width: none;
+        }
+        .card-container::-webkit-scrollbar {
+            display: none;
+        }
+        .travel-card {
+            flex: 0 0 260px;
+            height: 140px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .travel-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+        }
+        .travel-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .travel-date {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        .vip-card {
+            margin: 0 20px;
+            background: linear-gradient(120deg, #ffd700, #ffa500);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .vip-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            color: white;
+            font-size: 20px;
+        }
+        .vip-info {
+            flex: 1;
+            color: white;
+        }
+        .vip-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .vip-description {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        .vip-btn {
+            background-color: white;
+            color: #ffa500;
+            border-radius: 16px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 个人信息头部 -->
+    <div class="profile-header">
+        <div class="profile-header-bg"></div>
+        <div class="profile-content">
+            <div class="profile-actions">
+                <i class="fas fa-cog text-xl"></i>
+                <i class="fas fa-bell text-xl"></i>
+            </div>
+            
+            <div class="flex items-center mb-6">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="用户头像" class="w-16 h-16 rounded-full border-2 border-white">
+                <div class="ml-4">
+                    <div class="text-lg font-bold">李小花</div>
+                    <div class="text-sm opacity-80">ID: 10086786</div>
+                </div>
+            </div>
+            
+            <div class="flex justify-around">
+                <div class="profile-stat">
+                    <div class="stat-value">16</div>
+                    <div class="stat-label">收藏</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">足迹</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="stat-value">32</div>
+                    <div class="stat-label">点评</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="stat-value">1286</div>
+                    <div class="stat-label">积分</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 我的旅程 -->
+    <div class="section-title">我的旅程</div>
+    <div class="card-container">
+        <div class="travel-card">
+            <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="云南之旅" class="w-full h-full object-cover">
+            <div class="travel-card-content">
+                <div class="travel-title">云南多元文化之旅</div>
+                <div class="travel-date">2023-07-15 ~ 2023-07-20</div>
+            </div>
+        </div>
+        
+        <div class="travel-card">
+            <img src="https://images.unsplash.com/photo-1553194587-b010d08c6c56?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="三亚之旅" class="w-full h-full object-cover">
+            <div class="travel-card-content">
+                <div class="travel-title">三亚阳光海岸休闲游</div>
+                <div class="travel-date">2023-06-10 ~ 2023-06-15</div>
+            </div>
+        </div>
+        
+        <div class="travel-card">
+            <img src="https://images.unsplash.com/photo-1533206482-45f4fd2b4595?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="厦门之旅" class="w-full h-full object-cover">
+            <div class="travel-card-content">
+                <div class="travel-title">厦门鼓浪屿悠闲度假</div>
+                <div class="travel-date">2023-04-28 ~ 2023-04-30</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- VIP会员卡 -->
+    <div class="section-title">我的特权</div>
+    <div class="vip-card">
+        <div class="vip-icon">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="vip-info">
+            <div class="vip-title">旅途VIP会员</div>
+            <div class="vip-description">专享折扣特权，优先预订热门酒店</div>
+        </div>
+        <button class="vip-btn">了解详情</button>
+    </div>
+    
+    <!-- 功能菜单 -->
+    <div class="section-title">我的服务</div>
+    <div class="bg-white rounded-t-xl">
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fas fa-wallet"></i>
+            </div>
+            <div class="menu-text">我的钱包</div>
+            <div class="menu-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fas fa-ticket-alt"></i>
+            </div>
+            <div class="menu-text">我的优惠券</div>
+            <div class="menu-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="menu-text">我的收藏</div>
+            <div class="menu-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="menu-text">我的足迹</div>
+            <div class="menu-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fas fa-comment-alt"></i>
+            </div>
+            <div class="menu-text">我的点评</div>
+            <div class="menu-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-4 bg-white">
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fas fa-headset"></i>
+            </div>
+            <div class="menu-text">联系客服</div>
+            <div class="menu-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <div class="menu-text">帮助中心</div>
+            <div class="menu-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">
+                <i class="fas fa-cog"></i>
+            </div>
+            <div class="menu-text">设置</div>
+            <div class="menu-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部安全区域 -->
+    <div class="pb-28"></div>
+    
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <i class="tab-icon fas fa-home"></i>
+            <span class="tab-label">首页</span>
+        </div>
+        <div class="tab-item">
+            <i class="tab-icon fas fa-compass"></i>
+            <span class="tab-label">目的地</span>
+        </div>
+        <div class="tab-item">
+            <i class="tab-icon fas fa-globe"></i>
+            <span class="tab-label">社区</span>
+        </div>
+        <div class="tab-item">
+            <i class="tab-icon fas fa-suitcase"></i>
+            <span class="tab-label">行程</span>
+        </div>
+        <div class="tab-item active">
+            <i class="tab-icon fas fa-user"></i>
+            <span class="tab-label">我的</span>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行程详情 - 旅游App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+        .status-bar {
+            height: 44px;
+            background-color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            color: white;
+            font-size: 12px;
+        }
+        .status-bar-time {
+            font-weight: 600;
+        }
+        .status-bar-icons {
+            display: flex;
+            gap: 5px;
+        }
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            height: 83px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #e5e5e5;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 0;
+            color: #8e8e8e;
+        }
+        .tab-item.active {
+            color: #0078ff;
+        }
+        .tab-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .tab-label {
+            font-size: 10px;
+        }
+        .image-gallery {
+            height: 280px;
+            position: relative;
+        }
+        .gallery-pagination {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 12px;
+        }
+        .booking-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e5e5e5;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .icon-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+        }
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #0078ff;
+            font-size: 24px;
+        }
+        .timeline {
+            position: relative;
+            margin-left: 20px;
+            padding-left: 28px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e5e5e5;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 24px;
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -29px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #0078ff;
+            border: 3px solid white;
+            z-index: 1;
+        }
+        .timeline-content {
+            background-color: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .review-item {
+            background-color: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .section-tabs {
+            display: flex;
+            background-color: white;
+            padding: 0 16px;
+            border-bottom: 1px solid #e5e5e5;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .section-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        .tab-button {
+            padding: 16px 12px;
+            font-size: 15px;
+            color: #666;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-button.active {
+            color: #0078ff;
+            border-bottom-color: #0078ff;
+            font-weight: 600;
+        }
+        .text-primary {
+            color: #0078ff;
+        }
+        .bg-primary {
+            background-color: #0078ff;
+        }
+    </style>
+</head>
+<body class="pb-32">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 图片轮播 -->
+    <div class="image-gallery relative">
+        <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="云南风景" class="w-full h-full object-cover">
+        <div class="absolute top-4 left-4">
+            <button class="bg-black/30 text-white rounded-full w-8 h-8 flex items-center justify-center" onclick="history.back()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+        </div>
+        <div class="absolute top-4 right-4 flex gap-3">
+            <button class="bg-black/30 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                <i class="far fa-heart"></i>
+            </button>
+            <button class="bg-black/30 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                <i class="fas fa-share-alt"></i>
+            </button>
+        </div>
+        <div class="gallery-pagination">
+            <span>1/5</span>
+        </div>
+    </div>
+    
+    <!-- 基本信息 -->
+    <div class="p-4 bg-white border-b border-gray-200">
+        <h1 class="text-xl font-bold">云南多元文化6日深度游</h1>
+        <div class="flex items-center mt-2">
+            <i class="fas fa-star text-yellow-400"></i>
+            <span class="ml-1 font-semibold">4.8</span>
+            <span class="text-gray-500 text-sm ml-1">(326人评价)</span>
+            <div class="bg-blue-100 text-primary text-xs px-2 py-1 rounded ml-3">畅销</div>
+        </div>
+        <div class="flex items-center mt-3">
+            <i class="fas fa-map-marker-alt text-gray-500 mr-1"></i>
+            <span class="text-gray-500">丽江 / 大理 / 昆明</span>
+        </div>
+    </div>
+    
+    <!-- 价格信息 -->
+    <div class="p-4 bg-white border-b border-gray-200 flex justify-between items-center">
+        <div>
+            <div class="text-xl font-bold text-primary">¥3,299<span class="text-sm font-normal text-gray-500">起/人</span></div>
+            <div class="text-xs text-gray-500 mt-1">含税费，可退</div>
+        </div>
+        <button class="bg-primary text-white px-6 py-2 rounded-full text-sm font-semibold">立即预订</button>
+    </div>
+    
+    <!-- 产品亮点 -->
+    <div class="p-4 bg-white border-b border-gray-200">
+        <h2 class="text-lg font-bold mb-3">产品亮点</h2>
+        <div class="flex flex-wrap">
+            <div class="icon-box w-1/3">
+                <div class="icon-circle">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <span class="text-xs">专业摄影</span>
+            </div>
+            <div class="icon-box w-1/3">
+                <div class="icon-circle">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <span class="text-xs">特色美食</span>
+            </div>
+            <div class="icon-box w-1/3">
+                <div class="icon-circle">
+                    <i class="fas fa-hotel"></i>
+                </div>
+                <span class="text-xs">精品住宿</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 内容导航标签 -->
+    <div class="section-tabs">
+        <div class="tab-button active">行程介绍</div>
+        <div class="tab-button">费用说明</div>
+        <div class="tab-button">预订须知</div>
+        <div class="tab-button">用户评价</div>
+    </div>
+    
+    <!-- 行程安排 -->
+    <div class="p-4 bg-white border-b border-gray-200">
+        <h2 class="text-lg font-bold mb-4">行程安排</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="font-bold">第1天：昆明接机 - 初见花城</div>
+                    <div class="text-sm text-gray-600 mt-2">
+                        <div class="mb-2">抵达昆明长水国际机场，专车接机前往市区酒店。</div>
+                        <div class="mb-2">可自行前往昆明标志性景点【翠湖公园】，感受春城的悠闲氛围。</div>
+                        <div class="font-medium">用餐：自理</div>
+                        <div class="font-medium">住宿：昆明市区精品酒店</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="font-bold">第2天：昆明 - 大理古城</div>
+                    <div class="text-sm text-gray-600 mt-2">
+                        <div class="mb-2">早餐后乘高铁前往大理（约2小时）。</div>
+                        <div class="mb-2">午餐后游览【大理古城】，漫步五华楼、洋人街，感受白族民居特色。</div>
+                        <div class="mb-2">晚上自由活动，可在古城享用白族特色晚餐。</div>
+                        <div class="font-medium">用餐：早、午</div>
+                        <div class="font-medium">住宿：大理古城精品客栈</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="font-bold">第3天：大理 - 洱海环湖游</div>
+                    <div class="text-sm text-gray-600 mt-2">
+                        <div class="mb-2">早餐后前往【洱海】，乘船游览洱海风光。</div>
+                        <div class="mb-2">午餐后游览【双廊古镇】，欣赏苍山洱海美景。</div>
+                        <div class="mb-2">傍晚返回大理古城。</div>
+                        <div class="font-medium">用餐：早、午</div>
+                        <div class="font-medium">住宿：大理古城精品客栈</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="font-bold">第4-6天：丽江古城 - 玉龙雪山 - 返程</div>
+                    <div class="text-sm text-gray-600 mt-2">
+                        <div class="mb-2">乘车前往丽江（约3小时），入住丽江古城附近酒店。</div>
+                        <div class="mb-2">第5天登【玉龙雪山】，欣赏冰川景观，参观【蓝月谷】。</div>
+                        <div class="mb-2">第6天自由活动，指定时间集合送机返程。</div>
+                        <div class="font-medium">用餐：早、午</div>
+                        <div class="font-medium">住宿：丽江古城精品酒店</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 用户评价 -->
+    <div class="p-4 bg-white">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold">用户评价</h2>
+            <div class="text-primary text-sm">查看全部 326条 ></div>
+        </div>
+        
+        <div class="review-item">
+            <div class="flex justify-between">
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="用户头像" class="w-10 h-10 rounded-full">
+                    <div class="ml-3">
+                        <div class="font-medium">张女士</div>
+                        <div class="text-xs text-gray-500">2023-05-15</div>
+                    </div>
+                </div>
+                <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div class="mt-3 text-sm">
+                导游很专业，行程安排合理，没有强制消费。洱海真的太美了，大理古城也很有韵味。住宿条件比预期的好，感谢领队一路上的照顾！
+            </div>
+            <div class="flex mt-3 gap-2 overflow-x-auto pb-2">
+                <img src="https://images.unsplash.com/photo-1546436836-07a91091f160?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="用户照片" class="w-20 h-20 rounded-md object-cover">
+                <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="用户照片" class="w-20 h-20 rounded-md object-cover">
+            </div>
+        </div>
+        
+        <div class="review-item">
+            <div class="flex justify-between">
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="用户头像" class="w-10 h-10 rounded-full">
+                    <div class="ml-3">
+                        <div class="font-medium">王先生</div>
+                        <div class="text-xs text-gray-500">2023-04-22</div>
+                    </div>
+                </div>
+                <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+            </div>
+            <div class="mt-3 text-sm">
+                玉龙雪山确实壮观，但人太多了。丽江古城商业化严重，但是住宿不错，客栈老板很热情。整体行程紧凑但不赶，是不错的旅行体验。
+            </div>
+        </div>
+    </div>
+    
+    <!-- 预订栏 -->
+    <div class="booking-bar">
+        <div>
+            <div class="text-xl font-bold text-primary">¥3,299<span class="text-xs font-normal text-gray-500">起/人</span></div>
+            <div class="text-xs text-gray-500">含税价</div>
+        </div>
+        <div class="flex gap-3">
+            <button class="border border-primary text-primary px-4 py-2 rounded-full text-sm">加入收藏</button>
+            <button class="bg-primary text-white px-6 py-2 rounded-full text-sm font-semibold">立即预订</button>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的订单 - 旅游App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+        .status-bar {
+            height: 44px;
+            background-color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            color: white;
+            font-size: 12px;
+        }
+        .status-bar-time {
+            font-weight: 600;
+        }
+        .status-bar-icons {
+            display: flex;
+            gap: 5px;
+        }
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            height: 83px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #e5e5e5;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 0;
+            color: #8e8e8e;
+        }
+        .tab-item.active {
+            color: #0078ff;
+        }
+        .tab-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .tab-label {
+            font-size: 10px;
+        }
+        .order-tabs {
+            display: flex;
+            background-color: white;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .order-tab {
+            flex: 1;
+            text-align: center;
+            padding: 14px 0;
+            font-size: 14px;
+            color: #666;
+            position: relative;
+        }
+        .order-tab.active {
+            color: #0078ff;
+            font-weight: 600;
+        }
+        .order-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20%;
+            height: 3px;
+            background-color: #0078ff;
+            border-radius: 3px;
+        }
+        .order-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .order-status {
+            font-size: 14px;
+        }
+        .order-status.pending {
+            color: #f59e0b;
+        }
+        .order-status.paid {
+            color: #10b981;
+        }
+        .order-status.completed {
+            color: #6b7280;
+        }
+        .order-date {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        .order-content {
+            display: flex;
+            padding: 16px;
+            gap: 12px;
+        }
+        .order-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .order-details {
+            flex: 1;
+        }
+        .order-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .order-info {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+        .order-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+        }
+        .price-amount {
+            font-weight: 600;
+            color: #0078ff;
+        }
+        .order-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding: 12px 16px;
+            border-top: 1px solid #f0f0f0;
+            gap: 8px;
+        }
+        .order-btn {
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+        }
+        .btn-outline {
+            border: 1px solid #0078ff;
+            color: #0078ff;
+        }
+        .btn-primary {
+            background-color: #0078ff;
+            color: white;
+        }
+        .order-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 0;
+            color: #9ca3af;
+        }
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            color: #d1d5db;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 顶部标题 -->
+    <div class="px-4 py-3">
+        <h1 class="text-xl font-bold">我的订单</h1>
+    </div>
+    
+    <!-- 订单分类标签 -->
+    <div class="order-tabs">
+        <div class="order-tab active">全部</div>
+        <div class="order-tab">待付款</div>
+        <div class="order-tab">待出行</div>
+        <div class="order-tab">待评价</div>
+        <div class="order-tab">已完成</div>
+    </div>
+    
+    <!-- 订单列表 -->
+    <div class="pb-24">
+        <!-- 待付款订单 -->
+        <div class="order-card">
+            <div class="order-header">
+                <div class="order-date">2023-06-20</div>
+                <div class="order-status pending">待付款</div>
+            </div>
+            <div class="order-content">
+                <div class="order-image">
+                    <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="云南之旅" class="w-full h-full object-cover">
+                </div>
+                <div class="order-details">
+                    <div class="order-title">云南多元文化6日深度游</div>
+                    <div class="order-info">出发日期: 2023-07-15</div>
+                    <div class="order-info">人数: 2人</div>
+                    <div class="order-price">
+                        <div class="price-amount">¥6,598</div>
+                        <div class="text-xs text-gray-500">含税价</div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-footer">
+                <button class="order-btn btn-outline">取消订单</button>
+                <button class="order-btn btn-primary">去支付</button>
+            </div>
+        </div>
+        
+        <!-- 待出行订单 -->
+        <div class="order-card">
+            <div class="order-header">
+                <div class="order-date">2023-05-28</div>
+                <div class="order-status paid">待出行</div>
+            </div>
+            <div class="order-content">
+                <div class="order-image">
+                    <img src="https://images.unsplash.com/photo-1553194587-b010d08c6c56?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="三亚之旅" class="w-full h-full object-cover">
+                </div>
+                <div class="order-details">
+                    <div class="order-title">三亚阳光海岸5日休闲游</div>
+                    <div class="order-info">出发日期: 2023-06-10</div>
+                    <div class="order-info">人数: 1人</div>
+                    <div class="order-price">
+                        <div class="price-amount">¥2,799</div>
+                        <div class="text-xs text-gray-500">含税价</div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-footer">
+                <button class="order-btn btn-outline">查看详情</button>
+                <button class="order-btn btn-outline">联系客服</button>
+            </div>
+        </div>
+        
+        <!-- 待评价订单 -->
+        <div class="order-card">
+            <div class="order-header">
+                <div class="order-date">2023-04-10</div>
+                <div class="order-status paid">待评价</div>
+            </div>
+            <div class="order-content">
+                <div class="order-image">
+                    <img src="https://images.unsplash.com/photo-1533206482-45f4fd2b4595?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="厦门之旅" class="w-full h-full object-cover">
+                </div>
+                <div class="order-details">
+                    <div class="order-title">厦门鼓浪屿3日悠闲度假</div>
+                    <div class="order-info">出行日期: 2023-04-28</div>
+                    <div class="order-info">人数: 2人</div>
+                    <div class="order-price">
+                        <div class="price-amount">¥2,598</div>
+                        <div class="text-xs text-gray-500">含税价</div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-footer">
+                <button class="order-btn btn-outline">查看行程</button>
+                <button class="order-btn btn-primary">去评价</button>
+            </div>
+        </div>
+        
+        <!-- 已完成订单 -->
+        <div class="order-card">
+            <div class="order-header">
+                <div class="order-date">2023-01-15</div>
+                <div class="order-status completed">已完成</div>
+            </div>
+            <div class="order-content">
+                <div class="order-image">
+                    <img src="https://images.unsplash.com/photo-1470004914212-05527e49370b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="上海之旅" class="w-full h-full object-cover">
+                </div>
+                <div class="order-details">
+                    <div class="order-title">上海迪士尼2日亲子游</div>
+                    <div class="order-info">出行日期: 2023-02-20</div>
+                    <div class="order-info">人数: 3人</div>
+                    <div class="order-price">
+                        <div class="price-amount">¥3,897</div>
+                        <div class="text-xs text-gray-500">含税价</div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-footer">
+                <button class="order-btn btn-outline">再次预订</button>
+                <button class="order-btn btn-outline">查看评价</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab-item">
+            <i class="tab-icon fas fa-home"></i>
+            <span class="tab-label">首页</span>
+        </div>
+        <div class="tab-item">
+            <i class="tab-icon fas fa-compass"></i>
+            <span class="tab-label">目的地</span>
+        </div>
+        <div class="tab-item">
+            <i class="tab-icon fas fa-globe"></i>
+            <span class="tab-label">社区</span>
+        </div>
+        <div class="tab-item active">
+            <i class="tab-icon fas fa-suitcase"></i>
+            <span class="tab-label">行程</span>
+        </div>
+        <div class="tab-item">
+            <i class="tab-icon fas fa-user"></i>
+            <span class="tab-label">我的</span>
+        </div>
+    </div>
+</body>
+</html> 
