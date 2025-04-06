@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小红书App - 高保真原型</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    body {
+      font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f0f2f5;
+    }
+    
+    h1 {
+      color: #FF2442;
+      text-align: center;
+      margin: 20px 0;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .screens-container {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .description {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .section {
+      margin-bottom: 40px;
+    }
+    
+    .section-title {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+      border-left: 4px solid #FF2442;
+      padding-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>小红书 App 高保真原型设计</h1>
+  
+  <div class="description">
+    <p>本原型为小红书App的高保真设计，包含主要功能界面及交互流程。以下所有界面均遵循iOS设计规范，并使用真实素材，适合直接用于开发参考。</p>
+  </div>
+  
+  <div class="screens-container">
+    <!-- A. 主要功能页面 -->
+    <div class="section">
+      <h2 class="section-title">主要功能页面</h2>
+      <div class="prototype-container">
+        <!-- 首页 -->
+        <div class="prototype-item">
+          <div class="prototype-frame">
+            <iframe src="pages/home.html"></iframe>
+          </div>
+          <div class="prototype-label">首页</div>
+        </div>
+        
+        <!-- 发现页 -->
+        <div class="prototype-item">
+          <div class="prototype-frame">
+            <iframe src="pages/discover.html"></iframe>
+          </div>
+          <div class="prototype-label">发现页</div>
+        </div>
+        
+        <!-- 消息页 -->
+        <div class="prototype-item">
+          <div class="prototype-frame">
+            <iframe src="pages/message.html"></iframe>
+          </div>
+          <div class="prototype-label">消息页</div>
+        </div>
+        
+        <!-- 个人主页 -->
+        <div class="prototype-item">
+          <div class="prototype-frame">
+            <iframe src="pages/profile.html"></iframe>
+          </div>
+          <div class="prototype-label">个人主页</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- B. 内容详情与交互 -->
+    <div class="section">
+      <h2 class="section-title">内容详情与交互</h2>
+      <div class="prototype-container">
+        <!-- 笔记详情页 -->
+        <div class="prototype-item">
+          <div class="prototype-frame">
+            <iframe src="pages/detail.html"></iframe>
+          </div>
+          <div class="prototype-label">笔记详情</div>
+        </div>
+        
+        <!-- 创建笔记页 -->
+        <div class="prototype-item">
+          <div class="prototype-frame">
+            <iframe src="pages/create.html"></iframe>
+          </div>
+          <div class="prototype-label">创建笔记</div>
+        </div>
+        
+        <!-- 搜索页 -->
+        <div class="prototype-item">
+          <div class="prototype-frame">
+            <iframe src="pages/search.html"></iframe>
+          </div>
+          <div class="prototype-label">搜索页</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center p-6 text-gray-500 text-sm">
+    <p>小红书App原型设计 © 2023 - 使用HTML、Tailwind CSS与FontAwesome开发</p>
+  </footer>
+</body>
+</html> 

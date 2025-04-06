@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小红书 - 个人主页</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="bg-white font-sans">
+  <div class="xhs-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="status-bar-time">9:41</div>
+      <div class="status-bar-icons">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+
+    <!-- 个人信息 -->
+    <div class="profile-header">
+      <div class="flex justify-between items-start">
+        <div class="flex items-center">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&q=80" class="w-20 h-20 rounded-full object-cover">
+          <div class="ml-4">
+            <div class="font-bold text-lg">小红薯123</div>
+            <div class="text-sm text-gray-500 mt-1">小红书号：159753</div>
+            <div class="text-xs bg-gray-100 text-gray-500 px-2 py-1 rounded mt-2 inline-block">IP属地：上海</div>
+          </div>
+        </div>
+        <div>
+          <i class="fas fa-share-nodes text-gray-500"></i>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <div class="text-sm">✨生活探索家 | 美食爱好者 | 旅行达人</div>
+        <div class="text-sm mt-1">分享我的日常生活和有趣发现</div>
+      </div>
+
+      <div class="profile-stats">
+        <div class="stat-item">
+          <div class="font-bold">185</div>
+          <div class="text-xs text-gray-500">关注</div>
+        </div>
+        <div class="stat-item">
+          <div class="font-bold">4,291</div>
+          <div class="text-xs text-gray-500">粉丝</div>
+        </div>
+        <div class="stat-item">
+          <div class="font-bold">8.2w</div>
+          <div class="text-xs text-gray-500">获赞与收藏</div>
+        </div>
+      </div>
+
+      <div class="flex mt-4 space-x-3">
+        <button class="flex-1 btn-primary py-2">编辑资料</button>
+        <div class="w-10 h-10 border border-gray-200 rounded-full flex-center">
+          <i class="fas fa-ellipsis-h text-gray-500"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- 内容分类标签 -->
+    <div class="profile-tabs">
+      <div class="profile-tab active">笔记</div>
+      <div class="profile-tab">收藏</div>
+      <div class="profile-tab">赞过</div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content-area pb-20">
+      <div class="waterfall-layout">
+        <!-- 笔记1 -->
+        <div class="waterfall-item note-card">
+          <img src="https://images.unsplash.com/photo-1501959915551-4e8d30928317?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3Vuc2V0JTIwYmVhY2h8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 200px;">
+          <div class="note-content">
+            <div class="note-title">三亚旅行攻略｜海边度假必备单品</div>
+            <div class="note-stats">
+              <span><i class="far fa-heart"></i> 2.5k</span>
+              <span><i class="far fa-comment"></i> 136</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 笔记2 -->
+        <div class="waterfall-item note-card">
+          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 170px;">
+          <div class="note-content">
+            <div class="note-title">简单快手的周末早餐，健康又营养</div>
+            <div class="note-stats">
+              <span><i class="far fa-heart"></i> 1.8k</span>
+              <span><i class="far fa-comment"></i> 92</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 笔记3 -->
+        <div class="waterfall-item note-card">
+          <img src="https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmVhdXR5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 190px;">
+          <div class="note-content">
+            <div class="note-title">10分钟快速妆容，手残党也能学会</div>
+            <div class="note-stats">
+              <span><i class="far fa-heart"></i> 5.1k</span>
+              <span><i class="far fa-comment"></i> 247</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 笔记4 -->
+        <div class="waterfall-item note-card">
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 180px;">
+          <div class="note-content">
+            <div class="note-title">低卡路里晚餐，减脂期间也能吃得好</div>
+            <div class="note-stats">
+              <span><i class="far fa-heart"></i> 3.2k</span>
+              <span><i class="far fa-comment"></i> 183</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 笔记5 -->
+        <div class="waterfall-item note-card">
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dHJhdmVsfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 210px;">
+          <div class="note-content">
+            <div class="note-title">云南小众旅行路线，避开人山人海</div>
+            <div class="note-stats">
+              <span><i class="far fa-heart"></i> 7.4k</span>
+              <span><i class="far fa-comment"></i> 362</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 笔记6 -->
+        <div class="waterfall-item note-card">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGhvbWUlMjBkZWNvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 160px;">
+          <div class="note-content">
+            <div class="note-title">租房改造指南，低成本打造温馨空间</div>
+            <div class="note-stats">
+              <span><i class="far fa-heart"></i> 4.9k</span>
+              <span><i class="far fa-comment"></i> 215</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+      <div class="tab-item">
+        <i class="tab-icon fas fa-compass"></i>
+        <span>首页</span>
+      </div>
+      <div class="tab-item">
+        <i class="tab-icon fas fa-location-dot"></i>
+        <span>附近</span>
+      </div>
+      <div class="tab-item">
+        <div class="create-btn">
+          <i class="fas fa-plus"></i>
+        </div>
+      </div>
+      <div class="tab-item">
+        <i class="tab-icon far fa-message"></i>
+        <span>消息</span>
+      </div>
+      <div class="tab-item active">
+        <i class="tab-icon far fa-user"></i>
+        <span>我</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

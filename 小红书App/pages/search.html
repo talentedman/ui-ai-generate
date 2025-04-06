@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小红书 - 搜索</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .search-nav-bar {
+      height: 56px;
+      background-color: var(--white);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      position: sticky;
+      top: 44px;
+      z-index: 50;
+    }
+    
+    .search-input-container {
+      flex: 1;
+      height: 36px;
+      background-color: var(--light-gray);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+    }
+    
+    .search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      height: 100%;
+      font-size: 14px;
+      margin-left: 8px;
+      outline: none;
+    }
+    
+    .hot-search-tag {
+      display: inline-block;
+      border-radius: 16px;
+      padding: 6px 12px;
+      background-color: var(--light-gray);
+      margin-right: 8px;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+    
+    .filter-tag {
+      display: inline-block;
+      border-radius: 16px;
+      padding: 4px 12px;
+      border: 1px solid var(--medium-gray);
+      margin-right: 8px;
+      font-size: 12px;
+      color: var(--text-color);
+    }
+    
+    .filter-tag.active {
+      background-color: rgba(255, 36, 66, 0.1);
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body class="bg-white font-sans">
+  <div class="xhs-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="status-bar-time">9:41</div>
+      <div class="status-bar-icons">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+
+    <!-- 搜索导航栏 -->
+    <div class="search-nav-bar">
+      <div class="search-input-container">
+        <i class="fas fa-magnifying-glass text-gray-400"></i>
+        <input type="text" class="search-input" placeholder="搜索笔记、用户、话题" value="春季穿搭">
+        <i class="fas fa-xmark text-gray-400"></i>
+      </div>
+      <div class="ml-4 text-sm">取消</div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content-area">
+      <!-- 搜索建议 -->
+      <div class="p-4 border-b border-gray-100 hidden">
+        <div class="text-sm text-gray-500 mb-2">搜索建议</div>
+        <div class="flex flex-wrap">
+          <div class="hot-search-tag">春季穿搭指南</div>
+          <div class="hot-search-tag">春季穿搭女生</div>
+          <div class="hot-search-tag">春季穿搭男生</div>
+          <div class="hot-search-tag">春季穿搭韩系</div>
+          <div class="hot-search-tag">春季穿搭日系</div>
+          <div class="hot-search-tag">春季穿搭大码</div>
+        </div>
+      </div>
+
+      <!-- 筛选栏 -->
+      <div class="p-3 border-b border-gray-100 overflow-x-auto flex" style="scrollbar-width: none;">
+        <div class="filter-tag active">综合</div>
+        <div class="filter-tag">最新</div>
+        <div class="filter-tag">销量</div>
+        <div class="filter-tag">评价</div>
+        <div class="filter-tag">价格</div>
+        <div class="filter-tag">视频</div>
+        <div class="filter-tag">图文</div>
+      </div>
+
+      <!-- 搜索结果 -->
+      <div class="p-3">
+        <div class="waterfall-layout">
+          <!-- 结果项目1 -->
+          <div class="waterfall-item note-card">
+            <img src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3ByaW5nJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 220px;">
+            <div class="note-content">
+              <div class="note-title">春季穿搭｜轻松营造法式慵懒感</div>
+              <div class="note-stats">
+                <span><i class="far fa-heart"></i> 1.2k</span>
+                <span><i class="far fa-comment"></i> 88</span>
+              </div>
+              <div class="note-user">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" class="user-avatar">
+                <span class="user-name">巴黎时尚笔记</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 结果项目2 -->
+          <div class="waterfall-item note-card">
+            <img src="https://images.unsplash.com/photo-1608748484212-9dcacb5ce210?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c3ByaW5nJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 190px;">
+            <div class="note-content">
+              <div class="note-title">春季衬衫搭配参考，简约通勤风</div>
+              <div class="note-stats">
+                <span><i class="far fa-heart"></i> 3.5k</span>
+                <span><i class="far fa-comment"></i> 156</span>
+              </div>
+              <div class="note-user">
+                <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" class="user-avatar">
+                <span class="user-name">潮流前线</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 结果项目3 -->
+          <div class="waterfall-item note-card">
+            <img src="https://images.unsplash.com/photo-1501127122-f385ca6ddd9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNwcmluZyUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 240px;">
+            <div class="note-content">
+              <div class="note-title">2023春季必入5件单品，百搭不出错</div>
+              <div class="note-stats">
+                <span><i class="far fa-heart"></i> 5.8k</span>
+                <span><i class="far fa-comment"></i> 321</span>
+              </div>
+              <div class="note-user">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" class="user-avatar">
+                <span class="user-name">时尚编辑Lisa</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 结果项目4 -->
+          <div class="waterfall-item note-card">
+            <img src="https://images.unsplash.com/photo-1560243563-062bfc001d68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHNwcmluZyUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 170px;">
+            <div class="note-content">
+              <div class="note-title">春季连衣裙合集，温柔又减龄</div>
+              <div class="note-stats">
+                <span><i class="far fa-heart"></i> 4.2k</span>
+                <span><i class="far fa-comment"></i> 198</span>
+              </div>
+              <div class="note-user">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" class="user-avatar">
+                <span class="user-name">美妆博主小K</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 结果项目5 -->
+          <div class="waterfall-item note-card">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFzaGlvbiUyMG1vZGVsfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 220px;">
+            <div class="note-content">
+              <div class="note-title">春日穿搭配色攻略，提升衣品必看</div>
+              <div class="note-stats">
+                <span><i class="far fa-heart"></i> 7.1k</span>
+                <span><i class="far fa-comment"></i> 253</span>
+              </div>
+              <div class="note-user">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" class="user-avatar">
+                <span class="user-name">色彩搭配师Tom</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 结果项目6 -->
+          <div class="waterfall-item note-card">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="note-image" style="height: 160px;">
+            <div class="note-content">
+              <div class="note-title">小个子春季穿搭技巧，显高显瘦</div>
+              <div class="note-stats">
+                <span><i class="far fa-heart"></i> 9.4k</span>
+                <span><i class="far fa-comment"></i> 405</span>
+              </div>
+              <div class="note-user">
+                <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" class="user-avatar">
+                <span class="user-name">158穿搭日记</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+      <div class="tab-item">
+        <i class="tab-icon fas fa-compass"></i>
+        <span>首页</span>
+      </div>
+      <div class="tab-item active">
+        <i class="tab-icon fas fa-location-dot"></i>
+        <span>附近</span>
+      </div>
+      <div class="tab-item">
+        <div class="create-btn">
+          <i class="fas fa-plus"></i>
+        </div>
+      </div>
+      <div class="tab-item">
+        <i class="tab-icon far fa-message"></i>
+        <span>消息</span>
+      </div>
+      <div class="tab-item">
+        <i class="tab-icon far fa-user"></i>
+        <span>我</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

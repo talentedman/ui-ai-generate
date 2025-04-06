@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小红书 - 创建笔记</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .image-upload {
+      background-color: var(--light-gray);
+      border-radius: 8px;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    .note-textarea {
+      border: none;
+      resize: none;
+      width: 100%;
+      min-height: 120px;
+      font-size: 16px;
+      line-height: 1.6;
+      outline: none;
+    }
+    
+    .tag-item {
+      background-color: var(--light-gray);
+      border-radius: 16px;
+      padding: 4px 12px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      display: inline-block;
+      font-size: 12px;
+    }
+    
+    .tag-input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 14px;
+      min-width: 80px;
+    }
+    
+    .create-nav-bar {
+      height: 48px;
+      background-color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+      position: sticky;
+      top: 44px;
+      z-index: 50;
+    }
+    
+    .preview-image {
+      position: relative;
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .preview-image img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    
+    .preview-image .remove-btn {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body class="bg-white font-sans">
+  <div class="xhs-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="status-bar-time">9:41</div>
+      <div class="status-bar-icons">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="create-nav-bar">
+      <div class="text-base">
+        <i class="fas fa-xmark"></i>
+      </div>
+      <div class="text-base font-medium">创建笔记</div>
+      <div class="text-base text-primary-color font-medium">发布</div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content-area">
+      <div class="p-4">
+        <!-- 上传图片区域 -->
+        <div class="mb-4">
+          <div class="flex flex-wrap">
+            <div class="preview-image">
+              <img src="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGZvb2R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Preview">
+              <div class="remove-btn">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="preview-image">
+              <img src="https://images.unsplash.com/photo-1546554137-f86b9593a222?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGZvb2R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Preview">
+              <div class="remove-btn">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="image-upload" style="width: 80px; height: 80px;">
+              <i class="fas fa-plus text-gray-400"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 文本输入区域 -->
+        <div class="mb-4">
+          <textarea class="note-textarea" placeholder="分享你的此刻想法..."></textarea>
+        </div>
+
+        <!-- 标签区域 -->
+        <div class="mb-4">
+          <div class="text-sm text-gray-500 mb-2">添加标签</div>
+          <div>
+            <span class="tag-item">#自制美食</span>
+            <span class="tag-item">#健康饮食</span>
+            <span class="tag-item">
+              <i class="fas fa-plus text-gray-400 mr-1"></i>
+              <input type="text" class="tag-input" placeholder="添加标签">
+            </span>
+          </div>
+        </div>
+
+        <!-- 位置信息 -->
+        <div class="mb-4 border-t border-gray-100 pt-4">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center">
+              <i class="fas fa-location-dot text-gray-400 mr-2"></i>
+              <span class="text-sm">添加位置</span>
+            </div>
+            <i class="fas fa-chevron-right text-gray-300"></i>
+          </div>
+        </div>
+
+        <!-- 分享设置 -->
+        <div class="mb-4 border-t border-gray-100 pt-4">
+          <div class="flex justify-between items-center mb-4">
+            <div class="flex items-center">
+              <i class="fas fa-users text-gray-400 mr-2"></i>
+              <span class="text-sm">谁可以看</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-sm text-gray-500 mr-2">所有人</span>
+              <i class="fas fa-chevron-right text-gray-300"></i>
+            </div>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="flex items-center">
+              <i class="fas fa-comment text-gray-400 mr-2"></i>
+              <span class="text-sm">评论设置</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-sm text-gray-500 mr-2">所有人可评论</span>
+              <i class="fas fa-chevron-right text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 商品链接 -->
+        <div class="mb-4 border-t border-gray-100 pt-4">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center">
+              <i class="fas fa-tag text-gray-400 mr-2"></i>
+              <span class="text-sm">添加商品</span>
+            </div>
+            <i class="fas fa-chevron-right text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部工具栏 -->
+    <div class="fixed bottom-0 left-0 right-0 border-t border-gray-100 bg-white p-4">
+      <div class="flex justify-between">
+        <div class="flex">
+          <div class="mr-6">
+            <i class="fas fa-at text-gray-400"></i>
+          </div>
+          <div class="mr-6">
+            <i class="fas fa-hashtag text-gray-400"></i>
+          </div>
+          <div class="mr-6">
+            <i class="fas fa-face-smile text-gray-400"></i>
+          </div>
+          <div>
+            <i class="fas fa-keyboard text-gray-400"></i>
+          </div>
+        </div>
+        <div>
+          <i class="fas fa-ellipsis text-gray-400"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

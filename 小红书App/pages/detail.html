@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小红书 - 笔记详情</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .swiper-pagination-bullet {
+      width: 6px;
+      height: 6px;
+      background-color: rgba(255, 255, 255, 0.6);
+      opacity: 1;
+      margin: 0 3px;
+    }
+    
+    .swiper-pagination-bullet-active {
+      background-color: #FFF;
+    }
+    
+    .detail-action-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: var(--dark-gray);
+    }
+    
+    .detail-action-icon {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    
+    .comment-liked {
+      color: var(--primary-color);
+    }
+    
+    .detail-nav-bar {
+      height: 48px;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+      position: sticky;
+      top: 44px;
+      z-index: 50;
+    }
+  </style>
+</head>
+<body class="bg-white font-sans">
+  <div class="xhs-container">
+    <!-- 状态栏 -->
+    <div class="status-bar">
+      <div class="status-bar-time">9:41</div>
+      <div class="status-bar-icons">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="detail-nav-bar">
+      <div>
+        <i class="fas fa-arrow-left"></i>
+      </div>
+      <div class="flex items-center">
+        <i class="fas fa-ellipsis-vertical"></i>
+      </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content-area">
+      <!-- 作者信息 -->
+      <div class="flex justify-between items-center p-4">
+        <div class="flex items-center">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" class="w-10 h-10 rounded-full object-cover mr-3">
+          <div>
+            <div class="font-medium">巴黎时尚笔记</div>
+            <div class="text-xs text-gray-500">时尚博主 | 穿搭顾问</div>
+          </div>
+        </div>
+        <button class="btn-primary text-xs py-1 px-4">关注</button>
+      </div>
+
+      <!-- 图片展示 -->
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3ByaW5nJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="w-full h-auto">
+        <div class="absolute bottom-2 right-2 bg-black/50 text-white text-xs py-1 px-2 rounded-full">
+          1/4
+        </div>
+      </div>
+
+      <!-- 笔记内容 -->
+      <div class="p-4">
+        <h1 class="text-xl font-bold mb-2">春季穿搭｜轻松营造法式慵懒感</h1>
+        <div class="text-sm leading-6 text-gray-800 mb-4">
+          春天来了，又到了换季的时候啦！今天给大家分享几套我最近很喜欢的春季穿搭，以法式风格为主，慵懒随性又不失优雅，希望能给大家一些灵感～<br><br>
+
+          第一套：米色针织开衫 + 白色T恤 + 牛仔裤<br>
+          这套搭配简单随性又充满法式气息，针织开衫选择的是比较宽松的款式，搭配基础款白T和高腰直筒牛仔裤，下面配双芭蕾舞平底鞋就很有法式风情了！<br><br>
+          
+          第二套：格纹衬衫 + 米色背心 + 直筒裤<br>
+          格纹元素很有春天的感觉，内搭米色背心增添层次感，下面配一条高腰直筒裤，简约又不单调，非常适合日常通勤。<br><br>
+          
+          第三套：条纹上衣 + 阔腿牛仔裤<br>
+          条纹是法式风格的经典元素，选择一件宽松的条纹上衣，搭配阔腿牛仔裤，慵懒又随性，周末逛街约会都很合适。
+        </div>
+        <div class="flex flex-wrap mb-4">
+          <span class="tag-item mr-2 mb-2">#春季穿搭</span>
+          <span class="tag-item mr-2 mb-2">#法式风格</span>
+          <span class="tag-item mr-2 mb-2">#日常穿搭</span>
+        </div>
+        <div class="text-xs text-gray-400">03-25 · 上海</div>
+      </div>
+
+      <!-- 互动统计 -->
+      <div class="flex justify-between items-center px-4 py-3 border-t border-b border-gray-100">
+        <div class="flex items-center">
+          <div class="flex -space-x-2">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=30&q=80" class="w-6 h-6 rounded-full border border-white">
+            <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=30&q=80" class="w-6 h-6 rounded-full border border-white">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=30&q=80" class="w-6 h-6 rounded-full border border-white">
+          </div>
+          <div class="text-xs text-gray-500 ml-2">等1.2k人已点赞</div>
+        </div>
+        <div class="text-xs text-gray-500">浏览 5.8w</div>
+      </div>
+
+      <!-- 评论区 -->
+      <div class="p-4">
+        <div class="font-bold mb-4">共 88 条评论</div>
+
+        <!-- 评论项目1 -->
+        <div class="flex mb-4">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=40&q=80" class="w-9 h-9 rounded-full object-cover mr-3 flex-shrink-0">
+          <div class="flex-1">
+            <div class="text-sm font-medium">美妆博主小K</div>
+            <div class="text-sm my-1">好喜欢你的搭配风格！第二套我也有类似的，感觉平时通勤穿超级舒服～</div>
+            <div class="flex justify-between items-center">
+              <div class="text-xs text-gray-400">3天前</div>
+              <div class="flex items-center">
+                <span class="text-xs text-gray-400 mr-1">12</span>
+                <i class="far fa-heart text-gray-400"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 评论项目2 -->
+        <div class="flex mb-4">
+          <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=40&q=80" class="w-9 h-9 rounded-full object-cover mr-3 flex-shrink-0">
+          <div class="flex-1">
+            <div class="text-sm font-medium">甜点研究所</div>
+            <div class="text-sm my-1">请问第一套的米色针织开衫是哪个牌子的呀？看起来很舒服～</div>
+            <div class="flex justify-between items-center">
+              <div class="text-xs text-gray-400">2天前</div>
+              <div class="flex items-center">
+                <span class="text-xs text-gray-400 mr-1">5</span>
+                <i class="far fa-heart text-gray-400"></i>
+              </div>
+            </div>
+
+            <!-- 回复 -->
+            <div class="bg-gray-50 p-2 rounded mt-2">
+              <div class="text-sm">
+                <span class="font-medium">巴黎时尚笔记</span>：是Sezane家的哦，质量特别好，穿了好几年了～
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 评论项目3 -->
+        <div class="flex mb-4">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=40&q=80" class="w-9 h-9 rounded-full object-cover mr-3 flex-shrink-0">
+          <div class="flex-1">
+            <div class="text-sm font-medium">乐活摄影师</div>
+            <div class="text-sm my-1">拍得很有感觉，请问是用什么相机拍的？光线处理很自然～</div>
+            <div class="flex justify-between items-center">
+              <div class="text-xs text-gray-400">1天前</div>
+              <div class="flex items-center">
+                <span class="text-xs comment-liked mr-1">8</span>
+                <i class="fas fa-heart comment-liked"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部操作栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-4 py-3 flex justify-between items-center">
+      <div class="flex-1">
+        <input type="text" placeholder="说点什么..." class="w-full bg-gray-100 rounded-full px-4 py-2 text-sm">
+      </div>
+      <div class="flex ml-4 space-x-5">
+        <div class="detail-action-btn">
+          <i class="detail-action-icon far fa-heart"></i>
+          <span>1.2k</span>
+        </div>
+        <div class="detail-action-btn">
+          <i class="detail-action-icon far fa-star"></i>
+          <span>收藏</span>
+        </div>
+        <div class="detail-action-btn">
+          <i class="detail-action-icon far fa-comment"></i>
+          <span>88</span>
+        </div>
+        <div class="detail-action-btn">
+          <i class="detail-action-icon fas fa-share-nodes"></i>
+          <span>分享</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 
