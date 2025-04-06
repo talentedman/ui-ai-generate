@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>浏览器App - 隐私模式</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body {
+            max-width: 393px;
+            margin: 0 auto;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #212121;
+            color: white;
+        }
+        
+        .ios-status-bar {
+            background-color: #212121;
+        }
+        
+        .status-bar-time,
+        .status-bar-icons {
+            color: white;
+        }
+        
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            background-color: #212121;
+            border-bottom: 1px solid #3A3A3A;
+        }
+        
+        .toolbar-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .toolbar-btn {
+            color: #5E5CE6;
+            font-size: 16px;
+        }
+        
+        .incognito-container {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: calc(100vh - 44px - 83px - 56px);
+            overflow-y: auto;
+        }
+        
+        .incognito-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #5E5CE6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin-bottom: 24px;
+            color: white;
+        }
+        
+        .incognito-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .incognito-description {
+            font-size: 16px;
+            color: #BBBBBB;
+            text-align: center;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .feature-list {
+            width: 100%;
+            margin-bottom: 32px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #2C2C2E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            color: #5E5CE6;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .feature-content {
+            flex: 1;
+        }
+        
+        .feature-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .feature-description {
+            font-size: 14px;
+            color: #BBBBBB;
+            line-height: 1.4;
+        }
+        
+        .action-btn {
+            width: 100%;
+            background-color: #5E5CE6;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        
+        .secondary-btn {
+            width: 100%;
+            background-color: #2C2C2E;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .bottom-nav {
+            background-color: rgba(33, 33, 33, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid #3A3A3A;
+        }
+        
+        .nav-item {
+            color: #BBBBBB;
+        }
+        
+        .nav-item.active {
+            color: #5E5CE6;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">14:30</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 工具栏 -->
+    <div class="toolbar">
+        <div class="toolbar-title">隐私浏览模式</div>
+        <div class="toolbar-btn" onclick="window.location.href='home.html'">退出</div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="incognito-container">
+        <div class="incognito-icon">
+            <i class="fas fa-mask"></i>
+        </div>
+        
+        <div class="incognito-title">您已进入隐私浏览模式</div>
+        
+        <div class="incognito-description">
+            在隐私模式下，您的浏览历史、Cookie 和网站数据将在您关闭所有隐私模式标签页后被删除。
+        </div>
+        
+        <div class="feature-list">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-title">不保存浏览历史</div>
+                    <div class="feature-description">您在隐私模式下访问的网站不会出现在浏览历史中，也不会在搜索建议中显示。</div>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-cookie"></i>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-title">临时的 Cookie</div>
+                    <div class="feature-description">网站可能仍会使用 Cookie，但它们将在退出隐私模式后被删除。</div>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-eye-slash"></i>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-title">更强隐私保护</div>
+                    <div class="feature-description">自动阻止第三方追踪器，并增强对指纹识别技术的防护。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="action-btn">
+            开始私密浏览
+        </div>
+        
+        <div class="secondary-btn">
+            了解更多隐私设置
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-home"></i></div>
+            <div class="nav-label">首页</div>
+        </a>
+        <a href="tabs.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-clone"></i></div>
+            <div class="nav-label">标签</div>
+        </a>
+        <a href="bookmarks.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-bookmark"></i></div>
+            <div class="nav-label">书签</div>
+        </a>
+        <a href="history.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-history"></i></div>
+            <div class="nav-label">历史</div>
+        </a>
+        <a href="settings.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-cog"></i></div>
+            <div class="nav-label">设置</div>
+        </a>
+    </div>
+</body>
+</html> 

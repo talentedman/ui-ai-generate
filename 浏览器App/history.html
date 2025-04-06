@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>浏览器App - 历史记录</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body {
+            max-width: 393px;
+            margin: 0 auto;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--app-border);
+        }
+        
+        .toolbar-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .toolbar-actions {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .action-btn {
+            color: var(--app-primary);
+            font-size: 16px;
+        }
+        
+        .search-container {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--app-border);
+        }
+        
+        .history-container {
+            height: calc(100vh - 44px - 83px - 56px - 60px);
+            overflow-y: auto;
+        }
+        
+        .date-header {
+            padding: 12px 16px;
+            background-color: #F2F2F7;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--app-text-secondary);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .history-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .history-item {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--app-border);
+        }
+        
+        .history-time {
+            color: var(--app-text-secondary);
+            font-size: 12px;
+            width: 50px;
+            margin-right: 12px;
+        }
+        
+        .history-favicon {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            border-radius: 4px;
+            background-color: #E5E5EA;
+        }
+        
+        .history-info {
+            flex: 1;
+        }
+        
+        .history-title {
+            font-size: 16px;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .history-url {
+            font-size: 12px;
+            color: var(--app-text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .more-icon {
+            color: var(--app-text-secondary);
+            padding: 8px;
+        }
+        
+        .quick-actions {
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .quick-action-btn {
+            background-color: #F2F2F7;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 14px;
+            flex: 1;
+            text-align: center;
+            color: var(--app-text-primary);
+        }
+        
+        .quick-action-btn.clear {
+            color: #FF3B30;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">14:30</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 工具栏 -->
+    <div class="toolbar">
+        <div class="toolbar-title">历史记录</div>
+        <div class="toolbar-actions">
+            <div class="action-btn">编辑</div>
+        </div>
+    </div>
+    
+    <!-- 搜索栏 -->
+    <div class="search-container">
+        <div class="search-bar">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <input type="text" class="search-input" placeholder="搜索历史记录">
+        </div>
+    </div>
+    
+    <!-- 快速操作 -->
+    <div class="quick-actions">
+        <div class="quick-action-btn">近期 24 小时</div>
+        <div class="quick-action-btn">过去 7 天</div>
+        <div class="quick-action-btn clear">清除历史</div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="history-container">
+        <div class="date-header">今天</div>
+        
+        <ul class="history-list">
+            <li class="history-item">
+                <div class="history-time">14:12</div>
+                <img src="https://www.apple.com/favicon.ico" alt="" class="history-favicon">
+                <div class="history-info">
+                    <div class="history-title">Apple 官网 - 探索新款iPhone、iPad和Mac</div>
+                    <div class="history-url">apple.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+            
+            <li class="history-item">
+                <div class="history-time">13:55</div>
+                <img src="https://www.bilibili.com/favicon.ico" alt="" class="history-favicon">
+                <div class="history-info">
+                    <div class="history-title">哔哩哔哩 (゜-゜)つロ 干杯~</div>
+                    <div class="history-url">bilibili.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+            
+            <li class="history-item">
+                <div class="history-time">13:20</div>
+                <img src="https://www.zhihu.com/favicon.ico" alt="" class="history-favicon">
+                <div class="history-info">
+                    <div class="history-title">知乎 - 有问题，就会有答案</div>
+                    <div class="history-url">zhihu.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+            
+            <li class="history-item">
+                <div class="history-time">11:45</div>
+                <img src="https://www.jd.com/favicon.ico" alt="" class="history-favicon">
+                <div class="history-info">
+                    <div class="history-title">京东(JD.COM)-正品低价、品质保障、配送及时</div>
+                    <div class="history-url">jd.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+            
+            <li class="history-item">
+                <div class="history-time">10:33</div>
+                <img src="https://www.taobao.com/favicon.ico" alt="" class="history-favicon">
+                <div class="history-info">
+                    <div class="history-title">淘宝网 - 淘！我喜欢</div>
+                    <div class="history-url">taobao.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+        </ul>
+        
+        <div class="date-header">昨天</div>
+        
+        <ul class="history-list">
+            <li class="history-item">
+                <div class="history-time">21:40</div>
+                <img src="https://www.douban.com/favicon.ico" alt="" class="history-favicon">
+                <div class="history-info">
+                    <div class="history-title">豆瓣 - 发现好电影</div>
+                    <div class="history-url">movie.douban.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+            
+            <li class="history-item">
+                <div class="history-time">19:15</div>
+                <img src="https://www.github.com/favicon.ico" alt="" class="history-favicon">
+                <div class="history-info">
+                    <div class="history-title">GitHub: Where the world builds software</div>
+                    <div class="history-url">github.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+            
+            <li class="history-item">
+                <div class="history-time">16:22</div>
+                <img src="https://weixin.qq.com/favicon.ico" alt="" class="history-favicon">
+                <div class="history-info">
+                    <div class="history-title">微信公众平台</div>
+                    <div class="history-url">mp.weixin.qq.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-home"></i></div>
+            <div class="nav-label">首页</div>
+        </a>
+        <a href="tabs.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-clone"></i></div>
+            <div class="nav-label">标签</div>
+        </a>
+        <a href="bookmarks.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-bookmark"></i></div>
+            <div class="nav-label">书签</div>
+        </a>
+        <a href="history.html" class="nav-item active">
+            <div class="nav-icon"><i class="fas fa-history"></i></div>
+            <div class="nav-label">历史</div>
+        </a>
+        <a href="settings.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-cog"></i></div>
+            <div class="nav-label">设置</div>
+        </a>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>浏览器App - 网页浏览</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body {
+            max-width: 393px;
+            margin: 0 auto;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .browser-toolbar {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            background-color: var(--app-background);
+            border-bottom: 1px solid var(--app-border);
+        }
+        
+        .browser-toolbar-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--app-text-secondary);
+            font-size: 18px;
+        }
+        
+        .browser-content {
+            position: relative;
+            height: calc(100vh - 83px - 92px); /* 减去底部导航和顶部工具栏的高度 */
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        .browser-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .browser-controls {
+            position: fixed;
+            bottom: 83px;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--app-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+        }
+        
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--app-text-secondary);
+            font-size: 18px;
+        }
+        
+        .control-btn.forward {
+            color: var(--app-text-secondary);
+        }
+        
+        .tabs-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: #E5E5EA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--app-text-primary);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .more-btn i {
+            font-size: 18px;
+            color: var(--app-text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">14:30</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 浏览器工具栏 -->
+    <div class="browser-toolbar">
+        <div class="browser-toolbar-btn">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        
+        <div class="browser-address-bar">
+            <div class="site-info">
+                <img src="https://www.apple.com/favicon.ico" alt="" class="site-icon">
+                <div class="site-url">apple.com</div>
+            </div>
+            <div class="refresh-btn">
+                <i class="fas fa-arrow-rotate-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 浏览器内容区域 -->
+    <div class="browser-content">
+        <img src="https://www.apple.com/v/home/az/images/heroes/iphone-15-pro/hero_iphone15pro__i70z9oz3hj2i_large.jpg" alt="Apple Website" class="browser-image">
+    </div>
+
+    <!-- 浏览器控制栏 -->
+    <div class="browser-controls">
+        <div class="control-btn back">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="control-btn forward">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="control-btn share">
+            <i class="fas fa-share-from-square"></i>
+        </div>
+        <div class="tabs-btn">
+            3
+        </div>
+        <div class="control-btn more-btn">
+            <i class="fas fa-ellipsis"></i>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-home"></i></div>
+            <div class="nav-label">首页</div>
+        </a>
+        <a href="tabs.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-clone"></i></div>
+            <div class="nav-label">标签</div>
+        </a>
+        <a href="bookmarks.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-bookmark"></i></div>
+            <div class="nav-label">书签</div>
+        </a>
+        <a href="history.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-history"></i></div>
+            <div class="nav-label">历史</div>
+        </a>
+        <a href="settings.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-cog"></i></div>
+            <div class="nav-label">设置</div>
+        </a>
+    </div>
+</body>
+</html> 

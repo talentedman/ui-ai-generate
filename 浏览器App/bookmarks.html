@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>浏览器App - 书签</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body {
+            max-width: 393px;
+            margin: 0 auto;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--app-border);
+        }
+        
+        .toolbar-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .toolbar-actions {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .action-btn {
+            color: var(--app-primary);
+            font-size: 16px;
+        }
+        
+        .search-container {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--app-border);
+        }
+        
+        .bookmarks-container {
+            height: calc(100vh - 44px - 83px - 56px - 60px);
+            overflow-y: auto;
+        }
+        
+        .folder-item {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--app-border);
+        }
+        
+        .folder-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--app-primary);
+            font-size: 18px;
+        }
+        
+        .folder-info {
+            flex: 1;
+        }
+        
+        .folder-name {
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .folder-count {
+            font-size: 12px;
+            color: var(--app-text-secondary);
+        }
+        
+        .chevron-icon {
+            color: var(--app-text-secondary);
+            font-size: 14px;
+        }
+        
+        .bookmark-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .bookmark-item {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--app-border);
+        }
+        
+        .bookmark-favicon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            border-radius: 4px;
+            background-color: #E5E5EA;
+        }
+        
+        .bookmark-info {
+            flex: 1;
+        }
+        
+        .bookmark-title {
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+        
+        .bookmark-url {
+            font-size: 12px;
+            color: var(--app-text-secondary);
+        }
+        
+        .more-icon {
+            color: var(--app-text-secondary);
+            padding: 8px;
+        }
+        
+        .section-header {
+            padding: 12px 16px;
+            background-color: #F2F2F7;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--app-text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">14:30</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 工具栏 -->
+    <div class="toolbar">
+        <div class="toolbar-title">书签</div>
+        <div class="toolbar-actions">
+            <div class="action-btn">编辑</div>
+            <div class="action-btn"><i class="fas fa-plus"></i></div>
+        </div>
+    </div>
+    
+    <!-- 搜索栏 -->
+    <div class="search-container">
+        <div class="search-bar">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <input type="text" class="search-input" placeholder="搜索书签">
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="bookmarks-container">
+        <div class="folder-item">
+            <div class="folder-icon">
+                <i class="fas fa-folder"></i>
+            </div>
+            <div class="folder-info">
+                <div class="folder-name">收藏夹</div>
+                <div class="folder-count">12 个书签</div>
+            </div>
+            <div class="chevron-icon">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="folder-item">
+            <div class="folder-icon">
+                <i class="fas fa-folder"></i>
+            </div>
+            <div class="folder-info">
+                <div class="folder-name">学习资源</div>
+                <div class="folder-count">8 个书签</div>
+            </div>
+            <div class="chevron-icon">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="folder-item">
+            <div class="folder-icon">
+                <i class="fas fa-folder"></i>
+            </div>
+            <div class="folder-info">
+                <div class="folder-name">工作参考</div>
+                <div class="folder-count">15 个书签</div>
+            </div>
+            <div class="chevron-icon">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="section-header">常用网站</div>
+        
+        <ul class="bookmark-list">
+            <li class="bookmark-item">
+                <img src="https://www.apple.com/favicon.ico" alt="" class="bookmark-favicon">
+                <div class="bookmark-info">
+                    <div class="bookmark-title">Apple</div>
+                    <div class="bookmark-url">apple.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+            
+            <li class="bookmark-item">
+                <img src="https://www.bilibili.com/favicon.ico" alt="" class="bookmark-favicon">
+                <div class="bookmark-info">
+                    <div class="bookmark-title">哔哩哔哩</div>
+                    <div class="bookmark-url">bilibili.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+            
+            <li class="bookmark-item">
+                <img src="https://www.zhihu.com/favicon.ico" alt="" class="bookmark-favicon">
+                <div class="bookmark-info">
+                    <div class="bookmark-title">知乎</div>
+                    <div class="bookmark-url">zhihu.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+            
+            <li class="bookmark-item">
+                <img src="https://www.jd.com/favicon.ico" alt="" class="bookmark-favicon">
+                <div class="bookmark-info">
+                    <div class="bookmark-title">京东</div>
+                    <div class="bookmark-url">jd.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+            
+            <li class="bookmark-item">
+                <img src="https://www.taobao.com/favicon.ico" alt="" class="bookmark-favicon">
+                <div class="bookmark-info">
+                    <div class="bookmark-title">淘宝</div>
+                    <div class="bookmark-url">taobao.com</div>
+                </div>
+                <div class="more-icon">
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-home"></i></div>
+            <div class="nav-label">首页</div>
+        </a>
+        <a href="tabs.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-clone"></i></div>
+            <div class="nav-label">标签</div>
+        </a>
+        <a href="bookmarks.html" class="nav-item active">
+            <div class="nav-icon"><i class="fas fa-bookmark"></i></div>
+            <div class="nav-label">书签</div>
+        </a>
+        <a href="history.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-history"></i></div>
+            <div class="nav-label">历史</div>
+        </a>
+        <a href="settings.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-cog"></i></div>
+            <div class="nav-label">设置</div>
+        </a>
+    </div>
+</body>
+</html> 

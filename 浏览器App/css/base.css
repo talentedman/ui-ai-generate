@@ -1,0 +1,251 @@
+/* 基础样式 */
+:root {
+    --app-primary: #0078FB;
+    --app-secondary: #4CC2FF;
+    --app-background: #F5F5F7;
+    --app-card: #FFFFFF;
+    --app-text-primary: #000000;
+    --app-text-secondary: #8E8E93;
+    --app-border: #E5E5EA;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--app-background);
+    color: var(--app-text-primary);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* iOS 状态栏样式 */
+.ios-status-bar {
+    height: 44px;
+    background-color: var(--app-background);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.status-bar-time {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.status-bar-icons {
+    display: flex;
+    align-items: center;
+}
+
+.status-bar-icons > * {
+    margin-left: 5px;
+}
+
+/* 底部导航栏样式 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 83px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--app-border);
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 0;
+    color: var(--app-text-secondary);
+    text-decoration: none;
+    width: 20%;
+}
+
+.nav-item.active {
+    color: var(--app-primary);
+}
+
+.nav-icon {
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.nav-label {
+    font-size: 10px;
+    text-align: center;
+}
+
+/* 主内容区域 */
+.app-content {
+    padding: 16px;
+    padding-bottom: 100px; /* 为底部导航栏腾出空间 */
+    height: calc(100vh - 44px - 83px);
+    overflow-y: auto;
+}
+
+/* 卡片样式 */
+.card {
+    background-color: var(--app-card);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+/* 搜索框样式 */
+.search-bar {
+    background-color: #E5E5EA;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin: 8px 0;
+}
+
+.search-icon {
+    color: #8E8E93;
+    margin-right: 8px;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    flex: 1;
+    outline: none;
+    font-size: 16px;
+}
+
+/* 列表样式 */
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-item {
+    padding: 16px;
+    border-bottom: 1px solid var(--app-border);
+    display: flex;
+    align-items: center;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background-color: var(--app-primary);
+    color: white;
+}
+
+.list-content {
+    flex: 1;
+}
+
+.list-title {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.list-subtitle {
+    font-size: 14px;
+    color: var(--app-text-secondary);
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--app-primary);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #E5E5EA;
+    color: var(--app-text-primary);
+}
+
+/* 工具栏样式 */
+.toolbar {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    background-color: var(--app-background);
+    border-bottom: 1px solid var(--app-border);
+}
+
+.toolbar-title {
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+    flex: 1;
+}
+
+.toolbar-btn {
+    color: var(--app-primary);
+    font-size: 24px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 网页浏览器地址栏 */
+.browser-address-bar {
+    display: flex;
+    align-items: center;
+    background-color: #E5E5EA;
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin: 8px 16px;
+}
+
+.site-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.site-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.site-url {
+    font-size: 14px;
+    color: var(--app-text-secondary);
+}
+
+.refresh-btn {
+    color: var(--app-text-secondary);
+    margin-left: 8px;
+} 

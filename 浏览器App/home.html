@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>浏览器App - 主页</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body {
+            max-width: 393px;
+            margin: 0 auto;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .search-container {
+            padding: 16px;
+            padding-top: 20px;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--app-primary);
+        }
+        
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+        
+        .shortcut {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--app-text-primary);
+        }
+        
+        .shortcut-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            background: linear-gradient(135deg, var(--app-primary), var(--app-secondary));
+        }
+        
+        .shortcut-label {
+            font-size: 12px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        
+        .news-section {
+            margin-top: 32px;
+        }
+        
+        .section-title {
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+        
+        .news-item {
+            background-color: var(--app-card);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .news-title {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .news-source {
+            font-size: 12px;
+            color: var(--app-text-secondary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-source-logo {
+            width: 16px;
+            height: 16px;
+            margin-right: 6px;
+            border-radius: 4px;
+            background-color: #E5E5EA;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">14:30</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="app-content">
+        <div class="search-container">
+            <div class="logo">浏览精彩</div>
+            
+            <div class="search-bar">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <input type="text" class="search-input" placeholder="搜索或输入网址">
+            </div>
+            
+            <div class="shortcuts-grid">
+                <a href="browser.html" class="shortcut">
+                    <div class="shortcut-icon" style="background-color: #FF3B30;">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <div class="shortcut-label">探索</div>
+                </a>
+                <a href="browser.html" class="shortcut">
+                    <div class="shortcut-icon" style="background-color: #34C759;">
+                        <i class="fab fa-weixin"></i>
+                    </div>
+                    <div class="shortcut-label">微信</div>
+                </a>
+                <a href="browser.html" class="shortcut">
+                    <div class="shortcut-icon" style="background-color: #007AFF;">
+                        <i class="fab fa-weibo"></i>
+                    </div>
+                    <div class="shortcut-label">微博</div>
+                </a>
+                <a href="browser.html" class="shortcut">
+                    <div class="shortcut-icon" style="background-color: #5856D6;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="shortcut-label">购物</div>
+                </a>
+                <a href="browser.html" class="shortcut">
+                    <div class="shortcut-icon" style="background-color: #FF9500;">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="shortcut-label">视频</div>
+                </a>
+                <a href="browser.html" class="shortcut">
+                    <div class="shortcut-icon" style="background-color: #AF52DE;">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="shortcut-label">音乐</div>
+                </a>
+                <a href="browser.html" class="shortcut">
+                    <div class="shortcut-icon" style="background-color: #FF2D55;">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="shortcut-label">地图</div>
+                </a>
+                <a href="browser.html" class="shortcut">
+                    <div class="shortcut-icon" style="background-color: #8E8E93;">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                    <div class="shortcut-label">更多</div>
+                </a>
+            </div>
+            
+            <div class="news-section">
+                <div class="section-title">今日热点</div>
+                
+                <div class="news-item">
+                    <div class="news-title">苹果发布全新iOS系统，带来多项改进和新功能</div>
+                    <div class="news-source">
+                        <div class="news-source-logo"></div>
+                        <span>科技日报 · 2小时前</span>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="news-title">国内首个量子计算云平台正式上线，开放多项量子计算能力</div>
+                    <div class="news-source">
+                        <div class="news-source-logo"></div>
+                        <span>量子信息网 · 4小时前</span>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="news-title">新型环保材料研发成功，可大幅降低建筑能耗</div>
+                    <div class="news-source">
+                        <div class="news-source-logo"></div>
+                        <span>科学探索 · 6小时前</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item active">
+            <div class="nav-icon"><i class="fas fa-home"></i></div>
+            <div class="nav-label">首页</div>
+        </a>
+        <a href="tabs.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-clone"></i></div>
+            <div class="nav-label">标签</div>
+        </a>
+        <a href="bookmarks.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-bookmark"></i></div>
+            <div class="nav-label">书签</div>
+        </a>
+        <a href="history.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-history"></i></div>
+            <div class="nav-label">历史</div>
+        </a>
+        <a href="settings.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-cog"></i></div>
+            <div class="nav-label">设置</div>
+        </a>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>浏览器App - 标签管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body {
+            max-width: 393px;
+            margin: 0 auto;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 16px;
+            background-color: var(--app-background);
+        }
+        
+        .tabs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+        }
+        
+        .tabs-count {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .tabs-actions {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--app-primary);
+        }
+        
+        .tabs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 0 12px;
+            margin-bottom: 16px;
+        }
+        
+        .tab-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .tab-preview {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 1px solid var(--app-border);
+        }
+        
+        .tab-info {
+            padding: 8px;
+        }
+        
+        .tab-favicon {
+            width: 16px;
+            height: 16px;
+            margin-right: 6px;
+        }
+        
+        .tab-title {
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .tab-url {
+            font-size: 10px;
+            color: var(--app-text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .tab-close {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+        
+        .private-tabs-section {
+            margin-top: 24px;
+            padding: 0 16px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .private-mode-btn {
+            background-color: #5E5CE6;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .new-tab-btn {
+            margin: 16px;
+            background-color: var(--app-card);
+            border: 1px dashed var(--app-border);
+            border-radius: 12px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--app-primary);
+        }
+        
+        .new-tab-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+        
+        .new-tab-label {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="ios-status-bar">
+        <div class="status-bar-time">14:30</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="app-content">
+        <div class="tabs-header">
+            <div class="tabs-count">6 个标签页</div>
+            <div class="tabs-actions">
+                <div class="action-btn">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="action-btn">
+                    全部关闭
+                </div>
+            </div>
+        </div>
+        
+        <div class="tabs-grid">
+            <div class="tab-card">
+                <img src="https://www.apple.com/v/home/az/images/heroes/iphone-15-pro/hero_iphone15pro__i70z9oz3hj2i_large.jpg" alt="Apple" class="tab-preview">
+                <div class="tab-info">
+                    <div class="tab-title">
+                        <img src="https://www.apple.com/favicon.ico" alt="" class="tab-favicon">
+                        Apple
+                    </div>
+                    <div class="tab-url">apple.com</div>
+                </div>
+                <div class="tab-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <div class="tab-card">
+                <img src="https://lf3-cdn-tos.bytescm.com/obj/eden-cn/uhbfnupkbps/img/poster_54130c59.jpg" alt="ByteDance" class="tab-preview">
+                <div class="tab-info">
+                    <div class="tab-title">
+                        <img src="https://sf1-cdn-tos.douyinstatic.com/obj/eden-cn/lpqpflo/bytedance_favicon.ico" alt="" class="tab-favicon">
+                        字节跳动
+                    </div>
+                    <div class="tab-url">bytedance.com</div>
+                </div>
+                <div class="tab-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <div class="tab-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png" alt="C++ Tutorial" class="tab-preview">
+                <div class="tab-info">
+                    <div class="tab-title">
+                        <img src="https://www.w3schools.com/favicon.ico" alt="" class="tab-favicon">
+                        C++ 教程 - W3Schools
+                    </div>
+                    <div class="tab-url">w3schools.com/cpp</div>
+                </div>
+                <div class="tab-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <div class="tab-card">
+                <img src="https://www.bilibili.com/v/game/match" alt="Bilibili" class="tab-preview">
+                <div class="tab-info">
+                    <div class="tab-title">
+                        <img src="https://www.bilibili.com/favicon.ico" alt="" class="tab-favicon">
+                        哔哩哔哩 (゜-゜)つロ 干杯~
+                    </div>
+                    <div class="tab-url">bilibili.com</div>
+                </div>
+                <div class="tab-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <div class="tab-card">
+                <img src="https://img-blog.csdnimg.cn/img_convert/33c00122ea4226d83aeb6b2f6b357fe1.jpeg" alt="JD" class="tab-preview">
+                <div class="tab-info">
+                    <div class="tab-title">
+                        <img src="https://www.jd.com/favicon.ico" alt="" class="tab-favicon">
+                        京东(JD.COM)
+                    </div>
+                    <div class="tab-url">jd.com</div>
+                </div>
+                <div class="tab-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <div class="tab-card">
+                <img src="https://img.alicdn.com/imgextra/i4/O1CN01Neh0Dm1OYYVwy7n5z_!!6000000001718-0-tps-2680-1320.jpg" alt="Taobao" class="tab-preview">
+                <div class="tab-info">
+                    <div class="tab-title">
+                        <img src="https://www.taobao.com/favicon.ico" alt="" class="tab-favicon">
+                        淘宝网
+                    </div>
+                    <div class="tab-url">taobao.com</div>
+                </div>
+                <div class="tab-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="private-tabs-section">
+            <div class="section-header">
+                <div class="section-title">隐私浏览</div>
+                <div class="private-mode-btn">
+                    <i class="fas fa-mask"></i>
+                    打开隐私模式
+                </div>
+            </div>
+            
+            <div class="new-tab-btn">
+                <div class="new-tab-icon">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="new-tab-label">新建标签页</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-home"></i></div>
+            <div class="nav-label">首页</div>
+        </a>
+        <a href="tabs.html" class="nav-item active">
+            <div class="nav-icon"><i class="fas fa-clone"></i></div>
+            <div class="nav-label">标签</div>
+        </a>
+        <a href="bookmarks.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-bookmark"></i></div>
+            <div class="nav-label">书签</div>
+        </a>
+        <a href="history.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-history"></i></div>
+            <div class="nav-label">历史</div>
+        </a>
+        <a href="settings.html" class="nav-item">
+            <div class="nav-icon"><i class="fas fa-cog"></i></div>
+            <div class="nav-label">设置</div>
+        </a>
+    </div>
+</body>
+</html> 
