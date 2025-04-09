@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记账App - 统计分析</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            max-width: 390px;
+            min-height: 844px;
+            margin: 0 auto;
+            background-color: var(--bg-light);
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .tab-container {
+            display: flex;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            position: relative;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 20%;
+            right: 20%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 1.5px;
+        }
+        
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 250px;
+            width: 100%;
+        }
+        
+        .time-filter {
+            display: flex;
+            background-color: var(--bg-white);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .time-filter-btn {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .time-filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-info {
+            flex: 1;
+            margin-left: 12px;
+        }
+        
+        .stat-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .stat-bar-container {
+            height: 6px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+            margin-bottom: 4px;
+            flex: 1;
+            margin-right: 12px;
+        }
+        
+        .stat-bar {
+            height: 100%;
+            border-radius: 3px;
+        }
+        
+        .stat-percent {
+            font-size: 12px;
+            color: var(--text-light);
+            width: 40px;
+            text-align: right;
+        }
+        
+        .stat-amount {
+            font-weight: 600;
+            text-align: right;
+            width: 80px;
+        }
+        
+        .month-selector {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            margin-bottom: 16px;
+        }
+        
+        .month-title {
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .month-nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .month-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: var(--bg-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            margin: 0 4px;
+        }
+        
+        .summary-card {
+            padding: 16px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .summary-title {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .summary-amount {
+            font-size: 26px;
+            font-weight: 700;
+            margin: 8px 0;
+        }
+        
+        .summary-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 10px;
+        }
+        
+        .summary-stat {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .summary-stat-value {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .summary-stat-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="ios-status-bar-container"></div>
+    
+    <!-- 主要内容区域 -->
+    <div class="app-content">
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="text-xl font-bold">统计分析</h1>
+        </div>
+        
+        <!-- 月份选择器 -->
+        <div class="month-selector">
+            <div class="month-title">2023年4月</div>
+            <div class="month-nav">
+                <div class="month-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="month-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 收支类型切换 -->
+        <div class="tab-container">
+            <div class="tab-btn active">支出</div>
+            <div class="tab-btn">收入</div>
+        </div>
+        
+        <!-- 支出概览卡片 -->
+        <div class="summary-card">
+            <div class="summary-title">本月支出</div>
+            <div class="summary-amount">¥3,133.72</div>
+            <div class="text-sm opacity-80">比上月减少 ¥568.20 (15.3%)</div>
+            
+            <div class="summary-stats">
+                <div class="summary-stat">
+                    <div class="summary-stat-value">¥101.09</div>
+                    <div class="summary-stat-label">日均</div>
+                </div>
+                <div class="summary-stat">
+                    <div class="summary-stat-value">¥300.00</div>
+                    <div class="summary-stat-label">最高日</div>
+                </div>
+                <div class="summary-stat">
+                    <div class="summary-stat-value">8天</div>
+                    <div class="summary-stat-label">消费天数</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 时间过滤器 -->
+        <div class="time-filter">
+            <div class="time-filter-btn active">周</div>
+            <div class="time-filter-btn">月</div>
+            <div class="time-filter-btn">季</div>
+            <div class="time-filter-btn">年</div>
+        </div>
+        
+        <!-- 图表区域 -->
+        <div class="app-card mb-6">
+            <div class="font-semibold mb-4">支出趋势</div>
+            <div class="chart-container">
+                <canvas id="expenseTrendChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- 支出分类统计 -->
+        <div class="app-card">
+            <div class="font-semibold mb-4">支出分类</div>
+            
+            <div class="stat-item">
+                <div class="category-icon cat-food">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-title">餐饮</div>
+                    <div class="flex items-center">
+                        <div class="stat-bar-container">
+                            <div class="stat-bar bg-yellow-500" style="width: 35%;"></div>
+                        </div>
+                        <div class="stat-percent">35%</div>
+                    </div>
+                </div>
+                <div class="stat-amount">¥1,096.80</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="category-icon cat-transport">
+                    <i class="fas fa-bus"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-title">交通</div>
+                    <div class="flex items-center">
+                        <div class="stat-bar-container">
+                            <div class="stat-bar bg-red-500" style="width: 25%;"></div>
+                        </div>
+                        <div class="stat-percent">25%</div>
+                    </div>
+                </div>
+                <div class="stat-amount">¥783.43</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="category-icon cat-shopping">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-title">购物</div>
+                    <div class="flex items-center">
+                        <div class="stat-bar-container">
+                            <div class="stat-bar bg-purple-500" style="width: 20%;"></div>
+                        </div>
+                        <div class="stat-percent">20%</div>
+                    </div>
+                </div>
+                <div class="stat-amount">¥626.74</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="category-icon cat-entertainment">
+                    <i class="fas fa-film"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-title">娱乐</div>
+                    <div class="flex items-center">
+                        <div class="stat-bar-container">
+                            <div class="stat-bar bg-blue-500" style="width: 10%;"></div>
+                        </div>
+                        <div class="stat-percent">10%</div>
+                    </div>
+                </div>
+                <div class="stat-amount">¥313.37</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="category-icon cat-home">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-title">住房</div>
+                    <div class="flex items-center">
+                        <div class="stat-bar-container">
+                            <div class="stat-bar bg-green-500" style="width: 10%;"></div>
+                        </div>
+                        <div class="stat-percent">10%</div>
+                    </div>
+                </div>
+                <div class="stat-amount">¥313.37</div>
+            </div>
+        </div>
+        
+        <!-- 预算与支出比较 -->
+        <div class="app-card mt-6">
+            <div class="font-semibold mb-4">预算执行情况</div>
+            <div class="chart-container" style="height: 200px;">
+                <canvas id="budgetChart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="bottom-tab-bar-container"></div>
+    
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 支出趋势图表
+            const trendCtx = document.getElementById('expenseTrendChart').getContext('2d');
+            const trendChart = new Chart(trendCtx, {
+                type: 'line',
+                data: {
+                    labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                    datasets: [{
+                        label: '日支出',
+                        data: [156.8, 300, 132.15, 0, 0, 38.5, 25],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                display: true,
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 预算执行情况图表
+            const budgetCtx = document.getElementById('budgetChart').getContext('2d');
+            const budgetChart = new Chart(budgetCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['餐饮', '交通', '购物', '娱乐', '住房', '剩余预算'],
+                    datasets: [{
+                        data: [1096.8, 783.43, 626.74, 313.37, 313.37, 1866.28],
+                        backgroundColor: [
+                            '#FF9500', // 餐饮
+                            '#FF2D55', // 交通
+                            '#5856D6', // 购物
+                            '#5AC8FA', // 娱乐
+                            '#4CD964', // 住房
+                            '#E5E5EA'  // 剩余预算
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

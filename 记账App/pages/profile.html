@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记账App - 个人中心</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            max-width: 390px;
+            min-height: 844px;
+            margin: 0 auto;
+            background-color: var(--bg-light);
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .profile-header {
+            padding: 30px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .profile-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 35px;
+            object-fit: cover;
+            margin-right: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .profile-id {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        .menu-group {
+            background-color: var(--bg-white);
+            border-radius: 16px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            position: relative;
+        }
+        
+        .menu-item:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .menu-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 16px;
+            color: white;
+        }
+        
+        .menu-text {
+            flex: 1;
+            font-weight: 500;
+        }
+        
+        .menu-arrow {
+            color: var(--text-light);
+        }
+        
+        .menu-badge {
+            background-color: #FF3B30;
+            color: white;
+            border-radius: 10px;
+            padding: 2px 8px;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+        
+        .menu-switch {
+            position: relative;
+            width: 50px;
+            height: 30px;
+            background-color: var(--primary-color);
+            border-radius: 15px;
+        }
+        
+        .menu-switch::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 22px;
+            height: 22px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        
+        .menu-switch.off {
+            background-color: #D1D1D6;
+        }
+        
+        .menu-switch.off::before {
+            right: 24px;
+        }
+        
+        .icon-wallet { background-color: #FF9500; }
+        .icon-cards { background-color: #5856D6; }
+        .icon-bill { background-color: #FF2D55; }
+        .icon-export { background-color: #5AC8FA; }
+        .icon-security { background-color: #4CD964; }
+        .icon-notification { background-color: #007AFF; }
+        .icon-help { background-color: #FF3B30; }
+        .icon-about { background-color: #8E8E93; }
+        
+        .app-version {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS状态栏 -->
+    <div class="ios-status-bar-container"></div>
+    
+    <!-- 主要内容区域 -->
+    <div class="app-content">
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="text-xl font-bold">个人中心</h1>
+            <a href="#" class="text-lg">
+                <i class="fas fa-cog"></i>
+            </a>
+        </div>
+        
+        <!-- 个人资料 -->
+        <div class="profile-header">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="用户头像" class="profile-avatar">
+            <div>
+                <div class="profile-name">张三</div>
+                <div class="profile-id">ID: 1234567</div>
+                <div class="mt-2">
+                    <span class="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full">基础会员</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 账户管理 -->
+        <div class="menu-group">
+            <div class="menu-item">
+                <div class="menu-icon icon-wallet">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="menu-text">我的钱包</div>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </div>
+            
+            <div class="menu-item">
+                <div class="menu-icon icon-cards">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <div class="menu-text">账户与银行卡</div>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </div>
+            
+            <div class="menu-item">
+                <div class="menu-icon icon-bill">
+                    <i class="fas fa-file-invoice"></i>
+                </div>
+                <div class="menu-text">开具发票</div>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </div>
+            
+            <div class="menu-item">
+                <div class="menu-icon icon-export">
+                    <i class="fas fa-file-export"></i>
+                </div>
+                <div class="menu-text">数据导出</div>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </div>
+        </div>
+        
+        <!-- 应用设置 -->
+        <div class="menu-group">
+            <div class="menu-item">
+                <div class="menu-icon icon-security">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="menu-text">隐私与安全</div>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </div>
+            
+            <div class="menu-item">
+                <div class="menu-icon icon-notification">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="menu-text">通知设置</div>
+                <div class="menu-switch"></div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="menu-icon icon-help">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="menu-text">帮助与反馈</div>
+                <div class="menu-badge">1</div>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </div>
+            
+            <div class="menu-item">
+                <div class="menu-icon icon-about">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="menu-text">关于我们</div>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </div>
+        </div>
+        
+        <!-- 会员卡片 -->
+        <div class="p-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl text-white mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <div class="font-bold text-lg">升级至 Pro 会员</div>
+                <i class="fas fa-crown text-yellow-300 text-lg"></i>
+            </div>
+            <div class="text-sm mb-4 opacity-90">解锁所有高级功能，享受无限制的服务</div>
+            <button class="bg-white text-indigo-600 font-semibold py-2 px-4 rounded-lg text-sm">了解详情</button>
+        </div>
+        
+        <!-- 退出登录按钮 -->
+        <a href="intro.html" class="block bg-white text-center py-4 rounded-xl text-red-500 font-semibold mb-4">
+            退出登录
+        </a>
+        
+        <!-- 版本信息 -->
+        <div class="app-version">
+            轻松记账 v1.0.0
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="bottom-tab-bar-container"></div>
+    
+    <script src="../js/main.js"></script>
+</body>
+</html> 
