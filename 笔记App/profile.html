@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>笔记App - 个人资料</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 共享样式 -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .profile-container {
+            padding: 20px 16px;
+        }
+        
+        .user-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 16px;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .user-info {
+            flex: 1;
+        }
+        
+        .username {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .user-bio {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .edit-profile {
+            background-color: #f2f2f7;
+            color: #2176FF;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card {
+            background-color: #f2f2f7;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #2176FF;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .activity-list {
+            margin-bottom: 24px;
+        }
+        
+        .activity-card {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .activity-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .activity-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(33, 118, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2176FF;
+            margin-right: 12px;
+        }
+        
+        .activity-info {
+            flex: 1;
+        }
+        
+        .activity-title {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        
+        .activity-time {
+            font-size: 12px;
+            color: #8e8e93;
+        }
+        
+        .achievement-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .achievement-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(25% - 9px);
+        }
+        
+        .badge-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: #f2f2f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            color: #8e8e93;
+            font-size: 24px;
+        }
+        
+        .badge-icon.earned {
+            background-color: #fdf6d8;
+            color: #FFCC00;
+        }
+        
+        .badge-name {
+            font-size: 12px;
+            text-align: center;
+            color: #666;
+        }
+        
+        .menu-list {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background-color: #f2f2f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+        
+        .menu-title {
+            flex: 1;
+            font-weight: 500;
+        }
+        
+        .menu-arrow {
+            color: #c7c7cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 状态栏和导航栏会通过JS动态添加 -->
+        
+        <!-- 页面内容 -->
+        <div class="content">
+            <div class="profile-container">
+                <!-- 用户资料头部 -->
+                <div class="user-header">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=160&q=80" alt="User Avatar" class="avatar">
+                    <div class="user-info">
+                        <div class="username">张晓明</div>
+                        <div class="user-bio">热爱记录生活和学习的点滴，保持思考和创造。</div>
+                        <a href="#" class="edit-profile">编辑资料</a>
+                    </div>
+                </div>
+                
+                <!-- 统计数据 -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">28</div>
+                        <div class="stat-label">笔记</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">分类</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">连续天数</div>
+                    </div>
+                </div>
+                
+                <!-- 最近活动 -->
+                <div class="activity-section">
+                    <h2 class="section-title">最近活动</h2>
+                    <div class="activity-list">
+                        <div class="activity-card">
+                            <div class="activity-header">
+                                <div class="activity-icon">
+                                    <i class="fas fa-pen"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <div class="activity-title">创建了新笔记《产品设计会议纪要》</div>
+                                    <div class="activity-time">今天 14:30</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="activity-card">
+                            <div class="activity-header">
+                                <div class="activity-icon">
+                                    <i class="fas fa-folder"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <div class="activity-title">创建了新分类"创意"</div>
+                                    <div class="activity-time">昨天 10:15</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="activity-card">
+                            <div class="activity-header">
+                                <div class="activity-icon">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <div class="activity-title">编辑了笔记《周末旅行计划》</div>
+                                    <div class="activity-time">昨天 20:30</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 成就徽章 -->
+                <div class="achievements-section">
+                    <h2 class="section-title">我的成就</h2>
+                    <div class="achievement-list">
+                        <div class="achievement-badge">
+                            <div class="badge-icon earned">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="badge-name">起步者</div>
+                        </div>
+                        <div class="achievement-badge">
+                            <div class="badge-icon earned">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="badge-name">连续7天</div>
+                        </div>
+                        <div class="achievement-badge">
+                            <div class="badge-icon earned">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="badge-name">学习达人</div>
+                        </div>
+                        <div class="achievement-badge">
+                            <div class="badge-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="badge-name">笔记大师</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 设置菜单 -->
+                <div class="settings-section">
+                    <h2 class="section-title">设置与帮助</h2>
+                    <div class="menu-list">
+                        <div class="menu-item" onclick="location.href='settings.html'">
+                            <div class="menu-icon">
+                                <i class="fas fa-cog text-gray-500"></i>
+                            </div>
+                            <div class="menu-title">应用设置</div>
+                            <div class="menu-arrow">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon">
+                                <i class="fas fa-cloud text-blue-500"></i>
+                            </div>
+                            <div class="menu-title">数据同步</div>
+                            <div class="menu-arrow">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon">
+                                <i class="fas fa-question-circle text-purple-500"></i>
+                            </div>
+                            <div class="menu-title">帮助中心</div>
+                            <div class="menu-arrow">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-icon">
+                                <i class="fas fa-info-circle text-green-500"></i>
+                            </div>
+                            <div class="menu-title">关于我们</div>
+                            <div class="menu-arrow">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部导航栏会通过JS动态添加 -->
+    </div>
+
+    <!-- 共享组件脚本 -->
+    <script src="components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const appContainer = document.querySelector('.app-container');
+            
+            // 创建导航栏
+            const navBar = createNavBar('个人中心', false, null, null);
+            
+            // 将导航栏插入到状态栏之后
+            const statusBar = document.querySelector('.status-bar');
+            if (statusBar) {
+                appContainer.insertBefore(navBar, statusBar.nextSibling);
+            }
+            
+            // 菜单项点击事件
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const menuTitle = this.querySelector('.menu-title').textContent;
+                    
+                    // 特殊处理设置页面
+                    if (menuTitle === '应用设置') {
+                        return; // 已通过onclick处理跳转
+                    }
+                    
+                    alert(`点击了 ${menuTitle} 菜单项`);
+                });
+            });
+            
+            // 编辑资料按钮点击事件
+            const editProfileBtn = document.querySelector('.edit-profile');
+            editProfileBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('打开编辑资料页面');
+            });
+        });
+    </script>
+</body>
+</html> 

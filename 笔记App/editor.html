@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>笔记App - 编辑笔记</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 共享样式 -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .editor-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 16px;
+        }
+        
+        .title-input {
+            font-size: 24px;
+            font-weight: 600;
+            border: none;
+            outline: none;
+            margin-bottom: 16px;
+            background-color: transparent;
+            width: 100%;
+        }
+        
+        .content-area {
+            flex: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: transparent;
+        }
+        
+        .editor-footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 12px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .add-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            background-color: rgba(142, 142, 147, 0.12);
+            color: #666;
+            border-radius: 14px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .tag .remove {
+            margin-left: 6px;
+            font-size: 10px;
+        }
+        
+        .editor-toolbar {
+            display: flex;
+            overflow-x: auto;
+            padding: 12px 0;
+            gap: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .toolbar-btn {
+            color: #333;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        
+        .toolbar-btn:active {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 状态栏和导航栏会通过JS动态添加 -->
+        
+        <!-- 页面内容 -->
+        <div class="content">
+            <div class="editor-container">
+                <!-- 标题输入 -->
+                <input type="text" class="title-input" placeholder="请输入标题..." value="产品设计会议纪要">
+                
+                <!-- 标签容器 -->
+                <div class="tags-container">
+                    <div class="tag">
+                        工作
+                        <span class="remove"><i class="fas fa-times"></i></span>
+                    </div>
+                    <div class="tag">
+                        会议
+                        <span class="remove"><i class="fas fa-times"></i></span>
+                    </div>
+                    <div class="add-tag">
+                        <i class="fas fa-plus mr-1"></i> 添加标签
+                    </div>
+                </div>
+                
+                <!-- 内容区域 -->
+                <textarea class="content-area" placeholder="请输入笔记内容...">今天的产品设计会议我们讨论了新版应用的界面布局和交互逻辑。
+
+与会人员：
+- 张总（产品经理）
+- 李设计（UI设计师）
+- 王工（前端开发）
+- 赵工（后端开发）
+
+会议要点：
+1. 讨论了新版应用的整体风格，决定采用更简约现代的设计语言
+2. 团队成员对于导航栏的位置有不同意见，最终决定采用底部导航方案
+3. 确定了核心功能模块：笔记列表、编辑器、分类管理、设置
+
+下一步计划：
+- 李设计负责出具详细的UI设计稿
+- 王工负责前端框架搭建
+- 赵工负责后端API设计
+
+会议持续了约2小时，整体进展顺利。下次会议定于下周三上午10点。</textarea>
+                
+                <!-- 编辑器工具栏 -->
+                <div class="editor-toolbar">
+                    <div class="toolbar-btn"><i class="fas fa-bold"></i></div>
+                    <div class="toolbar-btn"><i class="fas fa-italic"></i></div>
+                    <div class="toolbar-btn"><i class="fas fa-underline"></i></div>
+                    <div class="toolbar-btn"><i class="fas fa-strikethrough"></i></div>
+                    <div class="toolbar-btn"><i class="fas fa-list-ul"></i></div>
+                    <div class="toolbar-btn"><i class="fas fa-list-ol"></i></div>
+                    <div class="toolbar-btn"><i class="fas fa-quote-right"></i></div>
+                    <div class="toolbar-btn"><i class="fas fa-code"></i></div>
+                    <div class="toolbar-btn"><i class="fas fa-link"></i></div>
+                    <div class="toolbar-btn"><i class="fas fa-image"></i></div>
+                    <div class="toolbar-btn"><i class="fas fa-table"></i></div>
+                </div>
+                
+                <!-- 编辑器底部 -->
+                <div class="editor-footer">
+                    <div class="text-sm text-gray-500">最后编辑：今天 14:30</div>
+                    <div>
+                        <button class="ios-button">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部导航栏会通过JS动态添加，但在编辑器页面被隐藏 -->
+    </div>
+
+    <!-- 共享组件脚本 -->
+    <script src="components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const appContainer = document.querySelector('.app-container');
+            
+            // 创建导航栏（带返回按钮和右侧按钮）
+            const navBar = createNavBar('编辑笔记', true, 'fa-ellipsis-vertical', function() {
+                alert('打开更多选项');
+            });
+            
+            // 将导航栏插入到状态栏之后
+            const statusBar = document.querySelector('.status-bar');
+            if (statusBar) {
+                appContainer.insertBefore(navBar, statusBar.nextSibling);
+            }
+            
+            // 在编辑器页面隐藏底部导航栏
+            const tabBar = document.querySelector('.tab-bar');
+            if (tabBar) {
+                tabBar.style.display = 'none';
+            }
+            
+            // 标签删除功能
+            const tagRemoveBtns = document.querySelectorAll('.tag .remove');
+            tagRemoveBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.remove();
+                });
+            });
+            
+            // 添加标签按钮
+            const addTagBtn = document.querySelector('.add-tag');
+            addTagBtn.addEventListener('click', function() {
+                const tagName = prompt('请输入标签名称');
+                if (tagName && tagName.trim() !== '') {
+                    const tagsContainer = document.querySelector('.tags-container');
+                    const newTag = document.createElement('div');
+                    newTag.className = 'tag';
+                    newTag.innerHTML = tagName + '<span class="remove"><i class="fas fa-times"></i></span>';
+                    
+                    // 在添加标签按钮前插入新标签
+                    tagsContainer.insertBefore(newTag, addTagBtn);
+                    
+                    // 为新标签添加删除功能
+                    const removeBtn = newTag.querySelector('.remove');
+                    removeBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        newTag.remove();
+                    });
+                }
+            });
+            
+            // 保存按钮功能
+            const saveBtn = document.querySelector('.ios-button');
+            saveBtn.addEventListener('click', function() {
+                alert('笔记已保存');
+                window.location.href = 'home.html';
+            });
+            
+            // 模拟富文本编辑器工具栏功能
+            const toolbarButtons = document.querySelectorAll('.toolbar-btn');
+            toolbarButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 这里只是模拟，实际应用中需要实现真正的富文本编辑功能
+                    alert('选择了格式化选项：' + this.innerHTML);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>笔记App</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 共享样式 -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- 页面特定样式 -->
+    <style>
+        /* 在这里添加页面特定的样式 */
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 状态栏和导航栏会通过JS动态添加 -->
+        
+        <!-- 页面内容 -->
+        <div class="content">
+            <!-- 在这里添加页面内容 -->
+        </div>
+        
+        <!-- 底部导航栏会通过JS动态添加 -->
+    </div>
+
+    <!-- 共享组件脚本 -->
+    <script src="components.js"></script>
+    <!-- 页面特定脚本 -->
+    <script>
+        // 在这里添加页面特定的脚本
+        
+        // 示例：添加页面导航栏
+        document.addEventListener('DOMContentLoaded', function() {
+            const appContainer = document.querySelector('.app-container');
+            const content = document.querySelector('.content');
+            
+            // 创建导航栏（参数：标题, 是否显示返回按钮, 右侧按钮图标, 右侧按钮动作）
+            const navBar = createNavBar('页面标题', false, null, null);
+            
+            // 将导航栏插入到状态栏之后
+            const statusBar = document.querySelector('.status-bar');
+            if (statusBar) {
+                appContainer.insertBefore(navBar, statusBar.nextSibling);
+            }
+        });
+    </script>
+</body>
+</html> 

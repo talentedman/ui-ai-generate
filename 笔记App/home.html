@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>笔记App - 首页</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 共享样式 -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .search-container {
+            padding: 12px 16px;
+            position: sticky;
+            top: 0px;
+            z-index: 8;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .category-chips {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 8px 16px;
+            gap: 8px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .category-chip {
+            display: inline-flex;
+            padding: 6px 14px;
+            background-color: rgba(142, 142, 147, 0.12);
+            color: #666;
+            border-radius: 16px;
+            font-size: 14px;
+        }
+        
+        .category-chip.active {
+            background-color: #2176FF;
+            color: white;
+        }
+        
+        .notes-container {
+            padding: 0 16px;
+        }
+        
+        .note-card {
+            transition: transform 0.15s ease;
+        }
+        
+        .note-card:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 状态栏和导航栏会通过JS动态添加 -->
+        
+        <!-- 页面内容 -->
+        <div class="content">
+            <!-- 搜索栏 -->
+            <div class="search-container">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="搜索笔记..." class="ios-input">
+                </div>
+            </div>
+            
+            <!-- 分类标签 -->
+            <div class="category-chips">
+                <div class="category-chip active">全部</div>
+                <div class="category-chip">工作</div>
+                <div class="category-chip">学习</div>
+                <div class="category-chip">个人</div>
+                <div class="category-chip">项目</div>
+                <div class="category-chip">创意</div>
+                <div class="category-chip">日记</div>
+            </div>
+            
+            <!-- 笔记列表 -->
+            <div class="notes-container py-4">
+                <!-- 笔记项 -->
+                <div class="note-card" onclick="location.href='detail.html'">
+                    <div class="title">产品设计会议纪要</div>
+                    <div class="preview">今天的产品设计会议我们讨论了新版应用的界面布局和交互逻辑。团队成员对于导航栏的位置有不同意见，最终决定采用底部导航方案...</div>
+                    <div class="meta">
+                        <div class="tags">
+                            <span class="tag">工作</span>
+                            <span class="tag">会议</span>
+                        </div>
+                        <div class="date">今天 14:30</div>
+                    </div>
+                </div>
+                
+                <div class="note-card" onclick="location.href='detail.html'">
+                    <div class="title">周末旅行计划</div>
+                    <div class="preview">计划这个周末去杭州西湖游玩，需要准备的物品：相机、充电宝、雨伞、防晒霜。路线安排：上午游览西湖景区，下午去灵隐寺...</div>
+                    <div class="meta">
+                        <div class="tags">
+                            <span class="tag">个人</span>
+                            <span class="tag">旅行</span>
+                        </div>
+                        <div class="date">昨天 20:15</div>
+                    </div>
+                </div>
+                
+                <div class="note-card" onclick="location.href='detail.html'">
+                    <div class="title">学习笔记：React Hooks</div>
+                    <div class="preview">React Hooks是React 16.8引入的新特性，允许在函数组件中使用状态和其他React特性。常用的Hooks有：useState、useEffect、useContext、useReducer...</div>
+                    <div class="meta">
+                        <div class="tags">
+                            <span class="tag">学习</span>
+                            <span class="tag">编程</span>
+                        </div>
+                        <div class="date">3天前</div>
+                    </div>
+                </div>
+                
+                <div class="note-card" onclick="location.href='detail.html'">
+                    <div class="title">健身计划</div>
+                    <div class="preview">每周健身计划：周一、周三、周五进行力量训练，重点锻炼胸部、背部和腿部；周二、周四进行有氧运动，如跑步30分钟或HIIT训练...</div>
+                    <div class="meta">
+                        <div class="tags">
+                            <span class="tag">健康</span>
+                        </div>
+                        <div class="date">1周前</div>
+                    </div>
+                </div>
+                
+                <div class="note-card" onclick="location.href='detail.html'">
+                    <div class="title">读书笔记：《原子习惯》</div>
+                    <div class="preview">《原子习惯》中提到了四个习惯养成的关键步骤：明显的提示、强烈的渴望、简单的行动和满意的奖励。要培养好习惯，可以从这四个方面入手...</div>
+                    <div class="meta">
+                        <div class="tags">
+                            <span class="tag">读书</span>
+                            <span class="tag">自我提升</span>
+                        </div>
+                        <div class="date">2周前</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 浮动操作按钮 -->
+        <a href="editor.html" class="fab">
+            <i class="fas fa-plus"></i>
+        </a>
+        
+        <!-- 底部导航栏会通过JS动态添加 -->
+    </div>
+
+    <!-- 共享组件脚本 -->
+    <script src="components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const appContainer = document.querySelector('.app-container');
+            const content = document.querySelector('.content');
+            
+            // 创建导航栏
+            const navBar = createNavBar('我的笔记', false, 'fa-ellipsis-vertical', function() {
+                alert('打开更多选项');
+            });
+            
+            // 将导航栏插入到状态栏之后
+            const statusBar = document.querySelector('.status-bar');
+            if (statusBar) {
+                appContainer.insertBefore(navBar, statusBar.nextSibling);
+            }
+            
+            // 分类标签点击效果
+            const categoryChips = document.querySelectorAll('.category-chip');
+            categoryChips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    categoryChips.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

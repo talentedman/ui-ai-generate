@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>笔记App - 分类</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 共享样式 -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .categories-container {
+            padding: 16px;
+        }
+        
+        .category-stats {
+            background-color: #f2f2f7;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        
+        .stats-label {
+            color: #8e8e93;
+            font-size: 14px;
+        }
+        
+        .stats-value {
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .categories-list {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-item {
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .category-item:last-child {
+            border-bottom: none;
+        }
+        
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 18px;
+        }
+        
+        .category-info {
+            flex: 1;
+        }
+        
+        .category-name {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .category-count {
+            font-size: 13px;
+            color: #8e8e93;
+        }
+        
+        .category-action {
+            color: #8e8e93;
+        }
+        
+        .recent-categories {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-left: 4px;
+        }
+        
+        .add-category-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            background-color: #f2f2f7;
+            border-radius: 12px;
+            color: #2176FF;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        
+        .add-category-button i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 状态栏和导航栏会通过JS动态添加 -->
+        
+        <!-- 页面内容 -->
+        <div class="content">
+            <div class="categories-container">
+                <!-- 分类统计 -->
+                <div class="category-stats">
+                    <div class="stats-row">
+                        <div class="stats-label">总分类数</div>
+                        <div class="stats-value">7</div>
+                    </div>
+                    <div class="stats-row">
+                        <div class="stats-label">总笔记数</div>
+                        <div class="stats-value">28</div>
+                    </div>
+                    <div class="stats-row">
+                        <div class="stats-label">最近使用</div>
+                        <div class="stats-value">工作分类</div>
+                    </div>
+                </div>
+                
+                <!-- 最近使用的分类 -->
+                <div class="recent-categories">
+                    <h2 class="section-title">最近使用</h2>
+                    <div class="categories-list">
+                        <div class="category-item">
+                            <div class="category-icon" style="background-color: #FFE8D6; color: #FF9500;">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-name">工作</div>
+                                <div class="category-count">8 个笔记</div>
+                            </div>
+                            <div class="category-action">
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-icon" style="background-color: #E3F9E5; color: #34C759;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-name">学习</div>
+                                <div class="category-count">5 个笔记</div>
+                            </div>
+                            <div class="category-action">
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 所有分类 -->
+                <div>
+                    <h2 class="section-title">所有分类</h2>
+                    <div class="categories-list">
+                        <div class="category-item">
+                            <div class="category-icon" style="background-color: #FFE8D6; color: #FF9500;">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-name">工作</div>
+                                <div class="category-count">8 个笔记</div>
+                            </div>
+                            <div class="category-action">
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-icon" style="background-color: #E3F9E5; color: #34C759;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-name">学习</div>
+                                <div class="category-count">5 个笔记</div>
+                            </div>
+                            <div class="category-action">
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-icon" style="background-color: #D1EEFC; color: #2176FF;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-name">个人</div>
+                                <div class="category-count">6 个笔记</div>
+                            </div>
+                            <div class="category-action">
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-icon" style="background-color: #FCF1D1; color: #FFCC00;">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-name">项目</div>
+                                <div class="category-count">4 个笔记</div>
+                            </div>
+                            <div class="category-action">
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-icon" style="background-color: #FFE0F0; color: #FF2D55;">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-name">创意</div>
+                                <div class="category-count">3 个笔记</div>
+                            </div>
+                            <div class="category-action">
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-icon" style="background-color: #DEEAFF; color: #5856D6;">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-name">日记</div>
+                                <div class="category-count">2 个笔记</div>
+                            </div>
+                            <div class="category-action">
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 添加分类按钮 -->
+                <div class="add-category-button" id="add-category-btn">
+                    <i class="fas fa-plus"></i>
+                    <span>新建分类</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部导航栏会通过JS动态添加 -->
+    </div>
+
+    <!-- 共享组件脚本 -->
+    <script src="components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const appContainer = document.querySelector('.app-container');
+            
+            // 创建导航栏
+            const navBar = createNavBar('分类管理', false, 'fa-ellipsis-vertical', function() {
+                alert('打开更多选项');
+            });
+            
+            // 将导航栏插入到状态栏之后
+            const statusBar = document.querySelector('.status-bar');
+            if (statusBar) {
+                appContainer.insertBefore(navBar, statusBar.nextSibling);
+            }
+            
+            // 分类项点击事件
+            const categoryItems = document.querySelectorAll('.category-item');
+            categoryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const categoryName = this.querySelector('.category-name').textContent;
+                    // 这里可以导航到分类对应的笔记列表
+                    alert(`查看 ${categoryName} 分类下的笔记`);
+                });
+            });
+            
+            // 添加分类按钮点击事件
+            const addCategoryBtn = document.getElementById('add-category-btn');
+            addCategoryBtn.addEventListener('click', function() {
+                alert('弹出新建分类对话框');
+            });
+        });
+    </script>
+</body>
+</html> 
