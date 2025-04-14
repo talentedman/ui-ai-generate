@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抖音 - 关注</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-black text-white">
+    <!-- 引入公共组件 -->
+    <iframe src="components.html" style="display:none" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+
+    <!-- 顶部标签栏 -->
+    <div class="app-header bg-transparent">
+        <div class="flex items-center justify-center space-x-12">
+            <div class="text-white text-lg font-bold pb-1 border-b-2 border-white">关注</div>
+            <div class="text-gray-300 text-lg">推荐</div>
+            <div class="text-gray-300 text-lg">朋友</div>
+        </div>
+        <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
+            <i class="fas fa-search text-xl"></i>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content-container">
+        <!-- 关注列表 -->
+        <div class="pt-2 pb-4 border-b border-gray-800">
+            <div class="flex overflow-x-auto px-2 py-3 space-x-4 hide-scrollbar">
+                <div class="flex flex-col items-center min-w-max">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-red-500 rounded-full flex items-center justify-center p-0.5">
+                        <div class="w-full h-full bg-black rounded-full flex items-center justify-center p-0.5">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-full h-full rounded-full" alt="User Avatar">
+                        </div>
+                    </div>
+                    <span class="text-xs mt-1.5 truncate w-16 text-center">旅行达人</span>
+                </div>
+                <div class="flex flex-col items-center min-w-max">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center p-0.5">
+                        <div class="w-full h-full bg-black rounded-full flex items-center justify-center p-0.5">
+                            <img src="https://randomuser.me/api/portraits/women/55.jpg" class="w-full h-full rounded-full" alt="User Avatar">
+                        </div>
+                    </div>
+                    <span class="text-xs mt-1.5 truncate w-16 text-center">美食家</span>
+                </div>
+                <div class="flex flex-col items-center min-w-max">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center p-0.5">
+                        <div class="w-full h-full bg-black rounded-full flex items-center justify-center p-0.5">
+                            <img src="https://randomuser.me/api/portraits/men/85.jpg" class="w-full h-full rounded-full" alt="User Avatar">
+                        </div>
+                    </div>
+                    <span class="text-xs mt-1.5 truncate w-16 text-center">摄影师小张</span>
+                </div>
+                <div class="flex flex-col items-center min-w-max">
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center p-0.5">
+                        <div class="w-full h-full bg-black rounded-full flex items-center justify-center p-0.5">
+                            <img src="https://randomuser.me/api/portraits/women/33.jpg" class="w-full h-full rounded-full" alt="User Avatar">
+                        </div>
+                    </div>
+                    <span class="text-xs mt-1.5 truncate w-16 text-center">时尚博主</span>
+                </div>
+                <div class="flex flex-col items-center min-w-max">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center p-0.5">
+                        <div class="w-full h-full bg-black rounded-full flex items-center justify-center p-0.5">
+                            <img src="https://randomuser.me/api/portraits/men/52.jpg" class="w-full h-full rounded-full" alt="User Avatar">
+                        </div>
+                    </div>
+                    <span class="text-xs mt-1.5 truncate w-16 text-center">街舞大神</span>
+                </div>
+                <div class="flex flex-col items-center min-w-max">
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-yellow-500 rounded-full flex items-center justify-center p-0.5">
+                        <div class="w-full h-full bg-black rounded-full flex items-center justify-center p-0.5">
+                            <img src="https://randomuser.me/api/portraits/women/62.jpg" class="w-full h-full rounded-full" alt="User Avatar">
+                        </div>
+                    </div>
+                    <span class="text-xs mt-1.5 truncate w-16 text-center">萌宠博主</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 视频内容区域 -->
+        <div class="relative h-full">
+            <!-- 视频内容 -->
+            <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Video Preview" class="full-screen-video">
+            
+            <!-- 视频互动控件 -->
+            <div class="absolute right-3 bottom-20 flex flex-col items-center space-y-8 z-30">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-11 h-11 rounded-full border-2 border-white" alt="User Avatar">
+                    </div>
+                    <i class="fas fa-check-circle text-blue-500 mt-1 text-lg"></i>
+                </div>
+                <div class="flex flex-col items-center text-white">
+                    <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                        <i class="fas fa-heart text-2xl"></i>
+                    </div>
+                    <span class="text-xs mt-1">43.2w</span>
+                </div>
+                <div class="flex flex-col items-center text-white">
+                    <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                        <i class="fas fa-comment-dots text-2xl"></i>
+                    </div>
+                    <span class="text-xs mt-1">3.7w</span>
+                </div>
+                <div class="flex flex-col items-center text-white">
+                    <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                        <i class="fas fa-share text-2xl"></i>
+                    </div>
+                    <span class="text-xs mt-1">1.2w</span>
+                </div>
+                <div class="flex flex-col items-center text-white">
+                    <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                        <i class="fas fa-record-vinyl text-2xl animate-spin"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 视频信息 -->
+            <div class="video-info">
+                <h3 class="text-lg font-bold mb-1">@旅行达人</h3>
+                <p class="text-sm mb-2">峡谷中的秘境瀑布，你们去过吗？ #自然探索 #旅行 #风景</p>
+                <div class="flex items-center">
+                    <i class="fas fa-music mr-2"></i>
+                    <p class="text-sm">旅行达人创作的原声</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body>
+</html> 

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抖音 - 个人主页</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-black text-white">
+    <!-- 引入公共组件 -->
+    <iframe src="components.html" style="display:none" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+
+    <!-- 顶部导航 -->
+    <div class="fixed top-11 left-0 w-full bg-black px-4 py-3 z-40 flex justify-between items-center">
+        <i class="fas fa-user-plus text-xl"></i>
+        <div class="flex space-x-4">
+            <i class="fas fa-ellipsis-h text-xl"></i>
+            <i class="fas fa-bars text-xl"></i>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content-container pt-16">
+        <!-- 用户信息 -->
+        <div class="px-5 pt-3 pb-5">
+            <div class="flex items-center justify-center">
+                <div class="relative">
+                    <div class="w-20 h-20 rounded-full overflow-hidden border-2 border-white">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Profile" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-1 right-0 bg-pink-500 rounded-full w-6 h-6 border-2 border-black flex items-center justify-center">
+                        <i class="fas fa-plus text-xs text-white"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <h1 class="text-lg font-bold">@小甜甜</h1>
+                <p class="text-gray-400 text-sm mt-1">抖音号: dy88889999</p>
+            </div>
+            
+            <div class="flex justify-center mt-3 space-x-6">
+                <div class="text-center">
+                    <div class="font-bold">268</div>
+                    <div class="text-xs text-gray-400">关注</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-bold">10.2w</div>
+                    <div class="text-xs text-gray-400">粉丝</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-bold">92.8w</div>
+                    <div class="text-xs text-gray-400">获赞</div>
+                </div>
+            </div>
+            
+            <div class="mt-4 flex justify-center">
+                <div class="bg-pink-500 text-white px-10 py-1.5 rounded-full font-medium text-sm">
+                    编辑资料
+                </div>
+            </div>
+            
+            <div class="mt-4 text-center">
+                <p class="text-sm">世界那么大 我想去看看 ✨</p>
+                <p class="text-sm text-gray-400">旅行 | 美食 | 日常</p>
+            </div>
+        </div>
+        
+        <!-- 内容分类 -->
+        <div class="border-t border-gray-800">
+            <div class="flex">
+                <div class="flex-1 py-3 text-center border-b-2 border-white">
+                    <i class="fas fa-th"></i>
+                </div>
+                <div class="flex-1 py-3 text-center text-gray-500">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="flex-1 py-3 text-center text-gray-500">
+                    <i class="fas fa-bookmark"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 作品展示 -->
+        <div class="grid grid-cols-3 gap-0.5">
+            <div class="aspect-square relative">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User Video" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 left-1">
+                    <div class="flex items-center text-xs">
+                        <i class="fas fa-heart"></i>
+                        <span class="ml-1">12.5w</span>
+                    </div>
+                </div>
+            </div>
+            <div class="aspect-square relative">
+                <img src="https://images.unsplash.com/photo-1526980194882-644e5eb143ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User Video" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 left-1">
+                    <div class="flex items-center text-xs">
+                        <i class="fas fa-heart"></i>
+                        <span class="ml-1">9.7w</span>
+                    </div>
+                </div>
+            </div>
+            <div class="aspect-square relative">
+                <img src="https://images.unsplash.com/photo-1534175261110-da4c7374e5c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User Video" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 left-1">
+                    <div class="flex items-center text-xs">
+                        <i class="fas fa-heart"></i>
+                        <span class="ml-1">8.3w</span>
+                    </div>
+                </div>
+            </div>
+            <div class="aspect-square relative">
+                <img src="https://images.unsplash.com/photo-1501959915551-4e8d30928317?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User Video" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 left-1">
+                    <div class="flex items-center text-xs">
+                        <i class="fas fa-heart"></i>
+                        <span class="ml-1">7.1w</span>
+                    </div>
+                </div>
+            </div>
+            <div class="aspect-square relative">
+                <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User Video" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 left-1">
+                    <div class="flex items-center text-xs">
+                        <i class="fas fa-heart"></i>
+                        <span class="ml-1">5.8w</span>
+                    </div>
+                </div>
+            </div>
+            <div class="aspect-square relative">
+                <img src="https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User Video" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 left-1">
+                    <div class="flex items-center text-xs">
+                        <i class="fas fa-heart"></i>
+                        <span class="ml-1">4.3w</span>
+                    </div>
+                </div>
+            </div>
+            <div class="aspect-square relative">
+                <img src="https://images.unsplash.com/photo-1498654114734-feba9d8766f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User Video" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 left-1">
+                    <div class="flex items-center text-xs">
+                        <i class="fas fa-heart"></i>
+                        <span class="ml-1">3.9w</span>
+                    </div>
+                </div>
+            </div>
+            <div class="aspect-square relative">
+                <img src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User Video" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 left-1">
+                    <div class="flex items-center text-xs">
+                        <i class="fas fa-heart"></i>
+                        <span class="ml-1">3.5w</span>
+                    </div>
+                </div>
+            </div>
+            <div class="aspect-square relative">
+                <img src="https://images.unsplash.com/photo-1514651872441-59789a130475?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User Video" class="w-full h-full object-cover">
+                <div class="absolute bottom-1 left-1">
+                    <div class="flex items-center text-xs">
+                        <i class="fas fa-heart"></i>
+                        <span class="ml-1">2.7w</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

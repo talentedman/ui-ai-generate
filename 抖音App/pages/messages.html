@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抖音 - 消息</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-black text-white">
+    <!-- 引入公共组件 -->
+    <iframe src="components.html" style="display:none" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+
+    <!-- 顶部导航 -->
+    <div class="fixed top-11 left-0 w-full bg-black px-4 py-3 z-40 border-b border-gray-800">
+        <div class="flex justify-between items-center">
+            <h1 class="text-xl font-bold">消息</h1>
+            <div class="flex space-x-4">
+                <i class="fas fa-search text-xl"></i>
+                <i class="fas fa-user-plus text-xl"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content-container pt-16">
+        <!-- 系统通知 -->
+        <div class="p-4 border-b border-gray-800 flex items-center">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
+                <i class="fas fa-bell text-white text-lg"></i>
+            </div>
+            <div class="ml-3 flex-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-white font-semibold">系统通知</h3>
+                    <span class="text-xs text-gray-400">14:25</span>
+                </div>
+                <p class="text-sm text-gray-400 truncate mt-1">您关注的用户「街舞大神」发布了新视频</p>
+            </div>
+        </div>
+
+        <!-- 互动消息 -->
+        <div class="p-4 border-b border-gray-800 flex items-center">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-400 to-red-500 flex items-center justify-center">
+                <i class="fas fa-heart text-white text-lg"></i>
+            </div>
+            <div class="ml-3 flex-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-white font-semibold">赞和评论</h3>
+                    <span class="text-xs text-gray-400">昨天</span>
+                </div>
+                <p class="text-sm text-gray-400 truncate mt-1">有16人赞了你的视频「城市日落」</p>
+            </div>
+        </div>
+
+        <!-- 聊天列表 -->
+        <div class="p-4 border-b border-gray-800 flex items-center">
+            <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="User Avatar" class="w-full h-full object-cover">
+            </div>
+            <div class="ml-3 flex-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-white font-semibold">美食家</h3>
+                    <span class="text-xs text-gray-400">09:42</span>
+                </div>
+                <p class="text-sm text-gray-400 truncate mt-1">谢谢，下次有机会一起去吃 [笑脸]</p>
+            </div>
+        </div>
+
+        <div class="p-4 border-b border-gray-800 flex items-center">
+            <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Avatar" class="w-full h-full object-cover">
+            </div>
+            <div class="ml-3 flex-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-white font-semibold">旅行达人</h3>
+                    <span class="text-xs text-gray-400">昨天</span>
+                </div>
+                <p class="text-sm text-gray-400 truncate mt-1">下个月去云南，有什么推荐的地方？</p>
+            </div>
+        </div>
+
+        <div class="p-4 border-b border-gray-800 flex items-center">
+            <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="User Avatar" class="w-full h-full object-cover">
+            </div>
+            <div class="ml-3 flex-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-white font-semibold">时尚博主</h3>
+                    <span class="text-xs text-gray-400">3天前</span>
+                </div>
+                <p class="text-sm text-gray-400 truncate mt-1">你上次分享的包包链接能再发一下吗？</p>
+            </div>
+        </div>
+
+        <div class="p-4 border-b border-gray-800 flex items-center">
+            <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="User Avatar" class="w-full h-full object-cover">
+            </div>
+            <div class="ml-3 flex-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-white font-semibold">街舞大神</h3>
+                    <span class="text-xs text-gray-400">1周前</span>
+                </div>
+                <p class="text-sm text-gray-400 truncate mt-1">下周舞室有活动，有兴趣来参加吗？</p>
+            </div>
+        </div>
+
+        <div class="p-4 border-b border-gray-800 flex items-center">
+            <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/women/62.jpg" alt="User Avatar" class="w-full h-full object-cover">
+            </div>
+            <div class="ml-3 flex-1">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-white font-semibold">萌宠博主</h3>
+                    <span class="text-xs text-gray-400">2周前</span>
+                </div>
+                <p class="text-sm text-gray-400 truncate mt-1">你家猫咪太可爱了！是什么品种？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 浮动新消息按钮 -->
+    <div class="fixed right-5 bottom-20 z-40">
+        <div class="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center shadow-lg">
+            <i class="fas fa-pen text-white text-xl"></i>
+        </div>
+    </div>
+</body>
+</html> 

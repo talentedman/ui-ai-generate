@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抖音App原型</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .prototype-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 40px;
+            padding: 40px;
+        }
+        .prototype-frame {
+            width: 390px;
+            height: 844px;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            position: relative;
+            background: white;
+        }
+        .prototype-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .prototype-title {
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-black text-white p-6">
+        <h1 class="text-3xl font-bold">抖音App原型设计</h1>
+        <p class="text-lg mt-2">高保真UI设计和交互原型</p>
+    </header>
+
+    <div class="prototype-container">
+        <div>
+            <div class="prototype-title">首页 - 推荐内容</div>
+            <div class="prototype-frame">
+                <iframe src="pages/home.html"></iframe>
+            </div>
+        </div>
+
+        <div>
+            <div class="prototype-title">关注页面</div>
+            <div class="prototype-frame">
+                <iframe src="pages/following.html"></iframe>
+            </div>
+        </div>
+
+        <div>
+            <div class="prototype-title">探索页面</div>
+            <div class="prototype-frame">
+                <iframe src="pages/discover.html"></iframe>
+            </div>
+        </div>
+
+        <div>
+            <div class="prototype-title">消息页面</div>
+            <div class="prototype-frame">
+                <iframe src="pages/messages.html"></iframe>
+            </div>
+        </div>
+
+        <div>
+            <div class="prototype-title">个人主页</div>
+            <div class="prototype-frame">
+                <iframe src="pages/profile.html"></iframe>
+            </div>
+        </div>
+
+        <div>
+            <div class="prototype-title">视频播放页</div>
+            <div class="prototype-frame">
+                <iframe src="pages/video-detail.html"></iframe>
+            </div>
+        </div>
+
+        <div>
+            <div class="prototype-title">评论界面</div>
+            <div class="prototype-frame">
+                <iframe src="pages/comments.html"></iframe>
+            </div>
+        </div>
+
+        <div>
+            <div class="prototype-title">创作中心</div>
+            <div class="prototype-frame">
+                <iframe src="pages/creation.html"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

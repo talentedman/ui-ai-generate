@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抖音 - 视频详情</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-black text-white">
+    <!-- 引入公共组件 -->
+    <iframe src="components.html" style="display:none" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+
+    <!-- 返回按钮 -->
+    <div class="fixed top-14 left-4 z-50">
+        <button class="w-9 h-9 rounded-full bg-black bg-opacity-40 flex items-center justify-center">
+            <i class="fas fa-arrow-left text-white"></i>
+        </button>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="h-full w-full">
+        <!-- 视频内容 -->
+        <img src="https://images.unsplash.com/photo-1513104487127-813ea879b8da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Video" class="full-screen-video">
+            
+        <!-- 视频互动控件 -->
+        <div class="absolute right-3 bottom-20 flex flex-col items-center space-y-8 z-30">
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg" class="w-11 h-11 rounded-full border-2 border-white" alt="User Avatar">
+                </div>
+                <i class="fas fa-plus-circle text-white mt-1 text-lg"></i>
+            </div>
+            <div class="flex flex-col items-center text-white">
+                <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                    <i class="fas fa-heart text-2xl"></i>
+                </div>
+                <span class="text-xs mt-1">86.3w</span>
+            </div>
+            <div class="flex flex-col items-center text-white">
+                <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                    <i class="fas fa-comment-dots text-2xl"></i>
+                </div>
+                <span class="text-xs mt-1">7.4w</span>
+            </div>
+            <div class="flex flex-col items-center text-white">
+                <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                    <i class="fas fa-bookmark text-2xl"></i>
+                </div>
+                <span class="text-xs mt-1">2.5w</span>
+            </div>
+            <div class="flex flex-col items-center text-white">
+                <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                    <i class="fas fa-share text-2xl"></i>
+                </div>
+                <span class="text-xs mt-1">4.6w</span>
+            </div>
+            <div class="flex flex-col items-center text-white">
+                <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1513104487127-813ea879b8da?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" class="w-6 h-6 rounded-full" alt="Music Cover">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 视频信息 -->
+        <div class="video-info">
+            <h3 class="text-lg font-bold mb-1">@时尚博主</h3>
+            <p class="text-sm mb-2">纽约时装周街拍分享，你们最喜欢哪一套？ #时尚 #街拍 #时装周</p>
+            <div class="flex items-center">
+                <i class="fas fa-music mr-2"></i>
+                <p class="text-sm">时尚博主创作的原声</p>
+            </div>
+        </div>
+        
+        <!-- 评论区入口 -->
+        <div class="fixed bottom-4 left-0 w-full px-4 z-40">
+            <div class="flex items-center bg-gray-800 bg-opacity-50 rounded-full px-4 py-2">
+                <input type="text" placeholder="说点什么..." class="bg-transparent text-white flex-1 focus:outline-none">
+                <div class="flex space-x-3 ml-2">
+                    <i class="fas fa-at text-gray-400"></i>
+                    <i class="far fa-smile text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 播放控制 -->
+        <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+            <div class="text-white text-6xl opacity-0 transition-opacity duration-300" id="playPauseIcon">
+                <i class="fas fa-play"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoContainer = document.querySelector('.h-full');
+            const playPauseIcon = document.getElementById('playPauseIcon');
+            let isPlaying = true;
+
+            videoContainer.addEventListener('click', function(e) {
+                // 避免点击互动按钮时触发播放/暂停
+                if (e.target.closest('.right-3')) return;
+                
+                isPlaying = !isPlaying;
+                
+                // 显示播放/暂停图标
+                playPauseIcon.innerHTML = isPlaying ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+                playPauseIcon.classList.remove('opacity-0');
+                
+                // 图标淡出效果
+                setTimeout(() => {
+                    playPauseIcon.classList.add('opacity-0');
+                }, 500);
+                
+                console.log(isPlaying ? 'Video playing' : 'Video paused');
+            });
+
+            // 双击点赞效果
+            let lastClick = 0;
+            videoContainer.addEventListener('click', function(e) {
+                const time = new Date().getTime();
+                const timeDiff = time - lastClick;
+                
+                if (timeDiff < 300 && timeDiff > 0) {
+                    // 双击
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '<i class="fas fa-heart text-6xl text-white"></i>';
+                    heart.className = 'absolute transform -translate-x-1/2 -translate-y-1/2 z-30';
+                    heart.style.left = e.clientX + 'px';
+                    heart.style.top = e.clientY + 'px';
+                    heart.style.opacity = '1';
+                    heart.style.transition = 'all 0.5s ease-out';
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.style.opacity = '0';
+                        heart.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    }, 100);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(heart);
+                    }, 600);
+                    
+                    console.log('Double click like!');
+                }
+                
+                lastClick = time;
+            });
+        });
+    </script>
+</body>
+</html> 
