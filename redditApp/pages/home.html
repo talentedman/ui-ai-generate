@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit - 首页</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <div class="bg-white p-2 flex items-center justify-between border-b border-gray-200 sticky top-11 z-40">
+        <div class="flex items-center">
+            <img src="https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png" alt="Reddit Logo" class="w-8 h-8">
+            <div class="font-semibold text-lg ml-2">首页</div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <i class="fas fa-search text-gray-500 text-lg"></i>
+            <img src="https://i.pravatar.cc/150?img=1" alt="User Avatar" class="avatar-sm">
+        </div>
+    </div>
+
+    <!-- 分类标签 -->
+    <div class="bg-white p-2 border-b border-gray-200 overflow-x-auto whitespace-nowrap sticky top-24 z-30">
+        <button class="px-4 py-1 mr-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">热门</button>
+        <button class="px-4 py-1 mr-2 text-gray-600 rounded-full text-sm font-medium">最新</button>
+        <button class="px-4 py-1 mr-2 text-gray-600 rounded-full text-sm font-medium">热议</button>
+        <button class="px-4 py-1 mr-2 text-gray-600 rounded-full text-sm font-medium">推荐</button>
+        <button class="px-4 py-1 mr-2 text-gray-600 rounded-full text-sm font-medium">科技</button>
+        <button class="px-4 py-1 mr-2 text-gray-600 rounded-full text-sm font-medium">游戏</button>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="content">
+        <!-- 帖子卡片 1 -->
+        <div class="reddit-card">
+            <div class="card-header">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Community Icon" class="card-community-icon">
+                <span class="card-community-name">r/technology</span>
+                <span class="card-meta">· 2小时前</span>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">苹果发布iOS 18，全新界面和AI功能受到用户欢迎</h3>
+                <p class="card-text">新版本带来了全新的设计和更多AI集成功能，用户普遍反馈良好。新的通知管理系统更加直观...</p>
+                <img src="https://images.unsplash.com/photo-1592337081626-c9389ddc527b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="iOS 18 Preview" class="card-image">
+            </div>
+            <div class="card-actions">
+                <div class="action-btn">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>15.2k</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>2.3k 评论</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-share"></i>
+                    <span>分享</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子卡片 2 -->
+        <div class="reddit-card">
+            <div class="card-header">
+                <img src="https://i.pravatar.cc/150?img=12" alt="Community Icon" class="card-community-icon">
+                <span class="card-community-name">r/gaming</span>
+                <span class="card-meta">· 5小时前</span>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">新一代主机性能对比：PS5 Pro vs Xbox Series X 2</h3>
+                <p class="card-text">详细的硬件规格和游戏性能对比，哪一款更值得购买？</p>
+                <img src="https://images.unsplash.com/photo-1605901309584-818e25960a8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2019&q=80" alt="Gaming Console" class="card-image">
+            </div>
+            <div class="card-actions">
+                <div class="action-btn">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>8.7k</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>1.5k 评论</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-share"></i>
+                    <span>分享</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子卡片 3 -->
+        <div class="reddit-card">
+            <div class="card-header">
+                <img src="https://i.pravatar.cc/150?img=13" alt="Community Icon" class="card-community-icon">
+                <span class="card-community-name">r/science</span>
+                <span class="card-meta">· 8小时前</span>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">研究发现：每天冥想20分钟可显著改善注意力和记忆力</h3>
+                <p class="card-text">最新研究表明，持续冥想对大脑的积极影响比之前认为的更为显著...</p>
+            </div>
+            <div class="card-actions">
+                <div class="action-btn">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>5.4k</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>430 评论</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-share"></i>
+                    <span>分享</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子卡片 4 -->
+        <div class="reddit-card">
+            <div class="card-header">
+                <img src="https://i.pravatar.cc/150?img=14" alt="Community Icon" class="card-community-icon">
+                <span class="card-community-name">r/movies</span>
+                <span class="card-meta">· 12小时前</span>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">《Dune: Part Two》全球票房突破10亿美元，成为今年最卖座电影</h3>
+                <p class="card-text">Denis Villeneuve导演的科幻史诗续集成为票房和口碑双丰收的作品...</p>
+                <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Dune Movie" class="card-image">
+            </div>
+            <div class="card-actions">
+                <div class="action-btn">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>12.1k</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>1.8k 评论</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-share"></i>
+                    <span>分享</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="communities.html" class="nav-item">
+            <i class="fas fa-compass"></i>
+            <span>社区</span>
+        </a>
+        <a href="create.html" class="nav-item">
+            <i class="fas fa-plus-circle"></i>
+            <span>发布</span>
+        </a>
+        <a href="notifications.html" class="nav-item">
+            <i class="fas fa-bell"></i>
+            <span>通知</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

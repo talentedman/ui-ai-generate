@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit - 帖子详情</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .comment {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comment:last-child {
+            border-bottom: none;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        
+        .comment-user {
+            display: flex;
+            align-items: center;
+        }
+        
+        .comment-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .comment-username {
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        
+        .comment-time {
+            color: #65676b;
+            font-size: 0.75rem;
+        }
+        
+        .comment-content {
+            font-size: 0.875rem;
+            margin: 4px 0;
+            line-height: 1.4;
+        }
+        
+        .comment-actions {
+            display: flex;
+            margin-top: 8px;
+        }
+        
+        .comment-action {
+            display: flex;
+            align-items: center;
+            color: #65676b;
+            font-size: 0.75rem;
+            margin-right: 16px;
+        }
+        
+        .comment-action i {
+            margin-right: 4px;
+        }
+        
+        .reply-container {
+            margin-left: 36px;
+            border-left: 2px solid #eee;
+            padding-left: 12px;
+        }
+        
+        .post-details-container {
+            background-color: white;
+            padding: 16px;
+            border-bottom: 8px solid #f0f2f5;
+        }
+        
+        .comment-composer {
+            display: flex;
+            align-items: center;
+            background-color: #f0f2f5;
+            border-radius: 20px;
+            padding: 8px 16px;
+            margin: 16px 0;
+        }
+        
+        .comment-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            outline: none;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <div class="bg-white p-3 flex items-center justify-between border-b border-gray-200 sticky top-11 z-40">
+        <a href="home.html" class="text-gray-700">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <div class="font-semibold text-lg">帖子详情</div>
+        <div class="flex space-x-4">
+            <i class="fas fa-bookmark text-gray-500"></i>
+            <i class="fas fa-ellipsis-h text-gray-500"></i>
+        </div>
+    </div>
+
+    <!-- 帖子详情 -->
+    <div class="content">
+        <div class="post-details-container">
+            <div class="flex items-center mb-2">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Community Icon" class="card-community-icon">
+                <span class="card-community-name">r/technology</span>
+                <span class="card-meta">· 2小时前</span>
+            </div>
+            
+            <h1 class="text-xl font-bold mb-2">苹果发布iOS 18，全新界面和AI功能受到用户欢迎</h1>
+            
+            <div class="flex items-center text-sm text-gray-500 mb-3">
+                <div class="flex items-center mr-4">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="User Avatar" class="w-5 h-5 rounded-full mr-1">
+                    <span>u/jwilson</span>
+                </div>
+            </div>
+            
+            <div class="text-base mb-4">
+                <p class="mb-4">新版本带来了全新的设计和更多AI集成功能，用户普遍反馈良好。新的通知管理系统更加直观，控制中心也进行了重新设计，让操作更加便捷。</p>
+                <p class="mb-4">个人认为最大的亮点是新增的AI助手功能，它可以根据用户习惯预测需求并提供帮助，比如自动整理照片、提前准备导航等。</p>
+                <p>根据苹果官方数据，iOS 18已经有超过60%的兼容设备完成了升级，创下了历史新高。</p>
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1592337081626-c9389ddc527b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="iOS 18 Preview" class="w-full rounded-lg mb-4">
+            
+            <div class="flex justify-between py-2">
+                <div class="flex items-center">
+                    <i class="fas fa-arrow-up text-orange-500 mr-1"></i>
+                    <span class="text-gray-700 mr-1">15.2k</span>
+                    <i class="fas fa-arrow-down text-gray-400 ml-2"></i>
+                </div>
+                <div class="flex items-center text-gray-500">
+                    <div class="mr-4">
+                        <i class="fas fa-comment-alt mr-1"></i>
+                        <span>2.3k 评论</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-share mr-1"></i>
+                        <span>分享</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 评论输入框 -->
+        <div class="px-4 py-2 bg-white sticky top-24 z-30 border-b border-gray-200">
+            <div class="comment-composer">
+                <img src="https://i.pravatar.cc/150?img=1" alt="Your Avatar" class="w-8 h-8 rounded-full">
+                <input type="text" placeholder="添加评论..." class="comment-input">
+                <i class="fas fa-paper-plane text-gray-400"></i>
+            </div>
+        </div>
+        
+        <!-- 热门评论 -->
+        <div class="p-4 bg-white">
+            <div class="flex justify-between items-center mb-4">
+                <div class="text-sm font-semibold">热门评论</div>
+                <div class="text-sm text-blue-500">
+                    <i class="fas fa-sort-amount-down mr-1"></i>
+                    <span>排序</span>
+                </div>
+            </div>
+            
+            <!-- 评论1 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-user">
+                        <img src="https://i.pravatar.cc/150?img=41" alt="User Avatar" class="comment-avatar">
+                        <div>
+                            <div class="comment-username">u/techguru</div>
+                            <div class="comment-time">1小时前</div>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fas fa-ellipsis-h text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="comment-content">
+                    作为一名开发者，我必须说新的API真的太棒了！特别是那些AI相关的功能，让应用开发变得更加简单和强大。
+                </div>
+                <div class="comment-actions">
+                    <div class="comment-action">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>1.2k</span>
+                    </div>
+                    <div class="comment-action">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="comment-action">
+                        <i class="fas fa-reply"></i>
+                        <span>回复</span>
+                    </div>
+                </div>
+                
+                <!-- 回复 -->
+                <div class="reply-container mt-3">
+                    <div class="comment">
+                        <div class="comment-header">
+                            <div class="comment-user">
+                                <img src="https://i.pravatar.cc/150?img=1" alt="User Avatar" class="comment-avatar">
+                                <div>
+                                    <div class="comment-username">u/jwilson</div>
+                                    <div class="comment-time">45分钟前</div>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="fas fa-ellipsis-h text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div class="comment-content">
+                            @techguru 完全同意！你有尝试过新的机器学习框架吗？我发现它比CoreML快了至少30%。
+                        </div>
+                        <div class="comment-actions">
+                            <div class="comment-action">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>347</span>
+                            </div>
+                            <div class="comment-action">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div class="comment-action">
+                                <i class="fas fa-reply"></i>
+                                <span>回复</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 评论2 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-user">
+                        <img src="https://i.pravatar.cc/150?img=42" alt="User Avatar" class="comment-avatar">
+                        <div>
+                            <div class="comment-username">u/applelover</div>
+                            <div class="comment-time">2小时前</div>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fas fa-ellipsis-h text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="comment-content">
+                    我已经升级了，但发现电池消耗比以前快了很多。有人也遇到这个问题吗？
+                </div>
+                <div class="comment-actions">
+                    <div class="comment-action">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>823</span>
+                    </div>
+                    <div class="comment-action">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="comment-action">
+                        <i class="fas fa-reply"></i>
+                        <span>回复</span>
+                    </div>
+                </div>
+                
+                <!-- 回复 -->
+                <div class="reply-container mt-3">
+                    <div class="comment">
+                        <div class="comment-header">
+                            <div class="comment-user">
+                                <img src="https://i.pravatar.cc/150?img=43" alt="User Avatar" class="comment-avatar">
+                                <div>
+                                    <div class="comment-username">u/iphoneexpert</div>
+                                    <div class="comment-time">1小时前</div>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="fas fa-ellipsis-h text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div class="comment-content">
+                            @applelover 这是正常的，新系统在后台做了很多索引工作，几天后会恢复正常。你也可以尝试在设置中关闭一些不必要的AI功能。
+                        </div>
+                        <div class="comment-actions">
+                            <div class="comment-action">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>456</span>
+                            </div>
+                            <div class="comment-action">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div class="comment-action">
+                                <i class="fas fa-reply"></i>
+                                <span>回复</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 评论3 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-user">
+                        <img src="https://i.pravatar.cc/150?img=44" alt="User Avatar" class="comment-avatar">
+                        <div>
+                            <div class="comment-username">u/privacyguy</div>
+                            <div class="comment-time">1小时前</div>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fas fa-ellipsis-h text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="comment-content">
+                    有人关注过这些AI功能对隐私的影响吗？苹果宣称所有处理都在设备本地进行，但我还是有些担忧。
+                </div>
+                <div class="comment-actions">
+                    <div class="comment-action">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>742</span>
+                    </div>
+                    <div class="comment-action">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="comment-action">
+                        <i class="fas fa-reply"></i>
+                        <span>回复</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 评论4 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-user">
+                        <img src="https://i.pravatar.cc/150?img=45" alt="User Avatar" class="comment-avatar">
+                        <div>
+                            <div class="comment-username">u/androidfan</div>
+                            <div class="comment-time">30分钟前</div>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fas fa-ellipsis-h text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="comment-content">
+                    安卓用户表示羡慕，我们要等到明年才能用上类似功能…
+                </div>
+                <div class="comment-actions">
+                    <div class="comment-action">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>391</span>
+                    </div>
+                    <div class="comment-action">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="comment-action">
+                        <i class="fas fa-reply"></i>
+                        <span>回复</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 加载更多 -->
+            <div class="text-center py-4">
+                <button class="btn-secondary text-sm">
+                    查看更多评论
+                    <i class="fas fa-chevron-down ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

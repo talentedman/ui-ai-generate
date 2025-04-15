@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit - 个人中心</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .profile-header {
+            position: relative;
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .profile-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-avatar-container {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid white;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 90px;
+            height: 90px;
+            background-color: white;
+        }
+        
+        .profile-avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .profile-stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .profile-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .profile-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            font-weight: 500;
+            color: #4b5563;
+        }
+        
+        .profile-tab.active {
+            color: #FF4500;
+            border-bottom: 2px solid #FF4500;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <div class="bg-white p-2 flex items-center justify-between border-b border-gray-200 sticky top-11 z-40">
+        <div class="flex items-center">
+            <img src="https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png" alt="Reddit Logo" class="w-8 h-8">
+            <div class="font-semibold text-lg ml-2">个人中心</div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <a href="settings.html"><i class="fas fa-cog text-gray-500 text-lg"></i></a>
+        </div>
+    </div>
+
+    <!-- 个人资料头部 -->
+    <div class="profile-header">
+        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cover" class="profile-cover">
+        <div class="profile-avatar-container">
+            <img src="https://i.pravatar.cc/150?img=1" alt="Avatar" class="profile-avatar">
+        </div>
+    </div>
+
+    <!-- 个人信息 -->
+    <div class="bg-white pt-10 pb-4 text-center">
+        <h1 class="text-xl font-bold">James Wilson</h1>
+        <p class="text-gray-500 text-sm">@jwilson • 2年前加入</p>
+        <p class="text-gray-700 text-sm mt-2 mx-6">科技爱好者，喜欢分享有关AI、编程和数字生活方式的内容</p>
+        
+        <div class="flex justify-center mt-4 space-x-3">
+            <button class="btn-primary flex items-center text-sm">
+                <i class="fas fa-user-plus mr-1"></i>
+                编辑资料
+            </button>
+            <button class="btn-secondary flex items-center text-sm">
+                <i class="fas fa-share-alt mr-1"></i>
+                分享
+            </button>
+        </div>
+    </div>
+
+    <!-- 个人统计 -->
+    <div class="profile-stats bg-white">
+        <div class="profile-stat-item">
+            <div class="font-bold">12.4k</div>
+            <div class="text-xs text-gray-500">帖子</div>
+        </div>
+        <div class="profile-stat-item">
+            <div class="font-bold">238k</div>
+            <div class="text-xs text-gray-500">karma</div>
+        </div>
+        <div class="profile-stat-item">
+            <div class="font-bold">53</div>
+            <div class="text-xs text-gray-500">已加入</div>
+        </div>
+    </div>
+
+    <!-- 内容标签 -->
+    <div class="profile-tabs sticky top-24 bg-white z-30">
+        <div class="profile-tab active">我的帖子</div>
+        <div class="profile-tab">评论</div>
+        <div class="profile-tab">收藏</div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="content">
+        <!-- 帖子列表 -->
+        <div class="reddit-card">
+            <div class="card-header">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Community Icon" class="card-community-icon">
+                <span class="card-community-name">r/technology</span>
+                <span class="card-meta">· 2小时前</span>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">苹果发布iOS 18，全新界面和AI功能受到用户欢迎</h3>
+                <p class="card-text">新版本带来了全新的设计和更多AI集成功能，用户普遍反馈良好。新的通知管理系统更加直观...</p>
+                <img src="https://images.unsplash.com/photo-1592337081626-c9389ddc527b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="iOS 18 Preview" class="card-image">
+            </div>
+            <div class="card-actions">
+                <div class="action-btn">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>15.2k</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>2.3k 评论</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-share"></i>
+                    <span>分享</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="reddit-card">
+            <div class="card-header">
+                <img src="https://i.pravatar.cc/150?img=13" alt="Community Icon" class="card-community-icon">
+                <span class="card-community-name">r/science</span>
+                <span class="card-meta">· 3天前</span>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">研究发现：每天冥想20分钟可显著改善注意力和记忆力</h3>
+                <p class="card-text">最新研究表明，持续冥想对大脑的积极影响比之前认为的更为显著...</p>
+            </div>
+            <div class="card-actions">
+                <div class="action-btn">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>8.7k</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>974 评论</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-share"></i>
+                    <span>分享</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="reddit-card">
+            <div class="card-header">
+                <img src="https://i.pravatar.cc/150?img=22" alt="Community Icon" class="card-community-icon">
+                <span class="card-community-name">r/programming</span>
+                <span class="card-meta">· 1周前</span>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">学习Python的最佳资源分享 - 从初学者到专家的完整指南</h3>
+                <p class="card-text">历时6个月收集和测试的学习资源，包括课程、书籍、项目和社区...</p>
+            </div>
+            <div class="card-actions">
+                <div class="action-btn">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>4.5k</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>628 评论</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-share"></i>
+                    <span>分享</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 加载更多 -->
+        <div class="text-center py-4">
+            <button class="btn-secondary text-sm">
+                加载更多
+                <i class="fas fa-chevron-down ml-1"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="communities.html" class="nav-item">
+            <i class="fas fa-compass"></i>
+            <span>社区</span>
+        </a>
+        <a href="create.html" class="nav-item">
+            <i class="fas fa-plus-circle"></i>
+            <span>发布</span>
+        </a>
+        <a href="notifications.html" class="nav-item">
+            <i class="fas fa-bell"></i>
+            <span>通知</span>
+        </a>
+        <a href="profile.html" class="nav-item active">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

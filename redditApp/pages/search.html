@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit - 搜索</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .search-header {
+            position: fixed;
+            top: 44px;
+            left: 0;
+            right: 0;
+            z-index: 40;
+            background: white;
+            padding: 8px 16px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .result-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            position: fixed;
+            top: 108px;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 30;
+        }
+        
+        .result-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            font-weight: 500;
+            color: #4b5563;
+        }
+        
+        .result-tab.active {
+            color: #FF4500;
+            border-bottom: 2px solid #FF4500;
+        }
+        
+        .search-results {
+            margin-top: 164px;
+            padding: 0 16px;
+        }
+        
+        .trending-topics {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 8px 0;
+            margin-bottom: 16px;
+        }
+        
+        .trending-topic {
+            display: inline-block;
+            background: #f6f7f8;
+            padding: 6px 12px;
+            margin-right: 8px;
+            border-radius: 16px;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 搜索栏 -->
+    <div class="search-header">
+        <div class="flex items-center">
+            <a href="home.html" class="text-gray-700 mr-3">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <div class="search-bar flex-1">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="搜索Reddit" class="search-input" value="iOS 18">
+            </div>
+            <button class="text-gray-700 ml-3">
+                <i class="fas fa-times-circle"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 结果标签 -->
+    <div class="result-tabs">
+        <div class="result-tab active">全部</div>
+        <div class="result-tab">帖子</div>
+        <div class="result-tab">社区</div>
+        <div class="result-tab">用户</div>
+    </div>
+
+    <!-- 搜索结果 -->
+    <div class="search-results">
+        <!-- 热门搜索 -->
+        <div class="mb-6">
+            <div class="text-sm font-bold mb-2">热门搜索</div>
+            <div class="trending-topics">
+                <div class="trending-topic">iOS 18</div>
+                <div class="trending-topic">macOS 15</div>
+                <div class="trending-topic">WWDC</div>
+                <div class="trending-topic">iPhone 15</div>
+                <div class="trending-topic">iOS 18 Beta 3</div>
+                <div class="trending-topic">Apple Vision Pro</div>
+            </div>
+        </div>
+
+        <!-- 帖子结果 -->
+        <div class="mb-6">
+            <div class="flex justify-between mb-2">
+                <div class="text-sm font-bold">相关帖子</div>
+                <a href="#" class="text-sm text-blue-500">查看全部</a>
+            </div>
+
+            <!-- 帖子1 -->
+            <div class="reddit-card">
+                <div class="card-header">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="Community Icon" class="card-community-icon">
+                    <span class="card-community-name">r/technology</span>
+                    <span class="card-meta">· 2小时前</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">苹果发布iOS 18，全新界面和AI功能受到用户欢迎</h3>
+                    <p class="card-text">新版本带来了全新的设计和更多AI集成功能，用户普遍反馈良好。新的通知管理系统更加直观...</p>
+                    <img src="https://images.unsplash.com/photo-1592337081626-c9389ddc527b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="iOS 18 Preview" class="card-image">
+                </div>
+                <div class="card-actions">
+                    <div class="action-btn">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>15.2k</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-comment-alt"></i>
+                        <span>2.3k 评论</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-share"></i>
+                        <span>分享</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 帖子2 -->
+            <div class="reddit-card">
+                <div class="card-header">
+                    <img src="https://i.pravatar.cc/150?img=12" alt="Community Icon" class="card-community-icon">
+                    <span class="card-community-name">r/apple</span>
+                    <span class="card-meta">· 6小时前</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">iOS 18 Beta 3发布，修复了50多个Bug</h3>
+                    <p class="card-text">第三个测试版本已经向开发者推送，修复了包括电池续航在内的多个问题...</p>
+                </div>
+                <div class="card-actions">
+                    <div class="action-btn">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>9.6k</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-comment-alt"></i>
+                        <span>1.1k 评论</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-share"></i>
+                        <span>分享</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 社区结果 -->
+        <div class="mb-6">
+            <div class="flex justify-between mb-2">
+                <div class="text-sm font-bold">相关社区</div>
+                <a href="#" class="text-sm text-blue-500">查看全部</a>
+            </div>
+
+            <!-- 社区列表 -->
+            <div class="space-y-3">
+                <!-- 社区1 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=21" alt="r/iOS" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/iOS</div>
+                            <div class="text-xs text-gray-500">2.3M 成员</div>
+                        </div>
+                    </div>
+                    <button class="text-xs text-white bg-blue-500 px-3 py-1 rounded-full">加入</button>
+                </div>
+
+                <!-- 社区2 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=22" alt="r/iOSBeta" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/iOSBeta</div>
+                            <div class="text-xs text-gray-500">874k 成员</div>
+                        </div>
+                    </div>
+                    <button class="text-xs text-white bg-blue-500 px-3 py-1 rounded-full">加入</button>
+                </div>
+
+                <!-- 社区3 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=23" alt="r/AppleHelp" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/AppleHelp</div>
+                            <div class="text-xs text-gray-500">562k 成员</div>
+                        </div>
+                    </div>
+                    <button class="text-xs text-white bg-blue-500 px-3 py-1 rounded-full">加入</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 用户结果 -->
+        <div>
+            <div class="flex justify-between mb-2">
+                <div class="text-sm font-bold">相关用户</div>
+                <a href="#" class="text-sm text-blue-500">查看全部</a>
+            </div>
+
+            <!-- 用户列表 -->
+            <div class="space-y-3">
+                <!-- 用户1 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=51" alt="u/iosdev" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">u/iosdev</div>
+                            <div class="text-xs text-gray-500">iOS开发者 • 5.2k karma</div>
+                        </div>
+                    </div>
+                    <button class="text-xs text-white bg-blue-500 px-3 py-1 rounded-full">关注</button>
+                </div>
+
+                <!-- 用户2 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=52" alt="u/applenews" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">u/applenews</div>
+                            <div class="text-xs text-gray-500">苹果新闻爱好者 • 28.6k karma</div>
+                        </div>
+                    </div>
+                    <button class="text-xs text-white bg-blue-500 px-3 py-1 rounded-full">关注</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

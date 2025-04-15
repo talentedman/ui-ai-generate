@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit - 社区</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <div class="bg-white p-2 flex items-center justify-between border-b border-gray-200 sticky top-11 z-40">
+        <div class="flex items-center">
+            <img src="https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png" alt="Reddit Logo" class="w-8 h-8">
+            <div class="font-semibold text-lg ml-2">社区</div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <i class="fas fa-search text-gray-500 text-lg"></i>
+            <img src="https://i.pravatar.cc/150?img=1" alt="User Avatar" class="avatar-sm">
+        </div>
+    </div>
+
+    <!-- 搜索栏 -->
+    <div class="bg-white p-3 border-b border-gray-200 sticky top-24 z-30">
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="搜索社区" class="search-input">
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="content">
+        <!-- 我的社区 -->
+        <div class="mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-bold">我加入的社区</h2>
+                <a href="#" class="text-sm text-blue-500">查看全部</a>
+            </div>
+
+            <!-- 社区列表 -->
+            <div class="space-y-3">
+                <!-- 社区项目 1 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=21" alt="r/technology" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/technology</div>
+                            <div class="text-xs text-gray-500">12.8M 成员</div>
+                        </div>
+                    </div>
+                    <div class="text-xs text-white bg-green-500 px-2 py-1 rounded-full">已加入</div>
+                </div>
+
+                <!-- 社区项目 2 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=22" alt="r/gaming" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/gaming</div>
+                            <div class="text-xs text-gray-500">34.2M 成员</div>
+                        </div>
+                    </div>
+                    <div class="text-xs text-white bg-green-500 px-2 py-1 rounded-full">已加入</div>
+                </div>
+
+                <!-- 社区项目 3 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=23" alt="r/science" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/science</div>
+                            <div class="text-xs text-gray-500">28.6M 成员</div>
+                        </div>
+                    </div>
+                    <div class="text-xs text-white bg-green-500 px-2 py-1 rounded-full">已加入</div>
+                </div>
+
+                <!-- 社区项目 4 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=24" alt="r/movies" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/movies</div>
+                            <div class="text-xs text-gray-500">26.9M 成员</div>
+                        </div>
+                    </div>
+                    <div class="text-xs text-white bg-green-500 px-2 py-1 rounded-full">已加入</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 推荐社区 -->
+        <div>
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-bold">为你推荐</h2>
+                <a href="#" class="text-sm text-blue-500">换一批</a>
+            </div>
+
+            <!-- 推荐社区列表 -->
+            <div class="space-y-3">
+                <!-- 推荐社区 1 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=31" alt="r/programming" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/programming</div>
+                            <div class="text-xs text-gray-500">5.2M 成员</div>
+                        </div>
+                    </div>
+                    <button class="text-xs text-white bg-blue-500 px-3 py-1 rounded-full">加入</button>
+                </div>
+
+                <!-- 推荐社区 2 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=32" alt="r/datascience" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/datascience</div>
+                            <div class="text-xs text-gray-500">1.8M 成员</div>
+                        </div>
+                    </div>
+                    <button class="text-xs text-white bg-blue-500 px-3 py-1 rounded-full">加入</button>
+                </div>
+
+                <!-- 推荐社区 3 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=33" alt="r/MachineLearning" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/MachineLearning</div>
+                            <div class="text-xs text-gray-500">2.4M 成员</div>
+                        </div>
+                    </div>
+                    <button class="text-xs text-white bg-blue-500 px-3 py-1 rounded-full">加入</button>
+                </div>
+
+                <!-- 推荐社区 4 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=34" alt="r/ArtificialIntelligence" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/ArtificialIntelligence</div>
+                            <div class="text-xs text-gray-500">1.2M 成员</div>
+                        </div>
+                    </div>
+                    <button class="text-xs text-white bg-blue-500 px-3 py-1 rounded-full">加入</button>
+                </div>
+
+                <!-- 推荐社区 5 -->
+                <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=35" alt="r/Futurology" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-medium">r/Futurology</div>
+                            <div class="text-xs text-gray-500">15.8M 成员</div>
+                        </div>
+                    </div>
+                    <button class="text-xs text-white bg-blue-500 px-3 py-1 rounded-full">加入</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="communities.html" class="nav-item active">
+            <i class="fas fa-compass"></i>
+            <span>社区</span>
+        </a>
+        <a href="create.html" class="nav-item">
+            <i class="fas fa-plus-circle"></i>
+            <span>发布</span>
+        </a>
+        <a href="notifications.html" class="nav-item">
+            <i class="fas fa-bell"></i>
+            <span>通知</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 

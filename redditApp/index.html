@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit App 原型</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+        }
+        .phone-container {
+            width: 390px;
+            height: 844px;
+            background-color: white;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 2rem;
+            border: 12px solid #1a1a1a;
+        }
+        .iframe-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .prototype-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+        .prototype-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .prototype-label {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-white py-4 shadow-md">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-bold text-center text-gray-800">Reddit App 原型设计</h1>
+        </div>
+    </header>
+
+    <div class="prototype-grid">
+        <!-- 首页 -->
+        <div class="prototype-item">
+            <div class="phone-container">
+                <div class="iframe-container">
+                    <iframe src="pages/home.html" title="首页"></iframe>
+                </div>
+            </div>
+            <div class="prototype-label">首页</div>
+        </div>
+
+        <!-- 社区页 -->
+        <div class="prototype-item">
+            <div class="phone-container">
+                <div class="iframe-container">
+                    <iframe src="pages/communities.html" title="社区页"></iframe>
+                </div>
+            </div>
+            <div class="prototype-label">社区页</div>
+        </div>
+
+        <!-- 发布页 -->
+        <div class="prototype-item">
+            <div class="phone-container">
+                <div class="iframe-container">
+                    <iframe src="pages/create.html" title="发布页"></iframe>
+                </div>
+            </div>
+            <div class="prototype-label">发布页</div>
+        </div>
+
+        <!-- 通知页 -->
+        <div class="prototype-item">
+            <div class="phone-container">
+                <div class="iframe-container">
+                    <iframe src="pages/notifications.html" title="通知页"></iframe>
+                </div>
+            </div>
+            <div class="prototype-label">通知页</div>
+        </div>
+
+        <!-- 个人中心 -->
+        <div class="prototype-item">
+            <div class="phone-container">
+                <div class="iframe-container">
+                    <iframe src="pages/profile.html" title="个人中心"></iframe>
+                </div>
+            </div>
+            <div class="prototype-label">个人中心</div>
+        </div>
+
+        <!-- 帖子详情页 -->
+        <div class="prototype-item">
+            <div class="phone-container">
+                <div class="iframe-container">
+                    <iframe src="pages/post-detail.html" title="帖子详情"></iframe>
+                </div>
+            </div>
+            <div class="prototype-label">帖子详情</div>
+        </div>
+
+        <!-- 设置页 -->
+        <div class="prototype-item">
+            <div class="phone-container">
+                <div class="iframe-container">
+                    <iframe src="pages/settings.html" title="设置页"></iframe>
+                </div>
+            </div>
+            <div class="prototype-label">设置页</div>
+        </div>
+
+        <!-- 搜索页 -->
+        <div class="prototype-item">
+            <div class="phone-container">
+                <div class="iframe-container">
+                    <iframe src="pages/search.html" title="搜索页"></iframe>
+                </div>
+            </div>
+            <div class="prototype-label">搜索页</div>
+        </div>
+    </div>
+</body>
+</html> 

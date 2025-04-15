@@ -1,0 +1,223 @@
+/* 公共样式 - Reddit App */
+
+/* 状态栏样式 */
+.status-bar {
+    height: 44px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.status-bar-time {
+    font-weight: bold;
+}
+
+.status-bar-icons {
+    display: flex;
+    align-items: center;
+}
+
+.status-bar-icons i {
+    margin-left: 5px;
+}
+
+/* 底部导航栏 */
+.bottom-nav {
+    height: 83px;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #818384;
+    font-size: 0.75rem;
+}
+
+.nav-item.active {
+    color: #FF4500;
+}
+
+.nav-item i {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+/* 主内容区 */
+.content {
+    padding: 16px;
+    padding-bottom: 100px; /* 为底部导航栏留出空间 */
+    height: calc(100% - 44px);
+    overflow-y: auto;
+}
+
+/* Reddit 卡片样式 */
+.reddit-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+}
+
+.card-community-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+    object-fit: cover;
+}
+
+.card-community-name {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #1c1c1c;
+}
+
+.card-meta {
+    color: #787c7e;
+    font-size: 0.75rem;
+    margin-left: 8px;
+}
+
+.card-content {
+    padding: 0 16px 16px;
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.card-text {
+    font-size: 0.875rem;
+    color: #1c1c1c;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.card-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    margin-bottom: 12px;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 16px;
+    border-top: 1px solid #f6f7f8;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    color: #878a8c;
+    font-size: 0.875rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.action-btn:hover {
+    background-color: #f6f7f8;
+}
+
+.action-btn i {
+    margin-right: 4px;
+}
+
+/* 通用按钮 */
+.btn-primary {
+    background-color: #FF4500;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #f6f7f8;
+    color: #1c1c1c;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: none;
+}
+
+/* 用户头像 */
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-sm {
+    width: 24px;
+    height: 24px;
+}
+
+.avatar-lg {
+    width: 64px;
+    height: 64px;
+}
+
+/* 搜索框 */
+.search-bar {
+    background-color: #f6f7f8;
+    border-radius: 20px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+}
+
+.search-bar i {
+    color: #878a8c;
+    margin-right: 8px;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+    font-size: 0.875rem;
+}
+
+/* 通用样式 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #1c1c1c;
+    background-color: #f9f9fb;
+    height: 100vh;
+    overflow: hidden;
+} 

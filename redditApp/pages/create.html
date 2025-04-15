@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit - 发布新帖子</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .community-selector {
+            border: 1px solid #e2e8f0;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        
+        .create-post-input {
+            border: none;
+            outline: none;
+            width: 100%;
+            resize: none;
+            font-size: 16px;
+        }
+        
+        .post-type-tabs {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .post-type-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            color: #4b5563;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .post-type-tab.active {
+            color: #FF4500;
+            border-bottom: 2px solid #FF4500;
+        }
+        
+        .media-upload {
+            border: 2px dashed #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 16px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-bar-time">9:41</div>
+        <div class="status-bar-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <div class="bg-white p-3 flex items-center justify-between border-b border-gray-200 sticky top-11 z-40">
+        <button class="text-gray-700">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+        <div class="font-semibold text-lg">创建帖子</div>
+        <button class="text-gray-400">发布</button>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="content">
+        <!-- 选择社区 -->
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">选择社区</label>
+            <div class="community-selector">
+                <div class="flex items-center">
+                    <img src="https://i.pravatar.cc/150?img=21" alt="r/technology" class="w-6 h-6 rounded-full mr-2">
+                    <span>r/technology</span>
+                </div>
+                <i class="fas fa-chevron-down text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- 帖子类型选择 -->
+        <div class="post-type-tabs mb-4">
+            <div class="post-type-tab active">
+                <i class="fas fa-file-alt mr-1"></i>
+                文字
+            </div>
+            <div class="post-type-tab">
+                <i class="fas fa-image mr-1"></i>
+                图片
+            </div>
+            <div class="post-type-tab">
+                <i class="fas fa-link mr-1"></i>
+                链接
+            </div>
+            <div class="post-type-tab">
+                <i class="fas fa-poll mr-1"></i>
+                投票
+            </div>
+        </div>
+
+        <!-- 帖子内容 -->
+        <div class="mb-4">
+            <input type="text" placeholder="标题（必填）" class="create-post-input mb-4 text-xl font-bold">
+            
+            <div class="border-t border-gray-200 pt-4">
+                <textarea placeholder="分享一些内容..." class="create-post-input" rows="6"></textarea>
+            </div>
+
+            <!-- 图片上传区域 -->
+            <div class="media-upload">
+                <i class="fas fa-image text-gray-400 text-3xl mb-2"></i>
+                <p class="text-gray-600">点击添加图片</p>
+                <p class="text-gray-400 text-sm mt-1">支持JPG、PNG、GIF格式</p>
+            </div>
+        </div>
+
+        <!-- 帖子选项 -->
+        <div class="space-y-4">
+            <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-tag text-gray-400 mr-3"></i>
+                    <span>添加话题标签</span>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+
+            <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-user-tag text-gray-400 mr-3"></i>
+                    <span>提及用户</span>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+
+            <div class="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-globe text-gray-400 mr-3"></i>
+                    <span>谁可以看到这个帖子</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-gray-600 mr-2">所有人</span>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 发布按钮 -->
+        <div class="mt-6">
+            <button class="btn-primary w-full">发布</button>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+        </a>
+        <a href="communities.html" class="nav-item">
+            <i class="fas fa-compass"></i>
+            <span>社区</span>
+        </a>
+        <a href="create.html" class="nav-item active">
+            <i class="fas fa-plus-circle"></i>
+            <span>发布</span>
+        </a>
+        <a href="notifications.html" class="nav-item">
+            <i class="fas fa-bell"></i>
+            <span>通知</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html> 
