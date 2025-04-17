@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>频道 - Telegram</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #F5F6F8;
+        }
+        
+        .channel-header {
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            background-color: white;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 22px;
+            z-index: 40;
+        }
+        
+        .channel-top {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .channel-top-left {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .channel-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+        
+        .channel-info {
+            flex: 1;
+        }
+        
+        .channel-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .channel-stats {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .channel-stats .dot {
+            margin: 0 6px;
+            font-size: 4px;
+            vertical-align: middle;
+        }
+        
+        .channel-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: var(--text-secondary);
+            margin-left: 8px;
+        }
+        
+        .subscribe-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .channel-description {
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+        
+        .channel-links {
+            display: flex;
+            margin-top: 8px;
+        }
+        
+        .channel-link {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: var(--primary-color);
+            margin-right: 16px;
+        }
+        
+        .channel-link i {
+            margin-right: 6px;
+        }
+        
+        .post {
+            background-color: white;
+            margin-bottom: 8px;
+            padding: 16px;
+        }
+        
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        
+        .post-info {
+            flex: 1;
+        }
+        
+        .post-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .post-time {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .post-content {
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        
+        .post-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            max-height: 400px;
+            object-fit: cover;
+        }
+        
+        .post-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        
+        .post-views {
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-views i {
+            margin-right: 6px;
+        }
+        
+        .post-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-action {
+            margin-left: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">9:41</div>
+        <div class="icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="left">
+            <i class="fas fa-chevron-left" style="color: var(--primary-color);"></i>
+        </div>
+        <div class="title">每日新闻速递</div>
+        <div class="right">
+            <i class="fas fa-ellipsis-v" style="color: var(--text-secondary);"></i>
+        </div>
+    </div>
+
+    <!-- 频道头部 -->
+    <div class="channel-header">
+        <div class="channel-top">
+            <div class="channel-top-left">
+                <img class="channel-avatar" src="https://source.unsplash.com/random/100x100?news" alt="频道头像">
+                <div class="channel-info">
+                    <div class="channel-name">每日新闻速递</div>
+                    <div class="channel-stats">
+                        24.5万订阅者 <i class="fas fa-circle dot"></i> 182篇文章
+                    </div>
+                </div>
+            </div>
+            <div class="channel-actions">
+                <div class="action-button">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <button class="subscribe-button">
+                    <i class="fas fa-bell"></i> 已订阅
+                </button>
+            </div>
+        </div>
+        <div class="channel-description">
+            每天为您提供全球最新、最热门的新闻资讯，包括政治、经济、科技、文化、娱乐等多个领域，让您足不出户了解世界。
+        </div>
+        <div class="channel-links">
+            <a href="#" class="channel-link">
+                <i class="fas fa-globe"></i> 官方网站
+            </a>
+            <a href="#" class="channel-link">
+                <i class="fas fa-users"></i> 讨论群
+            </a>
+        </div>
+    </div>
+
+    <!-- 频道内容 -->
+    <div class="content-area">
+        <!-- 文章1 -->
+        <div class="post">
+            <div class="post-header">
+                <img class="post-avatar" src="https://source.unsplash.com/random/100x100?news" alt="频道头像">
+                <div class="post-info">
+                    <div class="post-name">每日新闻速递</div>
+                    <div class="post-time">今天 10:28</div>
+                </div>
+            </div>
+            <div class="post-content">
+                【科技要闻】新一代AI模型在语言理解和生成能力上有重大突破，开发团队表示，该模型已经可以理解更复杂的人类指令，并生成更接近人类水平的内容。
+            </div>
+            <img class="post-image" src="https://source.unsplash.com/random/600x400?technology" alt="文章图片">
+            <div class="post-footer">
+                <div class="post-views">
+                    <i class="far fa-eye"></i> 5.8万
+                </div>
+                <div class="post-actions">
+                    <div class="post-action">
+                        <i class="far fa-heart"></i> 432
+                    </div>
+                    <div class="post-action">
+                        <i class="far fa-comment"></i> 56
+                    </div>
+                    <div class="post-action">
+                        <i class="far fa-share-square"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 文章2 -->
+        <div class="post">
+            <div class="post-header">
+                <img class="post-avatar" src="https://source.unsplash.com/random/100x100?news" alt="频道头像">
+                <div class="post-info">
+                    <div class="post-name">每日新闻速递</div>
+                    <div class="post-time">今天 09:15</div>
+                </div>
+            </div>
+            <div class="post-content">
+                【财经动态】全球金融市场今日波动明显，多国股市出现不同程度下跌。专家分析称，这与近期通胀压力增大及央行可能继续收紧货币政策有关。
+            </div>
+            <div class="post-footer">
+                <div class="post-views">
+                    <i class="far fa-eye"></i> 3.2万
+                </div>
+                <div class="post-actions">
+                    <div class="post-action">
+                        <i class="far fa-heart"></i> 215
+                    </div>
+                    <div class="post-action">
+                        <i class="far fa-comment"></i> 28
+                    </div>
+                    <div class="post-action">
+                        <i class="far fa-share-square"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 文章3 -->
+        <div class="post">
+            <div class="post-header">
+                <img class="post-avatar" src="https://source.unsplash.com/random/100x100?news" alt="频道头像">
+                <div class="post-info">
+                    <div class="post-name">每日新闻速递</div>
+                    <div class="post-time">昨天 18:42</div>
+                </div>
+            </div>
+            <div class="post-content">
+                【文化资讯】第75届国际电影节今日开幕，众多国际知名导演及演员齐聚一堂。本届电影节共有来自65个国家的影片参展，创历届之最。
+            </div>
+            <img class="post-image" src="https://source.unsplash.com/random/600x400?cinema" alt="文章图片">
+            <div class="post-footer">
+                <div class="post-views">
+                    <i class="far fa-eye"></i> 7.4万
+                </div>
+                <div class="post-actions">
+                    <div class="post-action">
+                        <i class="far fa-heart"></i> 653
+                    </div>
+                    <div class="post-action">
+                        <i class="far fa-comment"></i> 87
+                    </div>
+                    <div class="post-action">
+                        <i class="far fa-share-square"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab active">
+            <i class="fas fa-comment"></i>
+            <span>聊天</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-address-book"></i>
+            <span>联系人</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-compass"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+</body>
+</html> 

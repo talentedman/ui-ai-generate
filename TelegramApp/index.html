@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram App 原型</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .phone-container {
+            width: 375px;
+            height: 812px;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 12px solid #000;
+            background-color: #000;
+        }
+        .phone-screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        .prototype-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 40px;
+        }
+        .prototype-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .prototype-label {
+            margin-top: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">Telegram 应用原型展示</h1>
+        
+        <div class="prototype-grid">
+            <!-- 欢迎/登录页面 -->
+            <div class="prototype-item">
+                <div class="phone-container">
+                    <div class="phone-screen">
+                        <iframe src="welcome.html" frameborder="0" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+                <div class="prototype-label">欢迎/登录页面</div>
+            </div>
+            
+            <!-- 聊天列表页面 -->
+            <div class="prototype-item">
+                <div class="phone-container">
+                    <div class="phone-screen">
+                        <iframe src="chats.html" frameborder="0" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+                <div class="prototype-label">聊天列表页面</div>
+            </div>
+            
+            <!-- 单聊界面 -->
+            <div class="prototype-item">
+                <div class="phone-container">
+                    <div class="phone-screen">
+                        <iframe src="chat_detail.html" frameborder="0" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+                <div class="prototype-label">单聊界面</div>
+            </div>
+            
+            <!-- 群聊界面 -->
+            <div class="prototype-item">
+                <div class="phone-container">
+                    <div class="phone-screen">
+                        <iframe src="group_chat.html" frameborder="0" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+                <div class="prototype-label">群聊界面</div>
+            </div>
+            
+            <!-- 联系人页面 -->
+            <div class="prototype-item">
+                <div class="phone-container">
+                    <div class="phone-screen">
+                        <iframe src="contacts.html" frameborder="0" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+                <div class="prototype-label">联系人页面</div>
+            </div>
+            
+            <!-- 个人资料页面 -->
+            <div class="prototype-item">
+                <div class="phone-container">
+                    <div class="phone-screen">
+                        <iframe src="profile.html" frameborder="0" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+                <div class="prototype-label">个人资料页面</div>
+            </div>
+            
+            <!-- 设置页面 -->
+            <div class="prototype-item">
+                <div class="phone-container">
+                    <div class="phone-screen">
+                        <iframe src="settings.html" frameborder="0" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+                <div class="prototype-label">设置页面</div>
+            </div>
+            
+            <!-- 发现页面 -->
+            <div class="prototype-item">
+                <div class="phone-container">
+                    <div class="phone-screen">
+                        <iframe src="discover.html" frameborder="0" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+                <div class="prototype-label">发现页面</div>
+            </div>
+            
+            <!-- 频道页面 -->
+            <div class="prototype-item">
+                <div class="phone-container">
+                    <div class="phone-screen">
+                        <iframe src="channel.html" frameborder="0" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+                <div class="prototype-label">频道页面</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

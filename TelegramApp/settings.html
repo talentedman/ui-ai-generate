@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置 - Telegram</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #F5F6F8;
+        }
+        
+        .settings-section {
+            background-color: white;
+            margin: 10px 0;
+            padding: 0 16px;
+        }
+        
+        .settings-header {
+            padding: 10px 16px;
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .settings-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+        
+        .settings-item-icon {
+            width: 24px;
+            color: var(--text-secondary);
+            margin-right: 16px;
+            text-align: center;
+        }
+        
+        .settings-item-content {
+            flex: 1;
+        }
+        
+        .settings-item-title {
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+        
+        .settings-item-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+        
+        .settings-item-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 46px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 24px;
+            transition: .3s;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            border-radius: 50%;
+            transition: .3s;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: var(--primary-color);
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(22px);
+        }
+        
+        .notification-badge {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px;
+            padding: 2px 6px;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+        
+        .settings-value {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">9:41</div>
+        <div class="icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="left">
+            <i class="fas fa-chevron-left" style="color: var(--primary-color);"></i>
+        </div>
+        <div class="title">设置</div>
+        <div class="right">
+        </div>
+    </div>
+
+    <!-- 通知设置 -->
+    <div class="settings-header">
+        通知设置
+    </div>
+    <div class="settings-section">
+        <div class="settings-item">
+            <div class="settings-item-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="settings-item-content">
+                <div class="settings-item-title">通知</div>
+                <div class="settings-item-description">开启接收消息提醒</div>
+            </div>
+            <div class="settings-item-right">
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="settings-item">
+            <div class="settings-item-icon">
+                <i class="fas fa-volume-up"></i>
+            </div>
+            <div class="settings-item-content">
+                <div class="settings-item-title">声音</div>
+                <div class="settings-item-description">接收新消息时播放声音</div>
+            </div>
+            <div class="settings-item-right">
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="settings-item">
+            <div class="settings-item-icon">
+                <i class="fas fa-moon"></i>
+            </div>
+            <div class="settings-item-content">
+                <div class="settings-item-title">勿扰模式</div>
+                <div class="settings-item-description">在特定时间段内停止通知</div>
+            </div>
+            <div class="settings-item-right">
+                <div class="settings-value">关闭</div>
+                <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 隐私与安全 -->
+    <div class="settings-header">
+        隐私与安全
+    </div>
+    <div class="settings-section">
+        <div class="settings-item">
+            <div class="settings-item-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="settings-item-content">
+                <div class="settings-item-title">隐私设置</div>
+                <div class="settings-item-description">管理谁可以查看您的信息</div>
+            </div>
+            <div class="settings-item-right">
+                <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+            </div>
+        </div>
+        <div class="settings-item">
+            <div class="settings-item-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="settings-item-content">
+                <div class="settings-item-title">两步验证</div>
+                <div class="settings-item-description">为您的账户添加额外的安全保障</div>
+            </div>
+            <div class="settings-item-right">
+                <div class="notification-badge">新</div>
+                <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+            </div>
+        </div>
+        <div class="settings-item">
+            <div class="settings-item-icon">
+                <i class="fas fa-key"></i>
+            </div>
+            <div class="settings-item-content">
+                <div class="settings-item-title">端到端加密</div>
+                <div class="settings-item-description">加密您的私人对话</div>
+            </div>
+            <div class="settings-item-right">
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- 聊天设置 -->
+    <div class="settings-header">
+        聊天设置
+    </div>
+    <div class="settings-section">
+        <div class="settings-item">
+            <div class="settings-item-icon">
+                <i class="fas fa-paint-brush"></i>
+            </div>
+            <div class="settings-item-content">
+                <div class="settings-item-title">主题</div>
+                <div class="settings-item-description">自定义应用外观</div>
+            </div>
+            <div class="settings-item-right">
+                <div class="settings-value">默认</div>
+                <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+            </div>
+        </div>
+        <div class="settings-item">
+            <div class="settings-item-icon">
+                <i class="fas fa-text-height"></i>
+            </div>
+            <div class="settings-item-content">
+                <div class="settings-item-title">字体大小</div>
+                <div class="settings-item-description">调整聊天文字大小</div>
+            </div>
+            <div class="settings-item-right">
+                <div class="settings-value">中</div>
+                <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+            </div>
+        </div>
+        <div class="settings-item">
+            <div class="settings-item-icon">
+                <i class="fas fa-photo-video"></i>
+            </div>
+            <div class="settings-item-content">
+                <div class="settings-item-title">媒体自动下载</div>
+                <div class="settings-item-description">控制图片和视频的自动下载</div>
+            </div>
+            <div class="settings-item-right">
+                <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 数据与存储 -->
+    <div class="settings-header">
+        数据与存储
+    </div>
+    <div class="settings-section">
+        <div class="settings-item">
+            <div class="settings-item-icon">
+                <i class="fas fa-database"></i>
+            </div>
+            <div class="settings-item-content">
+                <div class="settings-item-title">存储用量</div>
+                <div class="settings-item-description">管理应用占用的空间</div>
+            </div>
+            <div class="settings-item-right">
+                <div class="settings-value">1.2 GB</div>
+                <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+            </div>
+        </div>
+        <div class="settings-item">
+            <div class="settings-item-icon">
+                <i class="fas fa-network-wired"></i>
+            </div>
+            <div class="settings-item-content">
+                <div class="settings-item-title">网络使用</div>
+                <div class="settings-item-description">管理数据使用情况</div>
+            </div>
+            <div class="settings-item-right">
+                <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab">
+            <i class="fas fa-comment"></i>
+            <span>聊天</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-address-book"></i>
+            <span>联系人</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-compass"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab active">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+</body>
+</html> 

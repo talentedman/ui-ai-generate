@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎 - Telegram</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .welcome-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+            background: linear-gradient(180deg, #38B0E3 0%, #1D93CD 100%);
+            color: white;
+        }
+        .welcome-logo {
+            text-align: center;
+            padding-top: 25%;
+        }
+        .welcome-logo img {
+            width: 120px;
+            height: 120px;
+        }
+        .welcome-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .welcome-text h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .welcome-text p {
+            font-size: 16px;
+            opacity: 0.85;
+            max-width: 300px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        .welcome-actions {
+            padding: 20px;
+            margin-bottom: 50px;
+        }
+        .welcome-button {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+        .status-bar {
+            background-color: transparent;
+            color: white;
+        }
+        .dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+        .dot.active {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="time">9:41</div>
+            <div class="icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <div class="welcome-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
+            <div class="welcome-text">
+                <h1>Telegram</h1>
+                <p>一个专注于速度和安全的新型消息应用</p>
+            </div>
+
+            <div class="dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+
+        <div class="welcome-actions">
+            <button class="welcome-button">开始聊天</button>
+            <button class="welcome-button" style="background-color: rgba(255, 255, 255, 0.1);">登录</button>
+        </div>
+    </div>
+</body>
+</html> 

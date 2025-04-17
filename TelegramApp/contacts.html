@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系人 - Telegram</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-light);
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin: 10px 16px;
+        }
+        
+        .search-bar i {
+            color: var(--text-secondary);
+            margin-right: 8px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 15px;
+        }
+        
+        .contact-section {
+            padding: 0 16px;
+        }
+        
+        .section-header {
+            font-size: 14px;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 8px 0;
+            margin-top: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .contact-item .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+        
+        .contact-item .name {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .contact-item .status {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .index-bar {
+            position: fixed;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .index-bar .letter {
+            font-size: 12px;
+            color: var(--primary-color);
+            padding: 2px;
+            font-weight: 500;
+        }
+        
+        .action-button {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 2px 8px rgba(0, 136, 204, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">9:41</div>
+        <div class="icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="left">
+            <i class="fas fa-qrcode" style="color: var(--primary-color);"></i>
+        </div>
+        <div class="title">联系人</div>
+        <div class="right">
+            <i class="fas fa-plus" style="color: var(--primary-color);"></i>
+        </div>
+    </div>
+
+    <!-- 搜索栏 -->
+    <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="搜索" />
+    </div>
+
+    <!-- 联系人列表 -->
+    <div class="content-area">
+        <!-- 我的账户 -->
+        <div class="contact-section">
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/men/17.jpg" alt="我的头像">
+                <div>
+                    <div class="name">我的账户</div>
+                    <div class="status">+86 138****1234</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 常用联系人 -->
+        <div class="contact-section">
+            <div class="section-header">常用联系人</div>
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/women/65.jpg" alt="头像">
+                <div>
+                    <div class="name">李梅</div>
+                    <div class="status">最近在线</div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="头像">
+                <div>
+                    <div class="name">王强</div>
+                    <div class="status">2小时前在线</div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="头像">
+                <div>
+                    <div class="name">张晓</div>
+                    <div class="status">在线</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 按字母排序的联系人 -->
+        <div class="contact-section">
+            <div class="section-header">A</div>
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/men/41.jpg" alt="头像">
+                <div>
+                    <div class="name">艾伦</div>
+                    <div class="status">1天前在线</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <div class="section-header">C</div>
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/women/15.jpg" alt="头像">
+                <div>
+                    <div class="name">陈小红</div>
+                    <div class="status">3小时前在线</div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/men/52.jpg" alt="头像">
+                <div>
+                    <div class="name">陈工</div>
+                    <div class="status">上周在线</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <div class="section-header">L</div>
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/men/77.jpg" alt="头像">
+                <div>
+                    <div class="name">刘强</div>
+                    <div class="status">5小时前在线</div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/women/90.jpg" alt="头像">
+                <div>
+                    <div class="name">李晓静</div>
+                    <div class="status">在线</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <div class="section-header">W</div>
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/men/22.jpg" alt="头像">
+                <div>
+                    <div class="name">王总</div>
+                    <div class="status">1小时前在线</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <div class="section-header">Z</div>
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/men/45.jpg" alt="头像">
+                <div>
+                    <div class="name">张小明</div>
+                    <div class="status">在线</div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <img class="avatar" src="https://randomuser.me/api/portraits/women/33.jpg" alt="头像">
+                <div>
+                    <div class="name">赵丽</div>
+                    <div class="status">2天前在线</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 字母索引 -->
+    <div class="index-bar">
+        <div class="letter">A</div>
+        <div class="letter">B</div>
+        <div class="letter">C</div>
+        <div class="letter">D</div>
+        <div class="letter">L</div>
+        <div class="letter">W</div>
+        <div class="letter">Z</div>
+        <div class="letter">#</div>
+    </div>
+
+    <!-- 添加联系人按钮 -->
+    <div class="action-button">
+        <i class="fas fa-user-plus"></i>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab">
+            <i class="fas fa-comment"></i>
+            <span>聊天</span>
+        </div>
+        <div class="tab active">
+            <i class="fas fa-address-book"></i>
+            <span>联系人</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-compass"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+</body>
+</html> 

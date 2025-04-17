@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天详情 - Telegram</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #F5F6F8;
+        }
+        
+        .chat-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 22px;
+            z-index: 40;
+        }
+        
+        .chat-header .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .chat-header .info {
+            flex: 1;
+        }
+        
+        .chat-header .name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .chat-header .status {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .chat-header .actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .chat-header .actions i {
+            font-size: 18px;
+            margin-left: 20px;
+            color: var(--primary-color);
+        }
+        
+        .date-separator {
+            text-align: center;
+            margin: 20px 0;
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        .date-separator span {
+            background-color: #F5F6F8;
+            padding: 0 10px;
+            position: relative;
+        }
+        
+        .date-separator::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: var(--border-color);
+            top: 50%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">9:41</div>
+        <div class="icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 聊天头部 -->
+    <div class="chat-header">
+        <i class="fas fa-chevron-left" style="color: var(--primary-color); margin-right: 10px;"></i>
+        <img class="avatar" src="https://randomuser.me/api/portraits/women/65.jpg" alt="李梅">
+        <div class="info">
+            <div class="name">李梅</div>
+            <div class="status">最近在线</div>
+        </div>
+        <div class="actions">
+            <i class="fas fa-phone"></i>
+            <i class="fas fa-video"></i>
+            <i class="fas fa-ellipsis-v"></i>
+        </div>
+    </div>
+
+    <!-- 聊天内容 -->
+    <div class="content-area">
+        <div class="chat-container">
+            <!-- 日期分隔符 -->
+            <div class="date-separator">
+                <span>今天</span>
+            </div>
+            
+            <!-- 接收消息 -->
+            <div class="message received">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="头像" class="avatar-small">
+                <div class="bubble">嗨，你好！项目进展如何？</div>
+                <div class="time">9:15</div>
+            </div>
+            
+            <!-- 发送消息 -->
+            <div class="message sent">
+                <div class="bubble">你好！一切顺利，我们已经完成了设计部分。</div>
+                <div class="time">9:17</div>
+            </div>
+            
+            <!-- 接收消息 -->
+            <div class="message received">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="头像" class="avatar-small">
+                <div class="bubble">太好了！开发团队什么时候能开始工作？</div>
+                <div class="time">9:18</div>
+            </div>
+            
+            <!-- 发送消息 -->
+            <div class="message sent">
+                <div class="bubble">我们计划下周一开始开发工作，预计两周内完成第一个版本。</div>
+                <div class="time">9:20</div>
+            </div>
+            
+            <!-- 接收消息 -->
+            <div class="message received">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="头像" class="avatar-small">
+                <div class="bubble">明白了，那我们明天见面讨论一下细节吧。</div>
+                <div class="time">9:22</div>
+            </div>
+            
+            <!-- 接收消息 -->
+            <div class="message received">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="头像" class="avatar-small">
+                <div class="bubble">你认为需要准备什么材料吗？</div>
+                <div class="time">9:23</div>
+            </div>
+            
+            <!-- 发送消息 -->
+            <div class="message sent">
+                <div class="bubble">我会准备项目计划书和设计稿，你可以带上市场调研报告。</div>
+                <div class="time">9:24</div>
+            </div>
+            
+            <!-- 发送消息 -->
+            <div class="message sent">
+                <div class="bubble">对了，还需要讨论一下预算问题。</div>
+                <div class="time">9:24</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 输入区域 -->
+    <div class="input-area">
+        <div class="attachment">
+            <i class="fas fa-paperclip"></i>
+        </div>
+        <div class="input-container">
+            <input type="text" placeholder="消息..." />
+            <i class="far fa-smile"></i>
+        </div>
+        <div class="send">
+            <i class="fas fa-microphone"></i>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab active">
+            <i class="fas fa-comment"></i>
+            <span>聊天</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-address-book"></i>
+            <span>联系人</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-compass"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+</body>
+</html> 

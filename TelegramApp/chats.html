@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天 - Telegram</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-light);
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin: 10px 16px;
+        }
+        
+        .search-bar i {
+            color: var(--text-secondary);
+            margin-right: 8px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 15px;
+        }
+        
+        .action-button {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 2px 8px rgba(0, 136, 204, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">9:41</div>
+        <div class="icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="left">
+            <i class="fas fa-bars text-primary" style="color: var(--primary-color);"></i>
+        </div>
+        <div class="title">Telegram</div>
+        <div class="right">
+            <i class="fas fa-edit" style="color: var(--primary-color);"></i>
+        </div>
+    </div>
+
+    <!-- 搜索栏 -->
+    <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="搜索" />
+    </div>
+
+    <!-- 聊天列表 -->
+    <div class="content-area">
+        <!-- 置顶聊天 -->
+        <div class="list-item">
+            <img class="avatar" src="https://randomuser.me/api/portraits/women/65.jpg" alt="头像">
+            <div class="content">
+                <div class="title">李梅 (置顶)</div>
+                <div class="subtitle">你好，我们明天见面讨论项目进展吧</div>
+            </div>
+            <div class="meta">
+                <div class="time">上午9:24</div>
+                <div class="badge">2</div>
+            </div>
+        </div>
+
+        <!-- 普通聊天 -->
+        <div class="list-item">
+            <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="头像">
+            <div class="content">
+                <div class="title">王强</div>
+                <div class="subtitle">已发送照片</div>
+            </div>
+            <div class="meta">
+                <div class="time">昨天</div>
+            </div>
+        </div>
+
+        <div class="list-item">
+            <img class="avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="头像">
+            <div class="content">
+                <div class="title">设计团队</div>
+                <div class="subtitle">张小明: 新的设计稿已上传，请查收</div>
+            </div>
+            <div class="meta">
+                <div class="time">昨天</div>
+                <div class="badge">5</div>
+            </div>
+        </div>
+
+        <div class="list-item">
+            <img class="avatar" src="https://randomuser.me/api/portraits/men/86.jpg" alt="头像">
+            <div class="content">
+                <div class="title">技术支持</div>
+                <div class="subtitle">您的问题已解决了吗？</div>
+            </div>
+            <div class="meta">
+                <div class="time">周三</div>
+            </div>
+        </div>
+
+        <div class="list-item">
+            <img class="avatar" src="https://randomuser.me/api/portraits/women/22.jpg" alt="头像">
+            <div class="content">
+                <div class="title">赵丽</div>
+                <div class="subtitle">好的，谢谢你的建议</div>
+            </div>
+            <div class="meta">
+                <div class="time">周二</div>
+            </div>
+        </div>
+
+        <div class="list-item">
+            <img class="avatar" src="https://randomuser.me/api/portraits/men/51.jpg" alt="头像">
+            <div class="content">
+                <div class="title">市场部通知</div>
+                <div class="subtitle">下周一将举行季度市场分析会议</div>
+            </div>
+            <div class="meta">
+                <div class="time">周一</div>
+            </div>
+        </div>
+
+        <div class="list-item">
+            <img class="avatar" src="https://randomuser.me/api/portraits/women/89.jpg" alt="头像">
+            <div class="content">
+                <div class="title">HR小助手</div>
+                <div class="subtitle">您的休假申请已审批通过</div>
+            </div>
+            <div class="meta">
+                <div class="time">6月18日</div>
+            </div>
+        </div>
+
+        <div class="list-item">
+            <img class="avatar" src="https://randomuser.me/api/portraits/men/75.jpg" alt="头像">
+            <div class="content">
+                <div class="title">产品讨论组</div>
+                <div class="subtitle">陈工: 新版本的Beta测试已开始</div>
+            </div>
+            <div class="meta">
+                <div class="time">6月15日</div>
+                <div class="badge">12</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新建聊天按钮 -->
+    <div class="action-button">
+        <i class="fas fa-pencil-alt"></i>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab active">
+            <i class="fas fa-comment"></i>
+            <span>聊天</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-address-book"></i>
+            <span>联系人</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-compass"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+</body>
+</html> 

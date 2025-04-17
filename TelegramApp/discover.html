@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发现 - Telegram</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-light);
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin: 10px 16px;
+        }
+        
+        .search-bar i {
+            color: var(--text-secondary);
+            margin-right: 8px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 15px;
+        }
+        
+        .discover-section {
+            margin: 16px 0;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            padding: 0 16px;
+            margin-bottom: 12px;
+        }
+        
+        .channel-list {
+            display: flex;
+            overflow-x: auto;
+            padding: 0 16px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        
+        .channel-list::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .channel-card {
+            width: 140px;
+            margin-right: 12px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+        }
+        
+        .channel-card-img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+        }
+        
+        .channel-card-content {
+            padding: 10px;
+        }
+        
+        .channel-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .channel-card-subtitle {
+            font-size: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .channel-card-subtitle i {
+            font-size: 10px;
+            margin-right: 4px;
+        }
+        
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 16px;
+        }
+        
+        .category-item {
+            width: calc(33.333% - 8px);
+            margin: 4px;
+            height: 100px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .category-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            padding: 10px;
+            color: white;
+        }
+        
+        .category-name {
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .trending-item {
+            display: flex;
+            padding: 12px 16px;
+            background-color: white;
+            margin-bottom: 1px;
+        }
+        
+        .trending-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            margin-right: 12px;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            background-color: var(--primary-color);
+        }
+        
+        .trending-content {
+            flex: 1;
+        }
+        
+        .trending-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .trending-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .trending-subtitle i {
+            font-size: 10px;
+            margin-right: 4px;
+        }
+        
+        .trending-action {
+            padding: 6px 14px;
+            background-color: #F0F6FF;
+            color: var(--primary-color);
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">9:41</div>
+        <div class="icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="left">
+        </div>
+        <div class="title">发现</div>
+        <div class="right">
+            <i class="fas fa-qrcode" style="color: var(--primary-color);"></i>
+        </div>
+    </div>
+
+    <!-- 搜索栏 -->
+    <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="搜索频道、群组或机器人" />
+    </div>
+
+    <!-- 热门频道 -->
+    <div class="discover-section">
+        <div class="section-title">热门频道</div>
+        <div class="channel-list">
+            <div class="channel-card">
+                <img class="channel-card-img" src="https://source.unsplash.com/random/300x200?news" alt="新闻">
+                <div class="channel-card-content">
+                    <div class="channel-card-title">每日新闻速递</div>
+                    <div class="channel-card-subtitle">
+                        <i class="fas fa-user"></i> 24.5万订阅
+                    </div>
+                </div>
+            </div>
+            <div class="channel-card">
+                <img class="channel-card-img" src="https://source.unsplash.com/random/300x200?tech" alt="科技">
+                <div class="channel-card-content">
+                    <div class="channel-card-title">科技前沿</div>
+                    <div class="channel-card-subtitle">
+                        <i class="fas fa-user"></i> 18.2万订阅
+                    </div>
+                </div>
+            </div>
+            <div class="channel-card">
+                <img class="channel-card-img" src="https://source.unsplash.com/random/300x200?movie" alt="影视">
+                <div class="channel-card-content">
+                    <div class="channel-card-title">影视资讯</div>
+                    <div class="channel-card-subtitle">
+                        <i class="fas fa-user"></i> 12.8万订阅
+                    </div>
+                </div>
+            </div>
+            <div class="channel-card">
+                <img class="channel-card-img" src="https://source.unsplash.com/random/300x200?music" alt="音乐">
+                <div class="channel-card-content">
+                    <div class="channel-card-title">音乐分享</div>
+                    <div class="channel-card-subtitle">
+                        <i class="fas fa-user"></i> 9.6万订阅
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分类浏览 -->
+    <div class="discover-section">
+        <div class="section-title">分类浏览</div>
+        <div class="category-list">
+            <div class="category-item">
+                <img src="https://source.unsplash.com/random/300x300?news" alt="新闻">
+                <div class="category-overlay">
+                    <div class="category-name">新闻</div>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="https://source.unsplash.com/random/300x300?entertainment" alt="娱乐">
+                <div class="category-overlay">
+                    <div class="category-name">娱乐</div>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="https://source.unsplash.com/random/300x300?education" alt="教育">
+                <div class="category-overlay">
+                    <div class="category-name">教育</div>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="https://source.unsplash.com/random/300x300?technology" alt="科技">
+                <div class="category-overlay">
+                    <div class="category-name">科技</div>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="https://source.unsplash.com/random/300x300?finance" alt="财经">
+                <div class="category-overlay">
+                    <div class="category-name">财经</div>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="https://source.unsplash.com/random/300x300?game" alt="游戏">
+                <div class="category-overlay">
+                    <div class="category-name">游戏</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 热门机器人 -->
+    <div class="discover-section">
+        <div class="section-title">热门机器人</div>
+        <div class="trending-item">
+            <div class="trending-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="trending-content">
+                <div class="trending-title">翻译助手</div>
+                <div class="trending-subtitle">
+                    <i class="fas fa-circle"></i> 在线 · 5.6万用户
+                </div>
+            </div>
+            <button class="trending-action">添加</button>
+        </div>
+        <div class="trending-item">
+            <div class="trending-icon">
+                <i class="fas fa-poll"></i>
+            </div>
+            <div class="trending-content">
+                <div class="trending-title">投票机器人</div>
+                <div class="trending-subtitle">
+                    <i class="fas fa-circle"></i> 在线 · 3.8万用户
+                </div>
+            </div>
+            <button class="trending-action">添加</button>
+        </div>
+        <div class="trending-item">
+            <div class="trending-icon">
+                <i class="fas fa-globe"></i>
+            </div>
+            <div class="trending-content">
+                <div class="trending-title">天气预报</div>
+                <div class="trending-subtitle">
+                    <i class="fas fa-circle"></i> 在线 · 2.4万用户
+                </div>
+            </div>
+            <button class="trending-action">添加</button>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab">
+            <i class="fas fa-comment"></i>
+            <span>聊天</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-address-book"></i>
+            <span>联系人</span>
+        </div>
+        <div class="tab active">
+            <i class="fas fa-compass"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料 - Telegram</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #F5F6F8;
+        }
+        
+        .profile-header {
+            background-color: var(--primary-color);
+            padding: 20px 16px;
+            padding-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+        
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+        
+        .profile-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .profile-status {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .profile-section {
+            background-color: white;
+            margin: 10px 0;
+            padding: 0 16px;
+        }
+        
+        .profile-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .profile-item:last-child {
+            border-bottom: none;
+        }
+        
+        .profile-item-icon {
+            width: 24px;
+            color: var(--text-secondary);
+            margin-right: 16px;
+            text-align: center;
+        }
+        
+        .profile-item-content {
+            flex: 1;
+        }
+        
+        .profile-item-title {
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+        
+        .profile-item-value {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+        
+        .profile-item-right {
+            color: var(--text-secondary);
+        }
+        
+        .edit-button {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .logout-button {
+            color: var(--error-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time">9:41</div>
+        <div class="icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 个人资料头部 -->
+    <div class="profile-header">
+        <img class="profile-avatar" src="https://randomuser.me/api/portraits/men/17.jpg" alt="我的头像">
+        <div class="profile-name">张大明</div>
+        <div class="profile-status">在线</div>
+        <button class="edit-button">
+            <i class="fas fa-edit"></i> 编辑个人资料
+        </button>
+    </div>
+
+    <!-- 个人信息部分 -->
+    <div class="profile-section">
+        <div class="profile-item">
+            <div class="profile-item-icon">
+                <i class="fas fa-phone"></i>
+            </div>
+            <div class="profile-item-content">
+                <div class="profile-item-title">电话号码</div>
+                <div class="profile-item-value">+86 138****1234</div>
+            </div>
+            <div class="profile-item-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        <div class="profile-item">
+            <div class="profile-item-icon">
+                <i class="fas fa-at"></i>
+            </div>
+            <div class="profile-item-content">
+                <div class="profile-item-title">用户名</div>
+                <div class="profile-item-value">@zhang_daming</div>
+            </div>
+            <div class="profile-item-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        <div class="profile-item">
+            <div class="profile-item-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="profile-item-content">
+                <div class="profile-item-title">个人简介</div>
+                <div class="profile-item-value">热爱生活，热爱技术</div>
+            </div>
+            <div class="profile-item-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 设置部分 -->
+    <div class="profile-section">
+        <div class="profile-item">
+            <div class="profile-item-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="profile-item-content">
+                <div class="profile-item-title">通知和声音</div>
+            </div>
+            <div class="profile-item-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        <div class="profile-item">
+            <div class="profile-item-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="profile-item-content">
+                <div class="profile-item-title">隐私和安全</div>
+            </div>
+            <div class="profile-item-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        <div class="profile-item">
+            <div class="profile-item-icon">
+                <i class="fas fa-database"></i>
+            </div>
+            <div class="profile-item-content">
+                <div class="profile-item-title">数据和存储</div>
+            </div>
+            <div class="profile-item-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        <div class="profile-item">
+            <div class="profile-item-icon">
+                <i class="fas fa-language"></i>
+            </div>
+            <div class="profile-item-content">
+                <div class="profile-item-title">语言</div>
+                <div class="profile-item-value">简体中文</div>
+            </div>
+            <div class="profile-item-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 帮助部分 -->
+    <div class="profile-section">
+        <div class="profile-item">
+            <div class="profile-item-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <div class="profile-item-content">
+                <div class="profile-item-title">Telegram 常见问题</div>
+            </div>
+            <div class="profile-item-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        <div class="profile-item">
+            <div class="profile-item-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="profile-item-content">
+                <div class="profile-item-title">给 Telegram 评分</div>
+            </div>
+            <div class="profile-item-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 退出部分 -->
+    <div class="profile-section">
+        <div class="profile-item">
+            <div class="profile-item-icon">
+                <i class="fas fa-sign-out-alt logout-button"></i>
+            </div>
+            <div class="profile-item-content">
+                <div class="profile-item-title logout-button">退出登录</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; padding: 20px; color: var(--text-secondary); font-size: 12px;">
+        Telegram 版本 10.0.1
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <div class="tab">
+            <i class="fas fa-comment"></i>
+            <span>聊天</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-address-book"></i>
+            <span>联系人</span>
+        </div>
+        <div class="tab">
+            <i class="fas fa-compass"></i>
+            <span>发现</span>
+        </div>
+        <div class="tab active">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+</body>
+</html> 
