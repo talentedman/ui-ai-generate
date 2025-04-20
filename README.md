@@ -41,7 +41,7 @@ git clone https://github.com/talentedman/ui-ai-generate.git
 ## 在线预览
 
 可以通过以下链接直接访问在线版本：
-[AI UI Generate](https://your-github-pages-url.com)
+[AI UI Generate](https://talentedman.github.io/ui-ai-generate/index.html)
 
 ## 贡献指南
 
